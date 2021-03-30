@@ -23,6 +23,14 @@ export const forms = [
     deadline: "2021-04-10",
     slug: "tran-phuong-anh",
   },
+  {
+    title: "Trần Phương Anh",
+    type: "Bộ phận",
+    position: "Quản lý kho",
+    status: "pending",
+    deadline: "2021-04-10",
+    slug: "tran-phuong-anh",
+  },
 ];
 
 export const questions = [
