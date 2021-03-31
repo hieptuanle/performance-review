@@ -1,32 +1,3 @@
-import { Redirect, Route } from "react-router-dom";
-import {
-  IonApp,
-  IonIcon,
-  IonLabel,
-  IonRouterOutlet,
-  IonTabBar,
-  IonTabButton,
-  IonTabs,
-  IonPage,
-  IonSplitPane,
-  IonMenu,
-  IonHeader,
-  IonToolbar,
-  IonTitle,
-  IonContent,
-  IonList,
-  IonItem,
-  IonButton,
-  IonMenuButton,
-  IonButtons,
-} from "@ionic/react";
-import { IonReactRouter } from "@ionic/react-router";
-import { ellipse, square, triangle } from "ionicons/icons";
-import ListForms from "./pages/ListForms";
-import ViewForm from "./pages/ViewForm";
-import Tab2 from "./pages/Tab2";
-import Tab3 from "./pages/Tab3";
-
 /* Core CSS required for Ionic components to work properly */
 import "@ionic/react/css/core.css";
 
@@ -47,46 +18,28 @@ import "@ionic/react/css/display.css";
 import "./theme/variables.css";
 import React from "react";
 
-const App: React.FC = () => (
-  <IonApp>
-    <IonReactRouter>
-      <IonSplitPane contentId="content">
-        <IonMenu side="start" menuId="main" contentId="content" type="push">
-          <IonHeader>
-            <IonToolbar>
-              <IonTitle>Hello Hiệp!</IonTitle>
-            </IonToolbar>
-          </IonHeader>
-          <IonContent>
-            <IonList>
-              <IonItem routerLink="/forms">My Forms</IonItem>
-              {/* <IonItem href="/tab2">Log In</IonItem> */}
-              <IonItem routerLink="/tab3">Log Out</IonItem>
-            </IonList>
-          </IonContent>
-        </IonMenu>
-        <IonPage id="content">
-          <IonContent className="ion-padding">
-            <IonRouterOutlet id="main">
-              <Route exact path="/forms">
-                <ListForms />
-              </Route>
-              <Route exact path="/forms/:formId" component={ViewForm}></Route>
-              <Route exact path="/tab2">
-                <Tab2 />
-              </Route>
-              <Route path="/tab3">
-                <Tab3 />
-              </Route>
-              <Route exact path="/">
-                <Redirect to="/forms" />
-              </Route>
-            </IonRouterOutlet>
-          </IonContent>
-        </IonPage>
-      </IonSplitPane>
-    </IonReactRouter>
-  </IonApp>
-);
+import { IonApp, IonPage, IonSplitPane } from "@ionic/react";
+import { IonReactRouter } from "@ionic/react-router";
+
+import { observer } from "mobx-react-lite";
+import { RootStore } from "./models/stores";
+import { AppContext } from "./context";
+import MainMenu from "./components/MainMenu";
+import MainContent from "./components/MainContent";
+
+const App: React.FC = observer(() => (
+  <AppContext.Provider value={new RootStore()}>
+    <IonApp>
+      <IonReactRouter>
+        <IonSplitPane contentId="content">
+          <MainMenu></MainMenu>
+          <IonPage id="content">
+            <MainContent></MainContent>
+          </IonPage>
+        </IonSplitPane>
+      </IonReactRouter>
+    </IonApp>
+  </AppContext.Provider>
+));
 
 export default App;

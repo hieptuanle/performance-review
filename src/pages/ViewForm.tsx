@@ -72,7 +72,7 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
                 <>
                   <IonItem>
                     <h2>
-                      {index + 1}. {question.content} | Đánh giá điểm
+                      {index + 1}. {question.content}
                     </h2>
                   </IonItem>
                   <IonItem id={question.content + "_mark"}>
