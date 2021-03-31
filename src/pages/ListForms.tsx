@@ -9,9 +9,11 @@ import {
   IonList,
   IonItem,
   IonLabel,
+  IonAvatar,
 } from "@ionic/react";
 import "./Tab1.css";
 
+import md5 from "md5";
 import { forms } from "../models/form";
 
 const ListForms: React.FC = () => {
@@ -32,6 +34,12 @@ const ListForms: React.FC = () => {
               key={form.title + "_" + form.type}
               routerLink={"/forms/" + form.slug}
             >
+              <IonAvatar slot="start">
+                <img
+                  src={"https://www.gravatar.com/avatar/" + md5(form.email)}
+                  alt={form.title + " avatar"}
+                />
+              </IonAvatar>
               <IonLabel>
                 <h2>{form.title}</h2>
                 <h3>{form.position}</h3>

@@ -6,6 +6,7 @@ export const forms = [
     status: "pending",
     deadline: "2021-04-10",
     slug: "le-tuan-hiep",
+    email: "hieptuanle@gmail.com",
   },
   {
     title: "Chu Huy Thắng",
@@ -14,6 +15,7 @@ export const forms = [
     status: "pending",
     deadline: "2021-04-10",
     slug: "chu-huy-thang",
+    email: "chuthang205@gmail.com",
   },
   {
     title: "Trần Phương Anh",
@@ -22,6 +24,7 @@ export const forms = [
     status: "pending",
     deadline: "2021-04-10",
     slug: "tran-phuong-anh",
+    email: "tpa2498@gmail.com	",
   },
   {
     title: "Trần Phương Anh",
@@ -30,6 +33,7 @@ export const forms = [
     status: "pending",
     deadline: "2021-04-10",
     slug: "tran-phuong-anh",
+    email: "tpa2498@gmail.com	",
   },
 ];
 
