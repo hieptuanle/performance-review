@@ -4,7 +4,8 @@ import store from "store";
 interface IUser {
   _id: string;
   email: string;
-  fullName: string;
+  firstName: string;
+  lastName: string;
   cellphone: string;
   roles: string[];
 }

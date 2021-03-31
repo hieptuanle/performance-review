@@ -47,8 +47,6 @@ const Login: React.FC = () => {
       return;
     }
 
-    console.log({ username, password });
-
     await rootStore.authenticationStore
       .authenticate(username, password)
       .then((res) => {

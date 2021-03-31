@@ -12,6 +12,18 @@ import {
 import { AppContext } from "../context";
 import { useHistory } from "react-router";
 
+const MenuTitle: React.FC = observer(() => {
+  const rootStore = useContext(AppContext);
+  if (!rootStore) return null;
+  return (
+    <IonTitle>
+      {rootStore.authenticationStore.isAuthenticated
+        ? `Hello ${rootStore.authenticationStore.user?.firstName}!`
+        : "Menu"}
+    </IonTitle>
+  );
+});
+
 const MainMenu: React.FC = observer(() => {
   const rootStore = useContext(AppContext);
   const history = useHistory();
@@ -20,7 +32,7 @@ const MainMenu: React.FC = observer(() => {
     <IonMenu side="start" menuId="main" contentId="content" type="push">
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Hello Hiệp!</IonTitle>
+          <MenuTitle />
         </IonToolbar>
       </IonHeader>
       <IonContent>
