@@ -19,6 +19,7 @@ import "./Tab1.css";
 
 import { questions, forms } from "../models/form";
 import { RouteComponentProps } from "react-router";
+import { Fragment } from "react";
 
 interface ViewFormPageProps
   extends RouteComponentProps<{
@@ -69,13 +70,13 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
           {matchQuestions.map((question, index) => {
             if (question.layout === "Scale")
               return (
-                <>
-                  <IonItem>
+                <Fragment key={question.content}>
+                  <IonListHeader key={question.content + "_title"}>
                     <h2>
                       {index + 1}. {question.content}
                     </h2>
-                  </IonItem>
-                  <IonItem id={question.content + "_mark"}>
+                  </IonListHeader>
+                  <IonItem key={question.content + "_mark"}>
                     <IonLabel position="fixed">Chấm điểm</IonLabel>
                     <IonSelect interface="action-sheet" defaultValue="">
                       <IonSelectOption> 1 - Chưa đạt kì vọng</IonSelectOption>
@@ -86,7 +87,7 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
                       <IonSelectOption value="">Không đánh giá</IonSelectOption>
                     </IonSelect>
                   </IonItem>
-                  <IonItem id={question.content + "_text"}>
+                  <IonItem key={question.content + "_text"}>
                     <IonLabel position="fixed">Giải thích</IonLabel>
                     <IonTextarea
                       style={{ minHeight: "100px", lineHeight: "1.5em" }}
@@ -94,16 +95,16 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
                       rows={5}
                     ></IonTextarea>
                   </IonItem>
-                </>
+                </Fragment>
               );
             return (
-              <>
-                <IonListHeader>
+              <Fragment key={question.content}>
+                <IonListHeader key={question.content + "_title"}>
                   <h2>
                     {index + 1}. {question.content}
                   </h2>
                 </IonListHeader>
-                <IonItem id={question.content}>
+                <IonItem key={question.content + "_evaluate"}>
                   <IonLabel position="stacked">Nêu đánh giá của bạn</IonLabel>
                   <IonTextarea
                     style={{ minHeight: "100px", lineHeight: "1.5em" }}
@@ -111,7 +112,7 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
                     rows={5}
                   ></IonTextarea>
                 </IonItem>
-              </>
+              </Fragment>
             );
           })}
         </IonList>

@@ -9,7 +9,6 @@ import {
   IonList,
   IonItem,
   IonLabel,
-  IonListHeader,
 } from "@ionic/react";
 import "./Tab1.css";
 
@@ -29,7 +28,10 @@ const ListForms: React.FC = () => {
       <IonContent fullscreen>
         <IonList>
           {forms.map((form) => (
-            <IonItem id={form.title} routerLink={"/forms/" + form.slug}>
+            <IonItem
+              key={form.title + "_" + form.type}
+              routerLink={"/forms/" + form.slug}
+            >
               <IonLabel>
                 <h2>{form.title}</h2>
                 <h3>{form.position}</h3>
