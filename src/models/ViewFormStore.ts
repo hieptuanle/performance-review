@@ -2,7 +2,7 @@ import { action, makeAutoObservable, observable, toJS } from "mobx";
 import { RootStore } from "./RootStore";
 import { uniqBy } from "lodash";
 
-interface Question {
+export interface Question {
   group: string;
   content: string;
   layout: "Scale" | "Text";
