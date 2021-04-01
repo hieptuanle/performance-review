@@ -1,0 +1,38 @@
+import { makeAutoObservable } from "mobx";
+import { RootStore } from "./RootStore";
+import { Question } from "./ViewFormStore";
+
+interface ReviewResponse {
+  reviewDepartment?: string;
+
+  revieweeCode: string;
+  revieweeName: string;
+  revieweeDepartment: string;
+
+  reviewerName: string;
+  reviewerCode: string;
+
+  slug: string;
+
+  positions: [string];
+  questions: Question[];
+  user: string;
+}
+
+export class ReviewResponseStore {
+  rootStore: RootStore;
+  constructor(rootStore: RootStore) {
+    this.rootStore = rootStore;
+
+    makeAutoObservable(this, {
+      rootStore: false,
+    });
+  }
+
+  async insertOne(reviewResponse: ReviewResponse): Promise<ReviewResponse> {
+    return this.rootStore.transportStore.post(
+      "/review-responses",
+      reviewResponse
+    );
+  }
+}

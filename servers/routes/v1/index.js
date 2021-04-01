@@ -1,12 +1,12 @@
 const express = require("express");
-const formRoute = require("./forms.route");
+const reviewFormRoute = require("./review-responses.route");
 
 const router = express.Router();
 
 const defaultRoutes = [
   {
-    path: "/forms",
-    route: formRoute,
+    path: "/review-responses",
+    route: reviewFormRoute,
   },
 ];
 

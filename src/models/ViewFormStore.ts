@@ -1,6 +1,7 @@
-import { action, makeAutoObservable, observable, toJS } from "mobx";
+import { action, makeAutoObservable, toJS } from "mobx";
 import { RootStore } from "./RootStore";
 import { uniqBy } from "lodash";
+import { ReviewForm } from "./ReviewFormStore";
 
 export interface Question {
   group: string;
@@ -13,11 +14,13 @@ export interface Question {
 export class ViewFormStore {
   rootStore: RootStore;
 
+  reviewForm: ReviewForm | null = null;
+  questions: Question[] = [];
+
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
 
     makeAutoObservable(this, {
-      questions: observable,
       setQuestions: action,
       clearQuestions: action,
       setAnswer: action,
@@ -25,8 +28,6 @@ export class ViewFormStore {
       rootStore: false,
     });
   }
-
-  questions: Question[] = [];
 
   asJs() {
     return toJS(this.questions);
@@ -37,6 +38,10 @@ export class ViewFormStore {
   }
   setMark(question: Question, mark: string) {
     question.mark = mark;
+  }
+
+  setReviewForm(reviewForm: ReviewForm) {
+    this.reviewForm = reviewForm;
   }
 
   clearQuestions() {
@@ -98,6 +103,12 @@ export class ViewFormStore {
     }
 
     this.questions = questions;
+  }
+
+  submitReviewResponse() {
+    // this.rootStore.reviewResponseStore.insertOne({
+    //   reviewDepartment,
+    // });
   }
 }
 
