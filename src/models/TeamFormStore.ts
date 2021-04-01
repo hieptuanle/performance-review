@@ -1400,6 +1400,7 @@ const forms = [
 ].map<TeamForm>((d) => {
   return {
     ...d,
+    reviewerName: d.departmentReview,
     reviewType: 3,
     slug: urlSlug.convert(
       `${d.revieweeCode} ${d.revieweeName} 3 ${d.departmentReview}`

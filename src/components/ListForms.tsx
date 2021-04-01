@@ -1,29 +1,32 @@
 import React from "react";
-import { IonItem, IonLabel, IonList } from "@ionic/react";
+import { IonList, IonListHeader } from "@ionic/react";
 import { observer } from "mobx-react-lite";
-import FormType from "./FormType";
 import useRootStore from "../hooks/useRootStore";
-import UserAvatar from "./UserAvatar";
-import RevieweeTitle from "./RevieweePosition";
+
+import FormItems from "./FormItems";
 
 const ListForms = observer(() => {
   const rootStore = useRootStore();
-  const forms = rootStore.individualFormStore.forms;
+  const individualForms = rootStore.individualFormStore.forms;
+  const selfAssessmentForms = individualForms.filter((form) => {
+    return form.reviewType === 1;
+  });
+  const colleagueForms = individualForms.filter((form) => {
+    return form.reviewType === 2;
+  });
+  const managerForms = individualForms.filter((form) => {
+    return form.reviewType === 4;
+  });
+  const teamForms = rootStore.teamFormStore.forms;
   return (
     <IonList>
-      {forms.map((form) => (
-        <IonItem key={form.slug} routerLink={"/forms/" + form.slug}>
-          <UserAvatar revieweeCode={form.revieweeCode}></UserAvatar>
-          <IonLabel>
-            <h2>{form.revieweeName}</h2>
-            <RevieweeTitle revieweeCode={form.revieweeCode}></RevieweeTitle>
-            <p>
-              <FormType formType={form.reviewType}></FormType>
-              {/* {form.status === "done" ? "Hoàn thành" : "Chưa hoàn thành"} */}
-            </p>
-          </IonLabel>
-        </IonItem>
-      ))}
+      <FormItems title="Tự đánh giá" forms={selfAssessmentForms}></FormItems>
+      <FormItems
+        title="Đánh giá đồng nghiệp"
+        forms={colleagueForms}
+      ></FormItems>
+      <FormItems title="Quản lý đánh giá" forms={managerForms}></FormItems>
+      <FormItems title="Bộ phận đánh giá" forms={teamForms}></FormItems>
     </IonList>
   );
 });
