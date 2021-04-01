@@ -40,10 +40,13 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
             <IonButtons slot="start">
               <IonMenuButton></IonMenuButton>
             </IonButtons>
-            <IonTitle>Not Found</IonTitle>
+            <IonTitle>Không tìm thấy</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <IonContent>Not Found</IonContent>
+        <IonContent className="ion-padding ion-text-center">
+          Không tìm thấy form này. Bạn kiểm tra lại đường dẫn hoặc liên hệ với
+          bộ phận Tech nhé.
+        </IonContent>
       </IonPage>
     );
   }

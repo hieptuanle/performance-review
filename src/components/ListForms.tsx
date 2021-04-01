@@ -7,7 +7,7 @@ import FormItems from "./FormItems";
 
 const ListForms = observer(() => {
   const rootStore = useRootStore();
-  const individualForms = rootStore.individualFormStore.forms;
+  const individualForms = rootStore.individualFormStore.myForms;
   const selfAssessmentForms = individualForms.filter((form) => {
     return form.reviewType === 1;
   });
@@ -17,7 +17,14 @@ const ListForms = observer(() => {
   const managerForms = individualForms.filter((form) => {
     return form.reviewType === 4;
   });
-  const teamForms = rootStore.teamFormStore.forms;
+  const teamForms = rootStore.teamFormStore.myForms;
+  if (!individualForms.length && !teamForms.length) {
+    return (
+      <IonList>
+        <IonListHeader>Bạn không có form đánh giá nào</IonListHeader>
+      </IonList>
+    );
+  }
   return (
     <IonList>
       <FormItems title="Tự đánh giá" forms={selfAssessmentForms}></FormItems>
@@ -26,7 +33,11 @@ const ListForms = observer(() => {
         forms={colleagueForms}
       ></FormItems>
       <FormItems title="Quản lý đánh giá" forms={managerForms}></FormItems>
-      <FormItems title="Bộ phận đánh giá" forms={teamForms}></FormItems>
+      <FormItems
+        title="Bộ phận đánh giá"
+        note="Mỗi bộ phận chỉ cần gửi 1 form duy nhất cho 1 nhân viên. Hãy đảm bảo bạn đã thảo luận với các thành viên khác trong team trước khi đánh giá các bạn sau nhé!"
+        forms={teamForms}
+      ></FormItems>
     </IonList>
   );
 });

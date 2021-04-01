@@ -4,6 +4,7 @@ import store from "store";
 
 interface IUser {
   _id: string;
+  code: string;
   email: string;
   firstName: string;
   lastName: string;
@@ -21,6 +22,8 @@ export class AuthenticationStore {
   rootStore: RootStore;
 
   user: IUser | null = null;
+  userCode = "";
+  firstName = "";
   token: string | null = null;
   expired: Date | null = null;
 
@@ -35,12 +38,17 @@ export class AuthenticationStore {
     }
 
     makeObservable(this, {
+      user: observable,
+      userCode: observable,
+      firstName: observable,
       token: observable,
       loading: observable,
       isAuthenticated: computed,
       authenticate: action,
       setCredentials: action,
       logout: action,
+      switchUser: action,
+      resetUser: action,
       rootStore: false,
     });
   }
@@ -51,6 +59,8 @@ export class AuthenticationStore {
 
   setCredentials({ user, token, expired }: Credentials) {
     this.user = user;
+    this.userCode = user.code;
+    this.user.firstName = user.firstName;
     this.token = token;
     this.expired = new Date(expired);
     store.set("credentials", { user, token, expired });
@@ -76,6 +86,15 @@ export class AuthenticationStore {
     }
     const credentials: Credentials = await dataPromise.json();
     this.setCredentials(credentials);
+  }
+
+  switchUser(code: string, name: string) {
+    this.userCode = code;
+    this.firstName = name;
+  }
+  resetUser() {
+    this.userCode = this.user ? this.user.code : "";
+    this.firstName = this.user ? this.user.firstName : "";
   }
 
   async logout() {

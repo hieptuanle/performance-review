@@ -1,4 +1,4 @@
-import { makeObservable, observable } from "mobx";
+import { autorun, computed, makeObservable, observable } from "mobx";
 import { ReviewForm } from "./form.type";
 import { RootStore } from "./RootStore";
 import * as urlSlug from "url-slug";
@@ -17,6 +17,19 @@ export class TeamFormStore {
 
     makeObservable(this, {
       forms: observable,
+      myForms: computed,
+      rootStore: false,
+    });
+  }
+
+  get myForms() {
+    const matchMember = this.rootStore.teamMemberStore.members.find(
+      (d) => d.reviewerCode === this.rootStore.authenticationStore.userCode
+    );
+
+    if (!matchMember) return [];
+    return this.forms.filter((form) => {
+      return form.departmentReview === matchMember.department;
     });
   }
 }
@@ -79,7 +92,7 @@ const forms = [
   },
   {
     departmentReview: "Team Tuyển dụng",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -134,7 +147,7 @@ const forms = [
   },
   {
     departmentReview: "Team Training",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -149,7 +162,7 @@ const forms = [
   },
   {
     departmentReview: "Team Đánh giá",
-    revieweeCode: "D494",
+    revieweeCode: "D1516",
     revieweeName: "Nguyễn Thùy Dương",
   },
   {
@@ -299,7 +312,7 @@ const forms = [
   },
   {
     departmentReview: "Team QC",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -444,7 +457,7 @@ const forms = [
   },
   {
     departmentReview: "Team Kho",
-    revieweeCode: "D494",
+    revieweeCode: "D1516",
     revieweeName: "Nguyễn Thùy Dương",
   },
   {
@@ -524,7 +537,7 @@ const forms = [
   },
   {
     departmentReview: "Team Kho",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -539,7 +552,7 @@ const forms = [
   },
   {
     departmentReview: "Team Đóng gói",
-    revieweeCode: "D494",
+    revieweeCode: "D1516",
     revieweeName: "Nguyễn Thùy Dương",
   },
   {
@@ -594,7 +607,7 @@ const forms = [
   },
   {
     departmentReview: "Team Đóng gói",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -674,7 +687,7 @@ const forms = [
   },
   {
     departmentReview: "Team Kiểm toán",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -749,7 +762,7 @@ const forms = [
   },
   {
     departmentReview: "Team Kế toán nội bộ",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -824,7 +837,7 @@ const forms = [
   },
   {
     departmentReview: "Team Bếp",
-    revieweeCode: "D494",
+    revieweeCode: "D1516",
     revieweeName: "Nguyễn Thùy Dương",
   },
   {
@@ -864,7 +877,7 @@ const forms = [
   },
   {
     departmentReview: "Team Bếp",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -909,7 +922,7 @@ const forms = [
   },
   {
     departmentReview: "Team HC",
-    revieweeCode: "D494",
+    revieweeCode: "D1516",
     revieweeName: "Nguyễn Thùy Dương",
   },
   {
@@ -969,7 +982,7 @@ const forms = [
   },
   {
     departmentReview: "Team HC",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -1019,7 +1032,7 @@ const forms = [
   },
   {
     departmentReview: "Team BS",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -1074,7 +1087,7 @@ const forms = [
   },
   {
     departmentReview: "Team Ship",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -1124,7 +1137,7 @@ const forms = [
   },
   {
     departmentReview: "Team Media",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -1149,7 +1162,7 @@ const forms = [
   },
   {
     departmentReview: "Team HR HCM",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -1189,7 +1202,7 @@ const forms = [
   },
   {
     departmentReview: "Team MKT",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -1214,7 +1227,7 @@ const forms = [
   },
   {
     departmentReview: "TL Abby HN",
-    revieweeCode: "D494",
+    revieweeCode: "D1516",
     revieweeName: "Nguyễn Thùy Dương",
   },
   {
@@ -1269,7 +1282,7 @@ const forms = [
   },
   {
     departmentReview: "TL Abby HN",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -1304,7 +1317,7 @@ const forms = [
   },
   {
     departmentReview: "TL Abby HCM",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
   {
@@ -1329,7 +1342,7 @@ const forms = [
   },
   {
     departmentReview: "TL Savor",
-    revieweeCode: "D494",
+    revieweeCode: "D1516",
     revieweeName: "Nguyễn Thùy Dương",
   },
   {
@@ -1394,7 +1407,7 @@ const forms = [
   },
   {
     departmentReview: "TL Savor",
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
   },
 ].map<TeamForm>((d) => {

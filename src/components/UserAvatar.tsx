@@ -9,6 +9,10 @@ const UserAvatar = observer<{ revieweeCode: string }>(({ revieweeCode }) => {
   const user = rootStore.userStore.users.find((user) => {
     return revieweeCode === user.code;
   });
+  if (!user) {
+    console.log(revieweeCode);
+  }
+
   if (!user) return null;
   return (
     <IonAvatar slot="start">

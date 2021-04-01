@@ -129,14 +129,14 @@ const reviewees = [
     revieweePosition2: "",
   },
   {
-    revieweeCode: "D494",
+    revieweeCode: "D1516",
     revieweeName: "Nguyễn Thùy Dương",
     revieweeDepartment: "QC",
     revieweePosition1: "Nhân viên giám sát chất lượng",
     revieweePosition2: "",
   },
   {
-    revieweeCode: "D3297",
+    revieweeCode: "D2607",
     revieweeName: "Nguyễn Bá Nam",
     revieweeDepartment: "Đánh giá",
     revieweePosition1: "Chuyên viên nhân sự tổng hợp",
