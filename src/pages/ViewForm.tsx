@@ -144,8 +144,8 @@ const ViewForm = observer<ViewFormPageProps>(({ match }) => {
           </IonToolbar>
         </IonHeader>
         <IonContent className="ion-padding ion-text-center">
-          Không tìm thấy form này. Bạn kiểm tra lại đường dẫn hoặc liên hệ với
-          bộ phận Tech nhé.
+          Không tìm thấy form này hoặc bạn không có quyền truy cập. Bạn kiểm tra
+          lại đường dẫn hoặc liên hệ với bộ phận Tech nhé.
         </IonContent>
       </IonPage>
     );
