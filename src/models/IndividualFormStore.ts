@@ -1,7 +1,7 @@
 import { computed, makeObservable, observable } from "mobx";
 import { RootStore } from "./RootStore";
 import * as urlSlug from "url-slug";
-import { ReviewForm } from "./form.type";
+import { ReviewForm } from "./ReviewFormStore";
 
 interface IndividualForm extends ReviewForm {
   reviewerCode: string;

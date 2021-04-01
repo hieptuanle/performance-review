@@ -4,7 +4,7 @@ import { observer } from "mobx-react-lite";
 import FormType from "./FormType";
 import UserAvatar from "./UserAvatar";
 import RevieweeTitle from "./RevieweePosition";
-import { ReviewForm } from "../models/form.type";
+import { ReviewForm } from "../models/ReviewFormStore";
 
 const FormItems = observer<{
   forms: ReviewForm[];

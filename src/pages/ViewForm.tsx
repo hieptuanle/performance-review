@@ -17,20 +17,23 @@ import {
 } from "@ionic/react";
 import "./Tab1.css";
 
-import { questions, forms } from "../models/form";
+import { questions } from "../models/form";
 import { RouteComponentProps } from "react-router";
 import { Fragment } from "react";
+import { observer } from "mobx-react-lite";
+import useRootStore from "../hooks/useRootStore";
+import { intersection } from "lodash";
 
 interface ViewFormPageProps
   extends RouteComponentProps<{
     formId: string;
   }> {}
 
-const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
+const ViewForm = observer<ViewFormPageProps>(({ match }) => {
+  const rootStore = useRootStore();
   const formId = match.params.formId;
-  const matchForm = forms.find((form) => {
-    return form.slug === formId;
-  });
+  console.log({ formId });
+  const matchForm = rootStore.reviewFormStore.getFormFromSlug(formId);
 
   if (!matchForm) {
     return (
@@ -51,10 +54,32 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
     );
   }
 
+  const matchReviewee = rootStore.revieweeStore.reviewees.find((reviewee) => {
+    return reviewee.revieweeCode === matchForm.revieweeCode;
+  });
+
+  if (!matchReviewee) {
+    return (
+      <IonPage>
+        <IonHeader>
+          <IonToolbar>
+            <IonButtons slot="start">
+              <IonMenuButton></IonMenuButton>
+            </IonButtons>
+            <IonTitle>Không tìm thấy</IonTitle>
+          </IonToolbar>
+        </IonHeader>
+        <IonContent className="ion-padding ion-text-center">
+          Không tìm thấy ứng viên này. Bạn liên hệ bộ phận Tech nhé.
+        </IonContent>
+      </IonPage>
+    );
+  }
+
   const matchQuestions = questions.filter((question) => {
     return (
-      question.positions.includes(matchForm?.position) &&
-      question.type >= matchForm.type
+      intersection(question.positions, matchReviewee.revieweePositions).length >
+        0 && question.type >= matchForm.reviewType
     );
   });
 
@@ -65,7 +90,7 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
-          <IonTitle>Performance Review {matchForm.title}</IonTitle>
+          <IonTitle>Performance Review {matchForm.revieweeName}</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
@@ -123,6 +148,6 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
       </IonContent>
     </IonPage>
   );
-};
+});
 
 export default ViewForm;

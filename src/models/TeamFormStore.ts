@@ -1,5 +1,5 @@
-import { autorun, computed, makeObservable, observable } from "mobx";
-import { ReviewForm } from "./form.type";
+import { computed, makeObservable, observable } from "mobx";
+import { ReviewForm } from "./ReviewFormStore";
 import { RootStore } from "./RootStore";
 import * as urlSlug from "url-slug";
 
