@@ -51,7 +51,7 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
   const matchQuestions = questions.filter((question) => {
     return (
       question.positions.includes(matchForm?.position) &&
-      question.types.includes(matchForm.type)
+      question.type >= matchForm.type
     );
   });
 
@@ -79,11 +79,11 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
                   <IonItem key={question.content + "_mark"}>
                     <IonLabel position="fixed">Chấm điểm</IonLabel>
                     <IonSelect interface="action-sheet" defaultValue="">
-                      <IonSelectOption> 1 - Chưa đạt kì vọng</IonSelectOption>
-                      <IonSelectOption>2 - Đạt kì vọng</IonSelectOption>
-                      <IonSelectOption>3 - Tốt</IonSelectOption>
-                      <IonSelectOption>4 - Xuất sắc</IonSelectOption>
-                      <IonSelectOption>5 - Cực kì xuất sắc</IonSelectOption>
+                      <IonSelectOption> 1</IonSelectOption>
+                      <IonSelectOption>2</IonSelectOption>
+                      <IonSelectOption>3</IonSelectOption>
+                      <IonSelectOption>4</IonSelectOption>
+                      <IonSelectOption>5</IonSelectOption>
                       <IonSelectOption value="">Không đánh giá</IonSelectOption>
                     </IonSelect>
                   </IonItem>

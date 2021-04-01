@@ -1,22 +1,21 @@
+import React from "react";
 import { IonContent, IonRouterOutlet } from "@ionic/react";
-import React, { useContext } from "react";
 import { Redirect, Route } from "react-router";
-import ListForms from "../pages/ListForms";
+import ListFormsPage from "../pages/ListFormsPage";
 import Login from "../pages/Login";
 import NotFound from "../pages/NotFound";
 import ViewForm from "../pages/ViewForm";
-import { AppContext } from "../context";
 import { observer } from "mobx-react-lite";
+import useRootStore from "../hooks/useRootStore";
 
 const MainContent: React.FC = observer(() => {
-  const rootStore = useContext(AppContext);
-  if (!rootStore) return null;
+  const rootStore = useRootStore();
   return (
     <IonContent className="ion-padding">
       <IonRouterOutlet id="main">
         {rootStore.authenticationStore.isAuthenticated ? (
           <>
-            <Route exact path="/forms" component={ListForms}></Route>
+            <Route exact path="/forms" component={ListFormsPage}></Route>
             <Route exact path="/forms/:formId" component={ViewForm}></Route>
             <Route exact path="/">
               <Redirect to="/forms" />

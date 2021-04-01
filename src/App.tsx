@@ -22,7 +22,7 @@ import { IonApp, IonPage, IonSplitPane } from "@ionic/react";
 import { IonReactRouter } from "@ionic/react-router";
 
 import { observer } from "mobx-react-lite";
-import { RootStore } from "./models/stores";
+import { RootStore } from "./models/RootStore";
 import { AppContext } from "./context";
 import MainMenu from "./components/MainMenu";
 import MainContent from "./components/MainContent";

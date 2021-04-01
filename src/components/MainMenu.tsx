@@ -11,10 +11,10 @@ import {
 } from "@ionic/react";
 import { AppContext } from "../context";
 import { useHistory } from "react-router";
+import useRootStore from "../hooks/useRootStore";
 
 const MenuTitle: React.FC = observer(() => {
-  const rootStore = useContext(AppContext);
-  if (!rootStore) return null;
+  const rootStore = useRootStore();
   return (
     <IonTitle>
       {rootStore.authenticationStore.isAuthenticated
@@ -25,9 +25,8 @@ const MenuTitle: React.FC = observer(() => {
 });
 
 const MainMenu: React.FC = observer(() => {
-  const rootStore = useContext(AppContext);
+  const rootStore = useRootStore();
   const history = useHistory();
-  if (!rootStore) return null;
   return (
     <IonMenu side="start" menuId="main" contentId="content" type="push">
       <IonHeader>
@@ -40,7 +39,8 @@ const MainMenu: React.FC = observer(() => {
           {rootStore.authenticationStore.isAuthenticated ? (
             <>
               {" "}
-              <IonItem routerLink="/forms">My Forms</IonItem>
+              <IonItem routerLink="/forms">New Form</IonItem>
+              <IonItem routerLink="/forms">Submitted Forms</IonItem>
               {/* <IonItem href="/tab2">Log In</IonItem> */}
               <IonItem
                 onClick={() => {

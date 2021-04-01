@@ -1,4 +1,5 @@
 import { makeObservable, observable, action, computed } from "mobx";
+import { RootStore } from "./RootStore";
 import store from "store";
 
 interface IUser {
@@ -14,13 +15,6 @@ interface Credentials {
   user: IUser;
   token: string;
   expired: string;
-}
-
-export class RootStore {
-  authenticationStore: AuthenticationStore;
-  constructor() {
-    this.authenticationStore = new AuthenticationStore(this);
-  }
 }
 
 export class AuthenticationStore {
@@ -47,6 +41,7 @@ export class AuthenticationStore {
       authenticate: action,
       setCredentials: action,
       logout: action,
+      rootStore: false,
     });
   }
 
