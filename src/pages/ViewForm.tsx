@@ -28,6 +28,7 @@ import RevieweeTitle from "../components/RevieweePosition";
 import UserAvatar from "../components/UserAvatar";
 import { ReviewForm } from "../models/ReviewFormStore";
 import { Question } from "../models/ViewFormStore";
+import NotFound from "./NotFound";
 interface ViewFormPageProps
   extends RouteComponentProps<{
     formId: string;
@@ -185,22 +186,7 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
   const form = rootStore.reviewFormStore.getFormFromSlug(formId);
 
   if (!form) {
-    return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonMenuButton></IonMenuButton>
-            </IonButtons>
-            <IonTitle>Không tìm thấy</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding ion-text-center">
-          Không tìm thấy form này hoặc bạn không có quyền truy cập. Bạn kiểm tra
-          lại đường dẫn hoặc liên hệ với bộ phận Tech nhé.
-        </IonContent>
-      </IonPage>
-    );
+    return <NotFound></NotFound>;
   }
 
   const matchReviewee = rootStore.revieweeStore.reviewees.find((reviewee) => {
@@ -208,21 +194,7 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
   });
 
   if (!matchReviewee) {
-    return (
-      <IonPage>
-        <IonHeader>
-          <IonToolbar>
-            <IonButtons slot="start">
-              <IonMenuButton></IonMenuButton>
-            </IonButtons>
-            <IonTitle>Không tìm thấy</IonTitle>
-          </IonToolbar>
-        </IonHeader>
-        <IonContent className="ion-padding ion-text-center">
-          Không tìm thấy ứng viên này. Bạn liên hệ bộ phận Tech nhé.
-        </IonContent>
-      </IonPage>
-    );
+    return <NotFound></NotFound>;
   }
 
   return (

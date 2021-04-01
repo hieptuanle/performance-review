@@ -1,11 +1,13 @@
 import {
+  IonBackButton,
+  IonButtons,
   IonContent,
   IonHeader,
+  IonMenuButton,
   IonPage,
   IonTitle,
   IonToolbar,
 } from "@ionic/react";
-import ExploreContainer from "../components/ExploreContainer";
 import "./Tab3.css";
 
 const NotFound: React.FC = () => {
@@ -13,11 +15,23 @@ const NotFound: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Not Found</IonTitle>
+          <IonButtons slot="start">
+            <IonMenuButton></IonMenuButton>
+            <IonBackButton></IonBackButton>
+          </IonButtons>
+          <IonTitle>Không tìm thấy</IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <ExploreContainer name="Bạn chưa đăng nhập hoặc không có trang này..." />
+      <IonContent fullscreen className="ion-padding ion-text-center">
+        <img
+          src="/assets/Astronaut-big.png"
+          alt="Not Found - Astronaut"
+          style={{ maxWidth: 400 }}
+        ></img>
+        <p>
+          Không tìm thấy form này hoặc bạn không có quyền truy cập. Bạn kiểm tra
+          lại đường dẫn hoặc liên hệ với bộ phận Tech nhé.
+        </p>
       </IonContent>
     </IonPage>
   );
