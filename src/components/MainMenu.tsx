@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { observer } from "mobx-react-lite";
 import {
   IonContent,
@@ -29,7 +29,11 @@ const MenuTitle: React.FC = observer(() => {
 
 const ReviewerSelect = observer(() => {
   const rootStore = useRootStore();
+  const [switchedUserCode, setSwitchedUserCode] = useState(
+    rootStore.authenticationStore.userCode
+  );
 
+  const user = rootStore.authenticationStore.user;
   const reviewers = uniqBy(
     rootStore.individualFormStore.forms.map((d) => {
       return {
@@ -46,6 +50,7 @@ const ReviewerSelect = observer(() => {
       value: d.reviewerCode,
     };
   });
+
   return (
     <>
       <IonLabel position="stacked">
@@ -53,8 +58,9 @@ const ReviewerSelect = observer(() => {
       </IonLabel>
       <IonSelect
         interface="popover"
-        defaultValue=""
+        value={switchedUserCode}
         onIonChange={(e) => {
+          setSwitchedUserCode(e.detail.value);
           const matchReviewer = reviewers.find((reviewer) => {
             return reviewer.reviewerCode === e.detail.value || "";
           });
@@ -68,12 +74,22 @@ const ReviewerSelect = observer(() => {
           }
         }}
       >
+        <IonSelectOption value={user ? user.code : ""}>
+          {user?.code} - {user?.displayName}
+        </IonSelectOption>
         {options.map((option) => (
-          <IonSelectOption value={option.value} key={option.label}>
+          <IonSelectOption
+            value={option.value}
+            key={option.label}
+            defaultValue={
+              rootStore.authenticationStore.userCode +
+              " - " +
+              rootStore.authenticationStore.firstName
+            }
+          >
             {option.label}
           </IonSelectOption>
         ))}
-        <IonSelectOption value="">Reset</IonSelectOption>
       </IonSelect>
     </>
   );
@@ -96,11 +112,7 @@ const MainMenu: React.FC = observer(() => {
               {" "}
               <IonItem routerLink="/forms">New Form</IonItem>
               <IonItem routerLink="/forms">Submitted Forms</IonItem>
-              {rootStore.authenticationStore.user &&
-              rootStore.authenticationStore.user.code &&
-              ["F266", "F432", "F688", "M30", "D327"].includes(
-                rootStore.authenticationStore.user.code
-              ) ? (
+              {rootStore.authenticationStore.isRealBom ? (
                 <IonItem>
                   <ReviewerSelect></ReviewerSelect>
                 </IonItem>

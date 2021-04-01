@@ -23,6 +23,9 @@ export class IndividualFormStore {
   }
 
   get myForms() {
+    // Nếu là BOM thì lấy hết tất cả form
+    if (this.rootStore.authenticationStore.isBom) return this.forms;
+
     return this.forms.filter((form) => {
       return form.reviewerCode === this.rootStore.authenticationStore.userCode;
     });

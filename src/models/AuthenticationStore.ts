@@ -8,6 +8,7 @@ interface IUser {
   email: string;
   firstName: string;
   lastName: string;
+  displayName: string;
   cellphone: string;
   roles: string[];
 }
@@ -35,6 +36,11 @@ export class AuthenticationStore {
     const credentials = store.get("credentials");
     if (credentials && credentials.user) {
       this.setCredentials(credentials);
+      const userCode = store.get("userCode");
+      const firstName = store.get("firstName");
+      if (userCode && firstName) {
+        this.switchUser(userCode, firstName);
+      }
     }
 
     makeObservable(this, {
@@ -44,6 +50,8 @@ export class AuthenticationStore {
       token: observable,
       loading: observable,
       isAuthenticated: computed,
+      isRealBom: computed,
+      isBom: computed,
       authenticate: action,
       setCredentials: action,
       logout: action,
@@ -55,6 +63,16 @@ export class AuthenticationStore {
 
   get isAuthenticated() {
     return !!this.token && !!this.user;
+  }
+
+  get isRealBom() {
+    if (!this.user) return false;
+    return ["F266", "F432", "F688", "M30", "D327"].includes(this.user.code);
+  }
+
+  get isBom() {
+    if (!this.userCode) return false;
+    return ["F266", "F432", "F688", "M30", "D327"].includes(this.userCode);
   }
 
   setCredentials({ user, token, expired }: Credentials) {
@@ -91,10 +109,14 @@ export class AuthenticationStore {
   switchUser(code: string, name: string) {
     this.userCode = code;
     this.firstName = name;
+    store.set("userCode", code);
+    store.set("firstName", name);
   }
   resetUser() {
     this.userCode = this.user ? this.user.code : "";
     this.firstName = this.user ? this.user.firstName : "";
+    store.set("userCode", this.userCode);
+    store.set("firstName", this.firstName);
   }
 
   async logout() {

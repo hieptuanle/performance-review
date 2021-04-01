@@ -23,6 +23,9 @@ export class TeamFormStore {
   }
 
   get myForms() {
+    // Nếu là BOM thì lấy hết tất cả form
+    if (this.rootStore.authenticationStore.isBom) return this.forms;
+
     const matchMember = this.rootStore.teamMemberStore.members.find(
       (d) => d.reviewerCode === this.rootStore.authenticationStore.userCode
     );
