@@ -6,7 +6,6 @@ import {
   IonTitle,
   IonToolbar,
   IonButtons,
-  IonList,
   IonItem,
   IonLabel,
   IonListHeader,
@@ -14,28 +13,126 @@ import {
   IonButton,
   IonSelect,
   IonSelectOption,
+  IonCard,
+  IonCardContent,
 } from "@ionic/react";
 import "./Tab1.css";
 
-import { questions } from "../models/form";
 import { RouteComponentProps } from "react-router";
 import { Fragment } from "react";
 import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
-import { intersection } from "lodash";
+import FormType from "../components/FormType";
+import RevieweeTitle from "../components/RevieweePosition";
+import UserAvatar from "../components/UserAvatar";
+import { ReviewForm } from "../models/ReviewFormStore";
 
 interface ViewFormPageProps
   extends RouteComponentProps<{
     formId: string;
   }> {}
 
+const RevieweeIntro: React.FC<{ form: ReviewForm }> = ({ form }) => {
+  return (
+    <IonCard>
+      <IonCardContent>
+        <IonItem>
+          <UserAvatar revieweeCode={form.revieweeCode}></UserAvatar>
+          <IonLabel>
+            <h1>{form.revieweeName}</h1>
+            <p>
+              <RevieweeTitle revieweeCode={form.revieweeCode}></RevieweeTitle>
+            </p>
+          </IonLabel>
+        </IonItem>
+        <IonItem>
+          <IonLabel>
+            <p>Kiểu form</p>
+            <h2>
+              <FormType formType={form.reviewType}></FormType>
+            </h2>
+          </IonLabel>
+        </IonItem>
+        <IonItem>
+          <IonLabel>
+            <p>Form này đại diện cho</p>
+            <h2>{form.reviewType === 3 ? form.reviewerName : "Cá nhân bạn"}</h2>
+          </IonLabel>
+        </IonItem>
+      </IonCardContent>
+    </IonCard>
+  );
+};
+
+const FormQuestions = observer<{ positions: string[]; reviewType: number }>(
+  ({ positions, reviewType }) => {
+    const rootStore = useRootStore();
+    const questions = rootStore.questionStore.getQuestions(
+      positions,
+      reviewType
+    );
+    return (
+      <Fragment>
+        {questions.map((question, index) => {
+          if (question.layout === "Scale")
+            return (
+              <IonCard key={question.content}>
+                <IonListHeader key={question.content + "_title"}>
+                  <h2>
+                    {index + 1}. {question.content}
+                  </h2>
+                </IonListHeader>
+                <IonItem key={question.content + "_mark"}>
+                  <IonLabel position="fixed">Chấm điểm</IonLabel>
+                  <IonSelect interface="popover" defaultValue="">
+                    <IonSelectOption> 1</IonSelectOption>
+                    <IonSelectOption>2</IonSelectOption>
+                    <IonSelectOption>3</IonSelectOption>
+                    <IonSelectOption>4</IonSelectOption>
+                    <IonSelectOption>5</IonSelectOption>
+                    <IonSelectOption value="">Không đánh giá</IonSelectOption>
+                  </IonSelect>
+                </IonItem>
+                <IonItem key={question.content + "_text"}>
+                  <IonLabel position="fixed">Giải thích</IonLabel>
+                  <IonTextarea
+                    style={{ minHeight: "50px", lineHeight: "1.5em" }}
+                    autoGrow={true}
+                    rows={5}
+                  ></IonTextarea>
+                </IonItem>
+              </IonCard>
+            );
+          return (
+            <IonCard key={question.content}>
+              <IonListHeader key={question.content + "_title"}>
+                <h2>
+                  {index + 1}. {question.content}
+                </h2>
+              </IonListHeader>
+              <IonItem key={question.content + "_evaluate"}>
+                <IonLabel position="stacked">Nêu đánh giá của bạn</IonLabel>
+                <IonTextarea
+                  style={{ minHeight: "50px", lineHeight: "1.5em" }}
+                  autoGrow={true}
+                  rows={5}
+                ></IonTextarea>
+              </IonItem>
+            </IonCard>
+          );
+        })}
+      </Fragment>
+    );
+  }
+);
+
 const ViewForm = observer<ViewFormPageProps>(({ match }) => {
   const rootStore = useRootStore();
   const formId = match.params.formId;
   console.log({ formId });
-  const matchForm = rootStore.reviewFormStore.getFormFromSlug(formId);
+  const form = rootStore.reviewFormStore.getFormFromSlug(formId);
 
-  if (!matchForm) {
+  if (!form) {
     return (
       <IonPage>
         <IonHeader>
@@ -55,7 +152,7 @@ const ViewForm = observer<ViewFormPageProps>(({ match }) => {
   }
 
   const matchReviewee = rootStore.revieweeStore.reviewees.find((reviewee) => {
-    return reviewee.revieweeCode === matchForm.revieweeCode;
+    return reviewee.revieweeCode === form.revieweeCode;
   });
 
   if (!matchReviewee) {
@@ -76,13 +173,6 @@ const ViewForm = observer<ViewFormPageProps>(({ match }) => {
     );
   }
 
-  const matchQuestions = questions.filter((question) => {
-    return (
-      intersection(question.positions, matchReviewee.revieweePositions).length >
-        0 && question.type >= matchForm.reviewType
-    );
-  });
-
   return (
     <IonPage>
       <IonHeader>
@@ -90,61 +180,22 @@ const ViewForm = observer<ViewFormPageProps>(({ match }) => {
           <IonButtons slot="start">
             <IonMenuButton></IonMenuButton>
           </IonButtons>
-          <IonTitle>Performance Review {matchForm.revieweeName}</IonTitle>
+          <IonTitle>
+            {form.revieweeName} |{" "}
+            <FormType formType={form.reviewType}></FormType>{" "}
+          </IonTitle>
         </IonToolbar>
       </IonHeader>
-      <IonContent fullscreen>
-        <IonList>
-          {matchQuestions.map((question, index) => {
-            if (question.layout === "Scale")
-              return (
-                <Fragment key={question.content}>
-                  <IonListHeader key={question.content + "_title"}>
-                    <h2>
-                      {index + 1}. {question.content}
-                    </h2>
-                  </IonListHeader>
-                  <IonItem key={question.content + "_mark"}>
-                    <IonLabel position="fixed">Chấm điểm</IonLabel>
-                    <IonSelect interface="action-sheet" defaultValue="">
-                      <IonSelectOption> 1</IonSelectOption>
-                      <IonSelectOption>2</IonSelectOption>
-                      <IonSelectOption>3</IonSelectOption>
-                      <IonSelectOption>4</IonSelectOption>
-                      <IonSelectOption>5</IonSelectOption>
-                      <IonSelectOption value="">Không đánh giá</IonSelectOption>
-                    </IonSelect>
-                  </IonItem>
-                  <IonItem key={question.content + "_text"}>
-                    <IonLabel position="fixed">Giải thích</IonLabel>
-                    <IonTextarea
-                      style={{ minHeight: "100px", lineHeight: "1.5em" }}
-                      autoGrow={true}
-                      rows={5}
-                    ></IonTextarea>
-                  </IonItem>
-                </Fragment>
-              );
-            return (
-              <Fragment key={question.content}>
-                <IonListHeader key={question.content + "_title"}>
-                  <h2>
-                    {index + 1}. {question.content}
-                  </h2>
-                </IonListHeader>
-                <IonItem key={question.content + "_evaluate"}>
-                  <IonLabel position="stacked">Nêu đánh giá của bạn</IonLabel>
-                  <IonTextarea
-                    style={{ minHeight: "100px", lineHeight: "1.5em" }}
-                    autoGrow={true}
-                    rows={5}
-                  ></IonTextarea>
-                </IonItem>
-              </Fragment>
-            );
-          })}
-        </IonList>
-        <IonButton>Gửi</IonButton>
+      <IonContent fullscreen className="ion-padding">
+        <RevieweeIntro form={form}></RevieweeIntro>
+        <FormQuestions
+          reviewType={form.reviewType}
+          positions={matchReviewee.revieweePositions}
+        ></FormQuestions>
+
+        <div style={{ width: "100%" }} className="ion-text-center">
+          <IonButton>Gửi</IonButton>
+        </div>
       </IonContent>
     </IonPage>
   );

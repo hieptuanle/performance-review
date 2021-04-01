@@ -27,10 +27,17 @@ const FormItems = observer<{
             <h2>{form.revieweeName}</h2>
             <RevieweeTitle revieweeCode={form.revieweeCode}></RevieweeTitle>
             <p>
-              <FormType formType={form.reviewType}></FormType>
-              {form.reviewType === 3
-                ? " | Form này đại diện cho bộ phận: " + form.reviewerName
+              <FormType formType={form.reviewType}></FormType>:{" "}
+              {form.reviewerName}
+              {/* {form.reviewType === 3
+                ? " | Đại diện cho bộ phận: " +
                 : null}
+              {form.reviewType === 4
+                ? " | Quản lý đánh giá: " + form.reviewerName
+                : null}
+              {form.reviewType === 2
+                ? " | Đống nghiệp đánh giá: " + form.reviewerName
+                : null} */}
               {/* {form.status === "done" ? "Hoàn thành" : "Chưa hoàn thành"} */}
             </p>
           </IonLabel>
