@@ -8,7 +8,7 @@ const RevieweeTitle = observer<{ revieweeCode: string }>(({ revieweeCode }) => {
     return revieweeCode === reviewee.revieweeCode;
   });
   if (!reviewee) return null;
-  return <h3>{reviewee.revieweePositions.join(" | ")}</h3>;
+  return <span>{reviewee.revieweePositions.join(" | ")}</span>;
 });
 
 export default RevieweeTitle;

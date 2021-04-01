@@ -3,7 +3,6 @@ import { IonContent, IonRouterOutlet } from "@ionic/react";
 import { Redirect, Route } from "react-router";
 import ListFormsPage from "../pages/ListFormsPage";
 import Login from "../pages/Login";
-import NotFound from "../pages/NotFound";
 import ViewForm from "../pages/ViewForm";
 import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";

@@ -6,7 +6,7 @@ import { RevieweeStore } from "./RevieweeStore";
 import { TeamMemberStore } from "./TeamMemberStore";
 import { ReviewFormStore } from "./ReviewFormStore";
 import { CriterionStore } from "./CriterionStore";
-import { QuestionStore } from "./QuestionStore";
+import { ViewFormStore } from "./ViewFormStore";
 
 export class RootStore {
   authenticationStore: AuthenticationStore;
@@ -17,7 +17,7 @@ export class RootStore {
   teamMemberStore: TeamMemberStore;
   reviewFormStore: ReviewFormStore;
   criterionStore: CriterionStore;
-  questionStore: QuestionStore;
+  viewFormStore: ViewFormStore;
 
   constructor() {
     this.authenticationStore = new AuthenticationStore(this);
@@ -28,6 +28,6 @@ export class RootStore {
     this.teamMemberStore = new TeamMemberStore(this);
     this.reviewFormStore = new ReviewFormStore(this);
     this.criterionStore = new CriterionStore(this);
-    this.questionStore = new QuestionStore(this);
+    this.viewFormStore = new ViewFormStore(this);
   }
 }

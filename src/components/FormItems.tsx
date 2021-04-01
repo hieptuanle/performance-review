@@ -25,7 +25,9 @@ const FormItems = observer<{
           <UserAvatar revieweeCode={form.revieweeCode}></UserAvatar>
           <IonLabel>
             <h2>{form.revieweeName}</h2>
-            <RevieweeTitle revieweeCode={form.revieweeCode}></RevieweeTitle>
+            <h3>
+              <RevieweeTitle revieweeCode={form.revieweeCode}></RevieweeTitle>
+            </h3>
             <p>
               <FormType formType={form.reviewType}></FormType>:{" "}
               {form.reviewerName}
