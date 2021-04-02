@@ -240,7 +240,7 @@ const DefinitionModal = observer(() => {
             <p>{matchedCriterion.level5 || "Đang cập nhật..."}</p>
           </>
         ) : (
-          <p>Trợ giúp cho câu hỏi này đang được cập nhật...</p>
+          <p>Mô tả cho câu hỏi này đang được cập nhật...</p>
         )}
       </IonContent>
     </IonModal>
