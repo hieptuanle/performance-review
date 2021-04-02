@@ -1,6 +1,6 @@
 import { action, makeAutoObservable, toJS } from "mobx";
 import { RootStore } from "./RootStore";
-import { uniqBy } from "lodash";
+import { some, uniqBy } from "lodash";
 import { ReviewForm } from "./ReviewFormStore";
 import { Reviewee } from "./RevieweeStore";
 import { ReviewResponse } from "./ReviewResponseStore";
@@ -123,6 +123,14 @@ export class ViewFormStore {
   }
 
   async submitReviewResponse(form: ReviewForm, reviewee: Reviewee) {
+    const notDoneQuestion = this.questions.find((question) => {
+      return !question.answer;
+    });
+    if (notDoneQuestion) {
+      throw new Error(
+        `Bạn chưa giải thích câu hỏi: ${notDoneQuestion.content}`
+      );
+    }
     const reviewReponse: ReviewResponse = {
       reviewDepartment: form.reviewType === 3 ? form.reviewerName : undefined,
       revieweeCode: reviewee.revieweeCode,
