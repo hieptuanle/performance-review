@@ -29,11 +29,13 @@ import useRootStore from "../hooks/useRootStore";
 import FormType from "../components/FormType";
 import RevieweeTitle from "../components/RevieweePosition";
 import UserAvatar from "../components/UserAvatar";
-import { ReviewForm } from "../models/ReviewFormStore";
 import { Question } from "../models/ViewFormStore";
 import NotFound from "./NotFound";
 
-const RevieweeIntro: React.FC<{ form: ReviewForm }> = ({ form }) => {
+const RevieweeIntro: React.FC = () => {
+  const rootStore = useRootStore();
+  const form = rootStore.viewFormStore.reviewForm;
+  if (!form) return null;
   return (
     <IonCard>
       <IonCardContent>
@@ -188,6 +190,9 @@ const DefinitionModal = observer(() => {
   return (
     <IonModal
       isOpen={rootStore.viewFormStore.showDefinitionModal}
+      onDidDismiss={() => {
+        rootStore.viewFormStore.setShowDefinitionModal(false);
+      }}
       cssClass="ion-padding"
     >
       <IonHeader translucent={true}>
@@ -208,17 +213,17 @@ const DefinitionModal = observer(() => {
         {matchedCriterion ? (
           <>
             <h3>Định nghĩa</h3>
-            <p>{matchedCriterion.definition}</p>
+            <p>{matchedCriterion.definition || "Đang cập nhật..."}</p>
             <h3>Mức 1</h3>
-            <p>{matchedCriterion.level1}</p>
+            <p>{matchedCriterion.level1 || "Đang cập nhật..."}</p>
             <h3>Mức 2</h3>
-            <p>{matchedCriterion.level2}</p>
+            <p>{matchedCriterion.level2 || "Đang cập nhật..."}</p>
             <h3>Mức 3</h3>
-            <p>{matchedCriterion.level3}</p>
+            <p>{matchedCriterion.level3 || "Đang cập nhật..."}</p>
             <h3>Mức 4</h3>
-            <p>{matchedCriterion.level4}</p>
+            <p>{matchedCriterion.level4 || "Đang cập nhật..."}</p>
             <h3>Mức 5</h3>
-            <p>{matchedCriterion.level5}</p>
+            <p>{matchedCriterion.level5 || "Đang cập nhật..."}</p>
           </>
         ) : (
           <h3>Đang cập nhật...</h3>
@@ -235,29 +240,29 @@ const ViewForm = observer(() => {
   const [showLoading, setShowLoading] = useState(false);
 
   useIonViewWillEnter(() => {
+    console.log("enter");
     const formId = params.formId;
     const form = rootStore.reviewFormStore.getFormFromSlug(formId);
     if (!form) return;
+    rootStore.viewFormStore.setReviewForm(form);
     const matchReviewee = rootStore.revieweeStore.reviewees.find((reviewee) => {
       return reviewee.revieweeCode === form.revieweeCode;
     });
     if (!matchReviewee) return;
+    rootStore.viewFormStore.setReviewee(matchReviewee);
     rootStore.viewFormStore.setQuestions(
       matchReviewee.revieweePositions,
       form.reviewType
     );
   });
 
-  const formId = params.formId;
-  const form = rootStore.reviewFormStore.getFormFromSlug(formId);
+  const form = rootStore.viewFormStore.reviewForm;
 
   if (!form) {
     return <NotFound></NotFound>;
   }
 
-  const matchReviewee = rootStore.revieweeStore.reviewees.find((reviewee) => {
-    return reviewee.revieweeCode === form.revieweeCode;
-  });
+  const matchReviewee = rootStore.viewFormStore.reviewee;
 
   if (!matchReviewee) {
     return <NotFound></NotFound>;
@@ -284,7 +289,7 @@ const ViewForm = observer(() => {
         />
         <DefinitionModal />
 
-        <RevieweeIntro form={form}></RevieweeIntro>
+        <RevieweeIntro></RevieweeIntro>
         <FormQuestions></FormQuestions>
 
         <div style={{ width: "100%" }} className="ion-text-center">

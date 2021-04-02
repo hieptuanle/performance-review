@@ -17,6 +17,7 @@ export class ViewFormStore {
   rootStore: RootStore;
 
   reviewForm: ReviewForm | null = null;
+  reviewee: Reviewee | null = null;
   questions: Question[] = [];
   currentQuestion: Question | null = null;
   showDefinitionModal = false;
@@ -53,8 +54,11 @@ export class ViewFormStore {
     question.mark = mark;
   }
 
-  setReviewForm(reviewForm: ReviewForm) {
+  setReviewForm(reviewForm: ReviewForm | null) {
     this.reviewForm = reviewForm;
+  }
+  setReviewee(reviewee: Reviewee | null) {
+    this.reviewee = reviewee;
   }
 
   clearQuestions() {
