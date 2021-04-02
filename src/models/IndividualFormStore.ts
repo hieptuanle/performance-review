@@ -293,13 +293,6 @@ const forms = [
     reviewerCode: "D327",
     reviewerName: "Dương Thị Nhung",
     reviewType: 4,
-    revieweeCode: "D388",
-    revieweeName: "Trần Phương Anh",
-  },
-  {
-    reviewerCode: "D327",
-    reviewerName: "Dương Thị Nhung",
-    reviewType: 4,
     revieweeCode: "S306",
     revieweeName: "Nguyễn Thị Ngọc Anh",
   },
