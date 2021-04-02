@@ -28,6 +28,8 @@ export class AuthenticationStore {
   token: string | null = null;
   expired: Date | null = null;
 
+  seeAll: boolean = true;
+
   loading = false;
 
   constructor(rootStore: RootStore) {
@@ -49,6 +51,7 @@ export class AuthenticationStore {
       firstName: observable,
       token: observable,
       loading: observable,
+      seeAll: observable,
       isAuthenticated: computed,
       isRealBom: computed,
       isBom: computed,
@@ -73,6 +76,10 @@ export class AuthenticationStore {
   get isBom() {
     if (!this.userCode) return false;
     return ["F262", "F432", "F688", "M30", "D327"].includes(this.userCode);
+  }
+
+  setSeeAll(value: boolean) {
+    this.seeAll = value;
   }
 
   setCredentials({ user, token, expired }: Credentials) {

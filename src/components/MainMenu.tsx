@@ -10,6 +10,7 @@ import {
   IonSelect,
   IonSelectOption,
   IonTitle,
+  IonToggle,
   IonToolbar,
 } from "@ionic/react";
 import { useHistory } from "react-router";
@@ -115,6 +116,19 @@ const MainMenu: React.FC = observer(() => {
               {rootStore.authenticationStore.isRealBom ? (
                 <IonItem>
                   <ReviewerSelect></ReviewerSelect>
+                </IonItem>
+              ) : null}
+              {rootStore.authenticationStore.isRealBom ? (
+                <IonItem>
+                  <IonLabel>
+                    Xem tất cả <strong>(BOM feature)</strong>
+                  </IonLabel>
+                  <IonToggle
+                    checked={rootStore.authenticationStore.seeAll}
+                    onIonChange={(e) => {
+                      rootStore.authenticationStore.setSeeAll(e.detail.checked);
+                    }}
+                  ></IonToggle>
                 </IonItem>
               ) : null}
               <IonItem
