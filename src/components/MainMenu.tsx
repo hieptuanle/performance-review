@@ -111,7 +111,7 @@ const MainMenu: React.FC = observer(() => {
             <>
               {" "}
               <IonItem routerLink="/forms">New Form</IonItem>
-              <IonItem routerLink="/forms">Submitted Forms</IonItem>
+              {/* <IonItem routerLink="/forms">Submitted Forms</IonItem> */}
               {rootStore.authenticationStore.isRealBom ? (
                 <IonItem>
                   <ReviewerSelect></ReviewerSelect>
