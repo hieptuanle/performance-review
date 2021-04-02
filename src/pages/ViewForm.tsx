@@ -226,7 +226,7 @@ const DefinitionModal = observer(() => {
             <p>{matchedCriterion.level5 || "Đang cập nhật..."}</p>
           </>
         ) : (
-          <h3>Đang cập nhật...</h3>
+          <p>Trợ giúp cho câu hỏi này đang được cập nhật...</p>
         )}
       </IonContent>
     </IonModal>
