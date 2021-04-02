@@ -67,12 +67,12 @@ export class AuthenticationStore {
 
   get isRealBom() {
     if (!this.user) return false;
-    return ["F266", "F432", "F688", "M30", "D327"].includes(this.user.code);
+    return ["F262", "F432", "F688", "M30", "D327"].includes(this.user.code);
   }
 
   get isBom() {
     if (!this.userCode) return false;
-    return ["F266", "F432", "F688", "M30", "D327"].includes(this.userCode);
+    return ["F262", "F432", "F688", "M30", "D327"].includes(this.userCode);
   }
 
   setCredentials({ user, token, expired }: Credentials) {
