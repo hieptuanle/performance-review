@@ -17,10 +17,12 @@ import {
   IonCardContent,
   useIonViewWillEnter,
   IonLoading,
+  IonModal,
+  IonIcon,
 } from "@ionic/react";
-import "./Tab1.css";
+import { informationCircleOutline } from "ionicons/icons";
 
-import { RouteComponentProps, useHistory } from "react-router";
+import { useHistory, useParams } from "react-router";
 import { Fragment, useState } from "react";
 import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
@@ -30,10 +32,6 @@ import UserAvatar from "../components/UserAvatar";
 import { ReviewForm } from "../models/ReviewFormStore";
 import { Question } from "../models/ViewFormStore";
 import NotFound from "./NotFound";
-interface ViewFormPageProps
-  extends RouteComponentProps<{
-    formId: string;
-  }> {}
 
 const RevieweeIntro: React.FC<{ form: ReviewForm }> = ({ form }) => {
   return (
@@ -67,16 +65,36 @@ const RevieweeIntro: React.FC<{ form: ReviewForm }> = ({ form }) => {
   );
 };
 
+const QuestionHeader = observer<{ question: Question; index: number }>(
+  ({ question, index }) => {
+    const rootStore = useRootStore();
+    return (
+      <IonListHeader lines="full">
+        <IonLabel>
+          <h2 style={{ fontSize: "1.5em", fontWeight: "bold" }}>
+            {index + 1}. {question.content}
+          </h2>
+        </IonLabel>
+        <IonButton
+          onClick={() => {
+            rootStore.viewFormStore.setCurrentQuestion(question);
+            rootStore.viewFormStore.setShowDefinitionModal(true);
+            console.log(rootStore.viewFormStore.showDefinitionModal);
+          }}
+        >
+          <IonIcon icon={informationCircleOutline}></IonIcon> &nbsp; Trợ giúp
+        </IonButton>
+      </IonListHeader>
+    );
+  }
+);
+
 const ScaleQuestionCard = observer<{ question: Question; index: number }>(
   ({ question, index }) => {
     const rootStore = useRootStore();
     return (
       <IonCard>
-        <IonListHeader>
-          <h2>
-            {index + 1}. {question.content}
-          </h2>
-        </IonListHeader>
+        <QuestionHeader question={question} index={index}></QuestionHeader>
         <IonItem>
           <IonLabel position="fixed">Chấm điểm</IonLabel>
           <IonSelect
@@ -116,11 +134,7 @@ const TextQuestionCard = observer<{ question: Question; index: number }>(
     const rootStore = useRootStore();
     return (
       <IonCard key={question.content}>
-        <IonListHeader>
-          <h2>
-            {index + 1}. {question.content}
-          </h2>
-        </IonListHeader>
+        <QuestionHeader question={question} index={index}></QuestionHeader>
         <IonItem>
           <IonLabel position="stacked">Câu trả lời tự luận</IonLabel>
           <IonTextarea
@@ -165,12 +179,63 @@ const FormQuestions = observer(() => {
   );
 });
 
-const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
+const DefinitionModal = observer(() => {
+  const rootStore = useRootStore();
+  const currentQuestion = rootStore.viewFormStore.currentQuestion;
+  const matchedCriterion = rootStore.criterionStore.getMatchingCriterion(
+    currentQuestion?.content
+  );
+  return (
+    <IonModal
+      isOpen={rootStore.viewFormStore.showDefinitionModal}
+      cssClass="ion-padding"
+    >
+      <IonHeader translucent={true}>
+        <IonToolbar>
+          <IonButtons slot="end">
+            <IonButton
+              onClick={() =>
+                rootStore.viewFormStore.setShowDefinitionModal(false)
+              }
+            >
+              Thoát
+            </IonButton>
+          </IonButtons>
+        </IonToolbar>
+      </IonHeader>
+      <IonContent fullscreen={true} className="ion-padding">
+        <h2>{currentQuestion?.content}</h2>
+        {matchedCriterion ? (
+          <>
+            <h3>Định nghĩa</h3>
+            <p>{matchedCriterion.definition}</p>
+            <h3>Mức 1</h3>
+            <p>{matchedCriterion.level1}</p>
+            <h3>Mức 2</h3>
+            <p>{matchedCriterion.level2}</p>
+            <h3>Mức 3</h3>
+            <p>{matchedCriterion.level3}</p>
+            <h3>Mức 4</h3>
+            <p>{matchedCriterion.level4}</p>
+            <h3>Mức 5</h3>
+            <p>{matchedCriterion.level5}</p>
+          </>
+        ) : (
+          <h3>Đang cập nhật...</h3>
+        )}
+      </IonContent>
+    </IonModal>
+  );
+});
+
+const ViewForm = observer(() => {
   const rootStore = useRootStore();
   const history = useHistory();
+  const params = useParams<{ formId: string }>();
   const [showLoading, setShowLoading] = useState(false);
+
   useIonViewWillEnter(() => {
-    const formId = match.params.formId;
+    const formId = params.formId;
     const form = rootStore.reviewFormStore.getFormFromSlug(formId);
     if (!form) return;
     const matchReviewee = rootStore.revieweeStore.reviewees.find((reviewee) => {
@@ -183,7 +248,7 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
     );
   });
 
-  const formId = match.params.formId;
+  const formId = params.formId;
   const form = rootStore.reviewFormStore.getFormFromSlug(formId);
 
   if (!form) {
@@ -217,6 +282,8 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
           onDidDismiss={() => setShowLoading(false)}
           message={"Đang gửi..."}
         />
+        <DefinitionModal />
+
         <RevieweeIntro form={form}></RevieweeIntro>
         <FormQuestions></FormQuestions>
 
@@ -243,6 +310,6 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
       </IonContent>
     </IonPage>
   );
-};
+});
 
 export default ViewForm;

@@ -18,6 +18,8 @@ export class ViewFormStore {
 
   reviewForm: ReviewForm | null = null;
   questions: Question[] = [];
+  currentQuestion: Question | null = null;
+  showDefinitionModal = false;
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
@@ -27,12 +29,21 @@ export class ViewFormStore {
       clearQuestions: action,
       setAnswer: action,
       setMark: action,
+      setCurrentQuestion: action,
+      setShowDefinitionModal: action,
       rootStore: false,
     });
   }
 
   asJs() {
     return toJS(this.questions);
+  }
+
+  setCurrentQuestion(question: Question) {
+    this.currentQuestion = question;
+  }
+  setShowDefinitionModal(show: boolean) {
+    this.showDefinitionModal = show;
   }
 
   setAnswer(question: Question, answer: string) {
