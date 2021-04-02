@@ -6,6 +6,7 @@ export interface Reviewee {
   revieweeName: string;
   revieweeDepartment: string;
   revieweePositions: string[];
+  reviewLink: string;
 }
 
 export class RevieweeStore {
@@ -29,6 +30,7 @@ const reviewees = [
     revieweeDepartment: "Kiểm toán",
     revieweePosition1: "Kiểm toán viên nội bộ",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D4309",
@@ -36,6 +38,7 @@ const reviewees = [
     revieweeDepartment: "Purchasing",
     revieweePosition1: "Chuyên viên phân tích dữ liệu",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D583",
@@ -43,6 +46,7 @@ const reviewees = [
     revieweeDepartment: "B1",
     revieweePosition1: "Quản lý sản xuất bếp",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D2663",
@@ -50,6 +54,7 @@ const reviewees = [
     revieweeDepartment: "HR",
     revieweePosition1: "Chuyên viên nhân sự tổng hợp",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D4163",
@@ -57,6 +62,7 @@ const reviewees = [
     revieweeDepartment: "QC",
     revieweePosition1: "Nhân viên giám sát chất lượng",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "S306",
@@ -64,6 +70,7 @@ const reviewees = [
     revieweeDepartment: "Kiểm toán",
     revieweePosition1: "Kiểm toán viên nội bộ",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D3982",
@@ -71,6 +78,7 @@ const reviewees = [
     revieweeDepartment: "QC",
     revieweePosition1: "Nhân viên giám sát chất lượng",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D2680",
@@ -78,6 +86,7 @@ const reviewees = [
     revieweeDepartment: "Logistics",
     revieweePosition1: "Chuyên viên phân tích dữ liệu",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D2825",
@@ -85,6 +94,7 @@ const reviewees = [
     revieweeDepartment: "QC",
     revieweePosition1: "Nhân viên giám sát chất lượng",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D4280",
@@ -92,6 +102,7 @@ const reviewees = [
     revieweeDepartment: "Tài xế",
     revieweePosition1: "Tài xế xe tải",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "M70",
@@ -99,6 +110,7 @@ const reviewees = [
     revieweeDepartment: "Purchasing",
     revieweePosition1: "Chuyên viên mua hàng",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D2821",
@@ -106,6 +118,7 @@ const reviewees = [
     revieweeDepartment: "HR",
     revieweePosition1: "Chuyên viên Tuyển dụng",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D479",
@@ -113,6 +126,7 @@ const reviewees = [
     revieweeDepartment: "Kho - ĐG",
     revieweePosition1: "Chuyên viên nhân sự tổng hợp",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D337",
@@ -120,6 +134,7 @@ const reviewees = [
     revieweeDepartment: "B2",
     revieweePosition1: "Chuyên viên nghiên cứu, phát triển sản phẩm",
     revieweePosition2: "Quản lý sản xuất bếp",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "S78",
@@ -127,6 +142,7 @@ const reviewees = [
     revieweeDepartment: "Kho - ĐG",
     revieweePosition1: "Quản lý vận hành kho",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D557",
@@ -134,6 +150,7 @@ const reviewees = [
     revieweeDepartment: "Kho - ĐG",
     revieweePosition1: "Quản lý vận hành đóng gói",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D1516",
@@ -141,6 +158,7 @@ const reviewees = [
     revieweeDepartment: "QC",
     revieweePosition1: "Nhân viên giám sát chất lượng",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D2607",
@@ -148,6 +166,7 @@ const reviewees = [
     revieweeDepartment: "Đánh giá",
     revieweePosition1: "Chuyên viên nhân sự tổng hợp",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D169",
@@ -155,6 +174,7 @@ const reviewees = [
     revieweeDepartment: "BS",
     revieweePosition1: "Business Analyst",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "C037",
@@ -162,6 +182,7 @@ const reviewees = [
     revieweeDepartment: "KT",
     revieweePosition1: "Kế toán tổng hợp",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "S110",
@@ -169,6 +190,7 @@ const reviewees = [
     revieweeDepartment: "OFFICE",
     revieweePosition1: "Nhân viên thiết kế",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D93",
@@ -176,6 +198,7 @@ const reviewees = [
     revieweeDepartment: "Training",
     revieweePosition1: "Chuyên viên đào tạo và phát triển",
     revieweePosition2: "Visual merchandiser",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "E73",
@@ -183,6 +206,7 @@ const reviewees = [
     revieweeDepartment: "HC",
     revieweePosition1: "IT helpdesk",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "M38",
@@ -190,6 +214,7 @@ const reviewees = [
     revieweeDepartment: "E0",
     revieweePosition1: "Chuyên viên bán hàng",
     revieweePosition2: "Chăm sóc khách hàng",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "S41",
@@ -197,6 +222,7 @@ const reviewees = [
     revieweeDepartment: "Kho - ĐG",
     revieweePosition1: "Quản lý vận hành kho",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "S146",
@@ -204,6 +230,7 @@ const reviewees = [
     revieweeDepartment: "HC",
     revieweePosition1: "Nhân viên kỹ thuật nội thất",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D2537",
@@ -211,13 +238,15 @@ const reviewees = [
     revieweeDepartment: "HC",
     revieweePosition1: "Nhân viên kỹ thuật điện nước",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
-    revieweeCode: "D3061",
+    revieweeCode: "D79",
     revieweeName: "Nguyễn Thị Mỹ Linh",
     revieweeDepartment: "Training",
     revieweePosition1: "Chuyên viên đào tạo và phát triển",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "D388",
@@ -225,6 +254,7 @@ const reviewees = [
     revieweeDepartment: "Kho - ĐG",
     revieweePosition1: "Trưởng phòng kho vận",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "E09",
@@ -232,6 +262,7 @@ const reviewees = [
     revieweeDepartment: "Tech",
     revieweePosition1: "Lập trình viên Full stack",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
   {
     revieweeCode: "E62",
@@ -239,6 +270,7 @@ const reviewees = [
     revieweeDepartment: "Tech",
     revieweePosition1: "Lập trình viên Full stack",
     revieweePosition2: "",
+    reviewLink: "https://drive.google.com",
   },
 ].map<Reviewee>((d) => {
   return {
@@ -248,5 +280,6 @@ const reviewees = [
     revieweePositions: [d.revieweePosition1, d.revieweePosition2].filter(
       (d) => !!d
     ),
+    reviewLink: d.reviewLink,
   };
 });

@@ -35,6 +35,7 @@ import NotFound from "./NotFound";
 const RevieweeIntro: React.FC = () => {
   const rootStore = useRootStore();
   const form = rootStore.viewFormStore.reviewForm;
+  const reviewee = rootStore.viewFormStore.reviewee;
   if (!form) return null;
   return (
     <IonCard>
@@ -62,6 +63,18 @@ const RevieweeIntro: React.FC = () => {
             <h2>{form.reviewType === 3 ? form.reviewerName : "Cá nhân bạn"}</h2>
           </IonLabel>
         </IonItem>
+        {reviewee && reviewee.reviewLink && form.reviewType === 1 ? (
+          <IonItem>
+            <IonLabel>
+              <p>Tổng kết công việc 6 tháng</p>
+              <h2>
+                <a target="_blank" rel="noreferrer" href={reviewee?.reviewLink}>
+                  Link
+                </a>
+              </h2>
+            </IonLabel>
+          </IonItem>
+        ) : null}
       </IonCardContent>
     </IonCard>
   );
@@ -84,7 +97,8 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
             console.log(rootStore.viewFormStore.showDefinitionModal);
           }}
         >
-          <IonIcon icon={informationCircleOutline}></IonIcon> &nbsp; Trợ giúp
+          <IonIcon icon={informationCircleOutline}></IonIcon> &nbsp; Mô tả tiêu
+          chí
         </IonButton>
       </IonListHeader>
     );
