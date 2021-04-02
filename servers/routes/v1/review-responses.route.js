@@ -1,4 +1,5 @@
 const express = require("express");
+const ReviewResponse = require("../../models/review-response.model");
 
 const router = express.Router();
 
@@ -9,6 +10,16 @@ router
       status: "ok",
     });
   })
-  .post((req, res) => {});
+  .post(async (req, res) => {
+    try {
+      const reviewResponse = new ReviewResponse(req.body);
+      await reviewResponse.save();
+      res.jsonp(reviewResponse);
+    } catch (e) {
+      res.status(400).json({
+        message: e.message,
+      });
+    }
+  });
 
 module.exports = router;

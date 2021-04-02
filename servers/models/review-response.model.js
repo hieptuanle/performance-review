@@ -24,6 +24,10 @@ const reviewResponseSchema = mongoose.Schema(
         answer: String,
       },
     ],
+
+    userCode: String,
+    userDisplayName: String,
+    userOutlet: ObjectId,
     user: ObjectId,
   },
   {
@@ -34,6 +38,9 @@ const reviewResponseSchema = mongoose.Schema(
 /**
  * @typedef ReviewForm
  */
-const ReviewResponseSchema = mongoose.model("Token", reviewResponseSchema);
+const ReviewResponseSchema = mongoose.model(
+  "ReviewResponse",
+  reviewResponseSchema
+);
 
 module.exports = ReviewResponseSchema;

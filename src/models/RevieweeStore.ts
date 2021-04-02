@@ -1,6 +1,13 @@
 import { makeObservable, observable } from "mobx";
 import { RootStore } from "./RootStore";
 
+export interface Reviewee {
+  revieweeCode: string;
+  revieweeName: string;
+  revieweeDepartment: string;
+  revieweePositions: string[];
+}
+
 export class RevieweeStore {
   rootStore: RootStore;
 
@@ -233,7 +240,7 @@ const reviewees = [
     revieweePosition1: "Lập trình viên Full stack",
     revieweePosition2: "",
   },
-].map((d) => {
+].map<Reviewee>((d) => {
   return {
     revieweeCode: d.revieweeCode,
     revieweeName: d.revieweeName,

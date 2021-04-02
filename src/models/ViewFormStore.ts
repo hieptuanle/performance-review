@@ -2,6 +2,8 @@ import { action, makeAutoObservable, toJS } from "mobx";
 import { RootStore } from "./RootStore";
 import { uniqBy } from "lodash";
 import { ReviewForm } from "./ReviewFormStore";
+import { Reviewee } from "./RevieweeStore";
+import { ReviewResponse } from "./ReviewResponseStore";
 
 export interface Question {
   group: string;
@@ -105,10 +107,28 @@ export class ViewFormStore {
     this.questions = questions;
   }
 
-  submitReviewResponse() {
-    // this.rootStore.reviewResponseStore.insertOne({
-    //   reviewDepartment,
-    // });
+  async submitReviewResponse(form: ReviewForm, reviewee: Reviewee) {
+    const reviewReponse: ReviewResponse = {
+      reviewDepartment: form.reviewType === 3 ? form.reviewerName : undefined,
+      revieweeCode: reviewee.revieweeCode,
+      revieweeName: reviewee.revieweeName,
+      revieweeDepartment: reviewee.revieweeDepartment,
+
+      reviewerName: form.reviewerName,
+      reviewerCode: form.reviewerCode,
+
+      reviewType: form.reviewType,
+
+      slug: form.slug,
+
+      positions: reviewee.revieweePositions,
+      questions: this.questions,
+      user: this.rootStore.authenticationStore.user?._id,
+    };
+    const returnReviewResponse = await this.rootStore.reviewResponseStore.insertOne(
+      reviewReponse
+    );
+    console.log(returnReviewResponse);
   }
 }
 

@@ -2,7 +2,7 @@ import { makeAutoObservable } from "mobx";
 import { RootStore } from "./RootStore";
 import { Question } from "./ViewFormStore";
 
-interface ReviewResponse {
+export interface ReviewResponse {
   reviewDepartment?: string;
 
   revieweeCode: string;
@@ -10,13 +10,15 @@ interface ReviewResponse {
   revieweeDepartment: string;
 
   reviewerName: string;
-  reviewerCode: string;
+  reviewerCode?: string;
+
+  reviewType: number;
 
   slug: string;
 
-  positions: [string];
+  positions: string[];
   questions: Question[];
-  user: string;
+  user?: string;
 }
 
 export class ReviewResponseStore {

@@ -3,6 +3,7 @@ import { RootStore } from "./RootStore";
 
 export interface ReviewForm {
   reviewType: number;
+  reviewerCode?: string;
   reviewerName: string;
   revieweeCode: string;
   revieweeName: string;

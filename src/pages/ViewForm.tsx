@@ -16,11 +16,12 @@ import {
   IonCard,
   IonCardContent,
   useIonViewWillEnter,
+  IonLoading,
 } from "@ionic/react";
 import "./Tab1.css";
 
-import { RouteComponentProps } from "react-router";
-import { Fragment } from "react";
+import { RouteComponentProps, useHistory } from "react-router";
+import { Fragment, useState } from "react";
 import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
 import FormType from "../components/FormType";
@@ -136,38 +137,38 @@ const TextQuestionCard = observer<{ question: Question; index: number }>(
   }
 );
 
-const FormQuestions = observer<{ positions: string[]; reviewType: number }>(
-  ({ positions, reviewType }) => {
-    const rootStore = useRootStore();
-    const questions = rootStore.viewFormStore.questions;
-    return (
-      <Fragment>
-        {questions.map((question, index) => {
-          if (question.layout === "Scale") {
-            return (
-              <ScaleQuestionCard
-                key={question.content}
-                question={question}
-                index={index}
-              ></ScaleQuestionCard>
-            );
-          } else {
-            return (
-              <TextQuestionCard
-                key={question.content}
-                question={question}
-                index={index}
-              ></TextQuestionCard>
-            );
-          }
-        })}
-      </Fragment>
-    );
-  }
-);
+const FormQuestions = observer(() => {
+  const rootStore = useRootStore();
+  const questions = rootStore.viewFormStore.questions;
+  return (
+    <Fragment>
+      {questions.map((question, index) => {
+        if (question.layout === "Scale") {
+          return (
+            <ScaleQuestionCard
+              key={question.content}
+              question={question}
+              index={index}
+            ></ScaleQuestionCard>
+          );
+        } else {
+          return (
+            <TextQuestionCard
+              key={question.content}
+              question={question}
+              index={index}
+            ></TextQuestionCard>
+          );
+        }
+      })}
+    </Fragment>
+  );
+});
 
 const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
   const rootStore = useRootStore();
+  const history = useHistory();
+  const [showLoading, setShowLoading] = useState(false);
   useIonViewWillEnter(() => {
     const formId = match.params.formId;
     const form = rootStore.reviewFormStore.getFormFromSlug(formId);
@@ -211,16 +212,29 @@ const ViewForm: React.FC<ViewFormPageProps> = ({ match }) => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen className="ion-padding">
+        <IonLoading
+          isOpen={showLoading}
+          onDidDismiss={() => setShowLoading(false)}
+          message={"Đang gửi..."}
+        />
         <RevieweeIntro form={form}></RevieweeIntro>
-        <FormQuestions
-          reviewType={form.reviewType}
-          positions={matchReviewee.revieweePositions}
-        ></FormQuestions>
+        <FormQuestions></FormQuestions>
 
         <div style={{ width: "100%" }} className="ion-text-center">
           <IonButton
-            onClick={() => {
-              console.log(rootStore.viewFormStore.asJs());
+            onClick={async () => {
+              setShowLoading(true);
+              try {
+                await rootStore.viewFormStore.submitReviewResponse(
+                  form,
+                  matchReviewee
+                );
+                history.push("/forms");
+              } catch (e) {
+                alert(e.message);
+              } finally {
+                setShowLoading(false);
+              }
             }}
           >
             Gửi
