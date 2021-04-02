@@ -13,9 +13,9 @@ export class TransportStore {
 
   get serverURI() {
     if (process.env.NODE_ENV === "production") {
-      return "https://360review.4-handy.com/v1";
+      return "/v1";
     } else {
-      return "http://localhost:3667/v1";
+      return "/v1";
     }
   }
 
