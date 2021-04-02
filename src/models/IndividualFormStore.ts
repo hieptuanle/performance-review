@@ -244,10 +244,10 @@ const forms = [
     revieweeName: "Nguyễn Thúy Vi",
   },
   {
-    reviewerCode: "D3061",
+    reviewerCode: "D79",
     reviewerName: "Nguyễn Thị Mỹ Linh",
     reviewType: 1,
-    revieweeCode: "D3061",
+    revieweeCode: "D79",
     revieweeName: "Nguyễn Thị Mỹ Linh",
   },
   {
@@ -349,6 +349,13 @@ const forms = [
     revieweeName: "Trương Thu Hằng",
   },
   {
+    reviewerCode: "D2607",
+    reviewerName: "Nguyễn Bá Nam",
+    reviewType: 2,
+    revieweeCode: "D2663",
+    revieweeName: "Nguyễn Phúc Tài",
+  },
+  {
     reviewerCode: "D5099",
     reviewerName: "Nguyễn Minh Hạnh",
     reviewType: 2,
@@ -419,6 +426,13 @@ const forms = [
     revieweeName: "Bùi Văn Vương",
   },
   {
+    reviewerCode: "D2821",
+    reviewerName: "Lương Kim Phượng",
+    reviewType: 2,
+    revieweeCode: "D2663",
+    revieweeName: "Nguyễn Phúc Tài",
+  },
+  {
     reviewerCode: "M30",
     reviewerName: "Lê Thị Mơ",
     reviewType: 4,
@@ -450,7 +464,7 @@ const forms = [
     reviewerCode: "M30",
     reviewerName: "Lê Thị Mơ",
     reviewType: 4,
-    revieweeCode: "D3061",
+    revieweeCode: "D79",
     revieweeName: "Nguyễn Thị Mỹ Linh",
   },
   {
@@ -793,8 +807,22 @@ const forms = [
     reviewerCode: "D93",
     reviewerName: "Nguyễn Thúy Vi",
     reviewType: 2,
-    revieweeCode: "D3061",
+    revieweeCode: "D2663",
+    revieweeName: "Nguyễn Phúc Tài",
+  },
+  {
+    reviewerCode: "D93",
+    reviewerName: "Nguyễn Thúy Vi",
+    reviewType: 2,
+    revieweeCode: "D79",
     revieweeName: "Nguyễn Thị Mỹ Linh",
+  },
+  {
+    reviewerCode: "D79",
+    reviewerName: "Nguyễn Thị Mỹ Linh",
+    reviewType: 2,
+    revieweeCode: "D2663",
+    revieweeName: "Nguyễn Phúc Tài",
   },
   {
     reviewerCode: "D79",
@@ -814,7 +842,7 @@ const forms = [
     reviewerCode: "M48",
     reviewerName: "Lê Thùy Linh",
     reviewType: 2,
-    revieweeCode: "D3061",
+    revieweeCode: "D79",
     revieweeName: "Nguyễn Thị Mỹ Linh",
   },
 ].map<IndividualForm>((d) => {
