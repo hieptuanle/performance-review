@@ -19,6 +19,7 @@ import {
   IonLoading,
   IonModal,
   IonIcon,
+  IonToast,
 } from "@ionic/react";
 import { informationCircleOutline } from "ionicons/icons";
 
@@ -129,8 +130,11 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
           </IonSelect>
         </IonItem>
         <IonItem>
-          <IonLabel position="fixed">Giải thích</IonLabel>
+          <IonLabel position="fixed">
+            Giải thích<span style={{ color: "red" }}>*</span>
+          </IonLabel>
           <IonTextarea
+            required
             value={question.answer}
             onIonChange={(e) => {
               rootStore.viewFormStore.setAnswer(question, e.detail.value || "");
@@ -152,8 +156,11 @@ const TextQuestionCard = observer<{ question: Question; index: number }>(
       <IonCard key={question.content}>
         <QuestionHeader question={question} index={index}></QuestionHeader>
         <IonItem>
-          <IonLabel position="stacked">Câu trả lời tự luận</IonLabel>
+          <IonLabel position="stacked">
+            Câu trả lời tự luận<span style={{ color: "red" }}>*</span>
+          </IonLabel>
           <IonTextarea
+            required
             onIonChange={(e) => {
               rootStore.viewFormStore.setAnswer(question, e.detail.value || "");
             }}
@@ -252,6 +259,7 @@ const ViewForm = observer(() => {
   const history = useHistory();
   const params = useParams<{ formId: string }>();
   const [showLoading, setShowLoading] = useState(false);
+  const [showToastSuccess, setShowToastSuccess] = useState(false);
 
   useIonViewWillEnter(() => {
     console.log("enter");
@@ -301,6 +309,12 @@ const ViewForm = observer(() => {
           onDidDismiss={() => setShowLoading(false)}
           message={"Đang gửi..."}
         />
+        <IonToast
+          isOpen={showToastSuccess}
+          onDidDismiss={() => setShowToastSuccess(false)}
+          message="Review của bạn đã được lưu."
+          duration={2000}
+        />
         <DefinitionModal />
 
         <RevieweeIntro></RevieweeIntro>
@@ -315,6 +329,7 @@ const ViewForm = observer(() => {
                   form,
                   matchReviewee
                 );
+                setShowToastSuccess(true);
                 history.push("/forms");
               } catch (e) {
                 alert(e.message);
