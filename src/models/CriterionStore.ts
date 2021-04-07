@@ -2167,6 +2167,12 @@ const criteriaPositions = [
     applied: 1.0,
   },
   {
+    group: "Attitude",
+    criterion: "Đổi mới, sáng tạo",
+    position: "Lập trình viên Full stack",
+    applied: 1.0,
+  },
+  {
     group: "Skill",
     criterion: "Kỹ năng làm việc nhóm",
     position: "Lập trình viên Full stack",
@@ -2180,7 +2186,19 @@ const criteriaPositions = [
   },
   {
     group: "Skill",
+    criterion: "Kỹ năng đối mặt với áp lực",
+    position: "Lập trình viên Full stack",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
     criterion: "Kỹ năng giao tiếp",
+    position: "Lập trình viên Full stack",
+    applied: 1.0,
+  },
+  {
+    group: "Knowledge",
+    criterion: "Khả năng sử dụng tiếng anh",
     position: "Lập trình viên Full stack",
     applied: 1.0,
   },
@@ -2215,8 +2233,26 @@ const criteriaPositions = [
     applied: 1.0,
   },
   {
+    group: "Attitude",
+    criterion: "Đổi mới, sáng tạo",
+    position: "Business Analyst",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
+    criterion: "Kỹ năng thuyết trình",
+    position: "Business Analyst",
+    applied: 1.0,
+  },
+  {
     group: "Skill",
     criterion: "Kỹ năng phân tích dữ liệu",
+    position: "Business Analyst",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
+    criterion: "Kỹ năng quản lý thời gian",
     position: "Business Analyst",
     applied: 1.0,
   },
@@ -2228,7 +2264,31 @@ const criteriaPositions = [
   },
   {
     group: "Skill",
+    criterion: "Kỹ năng đối mặt với áp lực",
+    position: "Business Analyst",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
     criterion: "Kỹ năng giao tiếp",
+    position: "Business Analyst",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
+    criterion: "Kỹ năng giải trình",
+    position: "Business Analyst",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
+    criterion: "Kỹ năng lập kế hoạch",
+    position: "Business Analyst",
+    applied: 1.0,
+  },
+  {
+    group: "Knowledge",
+    criterion: "Khả năng sử dụng tiếng anh",
     position: "Business Analyst",
     applied: 1.0,
   },
@@ -2287,6 +2347,18 @@ const criteriaPositions = [
     applied: 1.0,
   },
   {
+    group: "Attitude",
+    criterion: "Cam kết",
+    position: "Kế toán tổng hợp",
+    applied: 1.0,
+  },
+  {
+    group: "Attitude",
+    criterion: "Tập trung vào kết quả",
+    position: "Kế toán tổng hợp",
+    applied: 1.0,
+  },
+  {
     group: "Skill",
     criterion: "Kỹ năng phân tích dữ liệu",
     position: "Kế toán tổng hợp",
@@ -2294,7 +2366,19 @@ const criteriaPositions = [
   },
   {
     group: "Skill",
+    criterion: "Kỹ năng đối mặt với áp lực",
+    position: "Kế toán tổng hợp",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
     criterion: "Kỹ năng giao tiếp",
+    position: "Kế toán tổng hợp",
+    applied: 1.0,
+  },
+  {
+    group: "Knowledge",
+    criterion: "Khả năng tin học văn phòng",
     position: "Kế toán tổng hợp",
     applied: 1.0,
   },
@@ -2337,6 +2421,12 @@ const criteriaPositions = [
   {
     group: "Skill",
     criterion: "Kỹ năng quản lý thời gian",
+    position: "Kế toán thuế",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
+    criterion: "Kỹ năng đối mặt với áp lực",
     position: "Kế toán thuế",
     applied: 1.0,
   },
@@ -2396,6 +2486,18 @@ const criteriaPositions = [
     applied: 1.0,
   },
   {
+    group: "Attitude",
+    criterion: "Cam kết",
+    position: "Chuyên viên phân tích dữ liệu",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
+    criterion: "Kỹ năng ra quyết định",
+    position: "Chuyên viên phân tích dữ liệu",
+    applied: 1.0,
+  },
+  {
     group: "Skill",
     criterion: "Kỹ năng phân tích dữ liệu",
     position: "Chuyên viên phân tích dữ liệu",
@@ -2404,6 +2506,18 @@ const criteriaPositions = [
   {
     group: "Skill",
     criterion: "Kỹ năng giao tiếp",
+    position: "Chuyên viên phân tích dữ liệu",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
+    criterion: "Kỹ năng giải trình",
+    position: "Chuyên viên phân tích dữ liệu",
+    applied: 1.0,
+  },
+  {
+    group: "Knowledge",
+    criterion: "Khả năng tin học văn phòng",
     position: "Chuyên viên phân tích dữ liệu",
     applied: 1.0,
   },
