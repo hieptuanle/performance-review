@@ -3,15 +3,28 @@ const ReviewResponse = require("../../models/review-response.model");
 
 const router = express.Router();
 
+const isAdmin = (userId) => {
+  return [
+    "556d9ddee22a874f4a9030b6",
+    "55506b4670ca5e60201cdaa8",
+    "5565cfc8712c3c341d0d14a1",
+    "5acb25e5826e800c7fd21ab6",
+    "599ab08e5b06d915dccfe018",
+  ];
+};
+
 router
   .route("/")
   .get(async (req, res) => {
     try {
       const userId = req.header("x-user-id");
       if (!userId) return [];
-      const reviewResponses = await ReviewResponse.find({
-        user: userId,
-      });
+      const query = isAdmin(userId)
+        ? {}
+        : {
+            user: userId,
+          };
+      const reviewResponses = await ReviewResponse.find(query);
       res.jsonp(reviewResponses);
     } catch (e) {
       res.status(400).json({
