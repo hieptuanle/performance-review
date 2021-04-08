@@ -10,7 +10,7 @@ const isAdmin = (userId) => {
     "5565cfc8712c3c341d0d14a1",
     "5acb25e5826e800c7fd21ab6",
     "599ab08e5b06d915dccfe018",
-  ];
+  ].includes(userId);
 };
 
 router
