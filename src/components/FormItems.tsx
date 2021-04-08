@@ -5,12 +5,15 @@ import FormType from "./FormType";
 import UserAvatar from "./UserAvatar";
 import RevieweeTitle from "./RevieweePosition";
 import { ReviewForm } from "../models/ReviewFormStore";
+import useRootStore from "../hooks/useRootStore";
 
 const FormItems = observer<{
   forms: ReviewForm[];
   title: string;
   note?: string;
 }>(({ forms, title, note }) => {
+  const rootStore = useRootStore();
+  const summary = rootStore.formSummaryStore.summary;
   if (!forms.length) return null;
   return (
     <>
@@ -40,7 +43,9 @@ const FormItems = observer<{
               {form.reviewType === 2
                 ? " | Đống nghiệp đánh giá: " + form.reviewerName
                 : null} */}
-              {/* {form.status === "done" ? "Hoàn thành" : "Chưa hoàn thành"} */}
+              {summary[form.slug]
+                ? " | ✅ Hoàn thành"
+                : " | ❌ Chưa hoàn thành"}
             </p>
           </IonLabel>
         </IonItem>

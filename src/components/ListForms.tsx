@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { IonList, IonListHeader } from "@ionic/react";
 import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
@@ -7,6 +7,9 @@ import FormItems from "./FormItems";
 
 const ListForms = observer(() => {
   const rootStore = useRootStore();
+  useEffect(() => {
+    rootStore.formSummaryStore.getSummary();
+  });
   const individualForms = rootStore.individualFormStore.myForms;
   const selfAssessmentForms = individualForms.filter((form) => {
     return form.reviewType === 1;

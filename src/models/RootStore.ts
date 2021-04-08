@@ -11,6 +11,7 @@ import { ReviewResponseStore } from "./ReviewResponseStore";
 import { TransportStore } from "./TransportStore";
 import { ListResponsesStore } from "./ListResponsesStore";
 import { ViewResponseStore } from "./ViewResponseStore";
+import { FormSummaryStore } from "./FormSummaryStore";
 export class RootStore {
   authenticationStore: AuthenticationStore;
   individualFormStore: IndividualFormStore;
@@ -25,6 +26,7 @@ export class RootStore {
   transportStore: TransportStore;
   listResponsesStore: ListResponsesStore;
   viewResponseStore: ViewResponseStore;
+  formSummaryStore: FormSummaryStore;
 
   constructor() {
     this.authenticationStore = new AuthenticationStore(this);
@@ -40,5 +42,6 @@ export class RootStore {
     this.transportStore = new TransportStore(this);
     this.listResponsesStore = new ListResponsesStore(this);
     this.viewResponseStore = new ViewResponseStore(this);
+    this.formSummaryStore = new FormSummaryStore(this);
   }
 }

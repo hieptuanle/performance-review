@@ -44,15 +44,31 @@ router
     }
   });
 
+router.route("/summary").get(async (req, res) => {
+  try {
+    const summary =
+      (await ReviewResponse.aggregate().group({
+        _id: "$slug",
+        count: { $sum: 1 },
+      })) || [];
+    res.json(
+      summary.reduce((result, item) => {
+        result[item._id] = item.count;
+        return result;
+      }, {})
+    );
+  } catch (e) {
+    res.status(400).json({ message: e.message });
+  }
+});
+
 router.route("/:reviewResponseId").get((req, res) => {
-  console.log(req.reviewResponse);
   res.jsonp(req.reviewResponse);
 });
 
 router.param("reviewResponseId", async (req, res, next, id) => {
   try {
     const reviewResponse = await ReviewResponse.findById(id);
-    console.log({ reviewResponse });
     if (!reviewResponse)
       throw new Error("Không tìm thấy Review Response tương ứng");
     req.reviewResponse = reviewResponse;
