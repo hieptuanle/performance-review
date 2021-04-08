@@ -8,9 +8,6 @@ import {
   IonButtons,
   IonItem,
   IonCard,
-  useIonViewWillEnter,
-  useIonViewWillLeave,
-  useIonViewDidEnter,
 } from "@ionic/react";
 
 import { useParams } from "react-router";
@@ -20,16 +17,17 @@ import FormType from "../components/FormType";
 
 import NotFound from "./NotFound";
 import RevieweeIntro from "../components/RevieweeIntro";
+import { useEffect } from "react";
 
 const ViewResponsePage = observer(() => {
   const rootStore = useRootStore();
   const params = useParams<{ responseId: string }>();
   const viewResponseStore = rootStore.viewResponseStore;
 
-  useIonViewDidEnter(async () => {
+  useEffect(() => {
     const responseId = params.responseId;
-    await viewResponseStore.findOne(responseId);
-  });
+    viewResponseStore.findOne(responseId);
+  }, [params.responseId, viewResponseStore]);
 
   if (!viewResponseStore.response) {
     return <NotFound></NotFound>;

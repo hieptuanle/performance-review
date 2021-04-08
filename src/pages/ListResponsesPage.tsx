@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
   IonButtons,
   IonContent,
@@ -10,8 +10,6 @@ import {
   IonPage,
   IonTitle,
   IonToolbar,
-  useIonViewDidEnter,
-  useIonViewWillEnter,
 } from "@ionic/react";
 import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
@@ -22,9 +20,11 @@ import { format } from "date-fns";
 const ListResponsesPage = observer(() => {
   const rootStore = useRootStore();
   const listResponsesStore = rootStore.listResponsesStore;
-  useIonViewDidEnter(async () => {
-    await rootStore.listResponsesStore.findMyResponses();
-  });
+
+  useEffect(() => {
+    rootStore.listResponsesStore.findMyResponses();
+  }, [rootStore]);
+
   return (
     <IonPage>
       <IonHeader>

@@ -14,7 +14,6 @@ import {
   IonSelect,
   IonSelectOption,
   IonCard,
-  useIonViewWillEnter,
   IonLoading,
   IonModal,
   IonIcon,
@@ -23,7 +22,7 @@ import {
 import { informationCircleOutline } from "ionicons/icons";
 
 import { useHistory, useParams } from "react-router";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
 import FormType from "../components/FormType";
@@ -211,7 +210,7 @@ const ViewForm = observer(() => {
   const [showLoading, setShowLoading] = useState(false);
   const [showToastSuccess, setShowToastSuccess] = useState(false);
 
-  useIonViewWillEnter(() => {
+  useEffect(() => {
     const formId = params.formId;
     const form = rootStore.reviewFormStore.getFormFromSlug(formId);
     if (!form) return;
@@ -225,7 +224,7 @@ const ViewForm = observer(() => {
       matchReviewee.revieweePositions,
       form.reviewType
     );
-  });
+  }, [params.formId, rootStore]);
 
   const form = rootStore.viewFormStore.reviewForm;
 
