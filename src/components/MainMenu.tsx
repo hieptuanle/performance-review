@@ -111,7 +111,8 @@ const MainMenu: React.FC = observer(() => {
           {rootStore.authenticationStore.isAuthenticated ? (
             <>
               {" "}
-              <IonItem routerLink="/forms">New Form</IonItem>
+              <IonItem routerLink="/forms">Forms</IonItem>
+              <IonItem routerLink="/responses">Responses</IonItem>
               {/* <IonItem routerLink="/forms">Submitted Forms</IonItem> */}
               {rootStore.authenticationStore.isRealBom ? (
                 <IonItem>

@@ -9,7 +9,8 @@ import { CriterionStore } from "./CriterionStore";
 import { ViewFormStore } from "./ViewFormStore";
 import { ReviewResponseStore } from "./ReviewResponseStore";
 import { TransportStore } from "./TransportStore";
-
+import { ListResponsesStore } from "./ListResponsesStore";
+import { ViewResponseStore } from "./ViewResponseStore";
 export class RootStore {
   authenticationStore: AuthenticationStore;
   individualFormStore: IndividualFormStore;
@@ -22,6 +23,8 @@ export class RootStore {
   viewFormStore: ViewFormStore;
   reviewResponseStore: ReviewResponseStore;
   transportStore: TransportStore;
+  listResponsesStore: ListResponsesStore;
+  viewResponseStore: ViewResponseStore;
 
   constructor() {
     this.authenticationStore = new AuthenticationStore(this);
@@ -35,5 +38,7 @@ export class RootStore {
     this.viewFormStore = new ViewFormStore(this);
     this.reviewResponseStore = new ReviewResponseStore(this);
     this.transportStore = new TransportStore(this);
+    this.listResponsesStore = new ListResponsesStore(this);
+    this.viewResponseStore = new ViewResponseStore(this);
   }
 }

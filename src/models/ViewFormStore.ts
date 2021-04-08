@@ -4,6 +4,7 @@ import { some, uniqBy } from "lodash";
 import { ReviewForm } from "./ReviewFormStore";
 import { Reviewee } from "./RevieweeStore";
 import { ReviewResponse } from "./ReviewResponseStore";
+import { getObjectId } from "../utils/helper";
 
 export interface Question {
   group: string;
@@ -132,6 +133,7 @@ export class ViewFormStore {
       );
     }
     const reviewReponse: ReviewResponse = {
+      _id: getObjectId(),
       reviewDepartment: form.reviewType === 3 ? form.reviewerName : undefined,
       revieweeCode: reviewee.revieweeCode,
       revieweeName: reviewee.revieweeName,

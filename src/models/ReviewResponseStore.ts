@@ -3,6 +3,7 @@ import { RootStore } from "./RootStore";
 import { Question } from "./ViewFormStore";
 
 export interface ReviewResponse {
+  _id: string;
   reviewDepartment?: string;
 
   revieweeCode: string;
@@ -18,14 +19,18 @@ export interface ReviewResponse {
 
   positions: string[];
   questions: Question[];
+
+  createdAt?: Date;
+  updatedAt?: Date;
   user?: string;
 }
 
 export class ReviewResponseStore {
   rootStore: RootStore;
+  reviewResponses: ReviewResponse[] = [];
+
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
-
     makeAutoObservable(this, {
       rootStore: false,
     });

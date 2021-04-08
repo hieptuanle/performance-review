@@ -9,6 +9,8 @@ const reviewResponseSchema = mongoose.Schema(
     revieweeName: String,
     revieweeDepartment: String,
 
+    reviewType: Number,
+
     reviewerName: String,
     reviewerCode: String,
 

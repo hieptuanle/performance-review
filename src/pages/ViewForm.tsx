@@ -14,7 +14,6 @@ import {
   IonSelect,
   IonSelectOption,
   IonCard,
-  IonCardContent,
   useIonViewWillEnter,
   IonLoading,
   IonModal,
@@ -28,58 +27,9 @@ import { Fragment, useState } from "react";
 import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
 import FormType from "../components/FormType";
-import RevieweeTitle from "../components/RevieweePosition";
-import UserAvatar from "../components/UserAvatar";
 import { Question } from "../models/ViewFormStore";
 import NotFound from "./NotFound";
-
-const RevieweeIntro: React.FC = () => {
-  const rootStore = useRootStore();
-  const form = rootStore.viewFormStore.reviewForm;
-  const reviewee = rootStore.viewFormStore.reviewee;
-  if (!form) return null;
-  return (
-    <IonCard>
-      <IonCardContent>
-        <IonItem>
-          <UserAvatar revieweeCode={form.revieweeCode}></UserAvatar>
-          <IonLabel>
-            <h1>{form.revieweeName}</h1>
-            <p>
-              <RevieweeTitle revieweeCode={form.revieweeCode}></RevieweeTitle>
-            </p>
-          </IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonLabel>
-            <p>Kiểu form</p>
-            <h2>
-              <FormType formType={form.reviewType}></FormType>
-            </h2>
-          </IonLabel>
-        </IonItem>
-        <IonItem>
-          <IonLabel>
-            <p>Form này đại diện cho</p>
-            <h2>{form.reviewType === 3 ? form.reviewerName : "Cá nhân bạn"}</h2>
-          </IonLabel>
-        </IonItem>
-        {reviewee && reviewee.reviewLink && form.reviewType === 1 ? (
-          <IonItem>
-            <IonLabel>
-              <p>Tổng kết công việc 6 tháng</p>
-              <h2>
-                <a target="_blank" rel="noreferrer" href={reviewee?.reviewLink}>
-                  Link
-                </a>
-              </h2>
-            </IonLabel>
-          </IonItem>
-        ) : null}
-      </IonCardContent>
-    </IonCard>
-  );
-};
+import RevieweeIntro from "../components/RevieweeIntro";
 
 const QuestionHeader = observer<{ question: Question; index: number }>(
   ({ question, index }) => {
@@ -262,7 +212,6 @@ const ViewForm = observer(() => {
   const [showToastSuccess, setShowToastSuccess] = useState(false);
 
   useIonViewWillEnter(() => {
-    console.log("enter");
     const formId = params.formId;
     const form = rootStore.reviewFormStore.getFormFromSlug(formId);
     if (!form) return;
@@ -317,7 +266,10 @@ const ViewForm = observer(() => {
         />
         <DefinitionModal />
 
-        <RevieweeIntro></RevieweeIntro>
+        <RevieweeIntro
+          reviewForm={form}
+          reviewee={matchReviewee}
+        ></RevieweeIntro>
         <FormQuestions></FormQuestions>
 
         <div style={{ width: "100%" }} className="ion-text-center">

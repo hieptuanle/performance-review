@@ -33,6 +33,9 @@ export class TransportStore {
       mode: "cors",
       headers: {
         "Content-Type": "application/json",
+        "X-User-Id": this.rootStore.authenticationStore.user
+          ? this.rootStore.authenticationStore.user._id
+          : "",
       },
       redirect: "follow",
       referrerPolicy: "no-referrer",
@@ -49,7 +52,7 @@ export class TransportStore {
     return this.sendRequest({ data, method: "POST", path });
   }
   async get(path: string) {
-    return this.sendRequest({ method: "POST", path });
+    return this.sendRequest({ method: "GET", path });
   }
   async put(path: string, data: Object) {
     return this.sendRequest({ method: "PUT", path });
