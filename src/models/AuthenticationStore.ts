@@ -92,7 +92,7 @@ export class AuthenticationStore {
   }
 
   async authenticate(username: string, password: string) {
-    const dataPromise = await fetch("https://work.4-handy.com/api_v2/login", {
+    const dataPromise = await fetch("http://localhost:3000/api_v2/login", {
       method: "POST",
       mode: "cors",
       headers: {

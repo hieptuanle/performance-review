@@ -1,10 +1,11 @@
 import { action, makeAutoObservable, toJS } from "mobx";
 import { RootStore } from "./RootStore";
-import { some, uniqBy } from "lodash";
+import _, { some, uniqBy } from "lodash";
 import { ReviewForm } from "./ReviewFormStore";
 import { Reviewee } from "./RevieweeStore";
 import { ReviewResponse } from "./ReviewResponseStore";
 import { getObjectId } from "../utils/helper";
+import store from "store";
 
 export interface Question {
   group: string;
@@ -48,11 +49,27 @@ export class ViewFormStore {
     this.showDefinitionModal = show;
   }
 
+  updateLocalStorage() {
+    if (this.reviewForm) {
+      const key = "questions_" + this.reviewForm.slug;
+      store.set(key, this.questions);
+    }
+  }
+
+  clearLocalStorage() {
+    if (this.reviewForm) {
+      const key = "questions_" + this.reviewForm.slug;
+      store.remove(key);
+    }
+  }
+
   setAnswer(question: Question, answer: string) {
     question.answer = answer;
+    this.updateLocalStorage();
   }
   setMark(question: Question, mark: string) {
     question.mark = mark;
+    this.updateLocalStorage();
   }
 
   setReviewForm(reviewForm: ReviewForm | null) {
@@ -121,6 +138,19 @@ export class ViewFormStore {
     }
 
     this.questions = questions;
+    if (this.reviewForm) {
+      const key = "questions_" + this.reviewForm.slug;
+      const savedQuestions = (store.get(key) || []) as Question[];
+      savedQuestions.forEach((question) => {
+        const matchQuestion = this.questions.find((_question) => {
+          return _question.content === question.content;
+        });
+        if (matchQuestion) {
+          matchQuestion.answer = question.answer;
+          matchQuestion.mark = question.mark;
+        }
+      });
+    }
   }
 
   async submitReviewResponse(form: ReviewForm, reviewee: Reviewee) {
@@ -150,10 +180,10 @@ export class ViewFormStore {
       questions: this.questions,
       user: this.rootStore.authenticationStore.user?._id,
     };
-    const returnReviewResponse = await this.rootStore.reviewResponseStore.insertOne(
-      reviewReponse
-    );
-    console.log(returnReviewResponse);
+
+    await this.rootStore.reviewResponseStore.insertOne(reviewReponse);
+
+    this.clearLocalStorage();
   }
 }
 

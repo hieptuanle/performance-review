@@ -88,8 +88,8 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
             onIonChange={(e) => {
               rootStore.viewFormStore.setAnswer(question, e.detail.value || "");
             }}
-            style={{ minHeight: "50px", lineHeight: "1.5em" }}
-            autoGrow={true}
+            style={{ minHeight: "200px", lineHeight: "1.5em" }}
+            autoGrow={false}
             rows={5}
           ></IonTextarea>
         </IonItem>
