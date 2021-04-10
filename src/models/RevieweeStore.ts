@@ -296,7 +296,7 @@ const reviewees = [
   },
   {
     revieweeCode: "E62",
-    revieweeName: "Nguyễn Xuân Trọng",
+    revieweeName: "Vũ Xuân Trọng",
     revieweeDepartment: "Tech",
     revieweePosition1: "Lập trình viên Full stack",
     revieweePosition2: "",
