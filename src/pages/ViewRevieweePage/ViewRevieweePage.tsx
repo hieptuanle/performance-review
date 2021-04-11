@@ -1,15 +1,56 @@
-import React, { useEffect } from "react";
-import { IonContent, IonPage } from "@ionic/react";
+import {
+  IonButton,
+  IonCard,
+  IonCardContent,
+  IonCardHeader,
+  IonCardSubtitle,
+  IonContent,
+  IonItem,
+  IonLabel,
+  IonPage,
+} from "@ionic/react";
 import { observer } from "mobx-react-lite";
-import NormalHeader from "../../components/NormalHeader";
+import React, { useEffect } from "react";
 import { useParams } from "react-router";
+import NormalHeader from "../../components/NormalHeader";
+import UserAvatar from "../../components/UserAvatar";
 import useRootStore from "../../hooks/useRootStore";
+import { Reviewee } from "../../models/RevieweeStore";
 import NotFound from "../NotFound";
+
+const RevieweeCard: React.FC<{ reviewee: Reviewee }> = ({ reviewee }) => {
+  return (
+    <IonCard>
+      <IonItem>
+        <UserAvatar revieweeCode={reviewee.revieweeCode}></UserAvatar>
+        <IonLabel>
+          <h2>{reviewee.revieweeName}</h2>
+          <h3>{reviewee.revieweePositions.join(" | ")}</h3>
+        </IonLabel>
+      </IonItem>
+
+      <IonItem>
+        <IonLabel>
+          <h3>Bộ phận: {reviewee.revieweeDepartment}</h3>
+        </IonLabel>
+        <IonButton
+          fill="solid"
+          slot="end"
+          href={reviewee.reviewLink}
+          target="_blank"
+        >
+          KQCV 6 tháng
+        </IonButton>
+      </IonItem>
+    </IonCard>
+  );
+};
 
 const ViewRevieweePage = observer(() => {
   const params = useParams<{ revieweeId: string }>();
   const rootStore = useRootStore();
   const viewRevieweeStore = rootStore.viewRevieweeStore;
+
   useEffect(() => {
     viewRevieweeStore.getReviewee(params.revieweeId);
     if (viewRevieweeStore.reviewee) {
@@ -21,10 +62,48 @@ const ViewRevieweePage = observer(() => {
 
   if (!reviewee) return <NotFound></NotFound>;
 
+  const questions = viewRevieweeStore.questions;
+
   return (
     <IonPage>
-      <NormalHeader title={"Reviewee " + params.revieweeId}></NormalHeader>
-      <IonContent fullscreen></IonContent>
+      <NormalHeader
+        title={"Tổng hợp đánh giá " + reviewee.revieweeName}
+      ></NormalHeader>
+      <IonContent fullscreen>
+        <RevieweeCard reviewee={reviewee}></RevieweeCard>
+        {questions.map((question, index) => (
+          <IonCard key={question.content}>
+            <IonCardHeader>
+              <IonCardSubtitle>
+                <strong>
+                  {index + 1}. {question.group} - {question.content}
+                </strong>
+              </IonCardSubtitle>
+            </IonCardHeader>
+            <IonCardContent>
+              {question.answers.map((answer) => (
+                <div key={answer._id}>
+                  <hr style={{ borderTop: "1px solid #dbdbdb" }}></hr>
+                  <p>
+                    <strong>Điểm:</strong>{" "}
+                    {answer.mark ? answer.mark : "Không chấm điểm"}
+                  </p>
+                  <p>
+                    <strong>
+                      Đánh giá: <br />
+                    </strong>
+                    {answer.answer}{" "}
+                    <small>
+                      {answer.reviewerCode ? answer.reviewerCode + " - " : ""}{" "}
+                      {answer.reviewerName}
+                    </small>
+                  </p>
+                </div>
+              ))}
+            </IonCardContent>
+          </IonCard>
+        ))}
+      </IonContent>
     </IonPage>
   );
 });

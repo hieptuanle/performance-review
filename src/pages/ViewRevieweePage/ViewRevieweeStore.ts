@@ -1,7 +1,8 @@
-import { action, makeAutoObservable, runInAction } from "mobx";
+import { action, computed, makeAutoObservable, runInAction } from "mobx";
 import { Reviewee } from "../../models/RevieweeStore";
 import { ReviewResponse } from "../../models/ReviewResponseStore";
 import { RootStore } from "../../models/RootStore";
+import { groupBy, flatMap, map } from "lodash";
 
 export class ViewRevieweeStore {
   rootStore: RootStore;
@@ -12,6 +13,24 @@ export class ViewRevieweeStore {
     this.rootStore = rootStore;
     makeAutoObservable(this, {
       getReviewee: action,
+      questions: computed,
+    });
+  }
+
+  get questions() {
+    const questions = flatMap(this.reviewResponses, (response) => {
+      const { questions, ...rest } = response;
+      return response.questions.map((question) => ({
+        ...question,
+        ...rest,
+      }));
+    });
+    return map(groupBy(questions, "content"), (value, key) => {
+      return {
+        content: key,
+        group: value[0].group,
+        answers: value,
+      };
     });
   }
 

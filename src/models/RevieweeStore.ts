@@ -33,7 +33,7 @@ const reviewees = [
     revieweePosition1: "Kiểm toán viên nội bộ",
     revieweePosition2: "",
     reviewLink:
-      "https://docs.google.com/spreadsheets/d/190pNvwNWFJL1M42-F65Ga5c8_SLIpBkZPdwO54A6jlA/edit#gid=111538391",
+      "https://docs.google.com/spreadsheets/d/1WiUy4TjtkdGbgIl2sLGECA7q6meME77rt87XsHshyD4/edit?usp=sharing",
   },
   {
     revieweeCode: "D4309",
