@@ -68,7 +68,12 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "@typescript-eslint/no-use-before-define": [
+        0
+      ]
+    }
   },
   "browserslist": {
     "production": [
