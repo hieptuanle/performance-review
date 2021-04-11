@@ -2,8 +2,11 @@ import { action, computed, makeAutoObservable, runInAction } from "mobx";
 import { Reviewee } from "../../models/RevieweeStore";
 import { ReviewResponse } from "../../models/ReviewResponseStore";
 import { RootStore } from "../../models/RootStore";
-import { groupBy, flatMap, map, orderBy } from "lodash";
+import { groupBy, flatMap, map, orderBy, sumBy, filter } from "lodash";
 
+function round(number: number) {
+  return Math.round(number * 10) / 10;
+}
 export class ViewRevieweeStore {
   rootStore: RootStore;
   reviewResponses: ReviewResponse[] = [];
@@ -26,9 +29,26 @@ export class ViewRevieweeStore {
       }));
     });
     return map(groupBy(questions, "content"), (answers, key) => {
+      const selfAssessmentMark = round(
+        sumBy(
+          filter(answers, (x) => x.reviewType === 1 && x.mark > 0),
+          (x) => parseInt(`${x.mark}`)
+        ) / filter(answers, (x) => x.reviewType === 1 && x.mark > 0).length
+      );
+
+      const otherMark = round(
+        sumBy(
+          filter(answers, (x) => x.reviewType !== 1 && x.mark > 0),
+          (x) => parseInt(`${x.mark}`)
+        ) / filter(answers, (x) => x.reviewType !== 1 && x.mark > 0).length
+      );
+
       return {
+        selfAssessmentMark,
+        otherMark,
         content: key,
         group: answers[0].group,
+        layout: answers[0].layout,
         answers: orderBy(
           answers,
           (answer) => {

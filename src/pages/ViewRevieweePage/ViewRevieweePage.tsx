@@ -82,6 +82,15 @@ const ViewRevieweePage = observer(() => {
               </IonCardSubtitle>
             </IonCardHeader>
             <IonCardContent>
+              {question.layout === "Scale" ? (
+                <p>
+                  <strong>
+                    Tự chấm điểm: {question.selfAssessmentMark} | Người khác
+                    chấm: {question.otherMark}
+                  </strong>
+                </p>
+              ) : null}
+
               {question.answers.map((answer) => (
                 <div
                   key={answer._id}
