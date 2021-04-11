@@ -37,7 +37,8 @@ export class ViewRevieweeStore {
   getReviewee(revieweeSlug: string) {
     const matchReviewee = this.rootStore.revieweeStore.reviewees.find(
       (reviewee) => {
-        return (reviewee.revieweeSlug = revieweeSlug);
+        console.log({ revieweeSlug });
+        return reviewee.revieweeSlug === revieweeSlug;
       }
     );
     this.reviewee = matchReviewee || null;
