@@ -8,6 +8,8 @@ import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
 import ListResponsesPage from "../pages/ListResponsesPage";
 import ViewResponsePage from "../pages/ViewResponsePage";
+import ListRevieweesPage from "../pages/ListRevieweesPage/ListRevieweesPage";
+import ViewRevieweePage from "../pages/ViewRevieweePage/ViewRevieweePage";
 
 const MainContent: React.FC = observer(() => {
   const rootStore = useRootStore();
@@ -17,6 +19,16 @@ const MainContent: React.FC = observer(() => {
         {rootStore.authenticationStore.isAuthenticated ? (
           <>
             <Route exact path="/forms" component={ListFormsPage}></Route>
+            <Route
+              exact
+              path="/reviewees"
+              component={ListRevieweesPage}
+            ></Route>
+            <Route
+              exact
+              path="/reviewees/:revieweeId"
+              component={ViewRevieweePage}
+            ></Route>
             <Route
               exact
               path="/responses"

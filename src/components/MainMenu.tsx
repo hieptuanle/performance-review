@@ -96,6 +96,33 @@ const ReviewerSelect = observer(() => {
   );
 });
 
+const SellAlTogggle = observer(() => {
+  const rootStore = useRootStore();
+  return (
+    <>
+      <IonLabel>
+        Xem tất cả <strong>(BOM feature)</strong>
+      </IonLabel>
+      <IonToggle
+        checked={rootStore.authenticationStore.seeAll}
+        onIonChange={(e) => {
+          rootStore.authenticationStore.setSeeAll(e.detail.checked);
+        }}
+      ></IonToggle>
+    </>
+  );
+});
+
+const BomItem = observer<{
+  children: React.ReactElement | string;
+  [key: string]: any;
+}>(({ children, ...rest }) => {
+  const rootStore = useRootStore();
+  return rootStore.authenticationStore.isRealBom ? (
+    <IonItem {...rest}>{children}</IonItem>
+  ) : null;
+});
+
 const MainMenu: React.FC = observer(() => {
   const rootStore = useRootStore();
   const history = useHistory();
@@ -110,28 +137,15 @@ const MainMenu: React.FC = observer(() => {
         <IonList>
           {rootStore.authenticationStore.isAuthenticated ? (
             <>
-              {" "}
               <IonItem routerLink="/forms">Forms</IonItem>
               <IonItem routerLink="/responses">Responses</IonItem>
-              {/* <IonItem routerLink="/forms">Submitted Forms</IonItem> */}
-              {rootStore.authenticationStore.isRealBom ? (
-                <IonItem>
-                  <ReviewerSelect></ReviewerSelect>
-                </IonItem>
-              ) : null}
-              {rootStore.authenticationStore.isRealBom ? (
-                <IonItem>
-                  <IonLabel>
-                    Xem tất cả <strong>(BOM feature)</strong>
-                  </IonLabel>
-                  <IonToggle
-                    checked={rootStore.authenticationStore.seeAll}
-                    onIonChange={(e) => {
-                      rootStore.authenticationStore.setSeeAll(e.detail.checked);
-                    }}
-                  ></IonToggle>
-                </IonItem>
-              ) : null}
+              <BomItem routerLink="/reviewees">Reviewees</BomItem>
+              <BomItem>
+                <ReviewerSelect></ReviewerSelect>
+              </BomItem>
+              <BomItem>
+                <SellAlTogggle></SellAlTogggle>
+              </BomItem>
               <IonItem
                 onClick={() => {
                   rootStore.authenticationStore.logout();

@@ -1,5 +1,6 @@
 import { makeObservable, observable } from "mobx";
 import { RootStore } from "./RootStore";
+import * as urlSlug from "url-slug";
 
 export interface Reviewee {
   revieweeCode: string;
@@ -7,6 +8,7 @@ export interface Reviewee {
   revieweeDepartment: string;
   revieweePositions: string[];
   reviewLink: string;
+  revieweeSlug: string;
 }
 
 export class RevieweeStore {
@@ -312,5 +314,6 @@ const reviewees = [
       (d) => !!d
     ),
     reviewLink: d.reviewLink,
+    revieweeSlug: urlSlug.convert(`${d.revieweeCode} ${d.revieweeName}`),
   };
 });

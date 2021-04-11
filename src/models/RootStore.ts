@@ -12,6 +12,8 @@ import { TransportStore } from "./TransportStore";
 import { ListResponsesStore } from "./ListResponsesStore";
 import { ViewResponseStore } from "./ViewResponseStore";
 import { FormSummaryStore } from "./FormSummaryStore";
+import { ListRevieweesStore } from "../pages/ListRevieweesPage/ListRevieweesStore";
+import { ViewRevieweeStore } from "../pages/ViewRevieweePage/ViewRevieweeStore";
 export class RootStore {
   authenticationStore: AuthenticationStore;
   individualFormStore: IndividualFormStore;
@@ -27,6 +29,8 @@ export class RootStore {
   listResponsesStore: ListResponsesStore;
   viewResponseStore: ViewResponseStore;
   formSummaryStore: FormSummaryStore;
+  listRevieweesStore: ListRevieweesStore;
+  viewRevieweeStore: ViewRevieweeStore;
 
   constructor() {
     this.authenticationStore = new AuthenticationStore(this);
@@ -43,5 +47,7 @@ export class RootStore {
     this.listResponsesStore = new ListResponsesStore(this);
     this.viewResponseStore = new ViewResponseStore(this);
     this.formSummaryStore = new FormSummaryStore(this);
+    this.listRevieweesStore = new ListRevieweesStore(this);
+    this.viewRevieweeStore = new ViewRevieweeStore(this);
   }
 }

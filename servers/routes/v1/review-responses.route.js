@@ -19,11 +19,19 @@ router
     try {
       const userId = req.header("x-user-id");
       if (!userId) return [];
-      const query = isAdmin(userId)
-        ? {}
-        : {
-            user: userId,
+      let query = {};
+
+      if (isAdmin(userId)) {
+        query = {};
+        if (req.query.revieweeCode) {
+          query = {
+            revieweeCode: req.query.revieweeCode,
           };
+        }
+      } else {
+        query = { user: userId };
+      }
+
       const reviewResponses = await ReviewResponse.find(query);
       res.jsonp(reviewResponses);
     } catch (e) {
