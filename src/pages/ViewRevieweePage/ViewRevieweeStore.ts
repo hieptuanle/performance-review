@@ -2,7 +2,7 @@ import { action, computed, makeAutoObservable, runInAction } from "mobx";
 import { Reviewee } from "../../models/RevieweeStore";
 import { ReviewResponse } from "../../models/ReviewResponseStore";
 import { RootStore } from "../../models/RootStore";
-import { groupBy, flatMap, map } from "lodash";
+import { groupBy, flatMap, map, orderBy } from "lodash";
 
 export class ViewRevieweeStore {
   rootStore: RootStore;
@@ -25,11 +25,17 @@ export class ViewRevieweeStore {
         ...rest,
       }));
     });
-    return map(groupBy(questions, "content"), (value, key) => {
+    return map(groupBy(questions, "content"), (answers, key) => {
       return {
         content: key,
-        group: value[0].group,
-        answers: value,
+        group: answers[0].group,
+        answers: orderBy(
+          answers,
+          (answer) => {
+            return answer.reviewType;
+          },
+          ["asc"]
+        ),
       };
     });
   }

@@ -1,0 +1,7 @@
+.view-reviewee-page .self-review p {
+  color: red;
+}
+
+.view-reviewee-page .manager-review p {
+  color: green;
+}

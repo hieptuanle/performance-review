@@ -17,6 +17,7 @@ import UserAvatar from "../../components/UserAvatar";
 import useRootStore from "../../hooks/useRootStore";
 import { Reviewee } from "../../models/RevieweeStore";
 import NotFound from "../NotFound";
+import "./ViewRevieweePage.css";
 
 const RevieweeCard: React.FC<{ reviewee: Reviewee }> = ({ reviewee }) => {
   return (
@@ -69,7 +70,7 @@ const ViewRevieweePage = observer(() => {
       <NormalHeader
         title={"Tổng hợp đánh giá " + reviewee.revieweeName}
       ></NormalHeader>
-      <IonContent fullscreen>
+      <IonContent fullscreen className="view-reviewee-page">
         <RevieweeCard reviewee={reviewee}></RevieweeCard>
         {questions.map((question, index) => (
           <IonCard key={question.content}>
@@ -82,17 +83,30 @@ const ViewRevieweePage = observer(() => {
             </IonCardHeader>
             <IonCardContent>
               {question.answers.map((answer) => (
-                <div key={answer._id}>
-                  <hr style={{ borderTop: "1px solid #dbdbdb" }}></hr>
+                <div
+                  key={answer._id}
+                  className={
+                    answer.reviewType === 1
+                      ? "self-review "
+                      : answer.reviewType === 4
+                      ? "manager-review "
+                      : ""
+                  }
+                >
+                  <hr
+                    style={{
+                      borderTop: "1px solid #dbdbdb",
+                    }}
+                  ></hr>
                   <p>
-                    <strong>Điểm:</strong>{" "}
-                    {answer.mark ? answer.mark : "Không chấm điểm"}
-                  </p>
-                  <p>
-                    <strong>
-                      Đánh giá: <br />
-                    </strong>
-                    {answer.answer}{" "}
+                    {answer.mark > 0 ? (
+                      <>
+                        <strong>Điểm:</strong>{" "}
+                        {answer.mark ? answer.mark : "Không chấm điểm"} {" | "}
+                        <strong>Đánh giá: </strong>
+                      </>
+                    ) : null}
+                    {answer.answer} <br />
                     <small>
                       {answer.reviewerCode ? answer.reviewerCode + " - " : ""}{" "}
                       {answer.reviewerName}
