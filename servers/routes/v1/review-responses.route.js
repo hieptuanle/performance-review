@@ -29,6 +29,12 @@ router
           };
         }
       } else {
+        if (req.query.revieweeCode) {
+          query = {
+            revieweeCode: req.query.revieweeCode,
+            reviewerCode: req.query.reviewerCode,
+          };
+        }
         query = { user: userId };
       }
 

@@ -72,7 +72,10 @@ export class ViewRevieweeStore {
 
   async getReviewResponse(reviewee: Reviewee) {
     const reviewResponses = (await this.rootStore.transportStore.get(
-      "/review-responses/?revieweeCode=" + reviewee.revieweeCode
+      "/review-responses/?revieweeCode=" +
+        reviewee.revieweeCode +
+        "&reviewerCode=" +
+        this.rootStore.authenticationStore.userCode
     )) as ReviewResponse[];
     runInAction(() => {
       this.reviewResponses = reviewResponses;

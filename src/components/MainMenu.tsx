@@ -139,7 +139,10 @@ const MainMenu: React.FC = observer(() => {
             <>
               <IonItem routerLink="/forms">Forms</IonItem>
               <IonItem routerLink="/responses">Responses</IonItem>
-              <BomItem routerLink="/reviewees">Reviewees</BomItem>
+              {rootStore.listRevieweesStore.myReviewees.length > 0 ? (
+                <IonItem routerLink="/reviewees">Reviewees</IonItem>
+              ) : null}
+
               <BomItem>
                 <ReviewerSelect></ReviewerSelect>
               </BomItem>

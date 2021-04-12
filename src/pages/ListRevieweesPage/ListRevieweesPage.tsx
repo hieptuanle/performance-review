@@ -7,7 +7,7 @@ import useRootStore from "../../hooks/useRootStore";
 const ListRevieweesPage = observer(() => {
   const rootStore = useRootStore();
   const listRevieweesStore = rootStore.listRevieweesStore;
-  const reviewees = listRevieweesStore.reviewees;
+  const reviewees = listRevieweesStore.myReviewees;
   return (
     <IonPage>
       <NormalHeader title="Reviewees"></NormalHeader>
