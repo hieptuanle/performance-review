@@ -15,6 +15,12 @@ export class ListRevieweesStore {
   }
 
   get myReviewees() {
+    if (
+      this.rootStore.authenticationStore.isBom &&
+      this.rootStore.authenticationStore.seeAll
+    ) {
+      return this.reviewees;
+    }
     const myForms = this.rootStore.individualFormStore.myForms.filter(
       (form) => {
         return form.reviewType === 4;
