@@ -305,6 +305,30 @@ const reviewees = [
     reviewLink:
       "https://docs.google.com/spreadsheets/d/1qS5AKbmha3RQdE6GKccn47WNbFWt9YIwknicSa5CMYs/edit#gid=470392220",
   },
+  {
+    revieweeCode: "D480",
+    revieweeName: "Phạm Văn Quí",
+    revieweeDepartment: "B1",
+    revieweePosition1: "Nhân viên bếp fulltime",
+    revieweePosition2: "",
+    reviewLink: "",
+  },
+  {
+    revieweeCode: "D703",
+    revieweeName: "Nguyễn Huyền Trang",
+    revieweeDepartment: "B1",
+    revieweePosition1: "Nhân viên bếp fulltime",
+    revieweePosition2: "",
+    reviewLink: "",
+  },
+  {
+    revieweeCode: "D1898",
+    revieweeName: "Nguyễn Văn Tuấn",
+    revieweeDepartment: "B1",
+    revieweePosition1: "Nhân viên bếp fulltime",
+    revieweePosition2: "",
+    reviewLink: "",
+  },
 ].map<Reviewee>((d) => {
   return {
     revieweeCode: d.revieweeCode,
