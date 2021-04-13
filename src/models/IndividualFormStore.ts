@@ -842,6 +842,48 @@ const forms = [
     revieweeCode: "D79",
     revieweeName: "Nguyễn Thị Mỹ Linh",
   },
+  {
+    reviewerCode: "D480",
+    reviewerName: "Phạm Văn Quí",
+    reviewType: 1,
+    revieweeCode: "D480",
+    revieweeName: "Phạm Văn Quí",
+  },
+  {
+    reviewerCode: "D583",
+    reviewerName: "Nguyễn Thế Anh",
+    reviewType: 4,
+    revieweeCode: "D480",
+    revieweeName: "Phạm Văn Quí",
+  },
+  {
+    reviewerCode: "D703",
+    reviewerName: "Nguyễn Huyền Trang",
+    reviewType: 1,
+    revieweeCode: "D703",
+    revieweeName: "Nguyễn Huyền Trang",
+  },
+  {
+    reviewerCode: "D583",
+    reviewerName: "Nguyễn Thế Anh",
+    reviewType: 4,
+    revieweeCode: "D703",
+    revieweeName: "Nguyễn Huyền Trang",
+  },
+  {
+    reviewerCode: "D583",
+    reviewerName: "Nguyễn Thế Anh",
+    reviewType: 4,
+    revieweeCode: "D1898",
+    revieweeName: "Nguyễn Văn Tuấn",
+  },
+  {
+    reviewerCode: "D1898",
+    reviewerName: "Nguyễn Văn Tuấn",
+    reviewType: 1,
+    revieweeCode: "D1898",
+    revieweeName: "Nguyễn Văn Tuấn",
+  },
 ].map<IndividualForm>((d) => {
   return {
     ...d,

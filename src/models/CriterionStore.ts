@@ -2622,6 +2622,67 @@ const criteriaPositions = [
   {
     group: "Attitude",
     criterion: "Trung thực, thẳng thắn",
+    position: "Nhân viên bếp fulltime",
+    applied: 1.0,
+  },
+  {
+    group: "Attitude",
+    criterion: "Tỉ mỉ, cẩn thận",
+    position: "Nhân viên bếp fulltime",
+    applied: 1.0,
+  },
+  {
+    group: "Attitude",
+    criterion: "Kiên trì",
+    position: "Nhân viên bếp fulltime",
+    applied: 1.0,
+  },
+  {
+    group: "Attitude",
+    criterion: "Kỷ luật",
+    position: "Nhân viên bếp fulltime",
+    applied: 1.0,
+  },
+  {
+    group: "Attitude",
+    criterion: "Tinh thần chịu trách nhiệm",
+    position: "Nhân viên bếp fulltime",
+    applied: 1.0,
+  },
+  {
+    group: "Attitude",
+    criterion: "Nhiệt tình",
+    position: "Nhân viên bếp fulltime",
+    applied: 1.0,
+  },
+  {
+    group: "Skill",
+    criterion: "Kỹ năng tự học",
+    position: "Nhân viên bếp fulltime",
+    applied: 1.0,
+  },
+  {
+    group: "Knowledge",
+    criterion: "Kiến thức về các loại nguyên liệu",
+    position: "Nhân viên bếp fulltime",
+    applied: 1.0,
+  },
+  {
+    group: "Knowledge",
+    criterion: "Kiến thức về công nghệ thực phẩm",
+    position: "Nhân viên bếp fulltime",
+    applied: 1.0,
+  },
+  {
+    group: "Knowledge",
+    criterion:
+      "Kiến thức về quy trình vận hành và giám sát bếp chế biến công nghiệp",
+    position: "Nhân viên bếp fulltime",
+    applied: 1.0,
+  },
+  {
+    group: "Attitude",
+    criterion: "Trung thực, thẳng thắn",
     position: "Nhân viên giám sát chất lượng",
     applied: 1.0,
   },
