@@ -115,7 +115,9 @@ const ViewRevieweePage = observer(() => {
                         <strong>Đánh giá: </strong>
                       </>
                     ) : null}
-                    {answer.answer} <br />
+                    <div style={{ whiteSpace: "pre-line" }}>
+                      {answer.answer}
+                    </div>{" "}
                     <small>
                       {answer.reviewerCode ? answer.reviewerCode + " - " : ""}{" "}
                       {answer.reviewerName}
