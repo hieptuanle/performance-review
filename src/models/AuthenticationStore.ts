@@ -70,12 +70,12 @@ export class AuthenticationStore {
 
   get isRealBom() {
     if (!this.user) return false;
-    return ["F262", "F432", "F688"].includes(this.user.code);
+    return ["F262", "F432", "F688", "D2607"].includes(this.user.code);
   }
 
   get isBom() {
     if (!this.userCode) return false;
-    return ["F262", "F432", "F688"].includes(this.userCode);
+    return ["F262", "F432", "F688", "D2607"].includes(this.userCode);
   }
 
   setSeeAll(value: boolean) {
