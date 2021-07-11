@@ -1,6 +1,5 @@
 import { action, makeAutoObservable, toJS } from "mobx";
 import { RootStore } from "./RootStore";
-import _, { some, uniqBy } from "lodash";
 import { ReviewForm } from "./ReviewFormStore";
 import { Reviewee } from "./RevieweeStore";
 import { ReviewResponse } from "./ReviewResponseStore";
@@ -84,23 +83,23 @@ export class ViewFormStore {
   }
 
   setQuestions(positions: string[], reviewType: number, isManager: boolean) {
-    const criteriaPositions =
-      this.rootStore.criterionStore.criterionPositions.filter(
-        (criterionPosition) => {
-          if (!positions.includes(criterionPosition.position)) return false;
+    // const criteriaPositions =
+    //   this.rootStore.criterionStore.criterionPositions.filter(
+    //     (criterionPosition) => {
+    //       if (!positions.includes(criterionPosition.position)) return false;
 
-          switch (reviewType) {
-            case 1:
-            case 2:
-            case 4:
-              return true;
-            case 3:
-              return ["Attitude", "Skill"].includes(criterionPosition.group);
-            default:
-              return false;
-          }
-        }
-      );
+    //       switch (reviewType) {
+    //         case 1:
+    //         case 2:
+    //         case 4:
+    //           return true;
+    //         case 3:
+    //           return ["Attitude", "Skill"].includes(criterionPosition.group);
+    //         default:
+    //           return false;
+    //       }
+    //     }
+    //   );
 
     // const questions = uniqBy(
     //   criteriaPositions.map<Question>((d) => {
