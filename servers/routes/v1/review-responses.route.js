@@ -1,5 +1,6 @@
 const express = require("express");
 const ReviewResponse = require("../../models/review-response.model");
+// const moment = require("moment");
 
 const router = express.Router();
 
@@ -19,13 +20,18 @@ router
     try {
       const userId = req.header("x-user-id");
       if (!userId) return [];
-      let query = {};
+      let query = {
+        createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
+      };
 
       if (isAdmin(userId)) {
-        query = {};
+        query = {
+          createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
+        };
         if (req.query.revieweeCode) {
           query = {
             revieweeCode: req.query.revieweeCode,
+            createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
           };
         }
       } else {
@@ -33,9 +39,13 @@ router
           query = {
             revieweeCode: req.query.revieweeCode,
             reviewerCode: req.query.reviewerCode,
+            createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
           };
         }
-        query = { user: userId };
+        query = {
+          user: userId,
+          createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
+        };
       }
 
       const reviewResponses = await ReviewResponse.find(query);
@@ -47,7 +57,6 @@ router
     }
   })
   .post(async (req, res) => {
-    throw new Error("Đã quá hạn gửi form");
     try {
       const reviewResponse = new ReviewResponse(req.body);
       await reviewResponse.save();
@@ -62,10 +71,14 @@ router
 router.route("/summary").get(async (req, res) => {
   try {
     const summary =
-      (await ReviewResponse.aggregate().group({
-        _id: "$slug",
-        count: { $sum: 1 },
-      })) || [];
+      (await ReviewResponse.aggregate()
+        .match({
+          createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
+        })
+        .group({
+          _id: "$slug",
+          count: { $sum: 1 },
+        })) || [];
     res.json(
       summary.reduce((result, item) => {
         result[item._id] = item.count;

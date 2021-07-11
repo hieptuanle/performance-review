@@ -34,14 +34,14 @@ const RevieweeCard: React.FC<{ reviewee: Reviewee }> = ({ reviewee }) => {
         <IonLabel>
           <h3>Bộ phận: {reviewee.revieweeDepartment}</h3>
         </IonLabel>
-        <IonButton
+        {/* <IonButton
           fill="solid"
           slot="end"
           href={reviewee.reviewLink}
           target="_blank"
         >
           KQCV 6 tháng
-        </IonButton>
+        </IonButton> */}
       </IonItem>
     </IonCard>
   );

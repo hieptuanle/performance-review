@@ -17,11 +17,7 @@ const ListForms = observer(() => {
   const colleagueForms = individualForms.filter((form) => {
     return form.reviewType === 2;
   });
-  const managerForms = individualForms.filter((form) => {
-    return form.reviewType === 4;
-  });
-  const teamForms = rootStore.teamFormStore.myForms;
-  if (!individualForms.length && !teamForms.length) {
+  if (!individualForms.length) {
     return (
       <IonList>
         <IonListHeader>Bạn không có form đánh giá nào</IonListHeader>
@@ -34,12 +30,6 @@ const ListForms = observer(() => {
       <FormItems
         title="Đánh giá đồng nghiệp"
         forms={colleagueForms}
-      ></FormItems>
-      <FormItems title="Quản lý đánh giá" forms={managerForms}></FormItems>
-      <FormItems
-        title="Bộ phận đánh giá"
-        note="Mỗi bộ phận chỉ cần gửi 1 form duy nhất cho 1 nhân viên. Hãy đảm bảo bạn đã thảo luận với các thành viên khác trong team trước khi đánh giá các bạn sau nhé!"
-        forms={teamForms}
       ></FormItems>
     </IonList>
   );

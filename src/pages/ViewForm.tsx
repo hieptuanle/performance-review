@@ -16,10 +16,8 @@ import {
   IonCard,
   IonLoading,
   IonModal,
-  IonIcon,
   IonToast,
 } from "@ionic/react";
-import { informationCircleOutline } from "ionicons/icons";
 
 import { useHistory, useParams } from "react-router";
 import { Fragment, useEffect, useState } from "react";
@@ -33,14 +31,16 @@ import RevieweeIntro from "../components/RevieweeIntro";
 const QuestionHeader = observer<{ question: Question; index: number }>(
   ({ question, index }) => {
     const rootStore = useRootStore();
+    const revieweeName = rootStore.viewFormStore.reviewee?.revieweeName;
     return (
       <IonListHeader lines="full">
         <IonLabel>
           <h2 style={{ fontSize: "1.5em", fontWeight: "bold" }}>
-            {index + 1}. {question.content}
+            {index + 1}.{" "}
+            {question.content.replace(/{{NAME}}/g, revieweeName || "")}
           </h2>
         </IonLabel>
-        <IonButton
+        {/* <IonButton
           onClick={() => {
             rootStore.viewFormStore.setCurrentQuestion(question);
             rootStore.viewFormStore.setShowDefinitionModal(true);
@@ -49,7 +49,7 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
         >
           <IonIcon icon={informationCircleOutline}></IonIcon> &nbsp; Mô tả tiêu
           chí
-        </IonButton>
+        </IonButton> */}
       </IonListHeader>
     );
   }
@@ -70,12 +70,18 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
             }}
             interface="popover"
           >
-            {["1", "2", "3", "4", "5"].map((d) => (
-              <IonSelectOption key={d} value={d}>
-                {d}
+            {[
+              { value: "1", label: "1. Kém" },
+              { value: "2", label: "2. Trung bình" },
+              { value: "3", label: "3. Khá" },
+              { value: "4", label: "4. Tốt" },
+              { value: "5", label: "5. Rất tốt" },
+            ].map((d) => (
+              <IonSelectOption key={d.value} value={d.value}>
+                {d.label}
               </IonSelectOption>
             ))}
-            <IonSelectOption value={0}>Không đánh giá</IonSelectOption>
+            <IonSelectOption value={"0"}>Không đánh giá</IonSelectOption>
           </IonSelect>
         </IonItem>
         <IonItem>
@@ -213,6 +219,7 @@ const ViewForm = observer(() => {
   useEffect(() => {
     const formId = params.formId;
     const form = rootStore.reviewFormStore.getFormFromSlug(formId);
+    console.log({ form: form?.revieweeName });
     if (!form) return;
     rootStore.viewFormStore.setReviewForm(form);
     const matchReviewee = rootStore.revieweeStore.reviewees.find((reviewee) => {
@@ -222,7 +229,8 @@ const ViewForm = observer(() => {
     rootStore.viewFormStore.setReviewee(matchReviewee);
     rootStore.viewFormStore.setQuestions(
       matchReviewee.revieweePositions,
-      form.reviewType
+      form.reviewType,
+      matchReviewee.isManager
     );
   }, [params.formId, rootStore]);
 

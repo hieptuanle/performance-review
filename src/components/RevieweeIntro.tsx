@@ -43,7 +43,7 @@ const RevieweeIntro: React.FC<{
             </h2>
           </IonLabel>
         </IonItem>
-        {reviewee && reviewee.reviewLink && reviewForm.reviewType === 1 ? (
+        {/* {reviewee && reviewee.reviewLink && reviewForm.reviewType === 1 ? (
           <IonItem>
             <IonLabel>
               <p>Tổng kết công việc 6 tháng</p>
@@ -54,7 +54,7 @@ const RevieweeIntro: React.FC<{
               </h2>
             </IonLabel>
           </IonItem>
-        ) : null}
+        ) : null} */}
       </IonCardContent>
     </IonCard>
   );
