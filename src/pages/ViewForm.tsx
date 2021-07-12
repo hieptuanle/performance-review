@@ -17,6 +17,7 @@ import {
   IonLoading,
   IonModal,
   IonToast,
+  IonIcon,
 } from "@ionic/react";
 
 import { useHistory, useParams } from "react-router";
@@ -27,6 +28,7 @@ import FormType from "../components/FormType";
 import { Question } from "../models/ViewFormStore";
 import NotFound from "./NotFound";
 import RevieweeIntro from "../components/RevieweeIntro";
+import { informationCircleOutline } from "ionicons/icons";
 
 const QuestionHeader = observer<{ question: Question; index: number }>(
   ({ question, index }) => {
@@ -40,7 +42,7 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
             {question.content.replace(/{{NAME}}/g, revieweeName || "")}
           </h2>
         </IonLabel>
-        {/* <IonButton
+        <IonButton
           onClick={() => {
             rootStore.viewFormStore.setCurrentQuestion(question);
             rootStore.viewFormStore.setShowDefinitionModal(true);
@@ -49,7 +51,7 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
         >
           <IonIcon icon={informationCircleOutline}></IonIcon> &nbsp; Mô tả tiêu
           chí
-        </IonButton> */}
+        </IonButton>
       </IonListHeader>
     );
   }
@@ -159,10 +161,10 @@ const FormQuestions = observer(() => {
 
 const DefinitionModal = observer(() => {
   const rootStore = useRootStore();
-  const currentQuestion = rootStore.viewFormStore.currentQuestion;
-  const matchedCriterion = rootStore.criterionStore.getMatchingCriterion(
-    currentQuestion?.content
-  );
+  const position = rootStore.viewFormStore.reviewee?.revieweePositions[0];
+  const matchedCriterionPositions = position
+    ? rootStore.criterionStore.getMatchingCriterions(position)
+    : [];
   return (
     <IonModal
       isOpen={rootStore.viewFormStore.showDefinitionModal}
@@ -185,22 +187,15 @@ const DefinitionModal = observer(() => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen={true} className="ion-padding">
-        <h2>{currentQuestion?.content}</h2>
-        {matchedCriterion ? (
-          <>
-            <h3>Định nghĩa</h3>
-            <p>{matchedCriterion.definition || "Đang cập nhật..."}</p>
-            <h3>Mức 1</h3>
-            <p>{matchedCriterion.level1 || "Đang cập nhật..."}</p>
-            <h3>Mức 2</h3>
-            <p>{matchedCriterion.level2 || "Đang cập nhật..."}</p>
-            <h3>Mức 3</h3>
-            <p>{matchedCriterion.level3 || "Đang cập nhật..."}</p>
-            <h3>Mức 4</h3>
-            <p>{matchedCriterion.level4 || "Đang cập nhật..."}</p>
-            <h3>Mức 5</h3>
-            <p>{matchedCriterion.level5 || "Đang cập nhật..."}</p>
-          </>
+        <h2>ASK của vị trí {position || null}</h2>
+        {matchedCriterionPositions.length > 0 ? (
+          matchedCriterionPositions.map((criterionPosition) => (
+            <div>
+              <p>
+                {criterionPosition.group}: {criterionPosition.criterion}
+              </p>
+            </div>
+          ))
         ) : (
           <p>Mô tả cho câu hỏi này đang được cập nhật...</p>
         )}

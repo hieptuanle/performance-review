@@ -169,7 +169,7 @@ const reviewees = [
   },
   {
     revieweeCode: "E62",
-    revieweeName: "Nguyễn Xuân Trọng",
+    revieweeName: "Vũ Xuân Trọng",
     email: "xtrong49@gmail.com",
     "Số tháng làm việc": 13,
     supervisor: "Lê Tuấn Hiệp",
