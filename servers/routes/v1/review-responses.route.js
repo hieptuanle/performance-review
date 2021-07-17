@@ -12,6 +12,7 @@ const isAdmin = (userId) => {
     "556d9ddee22a874f4a9030b6",
     "55506b4670ca5e60201cdaa8",
     "5565cfc8712c3c341d0d14a1",
+    "599ab08e5b06d915dccfe018",
   ].includes(userId);
 };
 
