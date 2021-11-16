@@ -23,7 +23,7 @@ export class ListRevieweesStore {
     }
     const myForms = this.rootStore.individualFormStore.myForms.filter(
       (form) => {
-        return form.reviewType === 4;
+        return form.reviewType === 3;
       }
     );
 

@@ -58,10 +58,10 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
 );
 
 const ScaleQuestionCard = observer<{ question: Question; index: number }>(
-  ({ question, index }) => {
+  ({ question, index, ...rest }) => {
     const rootStore = useRootStore();
     return (
-      <IonCard>
+      <IonCard key={question.content}>
         <QuestionHeader question={question} index={index}></QuestionHeader>
         <IonItem>
           <IonLabel position="fixed">Chấm điểm</IonLabel>
@@ -107,7 +107,7 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
 );
 
 const TextQuestionCard = observer<{ question: Question; index: number }>(
-  ({ question, index }) => {
+  ({ question, index, ...rest }) => {
     const rootStore = useRootStore();
     return (
       <IonCard key={question.content}>
@@ -285,7 +285,7 @@ const ViewForm = observer(() => {
                 );
                 setShowToastSuccess(true);
                 history.push("/forms");
-              } catch (e) {
+              } catch (e: any) {
                 alert(e.message);
               } finally {
                 setShowLoading(false);

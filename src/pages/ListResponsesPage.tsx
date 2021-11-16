@@ -50,19 +50,7 @@ const ListResponsesPage = observer(() => {
                     revieweeCode={response.revieweeCode}
                   ></RevieweeTitle>
                 </h3>
-                <p>
-                  Người/bộ phận đánh giá: {response.reviewerName}
-                  {/* {form.reviewType === 3
-                  ? " | Đại diện cho bộ phận: " +
-                  : null}
-                {form.reviewType === 4
-                  ? " | Quản lý đánh giá: " + form.reviewerName
-                  : null}
-                {form.reviewType === 2
-                  ? " | Đống nghiệp đánh giá: " + form.reviewerName
-                  : null} */}
-                  {/* {form.status === "done" ? "Hoàn thành" : "Chưa hoàn thành"} */}
-                </p>
+                <p>Người/bộ phận đánh giá: {response.reviewerName}</p>
                 <p>
                   Đã gửi vào lúc:{" "}
                   {response.createdAt

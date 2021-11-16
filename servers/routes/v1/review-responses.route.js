@@ -16,6 +16,8 @@ const isAdmin = (userId) => {
   ].includes(userId);
 };
 
+const START_DATE = new Date("2021-07-11T00:00:00+07:00");
+
 router
   .route("/")
   .get(async (req, res) => {
@@ -23,17 +25,17 @@ router
       const userId = req.header("x-user-id");
       if (!userId) return [];
       let query = {
-        createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
+        createdAt: { $gte: START_DATE },
       };
 
       if (isAdmin(userId)) {
         query = {
-          createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
+          createdAt: { $gte: START_DATE },
         };
         if (req.query.revieweeCode) {
           query = {
             revieweeCode: req.query.revieweeCode,
-            createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
+            createdAt: { $gte: START_DATE },
           };
         }
       } else {
@@ -41,12 +43,12 @@ router
           query = {
             revieweeCode: req.query.revieweeCode,
             reviewerCode: req.query.reviewerCode,
-            createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
+            createdAt: { $gte: START_DATE },
           };
         }
         query = {
           user: userId,
-          createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
+          createdAt: { $gte: START_DATE },
         };
       }
 
@@ -75,7 +77,7 @@ router.route("/summary").get(async (req, res) => {
     const summary =
       (await ReviewResponse.aggregate()
         .match({
-          createdAt: { $gte: new Date("2021-07-11T00:00:00+07:00") },
+          createdAt: { $gte: START_DATE },
         })
         .group({
           _id: "$slug",

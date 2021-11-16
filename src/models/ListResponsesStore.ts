@@ -1,4 +1,4 @@
-import { makeAutoObservable, action, runInAction } from "mobx";
+import { makeAutoObservable, runInAction } from "mobx";
 import { ReviewResponse } from "../models/ReviewResponseStore";
 import { RootStore } from "../models/RootStore";
 

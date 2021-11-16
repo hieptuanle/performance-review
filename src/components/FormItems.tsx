@@ -34,15 +34,6 @@ const FormItems = observer<{
             <p>
               <FormType formType={form.reviewType}></FormType>:{" "}
               {form.reviewerName}
-              {/* {form.reviewType === 3
-                ? " | Đại diện cho bộ phận: " +
-                : null}
-              {form.reviewType === 4
-                ? " | Quản lý đánh giá: " + form.reviewerName
-                : null}
-              {form.reviewType === 2
-                ? " | Đống nghiệp đánh giá: " + form.reviewerName
-                : null} */}
               {summary[form.slug]
                 ? " | ✅ Hoàn thành"
                 : " | ❌ Chưa hoàn thành"}

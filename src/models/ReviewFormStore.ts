@@ -22,9 +22,7 @@ export class ReviewFormStore {
   }
 
   get forms(): ReviewForm[] {
-    return (this.rootStore.individualFormStore.myForms as ReviewForm[]).concat(
-      this.rootStore.teamFormStore.myForms
-    );
+    return this.rootStore.individualFormStore.myForms as ReviewForm[];
   }
 
   getFormFromSlug(slug: string) {

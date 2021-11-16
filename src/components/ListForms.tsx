@@ -12,10 +12,10 @@ const ListForms = observer(() => {
   });
   const individualForms = rootStore.individualFormStore.myForms;
   const selfAssessmentForms = individualForms.filter((form) => {
-    return form.reviewType === 1;
+    return form.reviewType === 1 || form.reviewType === 2;
   });
   const colleagueForms = individualForms.filter((form) => {
-    return form.reviewType === 2;
+    return form.reviewType === 3;
   });
   if (!individualForms.length) {
     return (
@@ -27,10 +27,7 @@ const ListForms = observer(() => {
   return (
     <IonList>
       <FormItems title="Tự đánh giá" forms={selfAssessmentForms}></FormItems>
-      <FormItems
-        title="Đánh giá đồng nghiệp"
-        forms={colleagueForms}
-      ></FormItems>
+      <FormItems title="Đánh giá 360" forms={colleagueForms}></FormItems>
     </IonList>
   );
 });

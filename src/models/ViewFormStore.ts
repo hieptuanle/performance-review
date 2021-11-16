@@ -5,6 +5,7 @@ import { Reviewee } from "./RevieweeStore";
 import { ReviewResponse } from "./ReviewResponseStore";
 import { getObjectId } from "../utils/helper";
 import store from "store";
+import { compact } from "lodash";
 
 export interface Question {
   group: string;
@@ -83,40 +84,9 @@ export class ViewFormStore {
   }
 
   setQuestions(positions: string[], reviewType: number, isManager: boolean) {
-    // const criteriaPositions =
-    //   this.rootStore.criterionStore.criterionPositions.filter(
-    //     (criterionPosition) => {
-    //       if (!positions.includes(criterionPosition.position)) return false;
-
-    //       switch (reviewType) {
-    //         case 1:
-    //         case 2:
-    //         case 4:
-    //           return true;
-    //         case 3:
-    //           return ["Attitude", "Skill"].includes(criterionPosition.group);
-    //         default:
-    //           return false;
-    //       }
-    //     }
-    //   );
-
-    // const questions = uniqBy(
-    //   criteriaPositions.map<Question>((d) => {
-    //     return {
-    //       group: d.group,
-    //       content: d.criterion,
-    //       layout: "Scale",
-    //       mark: 0,
-    //       answer: "",
-    //     };
-    //   }),
-    //   "content"
-    // );
-
     let questions: Question[] = [];
 
-    if (reviewType === 2) {
+    if (reviewType === 3) {
       let scaleQuestions = [
         "Bạn đánh giá như thế nào về thái độ trong công việc của {{NAME}}?",
         "Bạn đánh giá như thế nào về kĩ năng làm việc của {{NAME}}?",
@@ -175,13 +145,18 @@ export class ViewFormStore {
         };
       });
 
-      const textQuestions = [
-        "Trong 3 tháng vừa qua bạn thấy mình làm tốt nhất điều gì hoặc đã đạt được những thành tích gì trong công việc của mình?",
-        "Trong 3 tháng vừa qua bạn còn mục tiêu gì chưa đạt được hoặc công việc nào không đạt được như kì vọng? Tại sao?",
-        "Bạn có thấy mình có tiềm năng phát triển trong vị trí hoặc mảng công việc nào khác ở 4handy không? Tại sao?",
+      const textQuestions = compact([
+        "Trong vòng 3 tháng vừa qua bạn thấy mình làm tốt nhất điều gì hoặc đã đạt được những thành tích gì trong công việc của mình?",
+        "Trong vòng 3 tháng vừa qua bạn còn mục tiêu gì chưa đạt được hoặc công việc nào không đạt được như kì vọng? Tại sao?",
+        reviewType === 1
+          ? "Bạn có mong muốn thử sức ở mảng công việc nào khác tại 4handy không? Tại sao?"
+          : null,
         "Theo bạn, quản lý cấp trên nên có những thay đổi gì để giúp bạn cũng như team của bạn đạt được kết quả tốt hơn?",
-        "Bạn có đề xuất mức lương kỳ vọng hoặc các chế độ đãi ngộ khác như thế nào?",
-      ].map<Question>((d) => {
+        "Mục tiêu công việc trong 3 tháng tới của bạn là gì?",
+        reviewType === 1
+          ? "Bạn có đề xuất mức lương kỳ vọng hoặc các chế độ đãi ngộ khác như thế nào?"
+          : null,
+      ]).map<Question>((d) => {
         return {
           group: "Personal",
           content: d,
@@ -220,7 +195,7 @@ export class ViewFormStore {
     }
     const reviewReponse: ReviewResponse = {
       _id: getObjectId(),
-      reviewDepartment: form.reviewType === 3 ? form.reviewerName : undefined,
+      reviewDepartment: undefined,
       revieweeCode: reviewee.revieweeCode,
       revieweeName: reviewee.revieweeName,
       revieweeDepartment: reviewee.revieweeDepartment,

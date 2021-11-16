@@ -31,16 +31,16 @@ export class ViewRevieweeStore {
     return map(groupBy(questions, "content"), (answers, key) => {
       const selfAssessmentMark = round(
         sumBy(
-          filter(answers, (x) => x.reviewType === 1 && x.mark > 0),
+          filter(answers, (x) => x.reviewType <= 2 && x.mark > 0),
           (x) => parseInt(`${x.mark}`)
-        ) / filter(answers, (x) => x.reviewType === 1 && x.mark > 0).length
+        ) / filter(answers, (x) => x.reviewType <= 2 && x.mark > 0).length
       );
 
       const otherMark = round(
         sumBy(
-          filter(answers, (x) => x.reviewType !== 1 && x.mark > 0),
+          filter(answers, (x) => x.reviewType > 2 && x.mark > 0),
           (x) => parseInt(`${x.mark}`)
-        ) / filter(answers, (x) => x.reviewType !== 1 && x.mark > 0).length
+        ) / filter(answers, (x) => x.reviewType > 2 && x.mark > 0).length
       );
 
       return {

@@ -43,18 +43,6 @@ const RevieweeIntro: React.FC<{
             </h2>
           </IonLabel>
         </IonItem>
-        {/* {reviewee && reviewee.reviewLink && reviewForm.reviewType === 1 ? (
-          <IonItem>
-            <IonLabel>
-              <p>Tổng kết công việc 6 tháng</p>
-              <h2>
-                <a target="_blank" rel="noreferrer" href={reviewee?.reviewLink}>
-                  Link
-                </a>
-              </h2>
-            </IonLabel>
-          </IonItem>
-        ) : null} */}
       </IonCardContent>
     </IonCard>
   );

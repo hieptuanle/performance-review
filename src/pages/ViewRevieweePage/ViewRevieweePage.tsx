@@ -1,5 +1,4 @@
 import {
-  IonButton,
   IonCard,
   IonCardContent,
   IonCardHeader,
@@ -95,10 +94,8 @@ const ViewRevieweePage = observer(() => {
                 <div
                   key={answer._id}
                   className={
-                    answer.reviewType === 1
+                    answer.reviewType === 1 || answer.reviewType === 2
                       ? "self-review "
-                      : answer.reviewType === 4
-                      ? "manager-review "
                       : ""
                   }
                 >
