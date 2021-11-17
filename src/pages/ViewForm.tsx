@@ -60,6 +60,15 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
 const ScaleQuestionCard = observer<{ question: Question; index: number }>(
   ({ question, index, ...rest }) => {
     const rootStore = useRootStore();
+    const reviewType = rootStore.viewFormStore?.reviewForm?.reviewType || 3;
+    const isSelfAssessment = reviewType <= 2;
+    const options = [
+      { value: "1", label: "1. Kém" },
+      { value: "2", label: "2. Trung bình" },
+      { value: "3", label: "3. Khá" },
+      { value: "4", label: "4. Tốt" },
+      { value: "5", label: "5. Rất tốt" },
+    ];
     return (
       <IonCard key={question.content}>
         <QuestionHeader question={question} index={index}></QuestionHeader>
@@ -72,18 +81,14 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
             }}
             interface="popover"
           >
-            {[
-              { value: "1", label: "1. Kém" },
-              { value: "2", label: "2. Trung bình" },
-              { value: "3", label: "3. Khá" },
-              { value: "4", label: "4. Tốt" },
-              { value: "5", label: "5. Rất tốt" },
-            ].map((d) => (
+            {options.map((d) => (
               <IonSelectOption key={d.value} value={d.value}>
                 {d.label}
               </IonSelectOption>
             ))}
-            <IonSelectOption value={"0"}>Không đánh giá</IonSelectOption>
+            {!isSelfAssessment ? (
+              <IonSelectOption value={"0"}>Không đánh giá</IonSelectOption>
+            ) : null}
           </IonSelect>
         </IonItem>
         <IonItem>
