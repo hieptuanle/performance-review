@@ -374,8 +374,10 @@ export const forms = [
     reviewerName3: "Trần Phương Anh",
     reviewerCode4: "C037",
     reviewerName4: "Nguyễn Thị Quỳnh",
-    reviewerCode5: "",
-    reviewerName5: "",
+    reviewerCode5: "D169",
+    reviewerName5: "Trương Thị Thu Hằng",
+    reviewerCode6: "D4309",
+    reviewerName6: "Nguyễn Văn Cương",
   },
   {
     code: "D4309",
@@ -397,6 +399,10 @@ export const forms = [
     reviewerName4: "Nguyễn Bá Nam",
     reviewerCode5: "D7954",
     reviewerName5: "Dương Văn Vững",
+    reviewerCode6: "D169",
+    reviewerName6: "Trương Thị Thu Hằng",
+    reviewerCode7: "D708",
+    reviewerName7: "Đinh Phương Thảo",
   },
   {
     code: "M63",
