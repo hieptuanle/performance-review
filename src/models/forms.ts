@@ -334,6 +334,10 @@ export const forms = [
     reviewerName4: "Nguyễn Bá Nam",
     reviewerCode5: "D583",
     reviewerName5: "Nguyễn Thế Anh",
+    reviewerCode6: "D708",
+    reviewerName6: "Đinh Phương Thảo",
+    reviewerCode7: "D4309",
+    reviewerName7: "Nguyễn Văn Cương",
   },
   {
     code: "C037",
