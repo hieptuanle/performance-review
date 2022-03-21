@@ -49,7 +49,7 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
     ),
     reviewType: item.group,
   });
-  const indices = ["1", "2", "3", "4", "5", "6", "7"];
+  const indices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
   indices.forEach((index) => {
     if (get(item, `reviewerCode${index}`)) {
       result.push({
