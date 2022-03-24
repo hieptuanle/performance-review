@@ -113,7 +113,7 @@ export class ViewFormStore {
         "Bạn có muốn đưa ra lời khuyên gì để {{NAME}} thay đổi không? Điều này sẽ ảnh hưởng như thế nào đến công việc của bạn?",
       ].map<Question>((d) => {
         return {
-          group: "Colleauge",
+          group: "Colleague",
           content: d,
           layout: "Text",
           mark: 0,
