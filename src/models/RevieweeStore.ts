@@ -1,7 +1,7 @@
 import { makeObservable, observable } from "mobx";
 import { RootStore } from "./RootStore";
 import * as urlSlug from "url-slug";
-import { forms as rawForms } from "./forms";
+import { forms as rawForms } from "../data/forms";
 
 export interface Reviewee {
   revieweeCode: string;

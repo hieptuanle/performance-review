@@ -3,7 +3,7 @@ import { RootStore } from "./RootStore";
 import * as urlSlug from "url-slug";
 import { ReviewForm } from "./ReviewFormStore";
 import { get } from "lodash";
-import { forms as rawForms } from "./forms";
+import { forms as rawForms } from "../data/forms";
 
 interface IndividualForm extends ReviewForm {
   reviewerCode: string;
