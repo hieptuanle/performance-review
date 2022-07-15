@@ -47,7 +47,6 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
           onClick={() => {
             rootStore.viewFormStore.setCurrentQuestion(question);
             rootStore.viewFormStore.setShowDefinitionModal(true);
-            console.log(rootStore.viewFormStore.showDefinitionModal);
           }}
         >
           <IonIcon icon={informationCircleOutline}></IonIcon> &nbsp; Mô tả tiêu
@@ -64,11 +63,9 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
     const reviewType = rootStore.viewFormStore?.reviewForm?.reviewType || 3;
     const isSelfAssessment = reviewType <= 2;
     const options = [
-      { value: "1", label: "1. Kém" },
-      { value: "2", label: "2. Trung bình" },
-      { value: "3", label: "3. Khá" },
-      { value: "4", label: "4. Tốt" },
-      { value: "5", label: "5. Rất tốt" },
+      { value: "1", label: "1. Giảm sút" },
+      { value: "2", label: "2. Duy trì" },
+      { value: "3", label: "3. Cải tiến" },
     ];
     return (
       <IonCard key={question.content}>
@@ -172,6 +169,7 @@ const DefinitionModal = observer(() => {
   const matchedCriterionPositions = position
     ? rootStore.criterionStore.getMatchingCriterions(position)
     : [];
+
   return (
     <IonModal
       isOpen={rootStore.viewFormStore.showDefinitionModal}
@@ -222,7 +220,7 @@ const ViewForm = observer(() => {
   useEffect(() => {
     const formId = params.formId;
     const form = rootStore.reviewFormStore.getFormFromSlug(formId);
-    console.log({ form: form?.revieweeName });
+
     if (!form) return;
     rootStore.viewFormStore.setReviewForm(form);
     const matchReviewee = rootStore.revieweeStore.reviewees.find((reviewee) => {
@@ -232,8 +230,7 @@ const ViewForm = observer(() => {
     rootStore.viewFormStore.setReviewee(matchReviewee);
     rootStore.viewFormStore.setQuestions(
       matchReviewee.revieweePositions,
-      form.reviewType,
-      matchReviewee.isManager
+      form.reviewType
     );
   }, [params.formId, rootStore]);
 

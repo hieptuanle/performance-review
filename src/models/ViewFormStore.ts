@@ -83,34 +83,14 @@ export class ViewFormStore {
     this.questions = [];
   }
 
-  setQuestions(positions: string[], reviewType: number, isManager: boolean) {
+  setQuestions(positions: string[], reviewType: number) {
     let questions: Question[] = [];
 
     if (reviewType === 3) {
-      let scaleQuestions = [
-        "Bạn đánh giá như thế nào về thái độ trong công việc của {{NAME}}?",
-        "Bạn đánh giá như thế nào về kĩ năng làm việc của {{NAME}}?",
-        "Bạn đánh giá như thế nào về kiến thức trong công việc của {{NAME}}?",
-      ];
-      if (isManager) {
-        scaleQuestions.push(
-          "Bạn đánh giá như thế nào về khả năng quản lý của {{NAME}}?"
-        );
-      }
-
-      questions = scaleQuestions.map<Question>((d) => {
-        return {
-          group: "Colleague",
-          content: d,
-          layout: "Scale",
-          mark: 0,
-          answer: "",
-        };
-      });
-
       const textQuestions = [
-        "Bạn ấn tượng nhất với thay đổi nào của {{NAME}} trong vòng 3 tháng qua? Tại sao?",
-        "Bạn có muốn đưa ra lời khuyên gì để {{NAME}} thay đổi không? Điều này sẽ ảnh hưởng như thế nào đến công việc của bạn?",
+        "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm được thể hiện tốt nhất trong 3 tháng qua của {{NAME}}?",
+        "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm cần cải thiện trong 3 tháng qua của {{NAME}}?",
+        "Bạn có muốn đưa ra lời khuyên hay góp ý gì cho {{NAME}} không? Điều này sẽ ảnh hưởng như thế nào đến công việc của bạn?",
       ].map<Question>((d) => {
         return {
           group: "Colleague",
@@ -124,16 +104,10 @@ export class ViewFormStore {
       questions = [...questions, ...textQuestions];
     } else {
       let scaleQuestions = [
-        "Bạn đánh giá như thế nào về thái độ trong công việc của mình?",
-        "Bạn đánh giá như thế nào về kĩ năng làm việc của mình?",
-        "Bạn đánh giá như thế nào về kiến thức trong công việc của mình?",
+        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về thái độ của bạn trong 3 tháng qua",
+        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về kĩ năng của bạn trong 3 tháng qua",
+        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về kiến thức của bạn trong 3 tháng qua",
       ];
-
-      if (isManager) {
-        scaleQuestions.push(
-          "Bạn đánh giá như thế nào về khả năng quản lý của mình?"
-        );
-      }
 
       questions = scaleQuestions.map<Question>((d) => {
         return {
@@ -146,16 +120,13 @@ export class ViewFormStore {
       });
 
       const textQuestions = compact([
-        "Trong vòng 3 tháng vừa qua bạn thấy mình làm tốt nhất điều gì hoặc đã đạt được những thành tích gì trong công việc của mình?",
-        "Trong vòng 3 tháng vừa qua bạn còn mục tiêu gì chưa đạt được hoặc công việc nào không đạt được như kì vọng? Tại sao?",
-        reviewType === 1
-          ? "Bạn có mong muốn thử sức ở mảng công việc nào khác tại 4handy không? Tại sao?"
-          : null,
-        "Theo bạn, quản lý cấp trên nên có những thay đổi gì để giúp bạn cũng như team của bạn đạt được kết quả tốt hơn?",
-        "Mục tiêu công việc trong 3 tháng tới của bạn là gì?",
-        reviewType === 1
-          ? "Bạn có đề xuất mức lương kỳ vọng hoặc các chế độ đãi ngộ khác như thế nào?"
-          : null,
+        "Trong 3 tháng vừa qua bạn thấy mình làm tốt nhất điều gì hoặc đã đạt được những thành tích gì trong công việc của mình? ",
+        "Trong 3 tháng vừa qua bạn còn mục tiêu gì chưa đạt được hoặc công việc nào không đạt được như kì vọng? Tại sao? ",
+        "Mục tiêu của bạn trong 3 tháng tới là gì?",
+        "Bạn sẽ đo lường sự tiến bộ của mình đối với những mục tiêu này như thế nào? (cần có các con số để thể hiện)",
+        "Bạn sẽ phân bổ và thực hiện các mục tiêu mới của mình với thời gian như thế nào?",
+        "Bạn mong muốn được hỗ trợ như thế nào để đạt được muc tiêu trên? (từ quản lý bộ phận, đồng nghiệp hoặc các bộ phận khác trong công ty)",
+        "Bạn có đề xuất mức lương kỳ vọng hoặc các chế độ đãi ngộ khác như thế nào?",
       ]).map<Question>((d) => {
         return {
           group: "Personal",
@@ -197,6 +168,16 @@ export class ViewFormStore {
         `Bạn chưa giải thích câu hỏi: ${notDoneQuestion.content}`
       );
     }
+    // let minLength = 100;
+    // if (form.reviewType === 3) {
+    //   minLength = 50;
+    // }
+    // const notEnoughLengthQuestion = filter(this.questions, (question) => {
+    //   return split(question.answer, "").length < minLength;
+    // });
+    // if (notEnoughLengthQuestion.length) {
+    //   throw new Error(`Các mục sau chưa đủ số từ tối thiểu`);
+    // }
     const reviewReponse: ReviewResponse = {
       _id: getObjectId(),
       reviewDepartment: undefined,
