@@ -83,7 +83,7 @@ export class ViewFormStore {
     this.questions = [];
   }
 
-  setQuestions(positions: string[], reviewType: number, isManager: boolean) {
+  setQuestions(positions: string[], reviewType: number) {
     let questions: Question[] = [];
 
     if (reviewType === 3) {
@@ -92,11 +92,6 @@ export class ViewFormStore {
       //   "Bạn đánh giá như thế nào về kĩ năng làm việc của {{NAME}}?",
       //   "Bạn đánh giá như thế nào về kiến thức trong công việc của {{NAME}}?",
       // ];
-      // if (isManager) {
-      //   scaleQuestions.push(
-      //     "Bạn đánh giá như thế nào về khả năng quản lý của {{NAME}}?"
-      //   );
-      // }
 
       // questions = scaleQuestions.map<Question>((d) => {
       //   return {
@@ -129,12 +124,6 @@ export class ViewFormStore {
         "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về kĩ năng của bạn trong 3 tháng qua",
         "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về kiến thức của bạn trong 3 tháng qua",
       ];
-
-      // if (isManager) {
-      //   scaleQuestions.push(
-      //     "Bạn đánh giá như thế nào về khả năng quản lý của mình?"
-      //   );
-      // }
 
       questions = scaleQuestions.map<Question>((d) => {
         return {

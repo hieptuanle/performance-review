@@ -169,7 +169,7 @@ const DefinitionModal = observer(() => {
   const matchedCriterionPositions = position
     ? rootStore.criterionStore.getMatchingCriterions(position)
     : [];
-  console.log(matchedCriterionPositions);
+
   return (
     <IonModal
       isOpen={rootStore.viewFormStore.showDefinitionModal}
@@ -230,8 +230,7 @@ const ViewForm = observer(() => {
     rootStore.viewFormStore.setReviewee(matchReviewee);
     rootStore.viewFormStore.setQuestions(
       matchReviewee.revieweePositions,
-      form.reviewType,
-      matchReviewee.isManager
+      form.reviewType
     );
   }, [params.formId, rootStore]);
 

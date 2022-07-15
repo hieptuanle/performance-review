@@ -10,7 +10,6 @@ export interface Reviewee {
   revieweePositions: string[];
   // reviewLink: string;
   revieweeSlug: string;
-  isManager: boolean;
 }
 
 export class RevieweeStore {
@@ -34,6 +33,5 @@ const reviewees = rawForms.map<Reviewee>((d) => {
     revieweeDepartment: d.department,
     revieweePositions: [d.position].filter((d) => !!d),
     revieweeSlug: urlSlug.convert(`${d.code} ${d.displayName}`),
-    isManager: !!d.isManager,
   };
 });
