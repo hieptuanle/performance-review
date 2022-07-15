@@ -7,6 +7,7 @@ const reviewResponseSchema = mongoose.Schema(
 
     revieweeCode: String,
     revieweeName: String,
+    anonymous: { type: Boolean, default: false },
     revieweeDepartment: String,
 
     reviewType: Number,

@@ -23,6 +23,7 @@ export interface ReviewResponse {
   createdAt?: Date;
   updatedAt?: Date;
   user?: string;
+  anonymous?: Boolean;
 }
 
 export class ReviewResponseStore {

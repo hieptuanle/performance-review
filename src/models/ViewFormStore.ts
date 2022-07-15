@@ -184,7 +184,11 @@ export class ViewFormStore {
     }
   }
 
-  async submitReviewResponse(form: ReviewForm, reviewee: Reviewee) {
+  async submitReviewResponse(
+    form: ReviewForm,
+    reviewee: Reviewee,
+    anonymous: Boolean
+  ) {
     const notDoneQuestion = this.questions.find((question) => {
       return !question.answer;
     });
@@ -204,7 +208,7 @@ export class ViewFormStore {
       reviewerCode: form.reviewerCode,
 
       reviewType: form.reviewType,
-
+      anonymous,
       slug: form.slug,
 
       positions: reviewee.revieweePositions,
