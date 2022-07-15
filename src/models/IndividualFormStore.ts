@@ -69,4 +69,3 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
   });
   return result;
 }, []);
-console.log({ forms });

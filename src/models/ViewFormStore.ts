@@ -5,7 +5,7 @@ import { Reviewee } from "./RevieweeStore";
 import { ReviewResponse } from "./ReviewResponseStore";
 import { getObjectId } from "../utils/helper";
 import store from "store";
-import { compact } from "lodash";
+import _, { compact, filter, split } from "lodash";
 
 export interface Question {
   group: string;
@@ -160,24 +160,43 @@ export class ViewFormStore {
     reviewee: Reviewee,
     anonymous: Boolean
   ) {
-    const notDoneQuestion = this.questions.find((question) => {
-      return !question.answer;
+    const notSelectScaleQuestions = filter(this.questions, (question) => {
+      return question.layout === "Scale" && !question.mark;
     });
-    if (notDoneQuestion) {
+    if (notSelectScaleQuestions.length) {
       throw new Error(
-        `Bạn chưa giải thích câu hỏi: ${notDoneQuestion.content}`
+        `Bạn chưa chấm điểm cho câu hỏi: ` +
+          _.map(notSelectScaleQuestions, "content").join(" ,")
       );
     }
-    // let minLength = 100;
-    // if (form.reviewType === 3) {
-    //   minLength = 50;
-    // }
-    // const notEnoughLengthQuestion = filter(this.questions, (question) => {
-    //   return split(question.answer, "").length < minLength;
-    // });
-    // if (notEnoughLengthQuestion.length) {
-    //   throw new Error(`Các mục sau chưa đủ số từ tối thiểu`);
-    // }
+
+    const notDoneQuestions = filter(this.questions, (question) => {
+      return !question.answer;
+    });
+    if (notDoneQuestions.length) {
+      throw new Error(
+        `Bạn chưa giải thích câu hỏi: ` +
+          _.map(notDoneQuestions, "content").join(" ,")
+      );
+    }
+
+    let minLength = 50;
+
+    const notEnoughLengthQuestion = filter(
+      this.questions,
+      (question, index) => {
+        console.log(question);
+        return index < 7 && split(question.answer, " ").length < minLength;
+      }
+    );
+
+    if (notEnoughLengthQuestion.length) {
+      throw new Error(
+        `Các mục sau chưa đủ ${minLength} tối thiểu: ` +
+          _.map(notEnoughLengthQuestion, "content").join(" ,")
+      );
+    }
+
     const reviewReponse: ReviewResponse = {
       _id: getObjectId(),
       reviewDepartment: undefined,
