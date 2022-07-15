@@ -15,7 +15,7 @@ const isAdmin = (userId) => {
   ].includes(userId);
 };
 
-const START_DATE = new Date("2022-03-12T00:00:00+07:00");
+const START_DATE = new Date("2022-07-12T00:00:00+07:00");
 
 router
   .route("/")
