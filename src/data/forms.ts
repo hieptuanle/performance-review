@@ -620,7 +620,7 @@ export const forms = [
     reviewerName1: "Vũ Thúy Nhật",
     reviewerCode2: "C037",
     reviewerName2: "Nguyễn Thị Quỳnh",
-    reviewerCode3: "D717",
+    reviewerCode3: "M30",
     reviewerName3: "Lê Thị Mơ",
     reviewerCode4: "D7954",
     reviewerName4: "Dương Văn Vững",
