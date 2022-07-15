@@ -87,22 +87,6 @@ export class ViewFormStore {
     let questions: Question[] = [];
 
     if (reviewType === 3) {
-      // let scaleQuestions = [
-      //   "Bạn đánh giá như thế nào về thái độ trong công việc của {{NAME}}?",
-      //   "Bạn đánh giá như thế nào về kĩ năng làm việc của {{NAME}}?",
-      //   "Bạn đánh giá như thế nào về kiến thức trong công việc của {{NAME}}?",
-      // ];
-
-      // questions = scaleQuestions.map<Question>((d) => {
-      //   return {
-      //     group: "Colleague",
-      //     content: d,
-      //     layout: "Scale",
-      //     mark: 0,
-      //     answer: "",
-      //   };
-      // });
-
       const textQuestions = [
         "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm được thể hiện tốt nhất trong 3 tháng qua của {{NAME}}?",
         "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm cần cải thiện trong 3 tháng qua của {{NAME}}?",
@@ -184,6 +168,16 @@ export class ViewFormStore {
         `Bạn chưa giải thích câu hỏi: ${notDoneQuestion.content}`
       );
     }
+    // let minLength = 100;
+    // if (form.reviewType === 3) {
+    //   minLength = 50;
+    // }
+    // const notEnoughLengthQuestion = filter(this.questions, (question) => {
+    //   return split(question.answer, "").length < minLength;
+    // });
+    // if (notEnoughLengthQuestion.length) {
+    //   throw new Error(`Các mục sau chưa đủ số từ tối thiểu`);
+    // }
     const reviewReponse: ReviewResponse = {
       _id: getObjectId(),
       reviewDepartment: undefined,
