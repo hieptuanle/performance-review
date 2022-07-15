@@ -255,7 +255,7 @@ export const forms = [
     code: "E09",
     displayName: "Chu Huy Thắng",
     department: "Tech",
-    position: "Programming Lead",
+    position: "Lập trình viên Full stack",
     email: "chuthang205@gmail.com",
     pic: "Lê Tuấn Hiệp",
     isManager: 1,
