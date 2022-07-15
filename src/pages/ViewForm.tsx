@@ -18,6 +18,7 @@ import {
   IonModal,
   IonToast,
   IonIcon,
+  IonCheckbox,
 } from "@ionic/react";
 
 import { useHistory, useParams } from "react-router";
@@ -139,6 +140,7 @@ const TextQuestionCard = observer<{ question: Question; index: number }>(
 const FormQuestions = observer(() => {
   const rootStore = useRootStore();
   const questions = rootStore.viewFormStore.questions;
+
   return (
     <Fragment>
       {questions.map((question, index) => {
@@ -215,6 +217,7 @@ const ViewForm = observer(() => {
   const params = useParams<{ formId: string }>();
   const [showLoading, setShowLoading] = useState(false);
   const [showToastSuccess, setShowToastSuccess] = useState(false);
+  let anonymous = false;
 
   useEffect(() => {
     const formId = params.formId;
@@ -278,6 +281,16 @@ const ViewForm = observer(() => {
           reviewee={matchReviewee}
         ></RevieweeIntro>
         <FormQuestions></FormQuestions>
+        {![1, 2].includes(form.reviewType) ? (
+          <IonCard>
+            <IonItem>
+              <IonCheckbox checked={anonymous} />
+              <IonLabel> Ẩn danh</IonLabel>
+            </IonItem>
+          </IonCard>
+        ) : (
+          ""
+        )}
 
         <div style={{ width: "100%" }} className="ion-text-center">
           <IonButton
@@ -286,7 +299,8 @@ const ViewForm = observer(() => {
               try {
                 await rootStore.viewFormStore.submitReviewResponse(
                   form,
-                  matchReviewee
+                  matchReviewee,
+                  anonymous
                 );
                 setShowToastSuccess(true);
                 history.push("/forms");
