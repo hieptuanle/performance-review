@@ -86,7 +86,7 @@ export class ViewFormStore {
   setQuestions(positions: string[], reviewType: number) {
     let questions: Question[] = [];
 
-    if (reviewType === 3) {
+    if ([3, 4].includes(reviewType)) {
       const textQuestions = [
         "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm được thể hiện tốt nhất trong 3 tháng qua của {{NAME}}?",
         "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm cần cải thiện trong 3 tháng qua của {{NAME}}?",
