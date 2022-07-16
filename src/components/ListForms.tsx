@@ -17,7 +17,7 @@ const ListForms = observer(() => {
   const colleagueForms = individualForms.filter((form) => {
     return [3, 4].includes(form.reviewType);
   });
-  if (!individualForms.length) {
+  if (!individualForms.length && !colleagueForms.length) {
     return (
       <IonList>
         <IonListHeader>Bạn không có form đánh giá nào</IonListHeader>
