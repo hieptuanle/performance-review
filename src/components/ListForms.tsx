@@ -12,12 +12,12 @@ const ListForms = observer(() => {
   });
   const individualForms = rootStore.individualFormStore.myForms;
   const selfAssessmentForms = individualForms.filter((form) => {
-    return form.reviewType === 1 || form.reviewType === 2;
+    return [1, 2].includes(form.reviewType);
   });
   const colleagueForms = individualForms.filter((form) => {
     return [3, 4].includes(form.reviewType);
   });
-  if (!individualForms.length && !colleagueForms.length) {
+  if (!selfAssessmentForms.length && !colleagueForms.length) {
     return (
       <IonList>
         <IonListHeader>Bạn không có form đánh giá nào</IonListHeader>
