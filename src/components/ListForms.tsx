@@ -15,7 +15,7 @@ const ListForms = observer(() => {
     return form.reviewType === 1 || form.reviewType === 2;
   });
   const colleagueForms = individualForms.filter((form) => {
-    return form.reviewType === 3;
+    return [3, 4].includes(form.reviewType);
   });
   if (!individualForms.length) {
     return (

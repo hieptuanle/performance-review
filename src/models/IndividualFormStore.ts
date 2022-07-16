@@ -49,6 +49,18 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
     ),
     reviewType: item.group,
   });
+  if (item.managerCode) {
+    result.push({
+      revieweeCode: item.code,
+      revieweeName: item.displayName,
+      reviewerName: get(item, `managerName`),
+      reviewerCode: get(item, `managerCode`),
+      reviewType: 4,
+      slug: urlSlug.convert(
+        `${item.code} ${item.displayName} 4 ${get(item, `managerCode`)}`
+      ),
+    });
+  }
   const indices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
   indices.forEach((index) => {
     if (get(item, `reviewerCode${index}`)) {
