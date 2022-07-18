@@ -6,7 +6,6 @@ const router = express.Router();
 
 const isAdmin = (userId) => {
   return [
-    "5ed466b75a41f0bf003b73d5",
     "5acb25e5826e800c7fd21ab6",
     "5af40cc4078bcf48e1b54dc0",
     "556d9ddee22a874f4a9030b6",
@@ -22,6 +21,7 @@ router
   .get(async (req, res) => {
     try {
       const userId = req.header("x-user-id");
+
       if (!userId) return [];
       let query = {
         createdAt: { $gte: START_DATE },
@@ -31,23 +31,11 @@ router
         query = {
           createdAt: { $gte: START_DATE },
         };
-        if (req.query.revieweeCode) {
-          query = {
-            revieweeCode: req.query.revieweeCode,
-            createdAt: { $gte: START_DATE },
-          };
-        }
       } else {
-        if (req.query.revieweeCode) {
-          query = {
-            revieweeCode: req.query.revieweeCode,
-            reviewerCode: req.query.reviewerCode,
-            createdAt: { $gte: START_DATE },
-          };
-        }
         query = {
-          user: userId,
+          revieweeCode: req.query.revieweeCode,
           createdAt: { $gte: START_DATE },
+          anonymous: false,
         };
       }
 
