@@ -12,7 +12,8 @@ export class ListResponsesStore {
 
   async findMyResponses() {
     const reviewResponses = (await this.rootStore.transportStore.get(
-      "/review-responses"
+      "/review-responses?revieweeCode=" +
+        this.rootStore.authenticationStore.userCode
     )) as ReviewResponse[];
     runInAction(() => {
       this.responses = reviewResponses;
