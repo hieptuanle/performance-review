@@ -280,8 +280,6 @@ export const forms = [
     email: "dungdark97@gmail.com",
     pic: "Lê Tuấn Hiệp",
     group: 1,
-    reviewerCode1: "C037",
-    reviewerName1: "Nguyễn Thị Quỳnh",
     reviewerCode2: "M63",
     reviewerName2: "Trịnh Thị Hạnh Linh",
     reviewerCode3: "D703",
