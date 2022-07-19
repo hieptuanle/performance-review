@@ -244,8 +244,6 @@ export const forms = [
     reviewerName2: "Nguyễn Đức Huy",
     reviewerCode3: "D479",
     reviewerName3: "Nguyễn Minh Ngọc",
-    reviewerCode4: "D169",
-    reviewerName4: "Trương Thu Hằng",
     reviewerCode5: "D708",
     reviewerName5: "Đinh Phương Thảo",
     managerCode: "D169",
