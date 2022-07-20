@@ -215,7 +215,7 @@ const ViewForm = observer(() => {
   const params = useParams<{ formId: string }>();
   const [showLoading, setShowLoading] = useState(false);
   const [showToastSuccess, setShowToastSuccess] = useState(false);
-  let anonymous = false;
+  const [checked, setChecked] = useState(false);
 
   useEffect(() => {
     const formId = params.formId;
@@ -281,7 +281,10 @@ const ViewForm = observer(() => {
         {![1, 2].includes(form.reviewType) ? (
           <IonCard>
             <IonItem>
-              <IonCheckbox checked={anonymous} />
+              <IonCheckbox
+                checked={checked}
+                onIonChange={(e) => setChecked(e.detail.checked)}
+              />
               <IonLabel> Ẩn danh</IonLabel>
             </IonItem>
           </IonCard>
@@ -297,7 +300,7 @@ const ViewForm = observer(() => {
                 await rootStore.viewFormStore.submitReviewResponse(
                   form,
                   matchReviewee,
-                  anonymous
+                  checked
                 );
                 setShowToastSuccess(true);
                 history.push("/forms");
