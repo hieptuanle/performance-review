@@ -98,9 +98,11 @@ const ViewRevieweePage = observer(() => {
                 <div
                   key={answer._id}
                   className={
-                    answer.reviewType === 1 || answer.reviewType === 2
-                      ? "self-review "
-                      : ""
+                    (answer.reviewType === 1 || answer.reviewType === 2
+                      ? "self-review"
+                      : "") +
+                    " " +
+                    (answer.anonymous ? "anonymous" : "")
                   }
                 >
                   <hr
@@ -108,6 +110,11 @@ const ViewRevieweePage = observer(() => {
                       borderTop: "1px solid #dbdbdb",
                     }}
                   ></hr>
+                  {!!answer.anonymous && (
+                    <div>
+                      <strong>Ẩn danh</strong>
+                    </div>
+                  )}
                   <div>
                     {answer.mark > 0 ? (
                       <>

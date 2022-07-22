@@ -1,5 +1,10 @@
-.view-reviewee-page .self-review p {
+.view-reviewee-page .self-review div {
   color: red;
+}
+
+.view-reviewee-page .anonymous div {
+  background-color: rgb(213, 213, 213);
+  color: #000;
 }
 
 .view-reviewee-page .manager-review p {
