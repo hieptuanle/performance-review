@@ -16,6 +16,7 @@ import useRootStore from "../hooks/useRootStore";
 import UserAvatar from "../components/UserAvatar";
 import RevieweeTitle from "../components/RevieweePosition";
 import { format } from "date-fns";
+import "./ListResponsesPage.css";
 
 const ListResponsesPage = observer(() => {
   const rootStore = useRootStore();
@@ -36,21 +37,30 @@ const ListResponsesPage = observer(() => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen>
-        <IonList>
+        <IonList className="list-responses">
           {listResponsesStore.responses.map((response) => (
             <IonItem
               key={response._id}
               routerLink={"/responses/" + response._id}
+              className={response.anonymous ? "anonymous" : ""}
             >
               <UserAvatar revieweeCode={response.revieweeCode}></UserAvatar>
-              <IonLabel>
+              <IonLabel className="item-content">
                 <h2>{response.revieweeName}</h2>
                 <h3>
                   <RevieweeTitle
                     revieweeCode={response.revieweeCode}
                   ></RevieweeTitle>
                 </h3>
-                <p>Người/bộ phận đánh giá: {response.reviewerName}</p>
+                <p>
+                  Người/bộ phận đánh giá: {response.reviewerName}{" "}
+                  {response.anonymous && (
+                    <span>
+                      <strong>(Ẩn danh)</strong>
+                    </span>
+                  )}
+                </p>
+
                 <p>
                   Đã gửi vào lúc:{" "}
                   {response.createdAt

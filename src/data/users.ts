@@ -360,4 +360,39 @@ export const users = [
     displayName: "Bùi Thị Hương",
     email: "buihuong17101997@gmail.com",
   },
+  {
+    displayName: "Ngô Dương Hương",
+    code: "D248",
+    email: "ngoduonghuong@gmail.com",
+  },
+  {
+    email: "thanhnam06121997@gmail.com",
+    position: "Kitchen Manager, Training Executive, TTL",
+    code: "D337",
+    displayName: "Nguyễn Thành Nam",
+  },
+  {
+    email: "myxonefm@gmail.com",
+    position: "Quản lý Cơ sở Full-time",
+    code: "D1029",
+    displayName: "Lê Thị Hương",
+  },
+  {
+    email: "doanthingocanh96@gmail.com",
+    position: "TLQL Tuyển dụng Full-time",
+    code: "D7287",
+    displayName: "Doãn Thị Ngọc Ánh",
+  },
+  {
+    email: "huongmai04112000@gmail.com",
+    position: "Quản lý Cơ sở Full-time",
+    code: "D1969",
+    displayName: "Trần Hương Mai",
+  },
+  {
+    email: "duongnguyenthuy276@gmail.com",
+    position: "Nhân viên Giám sát Full-time",
+    code: "D1516",
+    displayName: "Nguyễn Thùy Dương",
+  },
 ];
