@@ -11,9 +11,12 @@ export class ListResponsesStore {
   }
 
   async findMyResponses() {
+    let link = "/review-responses";
+    if (this.rootStore.authenticationStore.seeAll !== true) {
+      link += "?revieweeCode=" + this.rootStore.authenticationStore.userCode;
+    }
     const reviewResponses = (await this.rootStore.transportStore.get(
-      "/review-responses?revieweeCode=" +
-        this.rootStore.authenticationStore.userCode
+      link
     )) as ReviewResponse[];
     runInAction(() => {
       this.responses = reviewResponses;

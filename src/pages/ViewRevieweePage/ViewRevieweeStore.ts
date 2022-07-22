@@ -63,7 +63,6 @@ export class ViewRevieweeStore {
   getReviewee(revieweeSlug: string) {
     const matchReviewee = this.rootStore.revieweeStore.reviewees.find(
       (reviewee) => {
-        console.log({ revieweeSlug });
         return reviewee.revieweeSlug === revieweeSlug;
       }
     );

@@ -4,36 +4,28 @@ const ReviewResponse = require("../../models/review-response.model");
 
 const router = express.Router();
 
-const isAdmin = (userId) => {
-  return [
-    "5acb25e5826e800c7fd21ab6",
-    "5af40cc4078bcf48e1b54dc0",
-    "556d9ddee22a874f4a9030b6",
-    "55506b4670ca5e60201cdaa8",
-    "5565cfc8712c3c341d0d14a1",
-  ].includes(userId);
-};
-
 const START_DATE = new Date("2022-07-12T00:00:00+07:00");
 
 router
   .route("/")
   .get(async (req, res) => {
     try {
-      const userId = req.header("x-user-id");
+      const user = req.user;
+      if (!user) throw new Error("Forbidden");
+      let query = { createdAt: null }; // default là ko ra kết quả gì
 
-      if (!userId) return [];
-      let query = {
-        createdAt: { $gte: START_DATE },
-      };
-
-      if (isAdmin(userId)) {
+      if (user.roles.includes("bom")) {
+        // người dùng được dùng reviewer code để xem chế độ của người khác
         query = {
           createdAt: { $gte: START_DATE },
         };
+        const { revieweeCode } = req.query;
+        if (revieweeCode) {
+          query.revieweeCode = revieweeCode;
+        }
       } else {
         query = {
-          revieweeCode: req.query.revieweeCode,
+          revieweeCode: req.user.code,
           createdAt: { $gte: START_DATE },
           anonymous: false,
         };

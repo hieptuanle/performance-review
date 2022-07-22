@@ -43,6 +43,9 @@ app.use(compression());
 app.use(cors());
 app.options("*", cors());
 
+// authentication
+app.use(require("./middlewares/authentication"));
+
 // v1 api routes
 app.use("/v1", routes);
 

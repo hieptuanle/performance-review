@@ -143,9 +143,9 @@ const MainMenu: React.FC = observer(() => {
                 <IonItem routerLink="/reviewees">Reviewees</IonItem>
               ) : null}
 
-              <BomItem>
+              {/* <BomItem>
                 <ReviewerSelect></ReviewerSelect>
-              </BomItem>
+              </BomItem> */}
               <BomItem>
                 <SellAlTogggle></SellAlTogggle>
               </BomItem>

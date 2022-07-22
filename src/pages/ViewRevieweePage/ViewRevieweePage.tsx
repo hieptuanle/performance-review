@@ -76,7 +76,11 @@ const ViewRevieweePage = observer(() => {
             <IonCardHeader>
               <IonCardSubtitle>
                 <strong>
-                  {index + 1}. {question.group} - {question.content}
+                  {index + 1}. {question.group} -{" "}
+                  {question.content.replaceAll(
+                    "{{NAME}}",
+                    reviewee.revieweeName
+                  )}
                 </strong>
               </IonCardSubtitle>
             </IonCardHeader>
@@ -104,7 +108,7 @@ const ViewRevieweePage = observer(() => {
                       borderTop: "1px solid #dbdbdb",
                     }}
                   ></hr>
-                  <p>
+                  <div>
                     {answer.mark > 0 ? (
                       <>
                         <strong>Điểm:</strong>{" "}
@@ -119,7 +123,7 @@ const ViewRevieweePage = observer(() => {
                       {answer.reviewerCode ? answer.reviewerCode + " - " : ""}{" "}
                       {answer.reviewerName}
                     </small>
-                  </p>
+                  </div>
                 </div>
               ))}
             </IonCardContent>

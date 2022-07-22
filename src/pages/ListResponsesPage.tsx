@@ -23,7 +23,7 @@ const ListResponsesPage = observer(() => {
 
   useEffect(() => {
     rootStore.listResponsesStore.findMyResponses();
-  }, [rootStore]);
+  }, [rootStore, rootStore.authenticationStore.seeAll]);
 
   return (
     <IonPage>
