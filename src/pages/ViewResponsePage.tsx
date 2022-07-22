@@ -56,7 +56,11 @@ const ViewResponsePage = observer(() => {
           <IonCard key={d.content}>
             <IonItem>
               <h2>
-                {index + 1}. {d.content}
+                {index + 1}.{" "}
+                {d.content.replaceAll(
+                  `{{NAME}}`,
+                  viewResponseStore.response?.revieweeName || ""
+                )}
               </h2>
             </IonItem>
             {viewResponseStore.response?.reviewType === 1 && (

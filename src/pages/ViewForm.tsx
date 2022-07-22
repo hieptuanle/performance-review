@@ -40,7 +40,7 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
         <IonLabel>
           <h2 style={{ fontSize: "1.5em", fontWeight: "bold" }}>
             {index + 1}.{" "}
-            {question.content.replace(/{{NAME}}/g, revieweeName || "")}
+            {question.content.replaceAll(`{{NAME}}`, revieweeName || "")}
           </h2>
         </IonLabel>
         <IonButton
