@@ -8,6 +8,8 @@ import {
   IonButtons,
   IonItem,
   IonCard,
+  IonLabel,
+  IonText,
 } from "@ionic/react";
 
 import { useParams } from "react-router";
@@ -57,11 +59,24 @@ const ViewResponsePage = observer(() => {
                 {index + 1}. {d.content}
               </h2>
             </IonItem>
+            {viewResponseStore.response?.reviewType === 1 && (
+              <IonItem>
+                <IonLabel>
+                  <IonText color="primary">
+                    <h3>Điểm</h3>
+                  </IonText>
+                  <p>{d.mark}</p>
+                </IonLabel>
+              </IonItem>
+            )}
+
             <IonItem>
-              <p>Điểm: {d.mark}</p>
-            </IonItem>
-            <IonItem>
-              <p>Giải thích: {d.answer}</p>
+              <IonLabel className="ion-text-wrap">
+                <IonText color="primary">
+                  <h3>Giải thích</h3>
+                </IonText>
+                <p style={{ whiteSpace: "pre-line" }}>{d.answer}</p>
+              </IonLabel>
             </IonItem>
           </IonCard>
         ))}
