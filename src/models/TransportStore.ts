@@ -28,24 +28,27 @@ export class TransportStore {
     method: "GET" | "POST" | "PUT" | "PATCH" | "DELETE";
     path: string;
   }) {
-    const dataPromise = await fetch(this.serverURI + path, {
-      method: method,
-      mode: "cors",
-      headers: {
-        "Content-Type": "application/json",
-        "X-User-Id": this.rootStore.authenticationStore.user
-          ? this.rootStore.authenticationStore.user._id
-          : "",
-      },
-      redirect: "follow",
-      referrerPolicy: "no-referrer",
-      body: JSON.stringify(data),
-    });
-    if (dataPromise.status >= 400) {
-      const data = await dataPromise.json();
-      throw new Error(data.message);
+    try {
+      const dataPromise = await fetch(this.serverURI + path, {
+        method: method,
+        mode: "cors",
+        headers: {
+          "Content-Type": "application/json",
+          "X-User-Id": this.rootStore.authenticationStore.user
+            ? this.rootStore.authenticationStore.user._id
+            : "",
+        },
+        redirect: "follow",
+        referrerPolicy: "no-referrer",
+        body: JSON.stringify(data),
+      });
+      if (dataPromise.status >= 400) {
+        throw new Error(await dataPromise.text());
+      }
+      return dataPromise.json();
+    } catch (err: any) {
+      alert(err.message);
     }
-    return dataPromise.json();
   }
 
   async post(path: string, data: Object) {

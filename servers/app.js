@@ -61,8 +61,10 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).send("Something broke!");
+  res.status(500).json({
+    message: err.message,
+    err,
+  });
 });
 
 module.exports = app;
