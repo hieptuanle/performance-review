@@ -10,7 +10,6 @@ import {
   IonSelect,
   IonSelectOption,
   IonTitle,
-  IonToggle,
   IonToolbar,
 } from "@ionic/react";
 import { useHistory } from "react-router";
@@ -100,15 +99,22 @@ const SellAlTogggle = observer(() => {
   const rootStore = useRootStore();
   return (
     <>
-      <IonLabel>
-        Xem tất cả <strong>(BOM feature)</strong>
-      </IonLabel>
-      <IonToggle
-        checked={rootStore.authenticationStore.seeAll}
+      <IonLabel>View as</IonLabel>
+      <IonSelect
+        interface="popover"
+        value={rootStore.authenticationStore.viewMode}
         onIonChange={(e) => {
-          rootStore.authenticationStore.setSeeAll(e.detail.checked);
+          rootStore.authenticationStore.setViewMode(e.detail.value);
         }}
-      ></IonToggle>
+      >
+        <IonSelectOption value="employee">Nhân viên</IonSelectOption>
+        <ManagerItem>
+          <IonSelectOption value="manager">Quản lý</IonSelectOption>
+        </ManagerItem>
+        <BomItem>
+          <IonSelectOption value="bom">BOM</IonSelectOption>
+        </BomItem>
+      </IonSelect>
     </>
   );
 });
@@ -119,6 +125,16 @@ const BomItem = observer<{
 }>(({ children, ...rest }) => {
   const rootStore = useRootStore();
   return rootStore.authenticationStore.isRealBom ? (
+    <IonItem {...rest}>{children}</IonItem>
+  ) : null;
+});
+
+const ManagerItem = observer<{
+  children: React.ReactElement | string;
+  [key: string]: any;
+}>(({ children, ...rest }) => {
+  const rootStore = useRootStore();
+  return rootStore.authenticationStore.isManager ? (
     <IonItem {...rest}>{children}</IonItem>
   ) : null;
 });
@@ -143,12 +159,9 @@ const MainMenu: React.FC = observer(() => {
                 <IonItem routerLink="/reviewees">Reviewees</IonItem>
               ) : null}
 
-              {/* <BomItem>
-                <ReviewerSelect></ReviewerSelect>
-              </BomItem> */}
-              <BomItem>
+              <ManagerItem>
                 <SellAlTogggle></SellAlTogggle>
-              </BomItem>
+              </ManagerItem>
               <IonItem
                 onClick={() => {
                   rootStore.authenticationStore.logout();

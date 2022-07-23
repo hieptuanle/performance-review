@@ -1,5 +1,8 @@
 const express = require("express");
+const _ = require("lodash");
+
 const ReviewResponse = require("../../models/review-response.model");
+const { getRevieweesForManager, isManager } = require("../../utils/forms");
 // const moment = require("moment");
 
 const router = express.Router();
@@ -12,26 +15,67 @@ router
     try {
       const user = req.user;
       if (!user) throw new Error("Forbidden");
-      let query = { createdAt: null }; // default là ko ra kết quả gì
+      let revieweeQuery = { createdAt: null }; // default là ko ra kết quả gì
+
+      const { revieweeCode, managerCode, employeeCode } = req.query;
 
       if (user.roles.includes("bom")) {
         // người dùng được dùng reviewer code để xem chế độ của người khác
-        query = {
-          createdAt: { $gte: START_DATE },
-        };
-        const { revieweeCode } = req.query;
+        revieweeQuery = {};
         if (revieweeCode) {
-          query.revieweeCode = revieweeCode;
+          revieweeQuery.revieweeCode = revieweeCode;
+        }
+        if (managerCode) {
+          const reviewees = getRevieweesForManager(user.code);
+          if (reviewees && reviewees.length > 0) {
+            revieweeQuery.revieweeCode = { $in: reviewees.map((r) => r.code) };
+          }
+        }
+        if (employeeCode) {
+          revieweeQuery.revieweeCode = employeeCode;
+        }
+      } else if (isManager(user.code)) {
+        // người dùng được dùng reviewer code để xem chế độ của người khác
+        revieweeQuery = {
+          revieweeCode: req.user.code,
+          anonymous: false,
+        };
+
+        const reviewees = getRevieweesForManager(user.code);
+        if (revieweeCode && _.some(reviewees, { code: revieweeCode })) {
+          revieweeQuery.revieweeCode = revieweeCode;
+        }
+        if (managerCode) {
+          const reviewees = getRevieweesForManager(user.code);
+          if (reviewees && reviewees.length > 0) {
+            revieweeQuery.revieweeCode = { $in: reviewees.map((r) => r.code) };
+          }
+        }
+        if (employeeCode && employeeCode === user.code) {
+          revieweeQuery.revieweeCode = employeeCode;
         }
       } else {
-        query = {
+        revieweeQuery = {
           revieweeCode: req.user.code,
-          createdAt: { $gte: START_DATE },
           anonymous: false,
         };
       }
 
-      const reviewResponses = await ReviewResponse.find(query);
+      const reviewerQuery = {
+        reviewerCode: req.user.code,
+      };
+
+      let query = {};
+      if (revieweeCode || managerCode) {
+        query = revieweeQuery;
+      } else {
+        query = { $or: [revieweeQuery, reviewerQuery] };
+      }
+
+      const reviewResponses = await ReviewResponse.find({
+        ...query,
+        createdAt: { $gte: START_DATE },
+      });
       res.jsonp(reviewResponses);
     } catch (e) {
       res.status(400).json({

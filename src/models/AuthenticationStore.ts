@@ -1,6 +1,7 @@
 import { makeObservable, observable, action, computed } from "mobx";
 import { RootStore } from "./RootStore";
 import store from "store";
+import { managers } from "../data/forms";
 
 interface IUser {
   _id: string;
@@ -28,7 +29,7 @@ export class AuthenticationStore {
   token: string | null = null;
   expired: Date | null = null;
 
-  seeAll: boolean = true;
+  viewMode: "employee" | "manager" | "bom" = "employee";
 
   loading = false;
 
@@ -51,15 +52,17 @@ export class AuthenticationStore {
       firstName: observable,
       token: observable,
       loading: observable,
-      seeAll: observable,
+      viewMode: observable,
       isAuthenticated: computed,
       isRealBom: computed,
+      isManager: computed,
       isBom: computed,
       authenticate: action,
       setCredentials: action,
       logout: action,
       switchUser: action,
       resetUser: action,
+      setViewMode: action,
       rootStore: false,
     });
   }
@@ -72,14 +75,18 @@ export class AuthenticationStore {
     if (!this.user) return false;
     return ["F688", "F262", "F432", "D327", "D388"].includes(this.user.code);
   }
+  get isManager() {
+    if (!this.user) return false;
+    return managers.find((manager: any) => manager.code === this.user?.code);
+  }
 
   get isBom() {
     if (!this.userCode) return false;
     return ["F688", "F262", "F432", "D327", "D388"].includes(this.userCode);
   }
 
-  setSeeAll(value: boolean) {
-    this.seeAll = value;
+  setViewMode(value: "employee" | "manager" | "bom") {
+    this.viewMode = value;
   }
 
   setCredentials({ user, token, expired }: Credentials) {

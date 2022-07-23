@@ -17,21 +17,28 @@ export class ListRevieweesStore {
   get myReviewees() {
     if (
       this.rootStore.authenticationStore.isBom &&
-      this.rootStore.authenticationStore.seeAll
+      this.rootStore.authenticationStore.viewMode === "bom"
     ) {
       return this.reviewees;
     }
-    const myForms = this.rootStore.individualFormStore.myForms.filter(
-      (form) => {
-        return form.reviewType === 4;
-      }
-    );
 
-    const revieweeCodes = myForms.map((form) => {
-      return form.revieweeCode;
-    });
+    if (
+      this.rootStore.authenticationStore.isManager &&
+      this.rootStore.authenticationStore.viewMode === "manager"
+    ) {
+      const myForms = this.rootStore.individualFormStore.myForms;
+      const revieweeCodes = myForms.map((form) => {
+        return form.revieweeCode;
+      });
+      return this.reviewees.filter((reviewee) => {
+        return revieweeCodes.includes(reviewee.revieweeCode);
+      });
+    }
+
     return this.reviewees.filter((reviewee) => {
-      return revieweeCodes.includes(reviewee.revieweeCode);
+      return (
+        reviewee.revieweeCode === this.rootStore.authenticationStore.user?.code
+      );
     });
   }
 }

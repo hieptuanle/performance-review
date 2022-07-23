@@ -1,6 +1,6 @@
-import _ from "lodash";
+const _ = require("lodash");
 
-export const forms = [
+const forms = [
   {
     code: "D3982",
     displayName: "Hoàng Văn Luýt",
@@ -1047,8 +1047,8 @@ export const forms = [
   },
 ];
 
-export const managers = _.map(
-  _.reduce<any, any>(
+const managers = _.map(
+  _.reduce(
     forms,
     (result, form) => {
       if (form.managerCode) {
@@ -1064,3 +1064,16 @@ export const managers = _.map(
     {}
   )
 );
+
+const isManager = (code) => {
+  return _.find(managers, { code: code });
+};
+
+const getRevieweesForManager = (code) => {
+  return _.find(managers, { code: code }).reviewees;
+};
+
+module.exports = {
+  isManager,
+  getRevieweesForManager,
+};

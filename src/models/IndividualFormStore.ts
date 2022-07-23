@@ -8,6 +8,8 @@ import { forms as rawForms } from "../data/forms";
 interface IndividualForm extends ReviewForm {
   reviewerCode: string;
   reviewerName: string;
+  managerCode?: string;
+  managerName?: string;
 }
 
 export class IndividualFormStore {
@@ -28,9 +30,21 @@ export class IndividualFormStore {
     // Nếu là BOM thì lấy hết tất cả form
     if (
       this.rootStore.authenticationStore.isBom &&
-      this.rootStore.authenticationStore.seeAll
+      this.rootStore.authenticationStore.viewMode === "bom"
     )
       return this.forms;
+
+    // TODO: Nếu là Manager thì lấy form của nhóm
+    if (
+      this.rootStore.authenticationStore.isManager &&
+      this.rootStore.authenticationStore.viewMode === "manager"
+    ) {
+      return this.forms.filter((form) => {
+        return (
+          form.managerCode === this.rootStore.authenticationStore.user?.code
+        );
+      });
+    }
 
     return this.forms.filter((form) => {
       return form.reviewerCode === this.rootStore.authenticationStore.userCode;
@@ -48,6 +62,8 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
       `${item.code} ${item.displayName} ${item.group} ${item.code}`
     ),
     reviewType: item.group,
+    managerCode: item.managerCode,
+    managerName: item.managerName,
   });
   if (item.managerCode) {
     result.push({
@@ -59,6 +75,8 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
       slug: urlSlug.convert(
         `${item.code} ${item.displayName} 4 ${get(item, `managerCode`)}`
       ),
+      managerCode: item.managerCode,
+      managerName: item.managerName,
     });
   }
   const indices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
@@ -76,6 +94,8 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
             `reviewerCode${index}`
           )}`
         ),
+        managerCode: item.managerCode,
+        managerName: item.managerName,
       });
     }
   });

@@ -24,7 +24,7 @@ const ListResponsesPage = observer(() => {
 
   useEffect(() => {
     rootStore.listResponsesStore.findMyResponses();
-  }, [rootStore, rootStore.authenticationStore.seeAll]);
+  }, [rootStore, rootStore.authenticationStore.viewMode]);
 
   return (
     <IonPage>
