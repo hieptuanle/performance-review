@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 export const forms = [
   {
     code: "D3982",
@@ -924,3 +926,21 @@ export const forms = [
     managerName: "Vy Tuấn Anh",
   },
 ];
+
+export const managers = _.map(
+  _.reduce<any, any>(
+    forms,
+    (result, form) => {
+      if (form.managerCode) {
+        result[form.managerCode] = result[form.managerCode] || {
+          code: form.managerCode,
+          displayName: form.managerName,
+          reviewees: [],
+        };
+        result[form.managerCode].reviewees.push(form);
+      }
+      return result;
+    },
+    {}
+  )
+);
