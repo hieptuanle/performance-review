@@ -61,8 +61,8 @@ export const forms = [
     reviewerName4: "Nguyễn Văn Cương",
     reviewerCode5: "",
     reviewerName5: "",
-    managerCode: "D327",
-    managerName: "Dương Thị Nhung",
+    managerCode: "S306",
+    managerName: "Nguyễn Thị Ngọc Anh",
   },
   {
     code: "D5915",
@@ -82,8 +82,8 @@ export const forms = [
     reviewerName4: "Chu Huy Thắng",
     reviewerCode5: "",
     reviewerName5: "",
-    managerCode: "D327",
-    managerName: "Dương Thị Nhung",
+    managerCode: "S306",
+    managerName: "Nguyễn Thị Ngọc Anh",
   },
   {
     code: "D1516",
