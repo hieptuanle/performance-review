@@ -4,6 +4,7 @@ export const forms = [
   {
     code: "D3982",
     displayName: "Hoàng Văn Luýt",
+    department: "HCM",
     email: "hvl.luyt@gmail.com",
     managerName: "Dương Thị Nhung",
     managerCode: "D327",
@@ -11,6 +12,7 @@ export const forms = [
   {
     code: "D4553",
     displayName: "Nguyễn Minh Hùng",
+    department: "Kiểm toán",
     email: "Ngminhhung1102@gmail.com",
     managerName: "Dương Thị Nhung",
     managerCode: "D327",
@@ -18,6 +20,7 @@ export const forms = [
   {
     code: "D5915",
     displayName: "Phùng Hải Long",
+    department: "Kiểm toán",
     email: "longphung.2105@gmail.com",
     managerName: "Dương Thị Nhung",
     managerCode: "D327",
@@ -25,6 +28,7 @@ export const forms = [
   {
     code: "D570",
     displayName: "Hà Thị Trà My ",
+    department: "QC",
     email: "hathitramy2512@gmail.com\t",
     managerName: "Dương Thị Nhung",
     managerCode: "D327",
@@ -32,6 +36,7 @@ export const forms = [
   {
     code: "D6794",
     displayName: "Hoàng Đình Hiếu",
+    department: "QC",
     email: "hieuuuu2002@gmail.com",
     managerName: "Dương Thị Nhung",
     managerCode: "D327",
@@ -39,6 +44,7 @@ export const forms = [
   {
     code: "D6795",
     displayName: "Trần Thị Hiền",
+    department: "QC",
     email: "tranhien1996.hn@gmail.com",
     managerName: "Dương Thị Nhung",
     managerCode: "D327",
@@ -46,6 +52,7 @@ export const forms = [
   {
     code: "D7886",
     displayName: "Đàm Dĩnh Thanh",
+    department: "QC",
     email: "damdinhthanh.97@gmail.com",
     managerName: "Dương Thị Nhung",
     managerCode: "D327",
@@ -53,6 +60,7 @@ export const forms = [
   {
     code: "S78",
     displayName: "Bùi Thị Hương",
+    department: "Kho - ĐG",
     email: "buihuong17101997@gmail.com",
     managerName: "Dương Thị Nhung",
     managerCode: "D327",
@@ -60,6 +68,7 @@ export const forms = [
   {
     code: "D8492",
     displayName: "Vương Cẩm Tú",
+    department: "Logistics",
     email: "camtu3224@gmail.com",
     managerName: "Dương Thị Nhung",
     managerCode: "D327",
@@ -67,6 +76,7 @@ export const forms = [
   {
     code: "D708",
     displayName: "Đinh Phương Thảo",
+    department: "Tech",
     email: "dinhphuongthaoqia@gmail.com",
     managerName: "Lê Tuấn Hiệp",
     managerCode: "F432",
@@ -74,6 +84,7 @@ export const forms = [
   {
     code: "D4309",
     displayName: "Nguyễn Văn Cương",
+    department: "BS",
     email: "cuongnv.1512@gmail.com",
     managerName: "Lê Tuấn Hiệp",
     managerCode: "F432",
@@ -81,6 +92,7 @@ export const forms = [
   {
     code: "D5939",
     displayName: "Nguyễn Đắc Dũng",
+    department: "KT",
     email: "dungdark97@gmail.com",
     managerName: "Lê Tuấn Hiệp",
     managerCode: "F432",
@@ -88,6 +100,7 @@ export const forms = [
   {
     code: "D703",
     displayName: "Nguyễn Huyền Trang",
+    department: "Pháp chế",
     email: "Blackpage60@gmail.com",
     managerName: "Lê Tuấn Hiệp",
     managerCode: "F432",
@@ -95,6 +108,7 @@ export const forms = [
   {
     code: "E09",
     displayName: "Chu Huy Thắng",
+    department: "Tech",
     email: "chuthang205@gmail.com",
     managerName: "Lê Tuấn Hiệp",
     managerCode: "F432",
@@ -102,6 +116,7 @@ export const forms = [
   {
     code: "D1969",
     displayName: "Trần Hương Mai",
+    department: "Cơ sở",
     email: "huongmai04112000@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -109,6 +124,7 @@ export const forms = [
   {
     code: "D248",
     displayName: "Ngô Dương Hương",
+    department: "Cơ sở",
     email: "ngoduonghuong@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -116,6 +132,7 @@ export const forms = [
   {
     code: "D7395",
     displayName: "Dương Thị Trang",
+    department: "Cơ sở",
     email: "trangduong11899@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -123,6 +140,7 @@ export const forms = [
   {
     code: "D931",
     displayName: "Ngô Thị Huyền",
+    department: "Cơ sở",
     email: "huyennt66@wru.vn",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -130,6 +148,7 @@ export const forms = [
   {
     code: "S146",
     displayName: "Bùi Văn Vương",
+    department: "HC",
     email: "vuong7815@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -137,6 +156,7 @@ export const forms = [
   {
     code: "D2537",
     displayName: "Nguyễn Văn Thao",
+    department: "HC",
     email: "ngocthao060690@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -144,6 +164,7 @@ export const forms = [
   {
     code: "D3793",
     displayName: "Trương Văn Vỹ",
+    department: "HC",
     email: "truongvybhtv@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -151,6 +172,7 @@ export const forms = [
   {
     code: "E73",
     displayName: "Nguyễn Anh Tú",
+    department: "HC",
     email: "anhtuas123@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -158,6 +180,7 @@ export const forms = [
   {
     code: "D7287",
     displayName: "Doãn Thị Ngọc Ánh",
+    department: "HR2",
     email: "doanthingocanh1605@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -165,6 +188,7 @@ export const forms = [
   {
     code: "D7954",
     displayName: "Dương Văn Vững",
+    department: "HR2",
     email: "duongvung1003@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -172,6 +196,7 @@ export const forms = [
   {
     code: "D79",
     displayName: "Nguyễn Thị Mỹ Linh",
+    department: "Training",
     email: "linhxu271196@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -179,6 +204,7 @@ export const forms = [
   {
     code: "D93",
     displayName: "Nguyễn Thúy Vi",
+    department: "Training",
     email: "thuyvi11196@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -186,6 +212,7 @@ export const forms = [
   {
     code: "D479",
     displayName: "Nguyễn Minh Ngọc",
+    department: "Training",
     email: "hastagminhngoc@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -193,6 +220,7 @@ export const forms = [
   {
     code: "D717",
     displayName: "Vũ Thúy Nhật",
+    department: "Training",
     email: "v.thuy.nhatt@gmail.com",
     managerName: "Trần Anh Dũng",
     managerCode: "F688",
@@ -200,6 +228,7 @@ export const forms = [
   {
     code: "D1394",
     displayName: "Nguyễn Trường Giang",
+    department: "B1",
     email: "giangmda1810@gmail.com",
     managerName: "Trần Phương Anh",
     managerCode: "D388",
@@ -207,6 +236,7 @@ export const forms = [
   {
     code: "S41",
     displayName: "Nguyễn Hữu Long",
+    department: "Kho - ĐG",
     email: "nhlong2107@gmail.com",
     managerName: "Trần Phương Anh",
     managerCode: "D388",
@@ -214,6 +244,7 @@ export const forms = [
   {
     code: "D557",
     displayName: "Vũ Thị Lành",
+    department: "Kho - ĐG",
     email: "vulanhk59bka@gmail.com",
     managerName: "Trần Phương Anh",
     managerCode: "D388",
@@ -221,6 +252,7 @@ export const forms = [
   {
     code: "C635",
     displayName: "Bùi Thu Trang",
+    department: "Kho - ĐG",
     email: "trytowin1003@gmail.com",
     managerName: "Trần Phương Anh",
     managerCode: "D388",
@@ -228,6 +260,7 @@ export const forms = [
   {
     code: "D5093",
     displayName: "Nguyễn Kim Hưng",
+    department: "Kho - ĐG",
     email: "ngungsuong.nkh97@gmail.com",
     managerName: "Vy Tuấn Anh",
     managerCode: "F262",
@@ -235,6 +268,7 @@ export const forms = [
   {
     code: "M30",
     displayName: "Lê Thị Mơ",
+    department: "Marketing",
     email: "lemoql1996@gmail.com",
     managerName: "Vy Tuấn Anh",
     managerCode: "F262",
@@ -242,6 +276,7 @@ export const forms = [
   {
     code: "D388",
     displayName: "Trần Phương Anh",
+    department: "Kho - ĐG",
     email: "tpa2498@gmail.com",
     managerName: "Vy Tuấn Anh",
     managerCode: "F262",
@@ -249,6 +284,7 @@ export const forms = [
   {
     code: "S110",
     displayName: "Nguyễn Văn Việt",
+    department: "OFFICE",
     email: "vietxc2014@gmail.com",
     managerName: "Vy Tuấn Anh",
     managerCode: "F262",
@@ -256,6 +292,7 @@ export const forms = [
   {
     code: "D5169",
     displayName: "Vũ Thị Linh Chi",
+    department: "Purchasing",
     email: "chinaxu137@gmail.com",
     managerName: "Vy Tuấn Anh",
     managerCode: "F262",
@@ -263,6 +300,7 @@ export const forms = [
   {
     code: "D5841",
     displayName: "Lò Thị Khánh Lâm",
+    department: "Purchasing",
     email: "khanhlam3108@gmail.com",
     managerName: "Vy Tuấn Anh",
     managerCode: "F262",
@@ -270,6 +308,7 @@ export const forms = [
   {
     code: "D327",
     displayName: "Dương Thị Nhung",
+    department: "QC",
     email: "duongnhung65@gmail.com",
     managerName: "Vy Tuấn Anh",
     managerCode: "F262",
@@ -277,6 +316,7 @@ export const forms = [
   {
     code: "D337",
     displayName: "Nguyễn Thành Nam",
+    department: "R&D",
     email: "thanhnam06121997@gmail.com",
     managerName: "Vy Tuấn Anh",
     managerCode: "F262",
