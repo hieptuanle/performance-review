@@ -1,324 +1,5 @@
 export const users = [
-  {
-    code: "C037",
-    email: "ntquynh05@gmail.com",
-    displayName: "Nguyễn Thị Quỳnh",
-  },
-  {
-    code: "C635",
-    email: "trytowin1003@gmail.com",
-    displayName: "Bùi Thu Trang",
-  },
-  {
-    code: "D1029",
-    email: "myxonefm@gmail.com",
-    displayName: "Lê Thị Hương",
-  },
-  {
-    code: "D1394",
-    email: "giangmda1810@gmail.com",
-    displayName: "Nguyễn Trường Giang",
-  },
-  {
-    code: "D1516",
-    email: "duongnguyenthuy276@gmail.com",
-    displayName: "Nguyễn Thùy Dương",
-  },
-  {
-    code: "D1584",
-    email: "nat1772001@gmail.com",
-    displayName: "Nguyễn Anh Tuấn",
-  },
-  {
-    code: "D169",
-    email: "truongthuhang.28041998@gmail.com",
-    displayName: "Trương Thị Thu Hằng",
-  },
-  {
-    code: "D1885",
-    email: "nguyenngocnhilgl60@gmail.com",
-    displayName: "Phùng Thị Ngọc Nhi",
-  },
-  {
-    code: "D1886",
-    email: "phungthingoctuyet1511@gmail.com",
-    displayName: "Phùng Thị Ngọc Tuyết",
-  },
-  {
-    code: "D1906",
-    email: "quangbinhvx201@gmail.com",
-    displayName: "Nguyễn Quang Bình",
-  },
-  {
-    code: "D2010",
-    email: "tomteppppp@gmail.com",
-    displayName: "Đỗ Ngọc Cương",
-  },
-  {
-    code: "D2406",
-    email: "leminhnguyet.2k1@gmail.com",
-    displayName: "Lê Minh Nguyệt",
-  },
-  {
-    code: "D248",
-    email: "ngoduonghuong@gmail.com",
-    displayName: "Ngô Dương Hương",
-  },
-  {
-    code: "D2527",
-    email: "lotomo521993@gmail.com",
-    displayName: "Lê Thị Thơm",
-  },
-  {
-    code: "D2537",
-    email: "ngocthao060690@gmail.com",
-    displayName: "Nguyễn Văn Thao",
-  },
-  {
-    code: "D2607",
-    email: "namnguyenba9x@gmail.com",
-    displayName: "Nguyễn Bá Nam",
-  },
-  {
-    code: "D2825",
-    email: "quynhngoc.1803@gmail.com",
-    displayName: "Phạm Ngọc Quỳnh",
-  },
-  {
-    code: "D327",
-    email: "duongnhung65@gmail.com",
-    displayName: "Dương Thị Nhung",
-  },
-  {
-    code: "D337",
-    email: "thanhnam06121997@gmail.com",
-    displayName: "Nguyễn Thành Nam",
-  },
-  {
-    code: "D3507",
-    email: "thanhnamvam77@gmail.com",
-    displayName: "Văn Thành Nam",
-  },
-  {
-    code: "D3793",
-    email: "truongvybhtv@gmail.com",
-    displayName: "Trương Văn Vỹ",
-  },
-  {
-    code: "D388",
-    email: "tpa2498@gmail.com",
-    displayName: "Trần Phương Anh",
-  },
-  {
-    code: "D3962",
-    email: "nguyenthiduyen02102001@gmail.com",
-    displayName: "Nguyễn Thị Duyên",
-  },
-  {
-    code: "D3982",
-    email: "hvl.luyt@gmail.com",
-    displayName: "Hoàng Văn Luýt",
-  },
-  {
-    code: "D4086",
-    email: "kimxuandang0504@gmail.com",
-    displayName: "Đặng Kim Xuân",
-  },
-  {
-    code: "D4131",
-    email: "thuanhuynh01042002@gmail.com",
-    displayName: "Huỳnh Lê Thanh Thuận",
-  },
-  {
-    code: "D4309",
-    email: "cuongnv.1512@gmail.com",
-    displayName: "Nguyễn Văn Cương",
-  },
-  {
-    code: "D4553",
-    email: "Ngminhhung1102@gmail.com",
-    displayName: "Nguyễn Minh Hùng",
-  },
-  {
-    code: "D479",
-    email: "hastagminhngoc@gmail.com",
-    displayName: "Nguyễn Minh Ngọc",
-  },
-  {
-    code: "D5093",
-    email: "ngungsuong.nkh97@gmail.com",
-    displayName: "Nguyễn Kim Hưng",
-  },
-  {
-    code: "D5169",
-    email: "chinaxu137@gmail.com",
-    displayName: "Vũ Thị Linh Chi",
-  },
-  {
-    code: "D557",
-    email: "vulanhk59bka@gmail.com",
-    displayName: "Vũ Thị Lành",
-  },
-  {
-    code: "D570",
-    email: "hathitramy2512@gmail.com",
-    displayName: "Hà Thị Trà My",
-  },
-  {
-    code: "D5730",
-    email: "tuananhz4.pt@gmail.com",
-    displayName: "Nguyễn Tuấn Anh",
-  },
-  {
-    code: "D583",
-    email: "theanh2726@gmail.com",
-    displayName: "Nguyễn Thế Anh",
-  },
-  {
-    code: "D5841",
-    email: "khanhlam3108@gmail.com",
-    displayName: "Lò Thị Khánh Lâm",
-  },
-  {
-    code: "D5915",
-    email: "longphung.2105@gmail.com",
-    displayName: "Phùng Hải Long",
-  },
-  {
-    code: "D5939",
-    email: "dungdark97@gmail.com",
-    displayName: "Nguyễn Đắc Dũng",
-  },
-  {
-    code: "D6794",
-    email: "hieuuuu2002@gmail.com",
-    displayName: "Hoàng Đình Hiếu",
-  },
-  {
-    code: "D6795",
-    email: "tranhien1996.hn@gmail.com",
-    displayName: "Trần Thị Hiền",
-  },
-  {
-    code: "D703",
-    email: "Blackpage60@gmail.com",
-    displayName: "Nguyễn Huyền Trang",
-  },
-  {
-    code: "D708",
-    email: "dinhphuongthaoqia@gmail.com",
-    displayName: "Đinh Phương Thảo",
-  },
-  {
-    code: "D7120",
-    email: "sirlong96@gmail.com",
-    displayName: "Nguyễn Hải Long",
-  },
-  {
-    code: "D717",
-    email: "v.thuynhatt@gmail.com",
-    displayName: "Vũ Thúy Nhật",
-  },
-  {
-    code: "D7287",
-    email: "doanthingocanh96@gmail.com",
-    displayName: "Doãn Thị Ngọc Ánh",
-  },
-  {
-    code: "D7721",
-    email: "trinhvantien0109@gmail.com",
-    displayName: "Trịnh Văn Tiến",
-  },
-  {
-    code: "D7751",
-    email: "tranhoangvy1303@gmail.com",
-    displayName: "Trần Hoàng Vy",
-  },
-  {
-    code: "D7886",
-    email: "damdinhthanh.97@gmail.com",
-    displayName: "Đàm Dĩnh Thanh",
-  },
-  {
-    code: "D79",
-    email: "linhxu271196@gmail.com",
-    displayName: "Nguyễn Thị Mỹ Linh",
-  },
-  {
-    code: "D7953",
-    email: "hangtran601@gmail.com",
-    displayName: "Trần Thu Hằng",
-  },
-  {
-    code: "D7954",
-    email: "duongvung1003@gmail.com",
-    displayName: "Dương Văn Vững",
-  },
-  {
-    code: "D8013",
-    email: "trungghau0310@gmail.com",
-    displayName: "Lý Trung Hậu",
-  },
-  {
-    code: "D8492",
-    email: "camtu3224@gmail.com",
-    displayName: "Vương Cẩm Tú",
-  },
-  {
-    code: "D8500",
-    email: "nguyenhoangphuonganh28121988@gmail.com",
-    displayName: "Nguyễn Hoàng Phương Anh",
-  },
-  {
-    code: "D8732",
-    email: "phamquynhchi03022003@gmail.com",
-    displayName: "Phạm Quỳnh Chi",
-  },
-  {
-    code: "D8818",
-    email: "toanki2604@gmail.com",
-    displayName: "Đào Văn Toàn",
-  },
-  {
-    code: "D8925",
-    email: "taanhbach@gmail.com",
-    displayName: "Tạ Anh Bách",
-  },
-  {
-    code: "D9212",
-    email: "tranquanghuy16101997@gmail.com",
-    displayName: "Trần Quang Huy",
-  },
-  {
-    code: "D93",
-    email: "thuyvi11196@gmail.com",
-    displayName: "Nguyễn Thúy Vi",
-  },
-  {
-    code: "D931",
-    email: "huyennt66@wru.vn",
-    displayName: "Ngô Thị Huyền",
-  },
-  {
-    code: "E09",
-    email: "chuthang205@gmail.com",
-    displayName: "Chu Huy Thắng",
-  },
-  {
-    code: "E73",
-    email: "anhtuas123@gmail.com",
-    displayName: "Nguyễn Anh Tú",
-  },
-  {
-    code: "E96",
-    email: "vutrung26072001@gmail.com",
-    displayName: "Vũ Đức Trung",
-  },
-  {
-    code: "E98",
-    email: "blackbeans.1301@gmail.com",
-    displayName: "Đỗ Tấn Lập",
-  },
+  // adin
   { code: "F262", email: "anhvt@savor.vn", displayName: "Vy Tuấn Anh" },
   {
     code: "F432",
@@ -330,34 +11,205 @@ export const users = [
     email: "dungtran@4-handy.com",
     displayName: "Trần Anh Dũng",
   },
+  // Danh sách nhân viên
   {
-    code: "M30",
-    email: "lemoql1996@gmail.com",
-    displayName: "Lê Thị Mơ",
+    code: "D3982",
+    displayName: "Hoàng Văn Luýt",
+    email: "hvl.luyt@gmail.com",
   },
   {
-    code: "S110",
-    email: "vietxc2014@gmail.com",
-    displayName: "Nguyễn Văn Việt",
+    code: "D4553",
+    displayName: "Nguyễn Minh Hùng",
+    email: "Ngminhhung1102@gmail.com",
   },
   {
-    code: "S146",
-    email: "vuong7815@gmail.com",
-    displayName: "Bùi Văn Vương",
+    code: "D5915",
+    displayName: "Phùng Hải Long",
+    email: "longphung.2105@gmail.com",
   },
   {
-    code: "S306",
-    email: "ngocanhnguyen1698@gmail.com",
-    displayName: "Nguyễn Thị Ngọc Anh",
+    code: "D570",
+    displayName: "Hà Thị Trà My ",
+    email: "hathitramy2512@gmail.com\t",
   },
   {
-    code: "S41",
-    email: "nhlong2107@gmail.com",
-    displayName: "Nguyễn Hữu Long",
+    code: "D6794",
+    displayName: "Hoàng Đình Hiếu",
+    email: "hieuuuu2002@gmail.com",
+  },
+  {
+    code: "D6795",
+    displayName: "Trần Thị Hiền",
+    email: "tranhien1996.hn@gmail.com",
+  },
+  {
+    code: "D7886",
+    displayName: "Đàm Dĩnh Thanh",
+    email: "damdinhthanh.97@gmail.com",
   },
   {
     code: "S78",
-    email: "buihuong17101997@gmail.com",
     displayName: "Bùi Thị Hương",
+    email: "buihuong17101997@gmail.com",
+  },
+  {
+    code: "D8492",
+    displayName: "Vương Cẩm Tú",
+    email: "camtu3224@gmail.com",
+  },
+  {
+    code: "D708",
+    displayName: "Đinh Phương Thảo",
+    email: "dinhphuongthaoqia@gmail.com",
+  },
+  {
+    code: "D4309",
+    displayName: "Nguyễn Văn Cương",
+    email: "cuongnv.1512@gmail.com",
+  },
+  {
+    code: "D5939",
+    displayName: "Nguyễn Đắc Dũng",
+    email: "dungdark97@gmail.com",
+  },
+  {
+    code: "D703",
+    displayName: "Nguyễn Huyền Trang",
+    email: "Blackpage60@gmail.com",
+  },
+  {
+    code: "E09",
+    displayName: "Chu Huy Thắng",
+    email: "chuthang205@gmail.com",
+  },
+  {
+    code: "D1969",
+    displayName: "Trần Hương Mai",
+    email: "huongmai04112000@gmail.com",
+  },
+  {
+    code: "D248",
+    displayName: "Ngô Dương Hương",
+    email: "ngoduonghuong@gmail.com",
+  },
+  {
+    code: "D7395",
+    displayName: "Dương Thị Trang",
+    email: "trangduong11899@gmail.com",
+  },
+  {
+    code: "D931",
+    displayName: "Ngô Thị Huyền",
+    email: "huyennt66@wru.vn",
+  },
+  {
+    code: "S146",
+    displayName: "Bùi Văn Vương",
+    email: "vuong7815@gmail.com",
+  },
+  {
+    code: "D2537",
+    displayName: "Nguyễn Văn Thao",
+    email: "ngocthao060690@gmail.com",
+  },
+  {
+    code: "D3793",
+    displayName: "Trương Văn Vỹ",
+    email: "truongvybhtv@gmail.com",
+  },
+  {
+    code: "E73",
+    displayName: "Nguyễn Anh Tú",
+    email: "anhtuas123@gmail.com",
+  },
+  {
+    code: "D7287",
+    displayName: "Doãn Thị Ngọc Ánh",
+    email: "doanthingocanh1605@gmail.com",
+  },
+  {
+    code: "D7954",
+    displayName: "Dương Văn Vững",
+    email: "duongvung1003@gmail.com",
+  },
+  {
+    code: "D79",
+    displayName: "Nguyễn Thị Mỹ Linh",
+    email: "linhxu271196@gmail.com",
+  },
+  {
+    code: "D93",
+    displayName: "Nguyễn Thúy Vi",
+    email: "thuyvi11196@gmail.com",
+  },
+  {
+    code: "D479",
+    displayName: "Nguyễn Minh Ngọc",
+    email: "hastagminhngoc@gmail.com",
+  },
+  {
+    code: "D717",
+    displayName: "Vũ Thúy Nhật",
+    email: "v.thuy.nhatt@gmail.com",
+  },
+  {
+    code: "D1394",
+    displayName: "Nguyễn Trường Giang",
+    email: "giangmda1810@gmail.com",
+  },
+  {
+    code: "S41",
+    displayName: "Nguyễn Hữu Long",
+    email: "nhlong2107@gmail.com",
+  },
+  {
+    code: "D557",
+    displayName: "Vũ Thị Lành",
+    email: "vulanhk59bka@gmail.com",
+  },
+  {
+    code: "C635",
+    displayName: "Bùi Thu Trang",
+    email: "trytowin1003@gmail.com",
+  },
+  {
+    code: "D5093",
+    displayName: "Nguyễn Kim Hưng",
+    email: "ngungsuong.nkh97@gmail.com",
+  },
+  {
+    code: "M30",
+    displayName: "Lê Thị Mơ",
+    email: "lemoql1996@gmail.com",
+  },
+  {
+    code: "D388",
+    displayName: "Trần Phương Anh",
+    email: "tpa2498@gmail.com",
+  },
+  {
+    code: "S110",
+    displayName: "Nguyễn Văn Việt",
+    email: "vietxc2014@gmail.com",
+  },
+  {
+    code: "D5169",
+    displayName: "Vũ Thị Linh Chi",
+    email: "chinaxu137@gmail.com",
+  },
+  {
+    code: "D5841",
+    displayName: "Lò Thị Khánh Lâm",
+    email: "khanhlam3108@gmail.com",
+  },
+  {
+    code: "D327",
+    displayName: "Dương Thị Nhung",
+    email: "duongnhung65@gmail.com",
+  },
+  {
+    code: "D337",
+    displayName: "Nguyễn Thành Nam",
+    email: "thanhnam06121997@gmail.com",
   },
 ];
