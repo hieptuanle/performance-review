@@ -4,19 +4,14 @@ const ObjectId = mongoose.Types.ObjectId;
 const reviewResponseSchema = mongoose.Schema(
   {
     reviewDepartment: String,
-
     revieweeCode: String,
     revieweeName: String,
     anonymous: { type: Boolean, default: false },
     revieweeDepartment: String,
-
     reviewType: Number,
-
     reviewerName: String,
     reviewerCode: String,
-
     slug: String,
-
     positions: [String],
     questions: [
       {
@@ -27,7 +22,6 @@ const reviewResponseSchema = mongoose.Schema(
         answer: String,
       },
     ],
-
     userCode: String,
     userDisplayName: String,
     userOutlet: ObjectId,
