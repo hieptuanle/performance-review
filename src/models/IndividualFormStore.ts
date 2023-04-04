@@ -58,10 +58,8 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
     revieweeName: item.displayName,
     reviewerCode: item.code,
     reviewerName: item.displayName,
-    slug: urlSlug.convert(
-      `${item.code} ${item.displayName} ${item.group} ${item.code}`
-    ),
-    reviewType: item.group,
+    slug: urlSlug.convert(`${item.code} ${item.displayName} 1 ${item.code}`),
+    reviewType: 1,
     managerCode: item.managerCode,
     managerName: item.managerName,
   });
@@ -79,25 +77,25 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
       managerName: item.managerName,
     });
   }
-  const indices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-  indices.forEach((index) => {
-    if (get(item, `reviewerCode${index}`)) {
-      result.push({
-        revieweeCode: item.code,
-        revieweeName: item.displayName,
-        reviewerName: get(item, `reviewerName${index}`),
-        reviewerCode: get(item, `reviewerCode${index}`),
-        reviewType: 3,
-        slug: urlSlug.convert(
-          `${item.code} ${item.displayName} 3 ${get(
-            item,
-            `reviewerCode${index}`
-          )}`
-        ),
-        managerCode: item.managerCode,
-        managerName: item.managerName,
-      });
-    }
-  });
+  // const indices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  // indices.forEach((index) => {
+  //   if (get(item, `reviewerCode${index}`)) {
+  //     result.push({
+  //       revieweeCode: item.code,
+  //       revieweeName: item.displayName,
+  //       reviewerName: get(item, `reviewerName${index}`),
+  //       reviewerCode: get(item, `reviewerCode${index}`),
+  //       reviewType: 3,
+  //       slug: urlSlug.convert(
+  //         `${item.code} ${item.displayName} 3 ${get(
+  //           item,
+  //           `reviewerCode${index}`
+  //         )}`
+  //       ),
+  //       managerCode: item.managerCode,
+  //       managerName: item.managerName,
+  //     });
+  //   }
+  // });
   return result;
 }, []);
