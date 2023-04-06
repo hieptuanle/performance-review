@@ -2,7 +2,7 @@ import { computed, makeObservable, observable } from "mobx";
 import { RootStore } from "./RootStore";
 import * as urlSlug from "url-slug";
 import { ReviewForm } from "./ReviewFormStore";
-import { get } from "lodash";
+// import { get } from "lodash";
 import { forms as rawForms } from "../data/forms";
 
 interface IndividualForm extends ReviewForm {
@@ -63,20 +63,20 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
     managerCode: item.managerCode,
     managerName: item.managerName,
   });
-  if (item.managerCode) {
-    result.push({
-      revieweeCode: item.code,
-      revieweeName: item.displayName,
-      reviewerName: get(item, `managerName`),
-      reviewerCode: get(item, `managerCode`),
-      reviewType: 4,
-      slug: urlSlug.convert(
-        `${item.code} ${item.displayName} 4 ${get(item, `managerCode`)}`
-      ),
-      managerCode: item.managerCode,
-      managerName: item.managerName,
-    });
-  }
+  // if (item.managerCode) {
+  //   result.push({
+  //     revieweeCode: item.code,
+  //     revieweeName: item.displayName,
+  //     reviewerName: get(item, `managerName`),
+  //     reviewerCode: get(item, `managerCode`),
+  //     reviewType: 4,
+  //     slug: urlSlug.convert(
+  //       `${item.code} ${item.displayName} 4 ${get(item, `managerCode`)}`
+  //     ),
+  //     managerCode: item.managerCode,
+  //     managerName: item.managerName,
+  //   });
+  // }
   // const indices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
   // indices.forEach((index) => {
   //   if (get(item, `reviewerCode${index}`)) {
