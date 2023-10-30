@@ -77,7 +77,7 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
             onIonChange={(e) => {
               rootStore.viewFormStore.setMark(question, e.detail.value || "");
             }}
-            interface="popover"
+            // interface="popover"
           >
             {options.map((d) => (
               <IonSelectOption key={d.value} value={d.value}>
