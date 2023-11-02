@@ -18,7 +18,7 @@ router
       let revieweeQuery = { createdAt: null }; // default là ko ra kết quả gì
 
       const { revieweeCode, managerCode, employeeCode } = req.query;
-
+      console.log(user.roles);
       if (user.roles.includes("bom")) {
         // người dùng được dùng reviewer code để xem chế độ của người khác
         revieweeQuery = {};
@@ -31,9 +31,9 @@ router
             revieweeQuery.revieweeCode = { $in: reviewees.map((r) => r.code) };
           }
         }
-        if (employeeCode) {
-          revieweeQuery.revieweeCode = employeeCode;
-        }
+        // if (employeeCode) {
+        //   revieweeQuery.revieweeCode = employeeCode;
+        // }
       } else if (isManager(user.code)) {
         // người dùng được dùng reviewer code để xem chế độ của người khác
         revieweeQuery = {
