@@ -133,7 +133,7 @@ export const forms = [
     department: "KIEMTOAN",
     position: "Kiểm toán viên nội bộ",
     managerName: "Dương Thị Nhung",
-    managerCode: "S39",
+    managerCode: "D327",
     email: "Nhungdt.259@gmail.com",
   },
   {
@@ -142,7 +142,7 @@ export const forms = [
     department: "KIEMTOAN",
     position: "Kiểm toán viên nội bộ",
     managerName: "Dương Thị Nhung",
-    managerCode: "S39",
+    managerCode: "D327",
     email: "Nhungdt.259@gmail.com",
   },
   {
@@ -151,7 +151,7 @@ export const forms = [
     department: "KIEMTOAN",
     position: "Kiểm toán viên nội bộ",
     managerName: "Dương Thị Nhung",
-    managerCode: "S39",
+    managerCode: "D327",
     email: "Nhungdt.259@gmail.com",
   },
   {
@@ -178,7 +178,7 @@ export const forms = [
     department: "LOGISTICS",
     position: "Nhân viên điều phối Full - time",
     managerName: "Dương Thị Nhung",
-    managerCode: "S39",
+    managerCode: "D327",
     email: "Nhungdt.259@gmail.com",
   },
   {
@@ -187,7 +187,7 @@ export const forms = [
     department: "QC",
     position: "Nhân viên giám sát chất lượng",
     managerName: "Dương Thị Nhung",
-    managerCode: "S39",
+    managerCode: "D327",
     email: "Nhungdt.259@gmail.com",
   },
   {
@@ -268,7 +268,7 @@ export const forms = [
     department: "KHO",
     position: "Quản lý vận hành kho",
     managerName: "Dương Thị Nhung",
-    managerCode: "S39",
+    managerCode: "D327",
     email: "Nhungdt.259@gmail.com",
   },
   {
