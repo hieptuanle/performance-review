@@ -57,7 +57,7 @@ const ReviewerSelect = observer(() => {
         Switch User <strong>(Admin Feature)</strong>
       </IonLabel>
       <IonSelect
-        interface="popover"
+        // interface="popover"
         value={switchedUserCode}
         onIonChange={(e) => {
           setSwitchedUserCode(e.detail.value);
@@ -101,7 +101,7 @@ const SellAlTogggle = observer(() => {
     <>
       <IonLabel>View as</IonLabel>
       <IonSelect
-        interface="popover"
+        // interface="popover"
         value={rootStore.authenticationStore.viewMode}
         onIonChange={(e) => {
           rootStore.authenticationStore.setViewMode(e.detail.value);
