@@ -88,8 +88,8 @@ export class ViewFormStore {
 
     if ([3, 4].includes(reviewType)) {
       const textQuestions = [
-        "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm được thể hiện tốt nhất trong 3 tháng qua của {{NAME}}?",
-        "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm cần cải thiện trong 3 tháng qua của {{NAME}}?",
+        "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm được thể hiện tốt nhất trong 6 tháng qua của {{NAME}}?",
+        "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm cần cải thiện trong 6 tháng qua của {{NAME}}?",
         "Bạn có muốn đưa ra lời khuyên hay góp ý gì cho {{NAME}} không? Điều này sẽ ảnh hưởng như thế nào đến công việc của bạn?",
       ].map<Question>((d) => {
         return {
@@ -104,9 +104,9 @@ export class ViewFormStore {
       questions = [...questions, ...textQuestions];
     } else {
       let scaleQuestions = [
-        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về thái độ của bạn trong 3 tháng qua",
-        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về kĩ năng của bạn trong 3 tháng qua",
-        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về kiến thức của bạn trong 3 tháng qua",
+        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về thái độ của bạn trong 6 tháng qua",
+        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về kĩ năng của bạn trong 6 tháng qua",
+        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về kiến thức của bạn trong 6 tháng qua",
       ];
 
       questions = scaleQuestions.map<Question>((d) => {
@@ -120,9 +120,9 @@ export class ViewFormStore {
       });
 
       const textQuestions = compact([
-        "Trong 3 tháng vừa qua bạn thấy mình làm tốt nhất điều gì hoặc đã đạt được những thành tích gì trong công việc của mình? ",
-        "Trong 3 tháng vừa qua bạn còn mục tiêu gì chưa đạt được hoặc công việc nào không đạt được như kì vọng? Tại sao? ",
-        "Mục tiêu của bạn trong 3 tháng tới là gì?",
+        "Trong 6 tháng vừa qua bạn thấy mình làm tốt nhất điều gì hoặc đã đạt được những thành tích gì trong công việc của mình? ",
+        "Trong 6 tháng vừa qua bạn còn mục tiêu gì chưa đạt được hoặc công việc nào không đạt được như kì vọng? Tại sao? ",
+        "Mục tiêu của bạn trong 6 tháng tới là gì?",
         "Bạn sẽ đo lường sự tiến bộ của mình đối với những mục tiêu này như thế nào? (cần có các con số để thể hiện)",
         "Bạn sẽ phân bổ và thực hiện các mục tiêu mới của mình với thời gian như thế nào?",
         "Bạn mong muốn được hỗ trợ như thế nào để đạt được muc tiêu trên? (từ quản lý bộ phận, đồng nghiệp hoặc các bộ phận khác trong công ty)",
