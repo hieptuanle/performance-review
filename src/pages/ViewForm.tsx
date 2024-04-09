@@ -147,7 +147,7 @@ const FormQuestions = observer(() => {
             <IonListHeader lines="full">
               <IonLabel>
                 <h2 style={{ fontSize: "2.5em", fontWeight: "bold" }}>
-                  {index + 1}. {question.content.replaceAll(`{{NAME}}`)}
+                  {question.content}
                 </h2>
               </IonLabel>
             </IonListHeader>
