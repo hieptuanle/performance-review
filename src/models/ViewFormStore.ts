@@ -99,6 +99,7 @@ export class ViewFormStore {
           layout: "Text",
           mark: 0,
           answer: "",
+          timeContent: "",
         };
       });
 
@@ -172,6 +173,7 @@ export class ViewFormStore {
           layout: data.isHeader ? "Header" : "Scale",
           mark: 0,
           answer: "",
+          timeContent: "",
         };
       });
 
@@ -185,6 +187,7 @@ export class ViewFormStore {
           layout: "Text",
           mark: 0,
           answer: "",
+          timeContent: "",
         };
       });
       questions.push(...textQuestions);
