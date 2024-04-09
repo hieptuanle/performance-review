@@ -39,7 +39,6 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
       <IonListHeader lines="full">
         <IonLabel>
           <h2 style={{ fontSize: "1.5em", fontWeight: "bold" }}>
-            {index + 1}.{" "}
             {question.content.replaceAll(`{{NAME}}`, revieweeName || "")}
           </h2>
         </IonLabel>
@@ -63,9 +62,11 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
     const reviewType = rootStore.viewFormStore?.reviewForm?.reviewType || 3;
     const isSelfAssessment = reviewType <= 2;
     const options = [
-      { value: "1", label: "1. Giảm sút" },
-      { value: "2", label: "2. Duy trì" },
-      { value: "3", label: "3. Cải tiến" },
+      { value: "1", label: "1. Chưa hiệu quả" },
+      { value: "2", label: "2. Cần cải thiện" },
+      { value: "3", label: "3. Đảm bảo yêu cầu" },
+      { value: "4", label: "4. Hiệu quả tốt" },
+      { value: "5", label: "5. Vượt kì vọng" },
     ];
     return (
       <IonCard key={question.content}>
@@ -141,7 +142,18 @@ const FormQuestions = observer(() => {
   return (
     <Fragment>
       {questions.map((question, index) => {
-        if (question.layout === "Scale") {
+        if (question.layout === "Header") {
+          return (
+            <IonListHeader lines="full">
+              <IonLabel>
+                <h2 style={{ fontSize: "2.5em", fontWeight: "bold" }}>
+                  {index + 1}.{" "}
+                  {question.content.replaceAll(`{{NAME}}`, revieweeName || "")}
+                </h2>
+              </IonLabel>
+            </IonListHeader>
+          );
+        } else if (question.layout === "Scale") {
           return (
             <ScaleQuestionCard
               key={question.content}

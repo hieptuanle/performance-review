@@ -10,9 +10,10 @@ import _, { compact, filter, split } from "lodash";
 export interface Question {
   group: string;
   content: string;
-  layout: "Scale" | "Text";
+  layout: "Scale" | "Text" | "Header";
   mark: string | number;
   answer: string;
+  timeContent: string;
 }
 
 export class ViewFormStore {
@@ -104,29 +105,79 @@ export class ViewFormStore {
       questions = [...questions, ...textQuestions];
     } else {
       let scaleQuestions = [
-        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về thái độ của bạn trong 6 tháng qua",
-        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về kĩ năng của bạn trong 6 tháng qua",
-        "Dựa trên các tiêu chí ASK, hãy tự đánh giá sự thay đổi về kiến thức của bạn trong 6 tháng qua",
+        { content: "I. Đánh giá ASK", isHeader: true },
+        { content: "1. Attitude", isHeader: true },
+        {
+          content: "1.1. Thái độ với công việc",
+          isHeader: true,
+        },
+        {
+          content:
+            "1.1.1. Công việc luôn được hoàn thành (ít lỗi hoặc không có lỗi), hiệu quả và đúng thời hạn",
+        },
+        {
+          content:
+            "1.1.2. Luôn thực hiện với tinh thần trách nhiệm cao, quản lý thời gian và khối lượng công việc một cách hiệu quả để đảm bảo tiến độ công việc",
+        },
+        {
+          content: "1.2. Thái độ với đồng nghiệp",
+          isHeader: true,
+        },
+        {
+          content:
+            "1.2.1. Luôn luôn giữ thái độ hòa nhã, vui vẻ và chuyên nghiệp với đồng nghiệp và mọi người trong công ty",
+        },
+        {
+          content:
+            "1.2.2. Sẵn sàng chia sẻ và đưa ra ý kiến đóng góp để không ngừng nâng cao hiệu quả công việc                			",
+        },
+        { content: "2. Skills", isHeader: true },
+        {
+          content: "2.1. Kỹ năng mềm",
+          isHeader: true,
+        },
+        {
+          content:
+            "2.1.1. Kĩ năng giao tiếp - Giao tiếp bằng văn bản và bằng lời nói rõ ràng, có tổ chức và hiệu quả; nghe và hiểu tốt",
+        },
+        {
+          content:
+            "2.1.2. Hợp tác & làm việc theo nhóm - Tôn trọng đồng nghiệp khi phối hợp và triển khai kế hoạch, sử dụng quyền hạn một cách hợp lý để hoàn thành mục tiêu",
+        },
+        {
+          content: "2.2. Kỹ năng cứng",
+          isHeader: true,
+        },
+        {
+          content: "2.2.1. Kĩ năng tin học văn phòng",
+        },
+        {
+          content: "2.2.2. Kĩ năng liên quan đến chuyên môn, công việc",
+        },
+        { content: "3. Knowledge", isHeader: true },
+        {
+          content: `3.1. Kiến thức chuyên môn
+- Đánh giá các kiến thức chuyên môn liên quan đến công việc
+- Tìm hiểu, học hỏi thêm các kiến thức mới liên quan đến công việc`,
+        },
+        {
+          content: "3.2. Am hiểu quy trình hệ thống",
+        },
       ];
 
-      questions = scaleQuestions.map<Question>((d) => {
+      questions = scaleQuestions.map<Question>((data) => {
         return {
           group: "Personal",
-          content: d,
-          layout: "Scale",
+          content: data.content,
+          layout: data.isHeader ? "Header" : "Scale",
           mark: 0,
           answer: "",
         };
       });
 
       const textQuestions = compact([
-        "Trong 6 tháng vừa qua bạn thấy mình làm tốt nhất điều gì hoặc đã đạt được những thành tích gì trong công việc của mình? ",
-        "Trong 6 tháng vừa qua bạn còn mục tiêu gì chưa đạt được hoặc công việc nào không đạt được như kì vọng? Tại sao? ",
-        "Mục tiêu của bạn trong 6 tháng tới là gì?",
-        "Bạn sẽ đo lường sự tiến bộ của mình đối với những mục tiêu này như thế nào? (cần có các con số để thể hiện)",
-        "Bạn sẽ phân bổ và thực hiện các mục tiêu mới của mình với thời gian như thế nào?",
-        "Bạn mong muốn được hỗ trợ như thế nào để đạt được muc tiêu trên? (từ quản lý bộ phận, đồng nghiệp hoặc các bộ phận khác trong công ty)",
-        "Bạn có đề xuất mức lương kỳ vọng hoặc các chế độ đãi ngộ khác như thế nào?",
+        "IV. Đề xuất mức lương và chế độ đãi ngộ				",
+        "V. Kỳ vọng hoặc đề xuất cải thiện về chương trình PERFORMANCE REVIEW 360 (Nếu có)",
       ]).map<Question>((d) => {
         return {
           group: "Personal",
@@ -171,7 +222,7 @@ export class ViewFormStore {
     }
 
     const notDoneQuestions = filter(this.questions, (question) => {
-      return !question.answer;
+      return question.layout === "Scale" && !question.answer;
     });
     if (notDoneQuestions.length) {
       throw new Error(
