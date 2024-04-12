@@ -10,7 +10,7 @@ import _, { compact, filter, split } from "lodash";
 export interface Question {
   group: string;
   content: string;
-  layout: "Scale" | "Text" | "Header";
+  layout: "Scale" | "Text" | "Header" | "Object";
   mark: string | number;
   answer: string;
   timeContent: string;
@@ -106,63 +106,52 @@ export class ViewFormStore {
       questions = [...questions, ...textQuestions];
     } else {
       let scaleQuestions = [
-        { content: "I. Đánh giá ASK", isHeader: true },
-        { content: "1. Attitude", isHeader: true },
+        { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
+        { content: "", isHeader: true },
         {
-          content: "1.1. Thái độ với công việc",
-          isHeader: true,
+          content: `1. Tác phong và kỷ luật
+          Giải thích:
+            - Tuân thủ quy định, nội quy của công ty, không gây ra vi phạm 
+            - Đảm bảo tác phong làm việc nghiêm túc về trang phục, thời gian, địa điểm
+            - Đảm bảo tính cam kết trong công việc`,
         },
         {
-          content:
-            "1.1.1. Công việc luôn được hoàn thành (ít lỗi hoặc không có lỗi), hiệu quả và đúng thời hạn",
+          content: `2. Giao tiếp và làm việc nhóm
+          Giải thích:
+          - Có kỹ năng lắng nghe và giao tiếp với đồng nghiệp tốt, cả bằng lời nói và văn bản
+          - Phản hồi kịp thời trong công việc
+          - Hỗ trợ tốt đồng nghiệp trong làm việc nhóm`,
         },
         {
-          content:
-            "1.1.2. Luôn thực hiện với tinh thần trách nhiệm cao, quản lý thời gian và khối lượng công việc một cách hiệu quả để đảm bảo tiến độ công việc",
+          content: `3. Trách nhiệm với công việc
+          Giải thích:
+          - Sẵn sàng nhận nhiệm vụ, đồng thời nỗ lực hết sức mình để hoàn thành nhiệm vụ, không tránh né, đùn đẩy nhiệm vụ qua cho hoàn cảnh hay người khác.
+          - Nỗ lực hoàn thành công việc đúng cam kết đề ra
+          - Dám chịu trách nhiệm, nhận lỗi khi mình không hoàn thành nhiệm vụ, không đổ thừa cho hoàn cảnh hay người khác`,
         },
         {
-          content: "1.2. Thái độ với đồng nghiệp",
-          isHeader: true,
+          content: `4. Kỹ năng và kiến thức chuyên môn
+          Giải thích:
+          - Có đầy đủ kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
+          - Chủ động và quan tâm đến việc học thêm kỹ năng và kiến thức chuyên môn mới`,
         },
         {
-          content:
-            "1.2.1. Luôn luôn giữ thái độ hòa nhã, vui vẻ và chuyên nghiệp với đồng nghiệp và mọi người trong công ty",
+          content: `5. Am hiểu hoạt động công ty
+          Giải thích:
+          - Nắm rõ chức năng các bộ phận trong công ty
+          - Am hiểu quy trình, hệ thống vận hành về thông tin và hàng hóa trong công ty
+          - Chủ động quan sát, theo dõi và cải thiện, nâng cấp hệ thống của bộ phận`,
         },
         {
-          content:
-            "1.2.2. Sẵn sàng chia sẻ và đưa ra ý kiến đóng góp để không ngừng nâng cao hiệu quả công việc                			",
-        },
-        { content: "2. Skills", isHeader: true },
-        {
-          content: "2.1. Kỹ năng mềm",
-          isHeader: true,
+          content: `6. Quản lý`,
         },
         {
-          content:
-            "2.1.1. Kĩ năng giao tiếp - Giao tiếp bằng văn bản và bằng lời nói rõ ràng, có tổ chức và hiệu quả; nghe và hiểu tốt",
+          content: `II. Review kết quả OKR 6 tháng trước`,
+          isObject: true,
         },
         {
-          content:
-            "2.1.2. Hợp tác & làm việc theo nhóm - Tôn trọng đồng nghiệp khi phối hợp và triển khai kế hoạch, sử dụng quyền hạn một cách hợp lý để hoàn thành mục tiêu",
-        },
-        {
-          content: "2.2. Kỹ năng cứng",
-          isHeader: true,
-        },
-        {
-          content: "2.2.1. Kĩ năng tin học văn phòng",
-        },
-        {
-          content: "2.2.2. Kĩ năng liên quan đến chuyên môn, công việc",
-        },
-        { content: "3. Knowledge", isHeader: true },
-        {
-          content: `3.1. Kiến thức chuyên môn
-- Đánh giá các kiến thức chuyên môn liên quan đến công việc
-- Tìm hiểu, học hỏi thêm các kiến thức mới liên quan đến công việc`,
-        },
-        {
-          content: "3.2. Am hiểu quy trình hệ thống",
+          content: `III. Lên OKR giai đoạn 6 tháng tiếp theo`,
+          isObject: true,
         },
       ];
 
@@ -170,7 +159,7 @@ export class ViewFormStore {
         return {
           group: "Personal",
           content: data.content,
-          layout: data.isHeader ? "Header" : "Scale",
+          layout: data.isHeader ? "Header" : data.isObject ? "Object" : "Scale",
           mark: 0,
           answer: "",
           timeContent: "",
@@ -178,8 +167,7 @@ export class ViewFormStore {
       });
 
       const textQuestions = compact([
-        "IV. Đề xuất mức lương và chế độ đãi ngộ				",
-        "V. Kỳ vọng hoặc đề xuất cải thiện về chương trình PERFORMANCE REVIEW 360 (Nếu có)",
+        `IV. Đề xuất của bạn về mức lương và đãi ngộ khác`,
       ]).map<Question>((d) => {
         return {
           group: "Personal",
@@ -257,14 +245,11 @@ export class ViewFormStore {
       revieweeCode: reviewee.revieweeCode,
       revieweeName: reviewee.revieweeName,
       revieweeDepartment: reviewee.revieweeDepartment,
-
       reviewerName: form.reviewerName,
       reviewerCode: form.reviewerCode,
-
       reviewType: form.reviewType,
       anonymous,
       slug: form.slug,
-
       positions: reviewee.revieweePositions,
       questions: this.questions,
       user: this.rootStore.authenticationStore.user?._id,
