@@ -161,7 +161,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                 <th>
                   {isFuture
                     ? "Kết quả then chốt"
-                    : "Kết quả then chốt đã đề ra kỳ trước		"}
+                    : "Kết quả then chốt đã đề ra kỳ trước"}
                 </th>
                 {!isFuture && <th>Tình trạng</th>}
                 <th>
@@ -178,7 +178,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                   <td>
                     <input
                       type="text"
-                      value={item.process}
+                      value={item.object}
                       onChange={(e) => handleObjectChange(index, e)}
                     />
                   </td>
@@ -196,7 +196,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                   <td>
                     <input
                       type="text"
-                      value={item.process}
+                      value={item.detail}
                       onChange={(e) => handleDetailChange(index, e)}
                     />
                   </td>
