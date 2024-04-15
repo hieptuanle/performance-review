@@ -194,7 +194,7 @@ const ObjectQuestionCard = observer<{
                     className="full-width"
                     value={item.object}
                     onChange={(e) => handleObjectChange(index, e)}
-                    placeholder="Tự luận (min 5 từ)"
+                    placeholder="Tự luận (min 15 từ)"
                   ></textarea>
                 </td>
                 <td>
