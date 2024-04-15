@@ -65,28 +65,23 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
     const options = [
       {
         value: "1",
-        label:
-          "1. Kém. Kết quả kém, không đạt kì vọng, ảnh hưởng xấu đến kết quả công việc đồng nghiệp khác và tổ chức",
+        label: "1. Kém.",
       },
       {
         value: "2",
-        label:
-          "2. Cần cải thiện. Chưa đảm bảo kì vọng, còn một số điểm cần cải thiện để hoàn thành vai trò công việc của cá nhân",
+        label: "2. Cần cải thiện.",
       },
       {
         value: "3",
-        label:
-          "3. Đạt kì vọng. Đảm bảo kì vọng, vừa đủ để hoàn thành công việc, nhiệm vụ của cá nhân",
+        label: "3. Đạt kì vọng.",
       },
       {
         value: "4",
-        label:
-          "4. Vượt kì vọng. Vượt trên kì vọng, tạo ra các kết quả tích cực ảnh hưởng tốt đến kết quả công việc của cá nhân",
+        label: "4. Vượt kì vọng.",
       },
       {
         value: "5",
-        label:
-          "5. Xuất sắc. Vượt xa kì vọng, tạo ra các kết quả tích cực ảnh hưởng tốt đến kết quả công việc không chỉ của cá nhân, mà còn của đồng nghiệp khác và tổ chức",
+        label: "5. Xuất sắc.",
       },
     ];
     return (
@@ -130,6 +125,7 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
     );
   }
 );
+
 const ObjectQuestionCard = observer<{ question: Question; index: number }>(
   ({ question, index, ...rest }) => {
     const isFuture = question.content.includes("6 tháng tiếp theo");
@@ -154,7 +150,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
       <IonCard key={question.content}>
         <QuestionHeader question={question} index={index}></QuestionHeader>
         <IonItem>
-          <table>
+          <table className="full-width">
             <thead>
               <tr>
                 <th>Mục tiêu</th>
@@ -311,18 +307,31 @@ const DefinitionModal = observer(() => {
         </IonToolbar>
       </IonHeader>
       <IonContent fullscreen={true} className="ion-padding">
-        <h2>ASK của vị trí {position || null}</h2>
-        {matchedCriterionPositions.length > 0 ? (
-          matchedCriterionPositions.map((criterionPosition) => (
-            <div>
-              <p>
-                {criterionPosition.group}: {criterionPosition.criterion}
-              </p>
-            </div>
-          ))
-        ) : (
-          <p>Mô tả cho câu hỏi này đang được cập nhật...</p>
-        )}
+        <h2>Mô tả đánh giá thang điểm của vị trí {position || null}</h2>
+
+        <div>
+          <p>
+            5. Xuất sắc: Vượt xa kì vọng, tạo ra các kết quả tích cực ảnh hưởng
+            tốt đến kết quả công việc không chỉ của cá nhân, mà còn của đồng
+            nghiệp khác và tổ chức
+          </p>
+          <p>
+            4. Vượt kì vọng: Vượt trên kì vọng, tạo ra các kết quả tích cực ảnh
+            hưởng tốt đến kết quả công việc của cá nhân
+          </p>
+          <p>
+            3. Đạt kì vọng: Đảm bảo kì vọng, vừa đủ để hoàn thành công việc,
+            nhiệm vụ của cá nhân
+          </p>
+          <p>
+            2. Cần cải thiện: Chưa đảm bảo kì vọng, còn một số điểm cần cải
+            thiện để hoàn thành vai trò công việc của cá nhân
+          </p>
+          <p>
+            1. Kém Kết quả: kém, không đạt kì vọng, ảnh hưởng xấu đến kết quả
+            công việc đồng nghiệp khác và tổ chức
+          </p>
+        </div>
       </IonContent>
     </IonModal>
   );
