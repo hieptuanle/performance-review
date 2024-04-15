@@ -27,7 +27,7 @@ import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
 import FormType from "../components/FormType";
 import { Question } from "../models/ViewFormStore";
-import { createTableStore } from "../models/TableStore";
+import { TableStore } from "../models/TableStore";
 import NotFound from "./NotFound";
 import RevieweeIntro from "../components/RevieweeIntro";
 import { informationCircleOutline } from "ionicons/icons";
@@ -137,7 +137,7 @@ const ObjectQuestionCard = observer<{
   question: Question;
   index: number;
 }>(({ question, index, ...rest }) => {
-  const tableStore = createTableStore();
+  const tableStore = new TableStore();
   const isFuture = question.content.includes("6 tháng tiếp theo");
   const rootStore = useRootStore();
   const handleStatusChange = (index: number, e: any) => {
