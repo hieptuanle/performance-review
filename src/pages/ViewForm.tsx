@@ -31,6 +31,7 @@ import { tableStore } from "../models/TableStore";
 import NotFound from "./NotFound";
 import RevieweeIntro from "../components/RevieweeIntro";
 import { informationCircleOutline } from "ionicons/icons";
+import "./style.css";
 
 const QuestionHeader = observer<{ question: Question; index: number }>(
   ({ question, index }) => {
@@ -182,6 +183,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                       type="text"
                       value={item.object}
                       onChange={(e) => handleObjectChange(index, e)}
+                      placeholder="Tự luận (min 50 từ)"
                     />
                   </td>
                   {!isFuture && (
@@ -199,6 +201,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                     <textarea
                       value={item.detail}
                       onChange={(e) => handleDetailChange(index, e)}
+                      placeholder="Tự luận (min 100 từ)"
                     ></textarea>
                   </td>
                 </tr>
