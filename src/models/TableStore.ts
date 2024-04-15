@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-export class TableStore {
+class TableStore {
   data = [
     { object: "", process: 0, detail: "" },
     { object: "", process: 0, detail: "" },
