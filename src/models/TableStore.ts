@@ -27,6 +27,3 @@ export class TableStore {
     makeAutoObservable(this);
   }
 }
-
-export const tableStore1 = new TableStore();
-export const tableStore2 = new TableStore();
