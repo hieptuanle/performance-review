@@ -81,13 +81,13 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
   indices.forEach((index) => {
     if (get(item, `reviewerCode${index}`)) {
       result.push({
-        revieweeCode: get(item, `reviewerName${index}`, ""),
-        revieweeName: get(item, `reviewerCode${index}`, ""),
-        reviewerName: item.code,
-        reviewerCode: item.displayName,
+        revieweeCode: item.code,
+        revieweeName: item.displayName,
+        reviewerName: get(item, `reviewerName${index}`, ""),
+        reviewerCode: get(item, `reviewerCode${index}`, ""),
         reviewType: 3,
         slug: urlSlug.convert(
-          `${item.code} ${item.displayName} 3 ${get(
+          `${item.code} ${item.displayName} - ${get(
             item,
             `reviewerCode${index}`
           )}`
