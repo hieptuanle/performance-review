@@ -132,20 +132,24 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
 );
 const ObjectQuestionCard = observer<{ question: Question; index: number }>(
   ({ question, index, ...rest }) => {
+    const isFuture = question.content.includes("6 tháng tiếp theo");
     const rootStore = useRootStore();
     const handleStatusChange = (index: number, e: any) => {
       const value = parseInt(e.target.value, 10);
       tableStore.updateStatus(index, value);
+      rootStore.viewFormStore.setOkr(question, tableStore.data);
     };
     const handleObjectChange = (index: number, e: any) => {
       const value = e.target.value;
       tableStore.updateObject(index, value);
+      rootStore.viewFormStore.setOkr(question, tableStore.data);
     };
     const handleDetailChange = (index: number, e: any) => {
       const value = e.target.value;
       tableStore.updateDetail(index, value);
+      rootStore.viewFormStore.setOkr(question, tableStore.data);
     };
-    const orks = [{ index: 1, object: "", process: 0, detail: "" }];
+
     return (
       <IonCard key={question.content}>
         <QuestionHeader question={question} index={index}></QuestionHeader>
@@ -154,13 +158,21 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
             <thead>
               <tr>
                 <th>Mục tiêu</th>
-                <th>Kết quả then chốt đã đề ra kỳ trước</th>
-                <th>Tình trạng</th>
-                <th>Mô tả kết quả thực tế đã đạt được</th>
+                <th>
+                  {isFuture
+                    ? "Kết quả then chốt"
+                    : "Kết quả then chốt đã đề ra kỳ trước		"}
+                </th>
+                {!isFuture && <th>Tình trạng</th>}
+                <th>
+                  {isFuture
+                    ? "Kế hoạch thực hiện"
+                    : "Mô tả kết quả thực tế đã đạt được"}
+                </th>
               </tr>
             </thead>
             <tbody>
-              {orks.map((item, index) => (
+              {tableStore.data.map((item, index) => (
                 <tr key={index}>
                   <td>{index + 1}</td>
                   <td>
@@ -170,15 +182,17 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                       onChange={(e) => handleObjectChange(index, e)}
                     />
                   </td>
-                  <td>
-                    <input
-                      type="number"
-                      value={item.process}
-                      onChange={(e) => handleStatusChange(index, e)}
-                      min="0"
-                      max="100"
-                    />
-                  </td>
+                  {!isFuture && (
+                    <td>
+                      <input
+                        type="number"
+                        value={item.process}
+                        onChange={(e) => handleStatusChange(index, e)}
+                        min="0"
+                        max="100"
+                      />
+                    </td>
+                  )}
                   <td>
                     <input
                       type="text"
