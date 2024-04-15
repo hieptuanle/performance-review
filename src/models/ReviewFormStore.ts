@@ -8,7 +8,7 @@ export interface ReviewForm {
   revieweeCode: string;
   revieweeName: string;
   slug: string;
-  isTeamManager?: boolean;
+  isTeamManager?: Boolean;
 }
 
 export class ReviewFormStore {
