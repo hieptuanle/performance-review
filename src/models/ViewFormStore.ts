@@ -89,7 +89,7 @@ export class ViewFormStore {
     this.questions = [];
   }
 
-  setQuestions(positions: string[], reviewType: number) {
+  setQuestions(positions: string[], reviewType: number, isManager: boolean) {
     let questions: Question[] = [];
 
     if ([3, 4].includes(reviewType)) {
@@ -198,12 +198,28 @@ export class ViewFormStore {
           - Am hiểu quy trình, hệ thống vận hành về thông tin và hàng hóa trong công ty
           - Chủ động quan sát, theo dõi và cải thiện, nâng cấp hệ thống của bộ phận`,
         },
-        {
+      ];
+      if (isManager) {
+        scaleQuestions.push({
           content: `6. Năng lực quản lý
-          Giải thích: 
-          - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
-          - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên`,
-        },
+    Giải thích: 
+    - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
+    - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên`,
+        });
+      }
+      questions = scaleQuestions.map<Question>((data) => {
+        return {
+          group: "Personal",
+          content: data.content,
+          layout: data.isHeader ? "Header" : "Scale",
+          mark: 0,
+          answer: "",
+          timeContent: "",
+          okrs: [],
+        };
+      });
+
+      const objectQuestions = [
         {
           content: `II. Review kết quả OKR 6 tháng trước`,
           isObject: true,
@@ -212,19 +228,19 @@ export class ViewFormStore {
           content: `III. Lên OKR giai đoạn 6 tháng tiếp theo`,
           isObject: true,
         },
-      ];
-
-      questions = scaleQuestions.map<Question>((data) => {
+      ].map<Question>((data) => {
         return {
           group: "Personal",
           content: data.content,
-          layout: data.isHeader ? "Header" : data.isObject ? "Object" : "Scale",
+          layout: "Object",
           mark: 0,
           answer: "",
           timeContent: "",
           okrs: [],
         };
       });
+
+      questions.push(...objectQuestions);
 
       const textQuestions = compact([
         `IV. Đề xuất của bạn về mức lương và đãi ngộ khác`,

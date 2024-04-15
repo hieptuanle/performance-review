@@ -385,7 +385,8 @@ const ViewForm = observer(() => {
     rootStore.viewFormStore.setReviewee(matchReviewee);
     rootStore.viewFormStore.setQuestions(
       matchReviewee.revieweePositions,
-      form.reviewType
+      form.reviewType,
+      form.isManager
     );
   }, [params.formId, rootStore]);
 

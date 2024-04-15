@@ -60,6 +60,7 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
     reviewerName: item.displayName,
     slug: urlSlug.convert(`${item.code} ${item.displayName} 1 ${item.code}`),
     reviewType: 1,
+    isManager: !!get(item, "isManager"),
     managerCode: item.managerCode,
     managerName: item.managerName,
   });
@@ -77,7 +78,20 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
   //     managerName: item.managerName,
   //   });
   // }
-  const indices = ["1", "2", "3", "4", "5"];
+  const indices = [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6",
+    "7",
+    "8",
+    "9",
+    "10",
+    "11",
+    "12",
+  ];
   indices.forEach((index) => {
     if (get(item, `reviewerCode${index}`)) {
       result.push({
@@ -85,6 +99,7 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
         revieweeName: item.displayName,
         reviewerName: get(item, `reviewerName${index}`, ""),
         reviewerCode: get(item, `reviewerCode${index}`, ""),
+        isManager: false,
         reviewType: 3,
         slug: urlSlug.convert(
           `${item.code} ${item.displayName} 3 ${get(
