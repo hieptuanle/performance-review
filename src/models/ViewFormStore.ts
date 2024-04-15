@@ -105,6 +105,7 @@ export class ViewFormStore {
           mark: 0,
           answer: "",
           timeContent: "",
+          okrs: [],
         };
       });
 
@@ -167,6 +168,7 @@ export class ViewFormStore {
           mark: 0,
           answer: "",
           timeContent: "",
+          okrs: [],
         };
       });
 
@@ -180,6 +182,7 @@ export class ViewFormStore {
           mark: 0,
           answer: "",
           timeContent: "",
+          okrs: [],
         };
       });
       questions.push(...textQuestions);
