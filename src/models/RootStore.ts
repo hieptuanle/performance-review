@@ -27,9 +27,7 @@ export class RootStore {
   formSummaryStore: FormSummaryStore;
   listRevieweesStore: ListRevieweesStore;
   viewRevieweeStore: ViewRevieweeStore;
-  createTableStore() {
-    return new TableStore();
-  }
+
   constructor() {
     this.authenticationStore = new AuthenticationStore(this);
     this.individualFormStore = new IndividualFormStore(this);
