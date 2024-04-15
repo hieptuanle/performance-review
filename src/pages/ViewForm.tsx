@@ -194,11 +194,10 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                     </td>
                   )}
                   <td>
-                    <input
-                      type="text"
+                    <textarea
                       value={item.detail}
                       onChange={(e) => handleDetailChange(index, e)}
-                    />
+                    ></textarea>
                   </td>
                 </tr>
               ))}
