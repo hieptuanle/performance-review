@@ -355,8 +355,8 @@ const DefinitionModal = observer(() => {
             thiện để hoàn thành vai trò công việc của cá nhân
           </p>
           <p>
-            1. Kém Kết quả: kém, không đạt kì vọng, ảnh hưởng xấu đến kết quả
-            công việc đồng nghiệp khác và tổ chức
+            1. Kém: Kết quả kém, không đạt kì vọng, ảnh hưởng xấu đến kết quả
+            công việc của bản thân
           </p>
         </div>
       </IonContent>

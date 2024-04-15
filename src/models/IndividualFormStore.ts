@@ -87,7 +87,7 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
         reviewerCode: get(item, `reviewerCode${index}`, ""),
         reviewType: 3,
         slug: urlSlug.convert(
-          `${item.code} ${item.displayName} - ${get(
+          `${item.code} ${item.displayName} 3 ${get(
             item,
             `reviewerCode${index}`
           )}`
