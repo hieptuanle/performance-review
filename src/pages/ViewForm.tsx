@@ -145,6 +145,11 @@ const ObjectQuestionCard = observer<{
     tableStore.updateStatus(index, value);
     rootStore.viewFormStore.setOkr(question, tableStore.data);
   };
+  const handleTimeContentChange = (index: number, e: any) => {
+    const value = parseInt(e.target.value, 10);
+    tableStore.updateStatus(index, value);
+    rootStore.viewFormStore.setOkr(question, tableStore.data);
+  };
   const handleObjectChange = (index: number, e: any) => {
     const value = e.target.value;
     tableStore.updateObject(index, value);
@@ -168,6 +173,7 @@ const ObjectQuestionCard = observer<{
         <table className="full-width">
           <thead>
             <tr>
+              <th>STT</th>
               <th>Mục tiêu</th>
               <th>
                 {isFuture
@@ -175,6 +181,7 @@ const ObjectQuestionCard = observer<{
                   : "Kết quả then chốt đã đề ra kỳ trước"}
               </th>
               {!isFuture && <th>Tình trạng(%)</th>}
+              {isFuture && <th>Thời gian thực hiện cụ thể</th>}
               <th>
                 {isFuture
                   ? "Kế hoạch thực hiện"
@@ -185,6 +192,7 @@ const ObjectQuestionCard = observer<{
           <tbody>
             {tableStore.data.map((item, index) => (
               <tr key={index}>
+                <td className="text-center">{index + 1}</td>
                 <td className="text-center">
                   {" "}
                   <textarea
@@ -212,6 +220,15 @@ const ObjectQuestionCard = observer<{
                       min="0"
                       max="100"
                     />
+                  </td>
+                )}
+                {isFuture && (
+                  <td>
+                    <textarea
+                      className="full-width"
+                      value={item.timeContent}
+                      onChange={(e) => handleTimeContentChange(index, e)}
+                    ></textarea>
                   </td>
                 )}
                 <td>
