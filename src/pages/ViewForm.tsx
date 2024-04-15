@@ -27,7 +27,7 @@ import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
 import FormType from "../components/FormType";
 import { Question } from "../models/ViewFormStore";
-import { createTableStore } from "../models/TableStore";
+import { TableStore } from "../models/TableStore";
 import NotFound from "./NotFound";
 import RevieweeIntro from "../components/RevieweeIntro";
 import { informationCircleOutline } from "ionicons/icons";
@@ -137,7 +137,7 @@ const ObjectQuestionCard = observer<{
   question: Question;
   index: number;
 }>(({ question, index, ...rest }) => {
-  const tableStore = createTableStore();
+  const tableStore = new TableStore();
   const isFuture = question.content.includes("6 tháng tiếp theo");
   const rootStore = useRootStore();
   const handleStatusChange = (index: number, e: any) => {
@@ -148,6 +148,11 @@ const ObjectQuestionCard = observer<{
   const handleObjectChange = (index: number, e: any) => {
     const value = e.target.value;
     tableStore.updateObject(index, value);
+    rootStore.viewFormStore.setOkr(question, tableStore.data);
+  };
+  const handleKeyResultChange = (index: number, e: any) => {
+    const value = e.target.value;
+    tableStore.updateKeyResult(index, value);
     rootStore.viewFormStore.setOkr(question, tableStore.data);
   };
   const handleDetailChange = (index: number, e: any) => {
@@ -180,15 +185,22 @@ const ObjectQuestionCard = observer<{
           <tbody>
             {tableStore.data.map((item, index) => (
               <tr key={index}>
-                <td className="text-center">{index + 1}</td>
-                <td>
-                  <input
+                <td className="text-center">
+                  {" "}
+                  <textarea
                     className="full-width"
-                    type="text"
                     value={item.object}
                     onChange={(e) => handleObjectChange(index, e)}
+                    placeholder="Tự luận (min 5 từ)"
+                  ></textarea>
+                </td>
+                <td>
+                  <textarea
+                    className="full-width"
+                    value={item.keyResult}
+                    onChange={(e) => handleKeyResultChange(index, e)}
                     placeholder="Tự luận (min 50 từ)"
-                  />
+                  ></textarea>
                 </td>
                 {!isFuture && (
                   <td>
@@ -255,7 +267,7 @@ const FormQuestions = observer(() => {
           return (
             <IonListHeader lines="full">
               <IonLabel>
-                <h2 style={{ fontSize: "2.5em", fontWeight: "bold" }}>
+                <h2 style={{ fontSize: "1.5em", fontWeight: "bold" }}>
                   {question.content}
                 </h2>
               </IonLabel>
