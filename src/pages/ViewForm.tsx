@@ -31,6 +31,7 @@ import { tableStore } from "../models/TableStore";
 import NotFound from "./NotFound";
 import RevieweeIntro from "../components/RevieweeIntro";
 import { informationCircleOutline } from "ionicons/icons";
+import "./style.css";
 
 const QuestionHeader = observer<{ question: Question; index: number }>(
   ({ question, index }) => {
