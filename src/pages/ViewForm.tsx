@@ -136,8 +136,8 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
 const ObjectQuestionCard = observer<{
   question: Question;
   index: number;
-}>(({ question, index, ...rest }) => {
-  const tableStore = new TableStore();
+  tableStore: TableStore;
+}>(({ question, index, tableStore, ...rest }) => {
   const isFuture = question.content.includes("6 tháng tiếp theo");
   const rootStore = useRootStore();
   const handleStatusChange = (index: number, e: any) => {
@@ -292,6 +292,7 @@ const FormQuestions = observer(() => {
               key={question.content}
               question={question}
               index={index}
+              tableStore={new TableStore()}
             ></ObjectQuestionCard>
           );
         }
