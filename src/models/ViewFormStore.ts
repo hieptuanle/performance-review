@@ -93,13 +93,62 @@ export class ViewFormStore {
     let questions: Question[] = [];
 
     if ([3, 4].includes(reviewType)) {
-      const textQuestions = [
-        "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm được thể hiện tốt nhất trong 6 tháng qua của {{NAME}}?",
-        "Dựa vào các tiêu chí ASK, theo bạn đâu là điểm cần cải thiện trong 6 tháng qua của {{NAME}}?",
-        "Bạn có muốn đưa ra lời khuyên hay góp ý gì cho {{NAME}} không? Điều này sẽ ảnh hưởng như thế nào đến công việc của bạn?",
-      ].map<Question>((d) => {
+      const questions = [
+        { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
+        {
+          content: `1. Tác phong và kỷ luật
+            Giải thích:
+              - Tuân thủ quy định, nội quy của công ty, không gây ra vi phạm 
+              - Đảm bảo tác phong làm việc nghiêm túc về trang phục, thời gian, địa điểm
+              - Đảm bảo tính cam kết trong công việc`,
+        },
+        {
+          content: `2. Giao tiếp và làm việc nhóm
+            Giải thích:
+            - Có kỹ năng lắng nghe và giao tiếp với đồng nghiệp tốt, cả bằng lời nói và văn bản
+            - Phản hồi kịp thời trong công việc
+            - Hỗ trợ tốt đồng nghiệp trong làm việc nhóm`,
+        },
+        {
+          content: `3. Trách nhiệm với công việc
+            Giải thích:
+            - Sẵn sàng nhận nhiệm vụ, đồng thời nỗ lực hết sức mình để hoàn thành nhiệm vụ, không tránh né, đùn đẩy nhiệm vụ qua cho hoàn cảnh hay người khác.
+            - Nỗ lực hoàn thành công việc đúng cam kết đề ra
+            - Dám chịu trách nhiệm, nhận lỗi khi mình không hoàn thành nhiệm vụ, không đổ thừa cho hoàn cảnh hay người khác`,
+        },
+        {
+          content: `4. Kỹ năng và kiến thức chuyên môn
+            Giải thích:
+            - Có đầy đủ kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
+            - Chủ động và quan tâm đến việc học thêm kỹ năng và kiến thức chuyên môn mới`,
+        },
+        {
+          content: `5. Am hiểu hoạt động công ty
+            Giải thích:
+            - Nắm rõ chức năng các bộ phận trong công ty
+            - Am hiểu quy trình, hệ thống vận hành về thông tin và hàng hóa trong công ty
+            - Chủ động quan sát, theo dõi và cải thiện, nâng cấp hệ thống của bộ phận`,
+        },
+        {
+          content: `6. Quản lý`,
+        },
+      ].map<Question>((data) => {
         return {
           group: "Colleague",
+          content: data.content,
+          layout: data.isHeader ? "Header" : "Scale",
+          mark: 0,
+          answer: "",
+          timeContent: "",
+          okrs: [],
+        };
+      });
+
+      const textQuestions = compact([
+        `II. Góp ý và đề xuất khác cho đồng hiệp`,
+      ]).map<Question>((d) => {
+        return {
+          group: "Personal",
           content: d,
           layout: "Text",
           mark: 0,
@@ -108,7 +157,6 @@ export class ViewFormStore {
           okrs: [],
         };
       });
-
       questions = [...questions, ...textQuestions];
     } else {
       let scaleQuestions = [
