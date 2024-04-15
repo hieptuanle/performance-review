@@ -182,6 +182,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                       type="text"
                       value={item.object}
                       onChange={(e) => handleObjectChange(index, e)}
+                      placeholder="Tự luận (min 50 từ)"
                     />
                   </td>
                   {!isFuture && (
@@ -199,6 +200,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                     <textarea
                       value={item.detail}
                       onChange={(e) => handleDetailChange(index, e)}
+                      placeholder="Tự luận (min 100 từ)"
                     ></textarea>
                   </td>
                 </tr>
