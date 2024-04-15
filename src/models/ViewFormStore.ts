@@ -89,7 +89,11 @@ export class ViewFormStore {
     this.questions = [];
   }
 
-  setQuestions(positions: string[], reviewType: number, isManager: boolean) {
+  setQuestions(
+    positions: string[],
+    reviewType: number,
+    isTeamManager: boolean
+  ) {
     let questions: Question[] = [];
 
     if ([3, 4].includes(reviewType)) {
@@ -199,7 +203,7 @@ export class ViewFormStore {
           - Chủ động quan sát, theo dõi và cải thiện, nâng cấp hệ thống của bộ phận`,
         },
       ];
-      if (isManager) {
+      if (isTeamManager) {
         scaleQuestions.push({
           content: `6. Năng lực quản lý
     Giải thích: 

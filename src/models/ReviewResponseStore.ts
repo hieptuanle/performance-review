@@ -24,6 +24,7 @@ export interface ReviewResponse {
   updatedAt?: Date;
   user?: string;
   anonymous?: Boolean;
+  isTeamManager?: Boolean;
 }
 
 export class ReviewResponseStore {

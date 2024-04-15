@@ -60,7 +60,7 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
     reviewerName: item.displayName,
     slug: urlSlug.convert(`${item.code} ${item.displayName} 1 ${item.code}`),
     reviewType: 1,
-    isManager: !!get(item, "isManager"),
+    isTeamManager: !!get(item, "isTeamManager"),
     managerCode: item.managerCode,
     managerName: item.managerName,
   });
@@ -99,7 +99,7 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
         revieweeName: item.displayName,
         reviewerName: get(item, `reviewerName${index}`, ""),
         reviewerCode: get(item, `reviewerCode${index}`, ""),
-        isManager: false,
+        isTeamManager: false,
         reviewType: 3,
         slug: urlSlug.convert(
           `${item.code} ${item.displayName} 3 ${get(
