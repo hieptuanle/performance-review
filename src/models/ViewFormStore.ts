@@ -14,6 +14,7 @@ export interface Question {
   mark: string | number;
   answer: string;
   timeContent: string;
+  okrs: any[];
 }
 
 export class ViewFormStore {
@@ -70,6 +71,10 @@ export class ViewFormStore {
   }
   setMark(question: Question, mark: string) {
     question.mark = mark;
+    this.updateLocalStorage();
+  }
+  setOkr(question: Question, okrs: any[]) {
+    question.okrs = okrs;
     this.updateLocalStorage();
   }
 
