@@ -177,9 +177,10 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
             <tbody>
               {tableStore.data.map((item, index) => (
                 <tr key={index}>
-                  <td>{index + 1}</td>
+                  <td className="text-center">{index + 1}</td>
                   <td>
                     <input
+                      className="full-width"
                       type="text"
                       value={item.object}
                       onChange={(e) => handleObjectChange(index, e)}
@@ -189,6 +190,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                   {!isFuture && (
                     <td>
                       <input
+                        className="full-width"
                         type="number"
                         value={item.process}
                         onChange={(e) => handleStatusChange(index, e)}
@@ -199,6 +201,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                   )}
                   <td>
                     <textarea
+                      className="full-width"
                       value={item.detail}
                       onChange={(e) => handleDetailChange(index, e)}
                       placeholder="Tự luận (min 100 từ)"
