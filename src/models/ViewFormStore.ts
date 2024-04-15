@@ -93,7 +93,7 @@ export class ViewFormStore {
     let questions: Question[] = [];
 
     if ([3, 4].includes(reviewType)) {
-      const questions = [
+      const scaleQuestions = [
         { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
         {
           content: `1. Tác phong và kỷ luật
@@ -157,7 +157,7 @@ export class ViewFormStore {
           okrs: [],
         };
       });
-      questions = [...questions, ...textQuestions];
+      questions = [...questions, ...scaleQuestions, ...textQuestions];
     } else {
       let scaleQuestions = [
         { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
