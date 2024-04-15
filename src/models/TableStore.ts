@@ -26,3 +26,7 @@ class TableStore {
 }
 
 export const tableStore = new TableStore();
+
+export function createTableStore() {
+  return new TableStore();
+}

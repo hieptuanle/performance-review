@@ -27,7 +27,7 @@ import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
 import FormType from "../components/FormType";
 import { Question } from "../models/ViewFormStore";
-import { tableStore } from "../models/TableStore";
+import { createTableStore } from "../models/TableStore";
 import NotFound from "./NotFound";
 import RevieweeIntro from "../components/RevieweeIntro";
 import { informationCircleOutline } from "ionicons/icons";
@@ -133,89 +133,91 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
   }
 );
 
-const ObjectQuestionCard = observer<{ question: Question; index: number }>(
-  ({ question, index, ...rest }) => {
-    const isFuture = question.content.includes("6 tháng tiếp theo");
-    const rootStore = useRootStore();
-    const handleStatusChange = (index: number, e: any) => {
-      const value = parseInt(e.target.value, 10);
-      tableStore.updateStatus(index, value);
-      rootStore.viewFormStore.setOkr(question, tableStore.data);
-    };
-    const handleObjectChange = (index: number, e: any) => {
-      const value = e.target.value;
-      tableStore.updateObject(index, value);
-      rootStore.viewFormStore.setOkr(question, tableStore.data);
-    };
-    const handleDetailChange = (index: number, e: any) => {
-      const value = e.target.value;
-      tableStore.updateDetail(index, value);
-      rootStore.viewFormStore.setOkr(question, tableStore.data);
-    };
+const ObjectQuestionCard = observer<{
+  question: Question;
+  index: number;
+}>(({ question, index, ...rest }) => {
+  const tableStore = createTableStore();
+  const isFuture = question.content.includes("6 tháng tiếp theo");
+  const rootStore = useRootStore();
+  const handleStatusChange = (index: number, e: any) => {
+    const value = parseInt(e.target.value, 10);
+    tableStore.updateStatus(index, value);
+    rootStore.viewFormStore.setOkr(question, tableStore.data);
+  };
+  const handleObjectChange = (index: number, e: any) => {
+    const value = e.target.value;
+    tableStore.updateObject(index, value);
+    rootStore.viewFormStore.setOkr(question, tableStore.data);
+  };
+  const handleDetailChange = (index: number, e: any) => {
+    const value = e.target.value;
+    tableStore.updateDetail(index, value);
+    rootStore.viewFormStore.setOkr(question, tableStore.data);
+  };
 
-    return (
-      <IonCard key={question.content}>
-        <QuestionHeader question={question} index={index}></QuestionHeader>
-        <IonItem>
-          <table className="full-width">
-            <thead>
-              <tr>
-                <th>Mục tiêu</th>
-                <th>
-                  {isFuture
-                    ? "Kết quả then chốt"
-                    : "Kết quả then chốt đã đề ra kỳ trước"}
-                </th>
-                {!isFuture && <th>Tình trạng(%)</th>}
-                <th>
-                  {isFuture
-                    ? "Kế hoạch thực hiện"
-                    : "Mô tả kết quả thực tế đã đạt được"}
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {tableStore.data.map((item, index) => (
-                <tr key={index}>
-                  <td className="text-center">{index + 1}</td>
+  return (
+    <IonCard key={question.content}>
+      <QuestionHeader question={question} index={index}></QuestionHeader>
+      <IonItem>
+        <table className="full-width">
+          <thead>
+            <tr>
+              <th>Mục tiêu</th>
+              <th>
+                {isFuture
+                  ? "Kết quả then chốt"
+                  : "Kết quả then chốt đã đề ra kỳ trước"}
+              </th>
+              {!isFuture && <th>Tình trạng(%)</th>}
+              <th>
+                {isFuture
+                  ? "Kế hoạch thực hiện"
+                  : "Mô tả kết quả thực tế đã đạt được"}
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            {tableStore.data.map((item, index) => (
+              <tr key={index}>
+                <td className="text-center">{index + 1}</td>
+                <td>
+                  <input
+                    className="full-width"
+                    type="text"
+                    value={item.object}
+                    onChange={(e) => handleObjectChange(index, e)}
+                    placeholder="Tự luận (min 50 từ)"
+                  />
+                </td>
+                {!isFuture && (
                   <td>
                     <input
                       className="full-width"
-                      type="text"
-                      value={item.object}
-                      onChange={(e) => handleObjectChange(index, e)}
-                      placeholder="Tự luận (min 50 từ)"
+                      type="number"
+                      value={item.process}
+                      onChange={(e) => handleStatusChange(index, e)}
+                      min="0"
+                      max="100"
                     />
                   </td>
-                  {!isFuture && (
-                    <td>
-                      <input
-                        className="full-width"
-                        type="number"
-                        value={item.process}
-                        onChange={(e) => handleStatusChange(index, e)}
-                        min="0"
-                        max="100"
-                      />
-                    </td>
-                  )}
-                  <td>
-                    <textarea
-                      className="full-width"
-                      value={item.detail}
-                      onChange={(e) => handleDetailChange(index, e)}
-                      placeholder="Tự luận (min 100 từ)"
-                    ></textarea>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </IonItem>
-      </IonCard>
-    );
-  }
-);
+                )}
+                <td>
+                  <textarea
+                    className="full-width"
+                    value={item.detail}
+                    onChange={(e) => handleDetailChange(index, e)}
+                    placeholder="Tự luận (min 100 từ)"
+                  ></textarea>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </IonItem>
+    </IonCard>
+  );
+});
 
 const TextQuestionCard = observer<{ question: Question; index: number }>(
   ({ question, index, ...rest }) => {
