@@ -93,6 +93,7 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
     "12",
   ];
   indices.forEach((index) => {
+    console.log(get(item, `reviewerCode${index}`));
     if (get(item, `reviewerCode${index}`)) {
       result.push({
         revieweeCode: item.code,

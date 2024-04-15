@@ -187,8 +187,8 @@ const ObjectQuestionCard = observer<{
           <tbody>
             {tableStore.data.map((item, index) => (
               <tr key={index}>
-                <td className="text-center">{index + 1}</td>
-                <td className="text-center">
+                <td className="ion-text-center">{index + 1}</td>
+                <td className=" ion-text-center">
                   {" "}
                   <textarea
                     className="full-width"
