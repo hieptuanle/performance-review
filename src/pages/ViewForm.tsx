@@ -39,7 +39,13 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
     return (
       <IonListHeader lines="full">
         <IonLabel>
-          <h2 style={{ fontSize: "1.5em", fontWeight: "bold" }}>
+          <h2
+            style={{
+              fontSize: "1.5em",
+              fontWeight: "bold",
+              whiteSpace: "pre-line",
+            }}
+          >
             {question.content.replaceAll(`{{NAME}}`, revieweeName || "")}
           </h2>
         </IonLabel>
@@ -159,7 +165,7 @@ const ObjectQuestionCard = observer<{ question: Question; index: number }>(
                     ? "Kết quả then chốt"
                     : "Kết quả then chốt đã đề ra kỳ trước"}
                 </th>
-                {!isFuture && <th>Tình trạng</th>}
+                {!isFuture && <th>Tình trạng(%)</th>}
                 <th>
                   {isFuture
                     ? "Kế hoạch thực hiện"
@@ -281,9 +287,6 @@ const FormQuestions = observer(() => {
 const DefinitionModal = observer(() => {
   const rootStore = useRootStore();
   const position = rootStore.viewFormStore.reviewee?.revieweePositions[0];
-  const matchedCriterionPositions = position
-    ? rootStore.criterionStore.getMatchingCriterions(position)
-    : [];
 
   return (
     <IonModal
