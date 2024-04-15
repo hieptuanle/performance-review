@@ -92,7 +92,7 @@ export class ViewFormStore {
   setQuestions(
     positions: string[],
     reviewType: number,
-    isTeamManager: boolean
+    isTeamManager: Boolean
   ) {
     let questions: Question[] = [];
 
