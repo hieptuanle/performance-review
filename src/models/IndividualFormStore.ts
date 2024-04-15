@@ -2,7 +2,7 @@ import { computed, makeObservable, observable } from "mobx";
 import { RootStore } from "./RootStore";
 import * as urlSlug from "url-slug";
 import { ReviewForm } from "./ReviewFormStore";
-// import { get } from "lodash";
+import { get } from "lodash";
 import { forms as rawForms } from "../data/forms";
 
 interface IndividualForm extends ReviewForm {
@@ -77,25 +77,25 @@ const forms = rawForms.reduce<IndividualForm[]>((result, item) => {
   //     managerName: item.managerName,
   //   });
   // }
-  // const indices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
-  // indices.forEach((index) => {
-  //   if (get(item, `reviewerCode${index}`)) {
-  //     result.push({
-  //       revieweeCode: item.code,
-  //       revieweeName: item.displayName,
-  //       reviewerName: get(item, `reviewerName${index}`),
-  //       reviewerCode: get(item, `reviewerCode${index}`),
-  //       reviewType: 3,
-  //       slug: urlSlug.convert(
-  //         `${item.code} ${item.displayName} 3 ${get(
-  //           item,
-  //           `reviewerCode${index}`
-  //         )}`
-  //       ),
-  //       managerCode: item.managerCode,
-  //       managerName: item.managerName,
-  //     });
-  //   }
-  // });
+  const indices = ["1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  indices.forEach((index) => {
+    if (get(item, `reviewerCode${index}`)) {
+      result.push({
+        revieweeCode: item.code,
+        revieweeName: item.displayName,
+        reviewerName: get(item, `reviewerName${index}`),
+        reviewerCode: get(item, `reviewerCode${index}`),
+        reviewType: 3,
+        slug: urlSlug.convert(
+          `${item.code} ${item.displayName} 3 ${get(
+            item,
+            `reviewerCode${index}`
+          )}`
+        ),
+        managerCode: item.managerCode,
+        managerName: item.managerName,
+      });
+    }
+  });
   return result;
 }, []);
