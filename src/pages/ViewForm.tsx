@@ -267,7 +267,7 @@ const FormQuestions = observer(() => {
           return (
             <IonListHeader lines="full">
               <IonLabel>
-                <h2 style={{ fontSize: "2.5em", fontWeight: "bold" }}>
+                <h2 style={{ fontSize: "1.5em", fontWeight: "bold" }}>
                   {question.content}
                 </h2>
               </IonLabel>
