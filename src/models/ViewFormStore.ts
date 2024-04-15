@@ -130,7 +130,10 @@ export class ViewFormStore {
             - Chủ động quan sát, theo dõi và cải thiện, nâng cấp hệ thống của bộ phận`,
         },
         {
-          content: `6. Quản lý`,
+          content: `6. Năng lực quản lý
+            Giải thích: 
+            - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
+            - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên`,
         },
       ].map<Question>((data) => {
         return {
@@ -196,7 +199,10 @@ export class ViewFormStore {
           - Chủ động quan sát, theo dõi và cải thiện, nâng cấp hệ thống của bộ phận`,
         },
         {
-          content: `6. Quản lý`,
+          content: `6. Năng lực quản lý
+          Giải thích: 
+          - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
+          - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên`,
         },
         {
           content: `II. Review kết quả OKR 6 tháng trước`,
