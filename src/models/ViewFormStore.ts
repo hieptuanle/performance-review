@@ -107,7 +107,6 @@ export class ViewFormStore {
     } else {
       let scaleQuestions = [
         { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
-        { content: "", isHeader: true },
         {
           content: `1. Tác phong và kỷ luật
           Giải thích:
