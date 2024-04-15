@@ -1,6 +1,6 @@
 import { makeAutoObservable } from "mobx";
 
-class TableStore {
+export class TableStore {
   data = [
     { object: "", process: 0, detail: "" },
     { object: "", process: 0, detail: "" },
@@ -26,3 +26,7 @@ class TableStore {
 }
 
 export const tableStore = new TableStore();
+
+export function createTableStore() {
+  return new TableStore();
+}
