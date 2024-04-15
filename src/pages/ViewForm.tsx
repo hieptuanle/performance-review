@@ -27,6 +27,7 @@ import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
 import FormType from "../components/FormType";
 import { Question } from "../models/ViewFormStore";
+import { tableStore } from "../models/TableStore";
 import NotFound from "./NotFound";
 import RevieweeIntro from "../components/RevieweeIntro";
 import { informationCircleOutline } from "ionicons/icons";
@@ -129,6 +130,71 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
     );
   }
 );
+const ObjectQuestionCard = observer<{ question: Question; index: number }>(
+  ({ question, index, ...rest }) => {
+    const rootStore = useRootStore();
+    const handleStatusChange = (index: number, e: any) => {
+      const value = parseInt(e.target.value, 10);
+      tableStore.updateStatus(index, value);
+    };
+    const handleObjectChange = (index: number, e: any) => {
+      const value = e.target.value;
+      tableStore.updateObject(index, value);
+    };
+    const handleDetailChange = (index: number, e: any) => {
+      const value = e.target.value;
+      tableStore.updateDetail(index, value);
+    };
+    const orks = [{ index: 1, object: "", process: 0, detail: "" }];
+    return (
+      <IonCard key={question.content}>
+        <QuestionHeader question={question} index={index}></QuestionHeader>
+        <IonItem>
+          <table>
+            <thead>
+              <tr>
+                <th>Mục tiêu</th>
+                <th>Kết quả then chốt đã đề ra kỳ trước</th>
+                <th>Tình trạng</th>
+                <th>Mô tả kết quả thực tế đã đạt được</th>
+              </tr>
+            </thead>
+            <tbody>
+              {orks.map((item, index) => (
+                <tr key={index}>
+                  <td>{index + 1}</td>
+                  <td>
+                    <input
+                      type="text"
+                      value={item.process}
+                      onChange={(e) => handleObjectChange(index, e)}
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="number"
+                      value={item.process}
+                      onChange={(e) => handleStatusChange(index, e)}
+                      min="0"
+                      max="100"
+                    />
+                  </td>
+                  <td>
+                    <input
+                      type="text"
+                      value={item.process}
+                      onChange={(e) => handleDetailChange(index, e)}
+                    />
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </IonItem>
+      </IonCard>
+    );
+  }
+);
 
 const TextQuestionCard = observer<{ question: Question; index: number }>(
   ({ question, index, ...rest }) => {
@@ -172,7 +238,8 @@ const FormQuestions = observer(() => {
               </IonLabel>
             </IonListHeader>
           );
-        } else if (question.layout === "Scale") {
+        }
+        if (question.layout === "Scale") {
           return (
             <ScaleQuestionCard
               key={question.content}
@@ -180,15 +247,23 @@ const FormQuestions = observer(() => {
               index={index}
             ></ScaleQuestionCard>
           );
-        } else {
+        }
+        if (question.layout === "Object") {
           return (
-            <TextQuestionCard
+            <ObjectQuestionCard
               key={question.content}
               question={question}
               index={index}
-            ></TextQuestionCard>
+            ></ObjectQuestionCard>
           );
         }
+        return (
+          <TextQuestionCard
+            key={question.content}
+            question={question}
+            index={index}
+          ></TextQuestionCard>
+        );
       })}
     </Fragment>
   );
