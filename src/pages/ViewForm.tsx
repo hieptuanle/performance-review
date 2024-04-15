@@ -150,6 +150,11 @@ const ObjectQuestionCard = observer<{
     tableStore.updateObject(index, value);
     rootStore.viewFormStore.setOkr(question, tableStore.data);
   };
+  const handleKeyResultChange = (index: number, e: any) => {
+    const value = e.target.value;
+    tableStore.updateKeyResult(index, value);
+    rootStore.viewFormStore.setOkr(question, tableStore.data);
+  };
   const handleDetailChange = (index: number, e: any) => {
     const value = e.target.value;
     tableStore.updateDetail(index, value);
@@ -180,15 +185,22 @@ const ObjectQuestionCard = observer<{
           <tbody>
             {tableStore.data.map((item, index) => (
               <tr key={index}>
-                <td className="text-center">{index + 1}</td>
-                <td>
-                  <input
+                <td className="text-center">
+                  {" "}
+                  <textarea
                     className="full-width"
-                    type="text"
                     value={item.object}
                     onChange={(e) => handleObjectChange(index, e)}
+                    placeholder="Tự luận (min 5 từ)"
+                  ></textarea>
+                </td>
+                <td>
+                  <textarea
+                    className="full-width"
+                    value={item.keyResult}
+                    onChange={(e) => handleKeyResultChange(index, e)}
                     placeholder="Tự luận (min 50 từ)"
-                  />
+                  ></textarea>
                 </td>
                 {!isFuture && (
                   <td>

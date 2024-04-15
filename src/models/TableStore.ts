@@ -2,11 +2,11 @@ import { makeAutoObservable } from "mobx";
 
 export class TableStore {
   data = [
-    { object: "", process: 0, detail: "" },
-    { object: "", process: 0, detail: "" },
-    { object: "", process: 0, detail: "" },
-    { object: "", process: 0, detail: "" },
-    { object: "", process: 0, detail: "" },
+    { object: "", process: 0, detail: "", keyResult: "" },
+    { object: "", process: 0, detail: "", keyResult: "" },
+    { object: "", process: 0, detail: "", keyResult: "" },
+    { object: "", process: 0, detail: "", keyResult: "" },
+    { object: "", process: 0, detail: "", keyResult: "" },
   ];
 
   updateStatus(index: number, value: number) {
@@ -15,6 +15,9 @@ export class TableStore {
   }
   updateObject(index: number, value: string) {
     this.data[index].object = value;
+  }
+  updateKeyResult(index: number, value: string) {
+    this.data[index].keyResult = value;
   }
   updateDetail(index: number, value: string) {
     this.data[index].detail = value;
