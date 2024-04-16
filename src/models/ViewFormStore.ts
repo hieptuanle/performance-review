@@ -278,7 +278,7 @@ export class ViewFormStore {
       );
     }
 
-    let minLength = 50;
+    let minLength = 15;
 
     const notEnoughLengthQuestion = filter(
       this.questions,
