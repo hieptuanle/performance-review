@@ -294,7 +294,9 @@ export class ViewFormStore {
     }
 
     const notDoneQuestions = filter(this.questions, (question) => {
-      return question.layout === "Scale" && !question.answer;
+      return (
+        _.includes(["Object", "Text"], question.layout) && !question.answer
+      );
     });
     if (notDoneQuestions.length) {
       throw new Error(
@@ -308,6 +310,9 @@ export class ViewFormStore {
     const notEnoughLengthQuestion = filter(
       this.questions,
       (question, index) => {
+        if (_.includes(["Object", "Header"], question.layout)) {
+          return false;
+        }
         console.log(question);
         return index < 7 && split(question.answer, " ").length < minLength;
       }
