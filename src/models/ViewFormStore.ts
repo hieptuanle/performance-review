@@ -294,7 +294,9 @@ export class ViewFormStore {
     }
 
     const notDoneQuestions = filter(this.questions, (question) => {
-      return question.layout === "Scale" && !question.answer;
+      return (
+        _.includes(["Object", "Text"], question.layout) && !question.answer
+      );
     });
     if (notDoneQuestions.length) {
       throw new Error(
