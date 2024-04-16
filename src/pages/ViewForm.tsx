@@ -37,6 +37,7 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
   ({ question, index }) => {
     const rootStore = useRootStore();
     const revieweeName = rootStore.viewFormStore.reviewee?.revieweeName;
+    const isSalary = question.content.includes("lương");
     return (
       <IonListHeader lines="full">
         <IonLabel>
@@ -50,15 +51,17 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
             {question.content.replaceAll(`{{NAME}}`, revieweeName || "")}
           </h2>
         </IonLabel>
-        <IonButton
-          onClick={() => {
-            rootStore.viewFormStore.setCurrentQuestion(question);
-            rootStore.viewFormStore.setShowDefinitionModal(true);
-          }}
-        >
-          <IonIcon icon={informationCircleOutline}></IonIcon> &nbsp; Mô tả tiêu
-          chí
-        </IonButton>
+        {!isSalary && (
+          <IonButton
+            onClick={() => {
+              rootStore.viewFormStore.setCurrentQuestion(question);
+              rootStore.viewFormStore.setShowDefinitionModal(true);
+            }}
+          >
+            <IonIcon icon={informationCircleOutline}></IonIcon> &nbsp; Mô tả
+            tiêu chí
+          </IonButton>
+        )}
       </IonListHeader>
     );
   }
