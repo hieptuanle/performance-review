@@ -94,52 +94,62 @@ export class ViewFormStore {
     reviewType: number,
     isTeamManager: Boolean
   ) {
+    console.log(isTeamManager);
     let questions: Question[] = [];
-
+    const defaultScaleQuestions = [
+      { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
+      {
+        content: `1. Tác phong và kỷ luật
+    Giải thích:
+      - Tuân thủ quy định, nội quy của công ty, không gây ra vi phạm 
+      - Đảm bảo tác phong làm việc nghiêm túc về trang phục, thời gian, địa điểm
+      - Đảm bảo tính cam kết trong công việc`,
+      },
+      {
+        content: `2. Giao tiếp và làm việc nhóm
+    Giải thích:
+    - Có kỹ năng lắng nghe và giao tiếp với đồng nghiệp tốt, cả bằng lời nói và văn bản
+    - Phản hồi kịp thời trong công việc
+    - Hỗ trợ tốt đồng nghiệp trong làm việc nhóm`,
+      },
+      {
+        content: `3. Trách nhiệm với công việc
+    Giải thích:
+    - Sẵn sàng nhận nhiệm vụ, đồng thời nỗ lực hết sức mình để hoàn thành nhiệm vụ, không tránh né, đùn đẩy nhiệm vụ qua cho hoàn cảnh hay người khác.
+    - Nỗ lực hoàn thành công việc đúng cam kết đề ra
+    - Dám chịu trách nhiệm, nhận lỗi khi mình không hoàn thành nhiệm vụ, không đổ thừa cho hoàn cảnh hay người khác`,
+      },
+      {
+        content: `4. Kỹ năng và kiến thức chuyên môn
+    Giải thích:
+    - Có đầy đủ kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
+    - Chủ động và quan tâm đến việc học thêm kỹ năng và kiến thức chuyên môn mới`,
+      },
+      {
+        content: `5. Am hiểu hoạt động công ty
+    Giải thích:
+    - Nắm rõ chức năng các bộ phận trong công ty
+    - Am hiểu quy trình, hệ thống vận hành về thông tin và hàng hóa trong công ty
+    - Chủ động quan sát, theo dõi và cải thiện, nâng cấp hệ thống của bộ phận`,
+      },
+    ];
+    const managerScaleQuestions = [
+      {
+        content: `6. Năng lực quản lý
+      Giải thích: 
+      - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
+      - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên`,
+      },
+    ];
     if ([3, 4].includes(reviewType)) {
-      const scaleQuestions = [
-        { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
-        {
-          content: `1. Tác phong và kỷ luật
-            Giải thích:
-              - Tuân thủ quy định, nội quy của công ty, không gây ra vi phạm 
-              - Đảm bảo tác phong làm việc nghiêm túc về trang phục, thời gian, địa điểm
-              - Đảm bảo tính cam kết trong công việc`,
-        },
-        {
-          content: `2. Giao tiếp và làm việc nhóm
-            Giải thích:
-            - Có kỹ năng lắng nghe và giao tiếp với đồng nghiệp tốt, cả bằng lời nói và văn bản
-            - Phản hồi kịp thời trong công việc
-            - Hỗ trợ tốt đồng nghiệp trong làm việc nhóm`,
-        },
-        {
-          content: `3. Trách nhiệm với công việc
-            Giải thích:
-            - Sẵn sàng nhận nhiệm vụ, đồng thời nỗ lực hết sức mình để hoàn thành nhiệm vụ, không tránh né, đùn đẩy nhiệm vụ qua cho hoàn cảnh hay người khác.
-            - Nỗ lực hoàn thành công việc đúng cam kết đề ra
-            - Dám chịu trách nhiệm, nhận lỗi khi mình không hoàn thành nhiệm vụ, không đổ thừa cho hoàn cảnh hay người khác`,
-        },
-        {
-          content: `4. Kỹ năng và kiến thức chuyên môn
-            Giải thích:
-            - Có đầy đủ kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
-            - Chủ động và quan tâm đến việc học thêm kỹ năng và kiến thức chuyên môn mới`,
-        },
-        {
-          content: `5. Am hiểu hoạt động công ty
-            Giải thích:
-            - Nắm rõ chức năng các bộ phận trong công ty
-            - Am hiểu quy trình, hệ thống vận hành về thông tin và hàng hóa trong công ty
-            - Chủ động quan sát, theo dõi và cải thiện, nâng cấp hệ thống của bộ phận`,
-        },
-        {
-          content: `6. Năng lực quản lý
-            Giải thích: 
-            - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
-            - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên`,
-        },
-      ].map<Question>((data) => {
+      let allScaleQuestions = defaultScaleQuestions;
+      if (isTeamManager) {
+        allScaleQuestions = [
+          ...defaultScaleQuestions,
+          ...managerScaleQuestions,
+        ];
+      }
+      const scaleQuestions = allScaleQuestions.map<Question>((data) => {
         return {
           group: "Colleague",
           content: data.content,
@@ -166,52 +176,15 @@ export class ViewFormStore {
       });
       questions = [...questions, ...scaleQuestions, ...textQuestions];
     } else {
-      let scaleQuestions = [
-        { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
-        {
-          content: `1. Tác phong và kỷ luật
-          Giải thích:
-            - Tuân thủ quy định, nội quy của công ty, không gây ra vi phạm 
-            - Đảm bảo tác phong làm việc nghiêm túc về trang phục, thời gian, địa điểm
-            - Đảm bảo tính cam kết trong công việc`,
-        },
-        {
-          content: `2. Giao tiếp và làm việc nhóm
-          Giải thích:
-          - Có kỹ năng lắng nghe và giao tiếp với đồng nghiệp tốt, cả bằng lời nói và văn bản
-          - Phản hồi kịp thời trong công việc
-          - Hỗ trợ tốt đồng nghiệp trong làm việc nhóm`,
-        },
-        {
-          content: `3. Trách nhiệm với công việc
-          Giải thích:
-          - Sẵn sàng nhận nhiệm vụ, đồng thời nỗ lực hết sức mình để hoàn thành nhiệm vụ, không tránh né, đùn đẩy nhiệm vụ qua cho hoàn cảnh hay người khác.
-          - Nỗ lực hoàn thành công việc đúng cam kết đề ra
-          - Dám chịu trách nhiệm, nhận lỗi khi mình không hoàn thành nhiệm vụ, không đổ thừa cho hoàn cảnh hay người khác`,
-        },
-        {
-          content: `4. Kỹ năng và kiến thức chuyên môn
-          Giải thích:
-          - Có đầy đủ kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
-          - Chủ động và quan tâm đến việc học thêm kỹ năng và kiến thức chuyên môn mới`,
-        },
-        {
-          content: `5. Am hiểu hoạt động công ty
-          Giải thích:
-          - Nắm rõ chức năng các bộ phận trong công ty
-          - Am hiểu quy trình, hệ thống vận hành về thông tin và hàng hóa trong công ty
-          - Chủ động quan sát, theo dõi và cải thiện, nâng cấp hệ thống của bộ phận`,
-        },
-      ];
+      let allScaleQuestions = defaultScaleQuestions;
       if (isTeamManager) {
-        scaleQuestions.push({
-          content: `6. Năng lực quản lý
-    Giải thích: 
-    - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
-    - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên`,
-        });
+        allScaleQuestions = [
+          ...defaultScaleQuestions,
+          ...managerScaleQuestions,
+        ];
       }
-      questions = scaleQuestions.map<Question>((data) => {
+
+      questions = allScaleQuestions.map<Question>((data) => {
         return {
           group: "Personal",
           content: data.content,
