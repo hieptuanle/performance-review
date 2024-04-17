@@ -728,8 +728,6 @@ const forms = [
     reviewerName1: "Giang Hương Ly",
     reviewerCode2: "S110",
     reviewerName2: "Nguyễn Văn Việt",
-    reviewerCode3: "D583",
-    reviewerName3: "Nguyễn Thế Anh",
     reviewerCode4: "D337",
     reviewerName4: "Nguyễn Thành Nam",
     reviewerCode5: "",
