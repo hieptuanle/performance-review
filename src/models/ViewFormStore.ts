@@ -267,9 +267,7 @@ export class ViewFormStore {
     }
 
     const notDoneQuestions = filter(this.questions, (question) => {
-      return (
-        _.includes(["Object", "Text"], question.layout) && !question.answer
-      );
+      return _.includes(["Scale", "Text"], question.layout) && !question.answer;
     });
     if (notDoneQuestions.length) {
       throw new Error(
