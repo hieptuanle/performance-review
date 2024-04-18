@@ -162,7 +162,7 @@ export class ViewFormStore {
       });
 
       const textQuestions = compact([
-        `II. Góp ý và đề xuất khác cho đồng hiệp`,
+        `II. Góp ý và đề xuất khác cho đồng nghiệp`,
       ]).map<Question>((d) => {
         return {
           group: "Personal",
