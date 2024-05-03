@@ -18,6 +18,7 @@ const reviewResponseSchema = mongoose.Schema(
         group: String,
         content: String,
         layout: String,
+        okrs: [],
         mark: Number,
         answer: String,
       },

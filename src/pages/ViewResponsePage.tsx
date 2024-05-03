@@ -16,6 +16,7 @@ import { useParams } from "react-router";
 import { observer } from "mobx-react-lite";
 import useRootStore from "../hooks/useRootStore";
 import FormType from "../components/FormType";
+import { Question } from "../models/ViewFormStore";
 
 import NotFound from "./NotFound";
 import RevieweeIntro from "../components/RevieweeIntro";
@@ -34,6 +35,49 @@ const ViewResponsePage = observer(() => {
   if (!viewResponseStore.response) {
     return <NotFound></NotFound>;
   }
+
+  const ObjectQuestionCard = observer<{
+    question: Question;
+  }>(({ question }) => {
+    const isFuture = question.content.includes("6 tháng tiếp theo");
+
+    return (
+      <IonCard key={question.content}>
+        <IonItem>
+          <table className="full-width">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Mục tiêu</th>
+                <th>
+                  {isFuture
+                    ? "Kết quả then chốt"
+                    : "Kết quả then chốt đã đề ra kỳ trước"}
+                </th>
+                {!isFuture && <th>Tình trạng(%)</th>}
+                <th>
+                  {isFuture
+                    ? "Kế hoạch thực hiện"
+                    : "Mô tả kết quả thực tế đã đạt được"}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {question.okrs.map((item, index) => (
+                <tr key={index}>
+                  <td style={{ textAlign: "center" }}>{index + 1}</td>
+                  <td style={{ textAlign: "center" }}>{item.object}</td>
+                  <td>{item.keyResult}</td>
+                  {!isFuture && <td>{item.process}</td>}
+                  <td>{item.detail}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </IonItem>
+      </IonCard>
+    );
+  });
 
   return (
     <IonPage>
@@ -82,6 +126,11 @@ const ViewResponsePage = observer(() => {
                 <p style={{ whiteSpace: "pre-line" }}>{d.answer}</p>
               </IonLabel>
             </IonItem>
+            {d.layout === "Object" && (
+              <IonItem>
+                <ObjectQuestionCard question={d}></ObjectQuestionCard>
+              </IonItem>
+            )}
           </IonCard>
         ))}
       </IonContent>
