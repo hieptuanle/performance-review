@@ -143,7 +143,7 @@ const ViewRevieweePage = observer(() => {
                 </IonItem>
               )}
 
-              {get(question, "answers", []).map((answer) => (
+              {get(question, "answers", []).map((answer: any) => (
                 <div
                   key={answer._id}
                   className={
