@@ -17,7 +17,7 @@ import useRootStore from "../../hooks/useRootStore";
 import { Reviewee } from "../../models/RevieweeStore";
 import NotFound from "../NotFound";
 import "./ViewRevieweePage.css";
-
+import { get } from "lodash";
 const RevieweeCard: React.FC<{ reviewee: Reviewee }> = ({ reviewee }) => {
   return (
     <IonCard>
@@ -143,7 +143,7 @@ const ViewRevieweePage = observer(() => {
                 </IonItem>
               )}
 
-              {question.answers.map((answer) => (
+              {get(question, "answers", []).map((answer) => (
                 <div
                   key={answer._id}
                   className={
