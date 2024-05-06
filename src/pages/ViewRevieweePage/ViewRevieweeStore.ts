@@ -2,7 +2,16 @@ import { action, computed, makeAutoObservable, runInAction } from "mobx";
 import { Reviewee } from "../../models/RevieweeStore";
 import { ReviewResponse } from "../../models/ReviewResponseStore";
 import { RootStore } from "../../models/RootStore";
-import { groupBy, flatMap, map, orderBy, sumBy, filter } from "lodash";
+import {
+  groupBy,
+  flatMap,
+  map,
+  orderBy,
+  sumBy,
+  filter,
+  get,
+  find,
+} from "lodash";
 
 function round(number: number) {
   return Math.round(number * 10) / 10;
@@ -43,10 +52,18 @@ export class ViewRevieweeStore {
         ) / filter(answers, (x) => x.reviewType > 2 && x.mark > 0).length
       );
 
+      const okrs = get(
+        find(answers, (answer) => {
+          return get(answer, "okrs.length");
+        }),
+        "okrs"
+      );
+
       return {
         selfAssessmentMark,
         otherMark,
         content: key,
+        okrs: okrs,
         group: answers[0].group,
         layout: answers[0].layout,
         answers: orderBy(
