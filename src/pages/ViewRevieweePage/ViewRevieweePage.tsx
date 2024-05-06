@@ -62,6 +62,49 @@ const ViewRevieweePage = observer(() => {
 
   if (!reviewee) return <NotFound></NotFound>;
 
+  const ObjectQuestionCard = observer<{
+    question: any;
+  }>(({ question }) => {
+    const isFuture = question.content.includes("6 tháng tiếp theo");
+
+    return (
+      <IonCard key={question.content}>
+        <IonItem>
+          <table className="full-width">
+            <thead>
+              <tr>
+                <th>STT</th>
+                <th>Mục tiêu</th>
+                <th>
+                  {isFuture
+                    ? "Kết quả then chốt"
+                    : "Kết quả then chốt đã đề ra kỳ trước"}
+                </th>
+                {!isFuture && <th>Tình trạng(%)</th>}
+                <th>
+                  {isFuture
+                    ? "Kế hoạch thực hiện"
+                    : "Mô tả kết quả thực tế đã đạt được"}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              {question.okrs.map((item, index) => (
+                <tr key={index}>
+                  <td style={{ textAlign: "center" }}>{index + 1}</td>
+                  <td style={{ textAlign: "center" }}>{item.object}</td>
+                  <td>{item.keyResult}</td>
+                  {!isFuture && <td>{item.process}</td>}
+                  <td>{item.detail}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </IonItem>
+      </IonCard>
+    );
+  });
+
   const questions = viewRevieweeStore.questions;
 
   return (
@@ -94,6 +137,12 @@ const ViewRevieweePage = observer(() => {
                 </p>
               ) : null}
 
+              {question.layout === "Object" && (
+                <IonItem>
+                  <ObjectQuestionCard question={question}></ObjectQuestionCard>
+                </IonItem>
+              )}
+
               {question.answers.map((answer) => (
                 <div
                   key={answer._id}
@@ -116,7 +165,7 @@ const ViewRevieweePage = observer(() => {
                     </div>
                   )}
                   <div>
-                    {answer.mark > 0 ? (
+                    {answer.mark ? (
                       <>
                         <strong>Điểm:</strong>{" "}
                         {answer.mark ? answer.mark : "Không chấm điểm"} {" | "}
