@@ -89,7 +89,7 @@ const ViewRevieweePage = observer(() => {
               </tr>
             </thead>
             <tbody>
-              {question.okrs.map((item, index) => (
+              {get(question, "okrs", []).map((item: any, index: number) => (
                 <tr key={index}>
                   <td style={{ textAlign: "center" }}>{index + 1}</td>
                   <td style={{ textAlign: "center" }}>{item.object}</td>
