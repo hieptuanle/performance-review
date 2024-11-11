@@ -103,7 +103,7 @@ export class ViewFormStore {
     Giải thích:
       - Tuân thủ quy định, nội quy của công ty, không gây ra vi phạm 
       - Đảm bảo tác phong làm việc nghiêm túc về trang phục, thời gian, địa điểm
-      - Đảm bảo tính cam kết trong công việc`,
+      -Đảm bảo tính cam kết trong công việc`,
       },
       {
         content: `2. Giao tiếp và làm việc nhóm
@@ -113,20 +113,20 @@ export class ViewFormStore {
     - Hỗ trợ tốt đồng nghiệp trong làm việc nhóm`,
       },
       {
-        content: `3. Trách nhiệm với công việc
+        content: `3. Xây dựng kế hoạch và hoàn thành kế hoạch công việc
     Giải thích:
-    - Sẵn sàng nhận nhiệm vụ, đồng thời nỗ lực hết sức mình để hoàn thành nhiệm vụ, không tránh né, đùn đẩy nhiệm vụ qua cho hoàn cảnh hay người khác.
+    - Chủ động xây dựng, triển khai kế hoạch công việc
     - Nỗ lực hoàn thành công việc đúng cam kết đề ra
-    - Dám chịu trách nhiệm, nhận lỗi khi mình không hoàn thành nhiệm vụ, không đổ thừa cho hoàn cảnh hay người khác`,
+    - Dám chịu trách nhiệm, nhận lỗi khi mình không hoàn thành nhiệm vụ`,
       },
       {
-        content: `4. Kỹ năng và kiến thức chuyên môn
+        content: `4. Học hỏi và áp dụng kỹ năng và kiến thức chuyên môn
     Giải thích:
     - Có đầy đủ kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
     - Chủ động và quan tâm đến việc học thêm kỹ năng và kiến thức chuyên môn mới`,
       },
       {
-        content: `5. Am hiểu hoạt động công ty
+        content: `5. Am hiểu, xây dựng và cải tiến hệ thống hoạt động nội bộ công ty
     Giải thích:
     - Nắm rõ chức năng các bộ phận trong công ty
     - Am hiểu quy trình, hệ thống vận hành về thông tin và hàng hóa trong công ty
