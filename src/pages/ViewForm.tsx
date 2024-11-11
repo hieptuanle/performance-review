@@ -341,12 +341,11 @@ const DefinitionModal = observer(() => {
         <div>
           <p>
             5. Xuất sắc: Vượt xa kì vọng, tạo ra các kết quả tích cực ảnh hưởng
-            tốt đến kết quả công việc không chỉ của cá nhân, mà còn của đồng
-            nghiệp khác và tổ chức
+            tốt đến kết quả công việc, tạo ra tiến bộ nổi bật trong công việc
           </p>
           <p>
-            4. Vượt kì vọng: Vượt trên kì vọng, tạo ra các kết quả tích cực ảnh
-            hưởng tốt đến kết quả công việc của cá nhân
+            4. Vượt kì vọng: Vượt trên kì vọng, góp phần tạo ra kết quả tốt, đảm
+            bảo yêu cầu cầu công việc
           </p>
           <p>
             3. Đạt kì vọng: Đảm bảo kì vọng, vừa đủ để hoàn thành công việc,
