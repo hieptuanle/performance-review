@@ -101,44 +101,46 @@ export class ViewFormStore {
       {
         content: `1. Tác phong và kỷ luật
     Giải thích:
-      - Tuân thủ quy định, nội quy của công ty, không gây ra vi phạm 
-      - Đảm bảo tác phong làm việc nghiêm túc về trang phục, thời gian, địa điểm
-      -Đảm bảo tính cam kết trong công việc`,
+      - Tuân thủ nội quy của công ty, không gây ra hình ảnh xấu của cá nhân và tập thể
+      - Đảm bảo tác phong làm việc nghiêm túc về thời gian
+      - Đảm bảo tính cam kết: hoàn thành công việc như lời nói, lời hứa`,
       },
       {
         content: `2. Giao tiếp và làm việc nhóm
     Giải thích:
-    - Có kỹ năng lắng nghe và giao tiếp với đồng nghiệp tốt, cả bằng lời nói và văn bản
-    - Phản hồi kịp thời trong công việc
-    - Hỗ trợ tốt đồng nghiệp trong làm việc nhóm`,
+    - Phản hồi nhanh, kịp thời 
+    - Có kỹ năng giao tiếp tốt, cả bằng lời nói và văn bản, tin nhắn
+    - Tương trợ tốt trong team cũng như liên bộ phận`,
       },
       {
         content: `3. Xây dựng kế hoạch và hoàn thành kế hoạch công việc
     Giải thích:
-    - Chủ động xây dựng, triển khai kế hoạch công việc
-    - Nỗ lực hoàn thành công việc đúng cam kết đề ra
-    - Dám chịu trách nhiệm, nhận lỗi khi mình không hoàn thành nhiệm vụ`,
+    - Chủ động xây dựng kế hoạch công việc cá nhân
+    - Nỗ lực triển khai kế hoạch, hoàn thành mục tiêu đúng cam kết 
+    - Dám chịu trách nhiệm, nhận lỗi khi chưa hoàn thành nhiệm vụ`,
       },
       {
         content: `4. Học hỏi và áp dụng kỹ năng và kiến thức chuyên môn
     Giải thích:
-    - Có đầy đủ kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
-    - Chủ động và quan tâm đến việc học thêm kỹ năng và kiến thức chuyên môn mới`,
+    - Tự trau dồi kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
+    - Ứng dụng kiến thức và kỹ năng học được vào công việc thực tế`,
       },
       {
         content: `5. Am hiểu, xây dựng và cải tiến hệ thống hoạt động nội bộ công ty
     Giải thích:
-    - Nắm rõ chức năng các bộ phận trong công ty
-    - Am hiểu quy trình, hệ thống vận hành về thông tin và hàng hóa trong công ty
-    - Chủ động quan sát, theo dõi và cải thiện, nâng cấp hệ thống của bộ phận`,
+    - Am hiểu quy trình, hệ thống, dòng chảy của hàng hóa và thông tin trong công ty
+    - Chủ động quan sát và cải tiến, nâng cấp hệ thống, quy trình của các bộ phận`,
       },
     ];
     const managerScaleQuestions = [
       {
         content: `6. Năng lực quản lý
       Giải thích: 
-      - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
-      - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên`,
+      - Chỉ đạo, giao quyền, phân công hợp lý
+      - Lên kế hoạch, giám sát đội ngũ hoàn thành các mục tiêu đề ra
+      - Hướng dẫn và kèm cặp về chuyên môn 
+      - Quan tâm, chia sẻ các vấn đề cá nhân ảnh hưởng tới công việc
+      - Giải quyết xung đột, đánh giá, đề xuất thưởng phạt hợp lý`,
       },
     ];
     if ([3, 4].includes(reviewType)) {
