@@ -12,6 +12,7 @@
 .view-reviewee-page td,
 .view-reviewee-page strong {
   white-space: pre-wrap !important;
+  font-size: 14px;
 }
 
 .view-reviewee-page table {
