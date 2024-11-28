@@ -382,9 +382,10 @@ const ViewForm = observer(() => {
     const matchReviewee = rootStore.revieweeStore.reviewees.find((reviewee) => {
       return reviewee.revieweeCode === form.revieweeCode;
     });
+
     if (!matchReviewee) return;
 
-    console.log(form);
+    console.log(form, "form");
 
     rootStore.viewRevieweeStore.getReviewee(params.formId);
 
