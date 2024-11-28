@@ -95,7 +95,7 @@ export class ViewFormStore {
     isTeamManager: Boolean
   ) {
     console.log(
-      get(this.rootStore, "reviewResponseStore.reviewResponse"),
+      get(this.rootStore, "viewRevieweeStore.reviewResponse"),
       "reviewResponse"
     );
     let questions: Question[] = [];
