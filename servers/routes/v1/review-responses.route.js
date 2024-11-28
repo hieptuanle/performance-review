@@ -117,23 +117,7 @@ router.route("/summary").get(async (req, res) => {
   }
 });
 
-router.route("/:reviewResponseId").get((req, res) => {
-  res.jsonp(req.reviewResponse);
-});
-
-router.param("reviewResponseId", async (req, res, next, id) => {
-  try {
-    const reviewResponse = await ReviewResponse.findById(id);
-    if (!reviewResponse)
-      throw new Error("Không tìm thấy Review Response tương ứng");
-    req.reviewResponse = reviewResponse;
-    next();
-  } catch (e) {
-    res.status(400).json({ message: e.message });
-  }
-});
-
-router.route("/review-responses/by-slug/:slugId").get((req, res) => {
+router.route("/by-slug/:slugId").get((req, res) => {
   res.jsonp(req.reviewResponse);
 });
 
@@ -144,6 +128,23 @@ router.param("slugId", async (req, res, next, id) => {
       throw new Error(
         "Không tìm thấy Review Response tương ứng với slug " + id
       );
+
+    req.reviewResponse = reviewResponse;
+    next();
+  } catch (e) {
+    res.status(400).json({ message: e.message });
+  }
+});
+
+router.route("/:reviewResponseId").get((req, res) => {
+  res.jsonp(req.reviewResponse);
+});
+
+router.param("reviewResponseId", async (req, res, next, id) => {
+  try {
+    const reviewResponse = await ReviewResponse.findById(id);
+    if (!reviewResponse)
+      throw new Error("Không tìm thấy Review Response tương ứng");
     req.reviewResponse = reviewResponse;
     next();
   } catch (e) {
