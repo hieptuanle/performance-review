@@ -386,7 +386,9 @@ const ViewForm = observer(() => {
     if (!matchReviewee) return;
 
     console.log(form, "form");
-    rootStore.viewRevieweeStore.getReviewResponseBySlug(params.formId);
+    const reviewResponse = rootStore.viewRevieweeStore.getReviewResponseBySlug(
+      params.formId
+    );
 
     rootStore.viewRevieweeStore.getReviewee(params.formId);
 
@@ -395,7 +397,8 @@ const ViewForm = observer(() => {
     rootStore.viewFormStore.setQuestions(
       matchReviewee.revieweePositions,
       form.reviewType,
-      !!form.isTeamManager
+      !!form.isTeamManager,
+      reviewResponse
     );
   }, [params.formId, rootStore]);
 
