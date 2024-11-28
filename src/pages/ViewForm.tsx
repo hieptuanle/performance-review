@@ -383,7 +383,11 @@ const ViewForm = observer(() => {
       return reviewee.revieweeCode === form.revieweeCode;
     });
     if (!matchReviewee) return;
+
     console.log(form);
+
+    rootStore.viewRevieweeStore.getReviewee(params.formId);
+
     rootStore.viewFormStore.setReviewee(matchReviewee);
     rootStore.viewFormStore.setQuestions(
       matchReviewee.revieweePositions,

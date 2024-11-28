@@ -133,4 +133,22 @@ router.param("reviewResponseId", async (req, res, next, id) => {
   }
 });
 
+router.route("/:slugId").get((req, res) => {
+  res.jsonp(req.reviewResponse);
+});
+
+router.param("reviewResponseId", async (req, res, next, id) => {
+  try {
+    const reviewResponse = await ReviewResponse.findOne({ slug: id });
+    if (!reviewResponse)
+      throw new Error(
+        "Không tìm thấy Review Response tương ứng với slug " + id
+      );
+    req.reviewResponse = reviewResponse;
+    next();
+  } catch (e) {
+    res.status(400).json({ message: e.message });
+  }
+});
+
 module.exports = router;
