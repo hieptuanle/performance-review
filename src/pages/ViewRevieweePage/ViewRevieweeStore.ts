@@ -18,6 +18,7 @@ function round(number: number) {
 }
 export class ViewRevieweeStore {
   rootStore: RootStore;
+  reviewResponse: ReviewResponse | {} = {};
   reviewResponses: ReviewResponse[] = [];
   reviewee: Reviewee | null = null;
 
@@ -95,6 +96,16 @@ export class ViewRevieweeStore {
     )) as ReviewResponse[];
     runInAction(() => {
       this.reviewResponses = reviewResponses;
+    });
+  }
+
+  async getReviewResponseBySlug(slug: String) {
+    const reviewResponse = (await this.rootStore.transportStore.get(
+      "/review-responses/by-slug/" + slug
+    )) as ReviewResponse;
+    runInAction(() => {
+      console.log(reviewResponse);
+      this.reviewResponse = reviewResponse;
     });
   }
 }

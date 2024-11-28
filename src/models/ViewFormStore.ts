@@ -94,7 +94,6 @@ export class ViewFormStore {
     reviewType: number,
     isTeamManager: Boolean
   ) {
-    console.log(isTeamManager);
     let questions: Question[] = [];
     const defaultScaleQuestions = [
       { content: "I. Review thái độ và năng lực làm việc", isHeader: true },

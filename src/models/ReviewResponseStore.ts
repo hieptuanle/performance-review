@@ -30,6 +30,7 @@ export interface ReviewResponse {
 export class ReviewResponseStore {
   rootStore: RootStore;
   reviewResponses: ReviewResponse[] = [];
+  reviewResponse: ReviewResponse | {} = {};
 
   constructor(rootStore: RootStore) {
     this.rootStore = rootStore;
