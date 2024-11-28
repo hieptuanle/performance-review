@@ -140,7 +140,7 @@ export class ViewFormStore {
       - Lên kế hoạch, giám sát đội ngũ hoàn thành các mục tiêu đề ra
       - Hướng dẫn và kèm cặp về chuyên môn 
       - Quan tâm, chia sẻ các vấn đề cá nhân ảnh hưởng tới công việc
-      - Giải quyết xung đột, đánh giá, đề xuất thưởng phạt hợp lý`,
+      - Giải quyết xung đột, đánh giá, đề xuất thưởng phạt hợp lý"`,
       },
     ];
     if ([3, 4].includes(reviewType)) {
