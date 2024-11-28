@@ -123,7 +123,10 @@ router.route("/by-slug/:slugId").get((req, res) => {
 
 router.param("slugId", async (req, res, next, id) => {
   try {
-    const reviewResponse = await ReviewResponse.findOne({ slug: id });
+    const reviewResponse = await ReviewResponse.findOne({
+      slug: id,
+      createdAt: { $gte: START_DATE },
+    });
     if (!reviewResponse)
       throw new Error(
         "Không tìm thấy Review Response tương ứng với slug " + id
