@@ -100,13 +100,14 @@ export class ViewRevieweeStore {
   }
 
   async getReviewResponseBySlug(slug: String) {
-    console.log(slug, "slug");
     const reviewResponse = (await this.rootStore.transportStore.get(
       "/review-responses/by-slug/" + slug
     )) as ReviewResponse;
 
-    runInAction(() => {
+    return runInAction(() => {
       this.reviewResponse = reviewResponse;
+
+      return reviewResponse;
     });
   }
 }
