@@ -97,6 +97,7 @@ export class ViewFormStore {
     console.log(
       get(this.rootStore, "viewRevieweeStore"),
       get(this.rootStore.viewRevieweeStore, "reviewResponse"),
+      this.rootStore.viewRevieweeStore.reviewResponse,
       "reviewResponse"
     );
     let questions: Question[] = [];
