@@ -5,7 +5,7 @@ import { Reviewee } from "./RevieweeStore";
 import { ReviewResponse } from "./ReviewResponseStore";
 import { getObjectId } from "../utils/helper";
 import store from "store";
-import _, { compact, filter, split } from "lodash";
+import _, { compact, filter, split, get, find } from "lodash";
 
 export interface Question {
   group: string;
@@ -15,6 +15,7 @@ export interface Question {
   answer: string;
   timeContent: string;
   okrs: any[];
+  isHidden?: Boolean;
 }
 
 export class ViewFormStore {
@@ -96,7 +97,7 @@ export class ViewFormStore {
     reviewResponse: Object
   ) {
     const data = await reviewResponse;
-    console.log(data, "reviewResponse");
+    const existsQuestions = get(data, "questions");
     let questions: Question[] = [];
     const defaultScaleQuestions = [
       { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
@@ -239,11 +240,29 @@ export class ViewFormStore {
       questions.push(...textQuestions);
     }
 
+    _.forEach(questions, (question) => {
+      const matchQuestion = find(existsQuestions, {
+        content: question.content,
+      });
+
+      if (
+        matchQuestion &&
+        (matchQuestion.answer || get(matchQuestion, "okrs.length"))
+      ) {
+        question.isHidden = true;
+        question.answer = matchQuestion.answer;
+        question.okrs = matchQuestion.okrs;
+      }
+    });
+    console.log("questions", questions);
     this.questions = questions;
     if (this.reviewForm) {
       const key = "questions_" + this.reviewForm.slug;
       const savedQuestions = (store.get(key) || []) as Question[];
       savedQuestions.forEach((question) => {
+        if (!question.answer && !get(question, "okrs.length")) {
+          return;
+        }
         const matchQuestion = this.questions.find((_question) => {
           return _question.content === question.content;
         });
