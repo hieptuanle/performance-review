@@ -70,7 +70,7 @@ const ViewRevieweePage = observer(() => {
     return (
       <IonCard key={question.content}>
         <IonItem>
-          <table className="full-width">
+          <table className="full-width table-object">
             <thead>
               <tr>
                 <th>STT</th>
@@ -91,11 +91,29 @@ const ViewRevieweePage = observer(() => {
             <tbody>
               {get(question, "okrs", []).map((item: any, index: number) => (
                 <tr key={index}>
-                  <td style={{ textAlign: "center" }}>{index + 1}</td>
-                  <td style={{ textAlign: "center" }}>{item.object}</td>
-                  <td>{item.keyResult}</td>
-                  {!isFuture && <td>{item.process}</td>}
-                  <td>{item.detail}</td>
+                  <td>{index + 1}</td>
+                  <td
+                    dangerouslySetInnerHTML={{
+                      __html: item.object,
+                    }}
+                  ></td>
+                  <td
+                    dangerouslySetInnerHTML={{
+                      __html: item.keyResult,
+                    }}
+                  ></td>
+                  {!isFuture && (
+                    <td
+                      dangerouslySetInnerHTML={{
+                        __html: item.process,
+                      }}
+                    ></td>
+                  )}
+                  <td
+                    dangerouslySetInnerHTML={{
+                      __html: item.detail,
+                    }}
+                  ></td>
                 </tr>
               ))}
             </tbody>

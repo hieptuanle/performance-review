@@ -7,6 +7,21 @@
   color: #000;
 }
 
-.view-reviewee-page .manager-review p {
-  color: green;
+.view-reviewee-page .p,
+.view-reviewee-page .div,
+.view-reviewee-page td,
+.view-reviewee-page strong {
+  white-space: pre-wrap !important;
+  font-size: 14px;
+}
+
+.view-reviewee-page table {
+  border-collapse: collapse;
+  border: 1px solid #000;
+}
+
+.view-reviewee-page table td,
+.view-reviewee-page table th {
+  border: 1px solid #000;
+  padding: 8px;
 }
