@@ -244,7 +244,7 @@ export class ViewFormStore {
       const matchQuestion = find(existsQuestions, {
         content: question.content,
       });
-
+      console.log(matchQuestion);
       if (
         matchQuestion &&
         (matchQuestion.answer || get(matchQuestion, "okrs.length"))
