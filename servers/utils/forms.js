@@ -19,6 +19,7 @@ const forms = [
     email: "buihuong17101997@gmail.com",
     position: "Nhân viên kiểm toán nội bộ",
     managerCode: "D327",
+    isManager: false,
   },
   {
     code: "D10144",
@@ -38,6 +39,7 @@ const forms = [
     email: "daoduybach.work@gmail.com",
     position: "Nhân viên Kiểm toán Full-time",
     managerCode: "D327",
+    isManager: false,
   },
   {
     code: "D4553",
@@ -57,6 +59,7 @@ const forms = [
     email: "ngminhhung1102@gmail.com",
     position: "Nhân viên Kiểm toán nội bộ",
     managerCode: "D327",
+    isManager: true,
   },
   {
     code: "D9644",
@@ -76,6 +79,7 @@ const forms = [
     email: "maihieulog2k2@gmail.com",
     position: "Nhân viên Logistic Full-time",
     managerCode: "D327",
+    isManager: false,
   },
   {
     code: "D11489",
@@ -95,6 +99,7 @@ const forms = [
     email: "theanh1503.nhathan@gmail.com",
     position: "Giám sát chất lượng vận hành Fulltime",
     managerCode: "D327",
+    isManager: false,
   },
   {
     code: "D1931",
@@ -114,6 +119,7 @@ const forms = [
     email: "lethuychi01092001@gmail.com",
     position: "Giám sát chất lượng vận hành Full-time",
     managerCode: "D327",
+    isManager: false,
   },
   {
     code: "D5762",
@@ -133,6 +139,7 @@ const forms = [
     email: "thuongha1422@gmail.com",
     position: "Nhân viên giám sát chuỗi cửa hàng Full-time",
     managerCode: "D327",
+    isManager: true,
   },
   {
     code: "D717",
@@ -152,6 +159,7 @@ const forms = [
     email: "v.thuynhatt@gmail.com",
     position: "Nhân viên BA",
     managerCode: "F432",
+    isManager: false,
   },
   {
     code: "D5939",
@@ -171,6 +179,7 @@ const forms = [
     email: "dungdark97@gmail.com",
     position: "Nhân viên Kế toán Tổng hợp Full-time",
     managerCode: "F432",
+    isManager: false,
   },
   {
     code: "D11115",
@@ -190,6 +199,7 @@ const forms = [
     email: "minggngoc1305@gmail.com",
     position: "Kế toán nội bộ Full - time",
     managerCode: "F432",
+    isManager: false,
   },
   {
     code: "D703",
@@ -209,6 +219,7 @@ const forms = [
     email: "blackpage60@gmail.com",
     position: "Legal Executive",
     managerCode: "F432",
+    isManager: false,
   },
   {
     code: "E09",
@@ -228,6 +239,7 @@ const forms = [
     email: "chuthang205@gmail.com",
     position: "Programming",
     managerCode: "F432",
+    isManager: false,
   },
   {
     code: "D708",
@@ -247,6 +259,7 @@ const forms = [
     email: "dinhphuongthaoqia@gmail.com",
     position: "Developer Full-time",
     managerCode: "F432",
+    isManager: false,
   },
   {
     code: "D8013",
@@ -266,6 +279,7 @@ const forms = [
     email: "trungghau0310@gmail.com",
     position: "Nhân viên Chính sách nhân sự Full-time",
     managerCode: "F688",
+    isManager: false,
   },
   {
     code: "D1906",
@@ -285,6 +299,7 @@ const forms = [
     email: "quangbinhvx201@gmail.com",
     position: "Nhân viên CSKH & Training Full-time",
     managerCode: "F688",
+    isManager: true,
   },
   {
     code: "D7954",
@@ -304,6 +319,7 @@ const forms = [
     email: "duongvung1003@gmail.com",
     position: "Quản lý Nhân sự",
     managerCode: "F688",
+    isManager: true,
   },
   {
     code: "D7287",
@@ -323,6 +339,7 @@ const forms = [
     email: "doanthingocanh1605@gmail.com",
     position: "Quản lý Tuyển dụng",
     managerCode: "F688",
+    isManager: true,
   },
   {
     code: "D3267",
@@ -342,6 +359,7 @@ const forms = [
     email: "gianghuongly01@gmail.com",
     position: "TLQL Marketing",
     managerCode: "F688",
+    isManager: true,
   },
   {
     code: "C997",
@@ -361,6 +379,7 @@ const forms = [
     email: "nguyenthinguen0204@gmail.com",
     position: "Nhân viên kinh doanh Full - time",
     managerCode: "F688",
+    isManager: true,
   },
   {
     code: "D79",
@@ -380,6 +399,7 @@ const forms = [
     email: "linhxu271196@gmail.com",
     position: "Training Executive, TTL",
     managerCode: "F688",
+    isManager: true,
   },
   {
     code: "D93",
@@ -399,6 +419,7 @@ const forms = [
     email: "thuyvi11196@gmail.com",
     position: "Training Executive, TTL",
     managerCode: "F688",
+    isManager: false,
   },
   {
     code: "S41",
@@ -418,6 +439,7 @@ const forms = [
     email: "nhlong2107@gmail.com",
     position: "Quản lý Kho Full-time",
     managerCode: "D388",
+    isManager: true,
   },
   {
     code: "D12019",
@@ -437,6 +459,7 @@ const forms = [
     email: "daukimngan12@gmail.com",
     position: "Thợ bánh Full-time",
     managerCode: "D388",
+    isManager: false,
   },
   {
     code: "D9985",
@@ -456,6 +479,7 @@ const forms = [
     email: "thanhthuynguyent25@gmail.com",
     position: "Thợ bánh Full-time",
     managerCode: "D388",
+    isManager: false,
   },
   {
     code: "D13288",
@@ -475,6 +499,7 @@ const forms = [
     email: "nguyenhanh.96vnua@gmail.com",
     position: "Thợ bánh Full-time",
     managerCode: "D388",
+    isManager: false,
   },
   {
     code: "D9906",
@@ -494,6 +519,7 @@ const forms = [
     email: "tramxtvd@gmail.com",
     position: "Thợ bánh Full-time",
     managerCode: "D388",
+    isManager: false,
   },
   {
     code: "D1039",
@@ -513,6 +539,7 @@ const forms = [
     email: "nguyenthutrang1620@gmail.com",
     position: "Quản lý Bếp bánh Full-time",
     managerCode: "D388",
+    isManager: true,
   },
   {
     code: "D11281",
@@ -532,6 +559,7 @@ const forms = [
     email: "vuquynamtruc2003@gmail.com",
     position: "Thợ bánh Full-time",
     managerCode: "D388",
+    isManager: false,
   },
   {
     code: "D4857",
@@ -551,6 +579,7 @@ const forms = [
     email: "phamlan2908@gmail.com",
     position: "Thợ bánh Full-time",
     managerCode: "D388",
+    isManager: false,
   },
   {
     code: "C635",
@@ -570,6 +599,7 @@ const forms = [
     email: "trytowin1003@gmail.com",
     position: "Quản lý đóng gói Full-time",
     managerCode: "D388",
+    isManager: true,
   },
   {
     code: "E73",
@@ -589,6 +619,7 @@ const forms = [
     email: "anhtuas123@gmail.com",
     position: "Giám sát Hậu cần Full-time",
     managerCode: "D388",
+    isManager: true,
   },
   {
     code: "D2537",
@@ -608,6 +639,7 @@ const forms = [
     email: "ngocthao060690@gmail.com",
     position: "Nhân viên Hậu cần Full-time",
     managerCode: "D388",
+    isManager: false,
   },
   {
     code: "D11359",
@@ -627,6 +659,7 @@ const forms = [
     email: "Phamque8386@gmail.com",
     position: "Nhân viên Kỹ thuật điện nước Full-time",
     managerCode: "D388",
+    isManager: false,
   },
   {
     code: "D11150",
@@ -646,6 +679,7 @@ const forms = [
     email: "giangtruong2501@gmail.com",
     position: "Quản lý Kho Full - time",
     managerCode: "D388",
+    isManager: true,
   },
   {
     code: "D8132",
@@ -665,6 +699,7 @@ const forms = [
     email: "tuanhoang051085@icloud.com",
     position: "Tài xế giao hàng xe tải đông lạnh",
     managerCode: "D388",
+    isManager: false,
   },
   {
     code: "D7721",
@@ -684,6 +719,7 @@ const forms = [
     email: "trinhvantien0109@gmail.com",
     position: "Tài xế giao hàng xe bán tải",
     managerCode: "D388",
+    isManager: false,
   },
   {
     code: "D5093",
@@ -703,6 +739,7 @@ const forms = [
     email: "ngungsuong.nkh97@gmail.com",
     position: "Nhân viên mua hàng Full-time",
     managerCode: "F262",
+    isManager: true,
   },
   {
     code: "S110",
@@ -722,6 +759,7 @@ const forms = [
     email: "vietxc2014@gmail.com",
     position: "Graphic Designer, TTL",
     managerCode: "F262",
+    isManager: false,
   },
   {
     code: "D5841",
@@ -741,6 +779,7 @@ const forms = [
     email: "khanhlam3108@gmail.com",
     position: "Nhân viên mua hàng Full-time",
     managerCode: "F262",
+    isManager: false,
   },
   {
     code: "D11054",
@@ -760,6 +799,7 @@ const forms = [
     email: "dinhkhang2002cr@gmail.com",
     position: "Nhân viên mua hàng Full-time",
     managerCode: "F262",
+    isManager: true,
   },
   {
     code: "D337",
@@ -779,6 +819,7 @@ const forms = [
     email: "thanhnam06121997@gmail.com",
     position: "Kitchen Manager, Training Executive, TTL",
     managerCode: "F262",
+    isManager: false,
   },
   {
     code: "D583",
@@ -798,6 +839,7 @@ const forms = [
     email: "theanh2726@gmail.com",
     position: "Nhân viên R&D Full-time",
     managerCode: "F262",
+    isManager: false,
   },
   {
     code: "D13461",
@@ -817,6 +859,7 @@ const forms = [
     email: "ph.thinh107@gmail.com",
     position: "Nhân viên giám sát chuỗi khu vực Hồ Chí Minh",
     managerCode: "D327",
+    isManager: false,
   },
   {
     code: "F262",
@@ -836,6 +879,7 @@ const forms = [
     email: "anhvt@savor.vn",
     position: "Strategy; Marketing",
     managerCode: "F262",
+    isManager: true,
   },
   {
     code: "D388",
@@ -855,6 +899,7 @@ const forms = [
     email: "tpa2498@gmail.com",
     position: "Quản lý Kho Full-time",
     managerCode: "F262",
+    isManager: true,
   },
   {
     code: "F688",
@@ -874,6 +919,7 @@ const forms = [
     email: "dungtran@4-handy.com",
     position: "Operation",
     managerCode: "F262",
+    isManager: true,
   },
   {
     code: "F432",
@@ -893,6 +939,7 @@ const forms = [
     email: "hieptuanle@gmail.com",
     position: "Accounting, BS, Legal, Tech",
     managerCode: "F262",
+    isManager: true,
   },
   {
     code: "D327",
@@ -912,9 +959,9 @@ const forms = [
     email: "duongnhung65@gmail.com",
     position: "Quality Supervisor Manager",
     managerCode: "F262",
+    isManager: true,
   },
 ];
-
 const managers = _.map(
   _.reduce(
     forms,
