@@ -249,9 +249,16 @@ export class ViewFormStore {
         matchQuestion &&
         (matchQuestion.answer || get(matchQuestion, "okrs.length"))
       ) {
+        if (matchQuestion.answer) {
+          question.answer = matchQuestion.answer;
+        }
+        if (get(matchQuestion, "okrs.length")) {
+          question.okrs = matchQuestion.okrs;
+        }
+        if (matchQuestion.mark) {
+          question.mark = matchQuestion.mark;
+        }
         question.isHidden = true;
-        question.answer = matchQuestion.answer;
-        question.okrs = matchQuestion.okrs;
       }
     });
     console.log("questions", questions);

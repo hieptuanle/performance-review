@@ -268,6 +268,7 @@ const FormQuestions = observer(() => {
   return (
     <Fragment>
       {questions.map((question, index) => {
+        if (question.isHidden) return "";
         if (question.layout === "Header") {
           return (
             <IonListHeader lines="full">
