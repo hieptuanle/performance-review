@@ -239,12 +239,12 @@ export class ViewFormStore {
       });
       questions.push(...textQuestions);
     }
-
+    console.log(existsQuestions, "existsQuestions");
     _.forEach(questions, (question) => {
       const matchQuestion = find(existsQuestions, {
         content: question.content,
       });
-
+      console.log(matchQuestion);
       if (
         matchQuestion &&
         (matchQuestion.answer || get(matchQuestion, "okrs.length"))
