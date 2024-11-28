@@ -5,7 +5,7 @@ import { Reviewee } from "./RevieweeStore";
 import { ReviewResponse } from "./ReviewResponseStore";
 import { getObjectId } from "../utils/helper";
 import store from "store";
-import _, { compact, filter, split } from "lodash";
+import _, { compact, filter, split, get } from "lodash";
 
 export interface Question {
   group: string;
@@ -94,6 +94,10 @@ export class ViewFormStore {
     reviewType: number,
     isTeamManager: Boolean
   ) {
+    console.log(
+      get(this.rootStore, "reviewResponseStore.reviewResponse"),
+      "reviewResponse"
+    );
     let questions: Question[] = [];
     const defaultScaleQuestions = [
       { content: "I. Review thái độ và năng lực làm việc", isHeader: true },

@@ -386,12 +386,12 @@ const ViewForm = observer(() => {
     if (!matchReviewee) return;
 
     console.log(form, "form");
+    rootStore.viewRevieweeStore.getReviewResponseBySlug(params.formId);
 
     rootStore.viewRevieweeStore.getReviewee(params.formId);
 
-    rootStore.viewRevieweeStore.getReviewResponseBySlug(params.formId);
-
     rootStore.viewFormStore.setReviewee(matchReviewee);
+
     rootStore.viewFormStore.setQuestions(
       matchReviewee.revieweePositions,
       form.reviewType,
