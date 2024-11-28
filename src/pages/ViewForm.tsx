@@ -393,8 +393,6 @@ const ViewForm = observer(() => {
 
     if (!matchReviewee) return;
 
-    console.log(form, "form");
-
     rootStore.viewRevieweeStore.getReviewee(params.formId);
 
     rootStore.viewFormStore.setReviewee(matchReviewee);

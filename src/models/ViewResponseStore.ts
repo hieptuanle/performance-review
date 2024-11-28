@@ -11,7 +11,6 @@ export class ViewResponseStore {
   }
 
   async findOne(responseId: string) {
-    console.log("find");
     const reviewResponse = (await this.rootStore.transportStore.get(
       "/review-responses/" + responseId
     )) as ReviewResponse;
