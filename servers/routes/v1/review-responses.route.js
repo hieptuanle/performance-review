@@ -133,11 +133,11 @@ router.param("reviewResponseId", async (req, res, next, id) => {
   }
 });
 
-router.route("/:slugId").get((req, res) => {
+router.route("/review-responses/by-slug/:slugId").get((req, res) => {
   res.jsonp(req.reviewResponse);
 });
 
-router.param("reviewResponseId", async (req, res, next, id) => {
+router.param("slugId", async (req, res, next, id) => {
   try {
     const reviewResponse = await ReviewResponse.findOne({ slug: id });
     if (!reviewResponse)

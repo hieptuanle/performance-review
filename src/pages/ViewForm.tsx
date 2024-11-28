@@ -388,6 +388,8 @@ const ViewForm = observer(() => {
 
     rootStore.viewRevieweeStore.getReviewee(params.formId);
 
+    rootStore.viewRevieweeStore.getReviewResponseBySlug(params.formId);
+
     rootStore.viewFormStore.setReviewee(matchReviewee);
     rootStore.viewFormStore.setQuestions(
       matchReviewee.revieweePositions,
