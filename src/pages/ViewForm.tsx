@@ -374,6 +374,14 @@ const ViewForm = observer(() => {
   const [checked, setChecked] = useState(false);
 
   useEffect(() => {
+    async function getReviewResponse() {
+      const reviewResponse =
+        await rootStore.viewRevieweeStore.getReviewResponseBySlug(
+          params.formId
+        );
+
+      return reviewResponse;
+    }
     const formId = params.formId;
     const form = rootStore.reviewFormStore.getFormFromSlug(formId);
 
@@ -386,9 +394,6 @@ const ViewForm = observer(() => {
     if (!matchReviewee) return;
 
     console.log(form, "form");
-    const reviewResponse = rootStore.viewRevieweeStore.getReviewResponseBySlug(
-      params.formId
-    );
 
     rootStore.viewRevieweeStore.getReviewee(params.formId);
 
@@ -398,7 +403,7 @@ const ViewForm = observer(() => {
       matchReviewee.revieweePositions,
       form.reviewType,
       !!form.isTeamManager,
-      reviewResponse
+      getReviewResponse()
     );
   }, [params.formId, rootStore]);
 

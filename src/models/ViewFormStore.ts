@@ -89,13 +89,14 @@ export class ViewFormStore {
     this.questions = [];
   }
 
-  setQuestions(
+  async setQuestions(
     positions: string[],
     reviewType: number,
     isTeamManager: Boolean,
     reviewResponse: Object
   ) {
-    console.log(reviewResponse, "reviewResponse");
+    const data = await reviewResponse;
+    console.log(data, "reviewResponse");
     let questions: Question[] = [];
     const defaultScaleQuestions = [
       { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
