@@ -72,10 +72,14 @@ router
         query = { $or: [revieweeQuery, reviewerQuery] };
       }
 
-      const reviewResponses = await ReviewResponse.find({
+      let reviewResponses = await ReviewResponse.find({
         ...query,
         createdAt: { $gte: START_DATE },
-      });
+      }).sort("-createdAt");
+
+      if (employeeCode) {
+        reviewResponses = _.uniqBy(reviewResponses, "slug");
+      }
       res.jsonp(reviewResponses);
     } catch (e) {
       res.status(400).json({
