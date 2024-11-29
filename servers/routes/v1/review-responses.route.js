@@ -93,7 +93,26 @@ router
       if (!reviewResponse) {
         reviewResponse = new ReviewResponse(req.body);
       } else {
-        reviewResponse.questions = req.body.questions;
+        reviewResponse.questions = reviewResponse.questions || [];
+        _.forEach(req.body.questions, (question) => {
+          const matchQuestion = _.find(reviewResponse.questions, {
+            content: question.content,
+          });
+
+          if (matchQuestion) {
+            if (question.answer) {
+              matchQuestion.answer = question.answer;
+            }
+            if (question.mark) {
+              matchQuestion.mark = question.mark;
+            }
+            if (_.get(question.okrs, "length")) {
+              matchQuestion.okrs = question.okrs;
+            }
+          } else {
+            reviewResponse.questions.push(question);
+          }
+        });
       }
 
       await reviewResponse.save();
@@ -107,15 +126,36 @@ router
 
 router.route("/summary").get(async (req, res) => {
   try {
-    const summary =
-      (await ReviewResponse.aggregate()
-        .match({
-          createdAt: { $gte: START_DATE },
-        })
-        .group({
-          _id: "$slug",
-          count: { $sum: 1 },
-        })) || [];
+    const reviewResponses = await ReviewResponse.find({
+      createdAt: { $gte: START_DATE },
+    }).sort("-createdAt");
+
+    _.forEach(reviewResponses, (reviewResponse) => {
+      reviewResponse.isDone = _.every(reviewResponse.questions, (question) => {
+        if (question.layout === "Header") {
+          return true;
+        }
+
+        return (
+          question.answer || question.mark || _.get(question, "okrs.length")
+        );
+      });
+    });
+
+    const summary = _.reduce(
+      reviewResponses,
+      (result, reviewResponse) => {
+        if (reviewResponse.isDone) {
+          result.push({
+            _id: reviewResponse.slug,
+            count: 1,
+          });
+        }
+
+        return result;
+      },
+      []
+    );
     res.json(
       summary.reduce((result, item) => {
         result[item._id] = item.count;
