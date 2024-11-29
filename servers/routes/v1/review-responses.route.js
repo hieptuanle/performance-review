@@ -77,9 +77,6 @@ router
         createdAt: { $gte: START_DATE },
       }).sort("-createdAt");
 
-      if (employeeCode) {
-        reviewResponses = _.uniqBy(reviewResponses, "slug");
-      }
       res.jsonp(reviewResponses);
     } catch (e) {
       res.status(400).json({
@@ -89,7 +86,16 @@ router
   })
   .post(async (req, res) => {
     try {
-      const reviewResponse = new ReviewResponse(req.body);
+      let reviewResponse = await ReviewResponse.findOne({
+        slug: req.body.slug,
+        createdAt: { $gte: START_DATE },
+      });
+      if (!reviewResponse) {
+        reviewResponse = new ReviewResponse(req.body);
+      } else {
+        reviewResponse.questions = req.body.questions;
+      }
+
       await reviewResponse.save();
       res.jsonp(reviewResponse);
     } catch (e) {
