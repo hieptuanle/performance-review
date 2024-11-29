@@ -93,7 +93,26 @@ router
       if (!reviewResponse) {
         reviewResponse = new ReviewResponse(req.body);
       } else {
-        reviewResponse.questions = req.body.questions;
+        reviewResponse.questions = reviewResponse.questions || [];
+        _.forEach(req.body.questions, (question) => {
+          const matchQuestion = _.find(reviewResponse.questions, {
+            content: question.content,
+          });
+
+          if (matchQuestion) {
+            if (question.answer) {
+              matchQuestion.answer = question.answer;
+            }
+            if (question.mark) {
+              matchQuestion.mark = question.mark;
+            }
+            if (_.get(question.okrs, "length")) {
+              matchQuestion.okrs = question.okrs;
+            }
+          } else {
+            reviewResponse.questions.push(question);
+          }
+        });
       }
 
       await reviewResponse.save();
