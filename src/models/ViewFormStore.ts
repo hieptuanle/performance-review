@@ -100,50 +100,58 @@ export class ViewFormStore {
     const existsQuestions = get(data, "questions");
     let questions: Question[] = [];
     const defaultScaleQuestions = [
-      { content: "I. Review thái độ và năng lực làm việc", isHeader: true },
       {
-        content: `1. Tác phong và kỷ luật
-    Giải thích:
-      - Tuân thủ nội quy của công ty, không gây ra hình ảnh xấu của cá nhân và tập thể
-      - Đảm bảo tác phong làm việc nghiêm túc về thời gian
-      - Đảm bảo tính cam kết: hoàn thành công việc như lời nói, lời hứa`,
+        content: "I. Review ba nhóm đánh giá năng lực cá nhân",
+        isHeader: true,
       },
       {
-        content: `2. Giao tiếp và làm việc nhóm
+        content: `1. Tự đánh giá về thái độ, tác phong làm việc cá nhân
     Giải thích:
-    - Phản hồi nhanh, kịp thời 
-    - Có kỹ năng giao tiếp tốt, cả bằng lời nói và văn bản, tin nhắn
-    - Tương trợ tốt trong team cũng như liên bộ phận`,
+    - Tuân thủ quy định, nội quy của công ty
+    - Tác phong làm việc nghiêm túc đặc biệt liên quan tới thời gian: đi làm, nghỉ phép, giờ họp, deadline làm task...
+    - Chủ động thay đổi và giữ tác phong kỷ luật thay vì bị động sau khi bị nhắc nhở`,
       },
       {
-        content: `3. Xây dựng kế hoạch và hoàn thành kế hoạch công việc
+        content: `2. Mức độ thành thạo trong việc thực hiện nhiệm vụ, xử lý tình huống tại vị trí công việc của mình
     Giải thích:
-    - Chủ động xây dựng kế hoạch công việc cá nhân
-    - Nỗ lực triển khai kế hoạch, hoàn thành mục tiêu đúng cam kết 
-    - Dám chịu trách nhiệm, nhận lỗi khi chưa hoàn thành nhiệm vụ`,
+    - Hiểu rõ quy trình làm việc, hệ thống vận hành của bộ phận mình và tất cả các bộ phận khác trong công ty 
+    - Có ý tưởng cải thiện, nâng cấp, điều chỉnh quy trình làm việc, hệ thống vận hành
+    - Triển khai các thay đổi để nâng cao hiệu suất và kết quả công việc liên phòng ban`,
       },
       {
-        content: `4. Học hỏi và áp dụng kỹ năng và kiến thức chuyên môn
+        content: `3. Sự tiến bộ về kiến thức chuyên môn và ứng dụng vào công việc
     Giải thích:
-    - Tự trau dồi kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
-    - Ứng dụng kiến thức và kỹ năng học được vào công việc thực tế`,
+    - Có đầy đủ kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
+    - Tham gia khóa học, hội thảo, đào tạo trực tiếp hoặc trực tuyến liên quan đến chuyên môn công việc
+    - Chủ động, có định hướng và quan tâm đến việc học thêm kiến thức chuyên môn và sử dụng AI trong công việc`,
       },
       {
-        content: `5. Am hiểu, xây dựng và cải tiến hệ thống hoạt động nội bộ công ty
+        content:
+          "II. Review khả năng hợp tác, làm việc với các bộ phận liên quan",
+        isHeader: true,
+      },
+      {
+        content: `4. Giao tiếp, làm việc nhóm với đồng nghiệp, bộ phận liên quan
     Giải thích:
-    - Am hiểu quy trình, hệ thống, dòng chảy của hàng hóa và thông tin trong công ty
-    - Chủ động quan sát và cải tiến, nâng cấp hệ thống, quy trình của các bộ phận`,
+    - Phản hồi thông tin nhanh
+    - Giao tiếp, lắng nghe ý kiến, trao đổi thông tin với đồng nghiệp, giữa các bộ phận đạt hiệu suất công việc cao
+    - Không tạo ra mâu thuẫn, xung đột trong quy trình làm việc, hệ thống vận hành với bộ phận khác`,
+      },
+      {
+        content: `5. Khả năng tạo độ tin cậy và chất lượng công việc trong làm việc nhóm với đồng nghiệp, bộ phận liên quan
+    Giải thích:
+    - Đạt được sự ủng hộ cho những thay đổi được đề xuất thông qua làm việc nhóm với đồng nghiệp, bộ phận liên quan
+    - Tạo dựng được cảm giác an tâm, an toàn trong trao đổi, xử lý nhiệm vụ liên phòng ban 
+    - Góp phần tạo nên văn hóa tôn trọng, đa dạng và hòa nhập`,
       },
     ];
     const managerScaleQuestions = [
       {
         content: `6. Năng lực quản lý
       Giải thích: 
-      - Chỉ đạo, giao quyền, phân công hợp lý
-      - Lên kế hoạch, giám sát đội ngũ hoàn thành các mục tiêu đề ra
-      - Hướng dẫn và kèm cặp về chuyên môn 
-      - Quan tâm, chia sẻ các vấn đề cá nhân ảnh hưởng tới công việc
-      - Giải quyết xung đột, đánh giá, đề xuất thưởng phạt hợp lý"`,
+      - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
+      - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên 
+      - Làm gương và truyền giá trị cốt lõi công ty đến với các nhân viên phụ trách`,
       },
     ];
     if ([3, 4].includes(reviewType)) {
@@ -167,7 +175,7 @@ export class ViewFormStore {
       });
 
       const textQuestions = compact([
-        `II. Góp ý và đề xuất khác cho đồng nghiệp`,
+        `II. Góp ý hoặc đề xuất khác dành cho đồng nghiệp`,
       ]).map<Question>((d) => {
         return {
           group: "Personal",
@@ -203,11 +211,11 @@ export class ViewFormStore {
 
       const objectQuestions = [
         {
-          content: `II. Review kết quả OKR 6 tháng trước`,
+          content: `III. Review kết quả OKR 6 tháng trước`,
           isObject: true,
         },
         {
-          content: `III. Lên OKR giai đoạn 6 tháng tiếp theo`,
+          content: `IV. Lên OKR giai đoạn 6 tháng tiếp theo`,
           isObject: true,
         },
       ].map<Question>((data) => {
@@ -225,7 +233,14 @@ export class ViewFormStore {
       questions.push(...objectQuestions);
 
       const textQuestions = compact([
-        `IV. Đề xuất của bạn về mức lương và đãi ngộ khác`,
+        `V. Quỹ trợ lý AI
+        Giải thích:
+          Tác dụng của công cụ AI đang lớn dần và tạo ra được nhiều giá trị công việc
+          Quỹ này nhằm hỗ trợ/tài trợ chi phí cần thiết (50-100%) cho việc sử dụng công cụ AI trong 6 tháng tiếp theo vào ứng dụng công việc tại vị trí của mình, điền các nội dung sau:
+        - Sử dụng công cụ AI nào?
+        - Chi phí duy trì hoạt động công cụ AI
+        - Dự kiến kết quả công việc sẽ thay đổi thế nào khi có trợ lý AI`,
+        `VI. Đề xuất của bạn về mức lương và đãi ngộ khác`,
       ]).map<Question>((d) => {
         return {
           group: "Personal",
