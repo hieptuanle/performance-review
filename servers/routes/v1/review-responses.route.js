@@ -177,10 +177,10 @@ router.param("slugId", async (req, res, next, id) => {
       slug: id,
       createdAt: { $gte: START_DATE },
     });
-    if (!reviewResponse)
-      throw new Error(
-        "Không tìm thấy Review Response tương ứng với slug " + id
-      );
+    // if (!reviewResponse)
+    //   throw new Error(
+    //     "Không tìm thấy Review Response tương ứng với slug " + id
+    //   );
 
     req.reviewResponse = reviewResponse;
     next();
