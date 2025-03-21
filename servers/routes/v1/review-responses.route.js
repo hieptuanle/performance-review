@@ -7,7 +7,7 @@ const { getRevieweesForManager, isManager } = require("../../utils/forms");
 
 const router = express.Router();
 
-const START_DATE = new Date("2024-10-01T00:00:00+07:00");
+const START_DATE = new Date("2025-01-01T00:00:00+07:00");
 
 router
   .route("/")
