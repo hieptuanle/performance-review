@@ -109,21 +109,21 @@ export class ViewFormStore {
     Giải thích:
     - Tuân thủ quy định, nội quy của công ty
     - Tác phong làm việc nghiêm túc đặc biệt liên quan tới thời gian: đi làm, nghỉ phép, giờ họp, deadline làm task...
-    - Chủ động thay đổi và giữ tác phong kỷ luật thay vì bị động sau khi bị nhắc nhở`,
+    - Thể hiện tinh thần quyết liệt hoàn thành công việc của cá nhân, của team và của cả công ty`,
       },
       {
-        content: `2. Mức độ thành thạo trong việc thực hiện nhiệm vụ, xử lý tình huống tại vị trí công việc của mình
+        content: `2. Mức độ cải tiến về kiến thức, kỹ năng và tư duy trong cách làm việc
     Giải thích:
-    - Hiểu rõ quy trình làm việc, hệ thống vận hành của bộ phận mình và tất cả các bộ phận khác trong công ty 
-    - Có ý tưởng cải thiện, nâng cấp, điều chỉnh quy trình làm việc, hệ thống vận hành
-    - Triển khai các thay đổi để nâng cao hiệu suất và kết quả công việc liên phòng ban`,
+    - Chủ động tự học thêm kiến thức chuyên môn và sử dụng AI trong công việc
+    - Có ý tưởng cải thiện, nâng cấp, điều chỉnh quy trình làm việc, cải thiện cách làm việc 
+    - Triển khai các ý tưởng để nâng cao hiệu suất và kết quả công việc liên bộ phận`,
       },
       {
-        content: `3. Sự tiến bộ về kiến thức chuyên môn và ứng dụng vào công việc
+        content: `3. Mức độ hoàn thành công việc được giao
     Giải thích:
-    - Có đầy đủ kỹ năng và kiến thức chuyên môn để thực hiện nhiệm vụ được giao
-    - Tham gia khóa học, hội thảo, đào tạo trực tiếp hoặc trực tuyến liên quan đến chuyên môn công việc
-    - Chủ động, có định hướng và quan tâm đến việc học thêm kiến thức chuyên môn và sử dụng AI trong công việc`,
+    - Hoàn thành vượt mức kỳ vọng đối với các công việc được giao: về thời gian, về chất lượng 
+    - Sắp xếp, ưu tiên, cân bằng hợp lý giữa các công việc gấp, nhanh với các công việc quan trọng, dài hạn 
+    - Mở rộng thêm các mảng công việc mới`,
       },
       {
         content:
@@ -133,16 +133,16 @@ export class ViewFormStore {
       {
         content: `4. Giao tiếp, làm việc nhóm với đồng nghiệp, bộ phận liên quan
     Giải thích:
-    - Phản hồi thông tin nhanh
+    - Phản hồi thông tin nhanh, không bị miss tin 
     - Giao tiếp, lắng nghe ý kiến, trao đổi thông tin với đồng nghiệp, giữa các bộ phận đạt hiệu suất công việc cao
-    - Không tạo ra mâu thuẫn, xung đột trong quy trình làm việc, hệ thống vận hành với bộ phận khác`,
+    - Thể hiện tinh thần tương trợ với các bộ phận khác vì mục tiêu chung của công ty`,
       },
       {
-        content: `5. Khả năng tạo độ tin cậy và chất lượng công việc trong làm việc nhóm với đồng nghiệp, bộ phận liên quan
+        content: `5. Khả năng tạo độ tin cậy và chất lượng công việc trong làm việc nhóm với đồng nghiệp, bộ phận khác
     Giải thích:
-    - Đạt được sự ủng hộ cho những thay đổi được đề xuất thông qua làm việc nhóm với đồng nghiệp, bộ phận liên quan
-    - Tạo dựng được cảm giác an tâm, an toàn trong trao đổi, xử lý nhiệm vụ liên phòng ban 
-    - Góp phần tạo nên văn hóa tôn trọng, đa dạng và hòa nhập`,
+    - Tạo dựng được cảm giác an tâm, đáng tin trong với mọi việc phụ trách 
+    - Đạt được sự ủng hộ cho những ý tưởng khi làm việc nhóm
+    - Nói được làm được, nói đi đôi với làm`,
       },
     ];
     const managerScaleQuestions = [
@@ -151,7 +151,7 @@ export class ViewFormStore {
       Giải thích: 
       - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
       - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên 
-      - Làm gương và truyền giá trị cốt lõi công ty đến với các nhân viên phụ trách`,
+      - Làm gương và truyền giá trị cốt lõi công ty đến với mọi người xung quanh`,
       },
     ];
     if ([3, 4].includes(reviewType)) {
@@ -233,13 +233,10 @@ export class ViewFormStore {
       questions.push(...objectQuestions);
 
       const textQuestions = compact([
-        `V. Quỹ trợ lý AI
+        `V. 4handy học tập
         Giải thích:
-          Tác dụng của công cụ AI đang lớn dần và tạo ra được nhiều giá trị công việc
-          Quỹ này nhằm hỗ trợ/tài trợ chi phí cần thiết (50-100%) cho việc sử dụng công cụ AI trong 6 tháng tiếp theo vào ứng dụng công việc tại vị trí của mình, điền các nội dung sau:
-        - Sử dụng công cụ AI nào?
-        - Chi phí duy trì hoạt động công cụ AI
-        - Dự kiến kết quả công việc sẽ thay đổi thế nào khi có trợ lý AI`,
+        - Ghi lại mong muốn hỗ trợ của công ty (50-100%) với các khoản chi đầu tư học tập như mua sách, khoá học, phần mềm…
+        - Càng cụ thể càng dễ được duyệt`,
         `VI. Đề xuất của bạn về mức lương và đãi ngộ khác`,
       ]).map<Question>((d) => {
         return {
