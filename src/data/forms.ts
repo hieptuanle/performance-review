@@ -28,6 +28,8 @@ export const forms = [
     reviewerCode9: "D7178",
     reviewerName10: "Trần Việt Hoàng",
     reviewerCode10: "D14161",
+    email: "thuyvi11196@gmail.com",
+    position: "Training Executive, TTL",
   },
   {
     code: "D14755",
@@ -56,6 +58,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "tuanduong29vv@gmail.com",
+    position: "Nhân viên Đào tạo fulltime",
   },
   {
     code: "D15222",
@@ -84,6 +88,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "catbinh.hr@gmail.com",
+    position: "Nhân viên Đào tạo Full-time",
   },
   {
     code: "D5762",
@@ -112,6 +118,8 @@ export const forms = [
     reviewerCode9: "D6249",
     reviewerName10: "Nguyễn Minh Hùng",
     reviewerCode10: "D4553",
+    email: "thuongha1422@gmail.com",
+    position: "Nhân viên giám sát chuỗi cửa hàng Full-time",
   },
   {
     code: "D16284",
@@ -140,6 +148,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "le26101517@gmail.com",
+    position: "Nhân viên giám sát chuỗi cửa hàng Full-time",
   },
   {
     code: "D15082",
@@ -168,6 +178,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "nguyenlinh129108@gmail.com",
+    position: "Nhân viên giám sát chuỗi cửa hàng Full-time",
   },
   {
     code: "D4553",
@@ -196,6 +208,8 @@ export const forms = [
     reviewerCode9: "D703",
     reviewerName10: "Nguyễn Thị Thương",
     reviewerCode10: "D5762",
+    email: "ngminhhung1102@gmail.com",
+    position: "Nhân viên Kiểm toán nội bộ",
   },
   {
     code: "S78",
@@ -224,6 +238,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "buihuong17101997@gmail.com",
+    position: "Nhân viên kiểm toán nội bộ",
   },
   {
     code: "D10144",
@@ -252,6 +268,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "daoduybach.work@gmail.com",
+    position: "Nhân viên Kiểm toán Full-time",
   },
   {
     code: "D4086",
@@ -280,6 +298,8 @@ export const forms = [
     reviewerCode9: "D8013",
     reviewerName10: "Phan Lê Công Đạt",
     reviewerCode10: "D9005",
+    email: "kimxuandang0504@gmail.com",
+    position: "Quản lý Cơ sở Full-time",
   },
   {
     code: "D5093",
@@ -308,6 +328,8 @@ export const forms = [
     reviewerCode9: "D8013",
     reviewerName10: "Đào Duy Bách",
     reviewerCode10: "D10144",
+    email: "ngungsuong.nkh97@gmail.com",
+    position: "Nhân viên mua hàng Full-time",
   },
   {
     code: "D16019",
@@ -336,6 +358,8 @@ export const forms = [
     reviewerCode9: "D11150",
     reviewerName10: "Long Diệp Thành Nam ",
     reviewerCode10: "D7724",
+    email: "nguyenlekhoinguyen22122001@gmail.com",
+    position: "Trợ lý vận hành kho Full-time",
   },
   {
     code: "D9005",
@@ -364,6 +388,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "congdat207@gmail.com",
+    position: "Nhân viên Điều phối và Kinh doanh Full-time",
   },
   {
     code: "D7381",
@@ -392,6 +418,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "huynhbaonhi17052002@gmail.com",
+    position: "Quản lý cơ sở Full-time",
   },
   {
     code: "D703",
@@ -420,6 +448,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "blackpage60@gmail.com",
+    position: "Legal Executive",
   },
   {
     code: "E09",
@@ -448,6 +478,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "chuthang205@gmail.com",
+    position: "Programming",
   },
   {
     code: "D708",
@@ -476,6 +508,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "dinhphuongthaoqia@gmail.com",
+    position: "Developer Full-time",
   },
   {
     code: "D717",
@@ -504,6 +538,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "v.thuynhatt@gmail.com",
+    position: "Nhân viên BA",
   },
   {
     code: "D7954",
@@ -532,6 +568,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "duongvung1003@gmail.com",
+    position: "Quản lý Truyền thông tuyển dụng",
   },
   {
     code: "D7287",
@@ -560,6 +598,8 @@ export const forms = [
     reviewerCode9: "D15575",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "doanthingocanh1605@gmail.com",
+    position: "Quản lý Tuyển dụng",
   },
   {
     code: "D11244",
@@ -588,6 +628,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "linhvu.20072003@gmail.com",
+    position: "Nhân viên Tuyển dụng Full-time",
   },
   {
     code: "D13006",
@@ -616,6 +658,8 @@ export const forms = [
     reviewerCode9: "D16406",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "tientien27032k3@gmail.com",
+    position: "Nhân viên Marketing Full-time",
   },
   {
     code: "D1906",
@@ -644,6 +688,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "quangbinhvx201@gmail.com",
+    position: "Nhân viên CSKH & Training Full-time",
   },
   {
     code: "D479",
@@ -672,6 +718,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "hastagminhngoc@gmail.com",
+    position: "Nhân viên vận hành sàn Thương mại điện tử",
   },
   {
     code: "D1931",
@@ -700,6 +748,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "lethuychi01092001@gmail.com",
+    position: "Giám sát chất lượng vận hành Full-time",
   },
   {
     code: "D9644",
@@ -728,6 +778,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "maihieulog2k2@gmail.com",
+    position: "Nhân viên Logistic Full-time",
   },
   {
     code: "D6249",
@@ -756,6 +808,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "ttyvy2002@gmail.com",
+    position: "Quản lý Cơ sở Full-time",
   },
   {
     code: "D4372",
@@ -784,6 +838,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "tranm300@gmail.com",
+    position: "Quản lý cơ sở Full - time",
   },
   {
     code: "D7395",
@@ -812,6 +868,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "trangduong11899@gmail.com",
+    position: "Quản lý Cơ sở Full-time",
   },
   {
     code: "D8132",
@@ -840,6 +898,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "hoangtuan051085@gmail.com",
+    position: "Tài xế giao hàng xe tải đông lạnh",
   },
   {
     code: "D7721",
@@ -868,6 +928,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "trinhvantien0109@gmail.com",
+    position: "Tài xế giao hàng xe bán tải",
   },
   {
     code: "D9985",
@@ -896,6 +958,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "thanhthuynguyent25@gmail.com",
+    position: "Thợ bánh Full-time",
   },
   {
     code: "D14435",
@@ -924,6 +988,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "buiquanmanh112@gmail.com",
+    position: "Thợ bánh Full-time",
   },
   {
     code: "D14716",
@@ -952,6 +1018,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "hoangduyen281001@gmail.com",
+    position: "Thợ bánh Full-time",
   },
   {
     code: "D14670",
@@ -980,6 +1048,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "thaonau16102001@gmail.com",
+    position: "Thợ bánh Full-time",
   },
   {
     code: "D11281",
@@ -1008,6 +1078,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "vuquynamtruc2003@gmail.com",
+    position: "Thợ bánh Full-time",
   },
   {
     code: "D9906",
@@ -1036,6 +1108,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "tramxtvd@gmail.com",
+    position: "Thợ bánh Full-time",
   },
   {
     code: "D13288",
@@ -1064,6 +1138,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "nguyenhanh.96vnua@gmail.com",
+    position: "Thợ bánh Full-time",
   },
   {
     code: "D13826",
@@ -1092,6 +1168,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "hatrangmc2003@gmail.com",
+    position: "Thợ bánh Full-time",
   },
   {
     code: "D14658",
@@ -1120,6 +1198,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "phuonglien883@gmail.com",
+    position: "Thợ bánh Full-time",
   },
   {
     code: "D4857",
@@ -1148,6 +1228,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "phamlan2908@gmail.com",
+    position: "Thợ bánh Full-time",
   },
   {
     code: "E73",
@@ -1176,6 +1258,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "anhtuas123@gmail.com",
+    position: "Giám sát Hậu cần Full-time",
   },
   {
     code: "D2537",
@@ -1204,6 +1288,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "ngocthao060690@gmail.com",
+    position: "Nhân viên Hậu cần Full-time",
   },
   {
     code: "D11359",
@@ -1232,6 +1318,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "Phamque8386@gmail.com",
+    position: "Nhân viên Kỹ thuật điện nước Full-time",
   },
   {
     code: "D11150",
@@ -1260,6 +1348,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "giangtruong2501@gmail.com",
+    position: "Quản lý Kho Full - time",
   },
   {
     code: "S41",
@@ -1288,6 +1378,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "nhlong2107@gmail.com",
+    position: "Quản lý Kho Full-time",
   },
   {
     code: "D6100",
@@ -1316,6 +1408,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "vutruongson999@gmail.com",
+    position: "Quản lý bếp bánh Full-time",
   },
   {
     code: "D1039",
@@ -1344,6 +1438,8 @@ export const forms = [
     reviewerCode9: "D11182",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "nguyenthutrang1620@gmail.com",
+    position: "Quản lý Bếp bánh Full-time",
   },
   {
     code: "D13808",
@@ -1372,6 +1468,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "hoangyen6826@gmail.com",
+    position: "Quản lý bếp bánh - Fulltime",
   },
   {
     code: "D14478",
@@ -1400,6 +1498,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "linh00612201@gmail.com",
+    position: "Nhân viên Training Full-time",
   },
   {
     code: "D7363",
@@ -1428,6 +1528,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "thangmg56@gmail.com",
+    position: "Nhân viên tổ chức vận hành Full-time",
   },
   {
     code: "C635",
@@ -1456,6 +1558,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "buitrang10032000@gmail.com",
+    position: "Quản lý đóng gói Full-time",
   },
   {
     code: "D11054",
@@ -1484,6 +1588,8 @@ export const forms = [
     reviewerCode9: "D9005",
     reviewerName10: "Đặng Kim Xuân",
     reviewerCode10: "D4086",
+    email: "dinhkhang2002cr@gmail.com",
+    position: "Nhân viên mua hàng Full-time",
   },
   {
     code: "D7973",
@@ -1512,6 +1618,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "tranquocanh1001@gmail.com",
+    position: "Nhân viên Mua hàng Full-time",
   },
   {
     code: "D14665",
@@ -1540,6 +1648,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "vminhhangfw@gmail.com",
+    position: "Nhân viên mua hàng Full-time",
   },
   {
     code: "D14705",
@@ -1568,6 +1678,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "dominicedsel26@gmail.com",
+    position: "Nhân viên mua hàng Full-time",
   },
   {
     code: "D583",
@@ -1596,6 +1708,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "theanh2726@gmail.com",
+    position: "Nhân viên R&D Full-time",
   },
   {
     code: "D337",
@@ -1624,6 +1738,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "thanhnam06121997@gmail.com",
+    position: "Kitchen Manager, Training Executive, TTL",
   },
   {
     code: "S110",
@@ -1652,6 +1768,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "vietxc2014@gmail.com",
+    position: "Graphic Designer, TTL",
   },
   {
     code: "D15862",
@@ -1680,6 +1798,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "yen.kh531@gmail.com",
+    position: "Trợ lý xây dựng kênh Tiktok",
   },
   {
     code: "D3267",
@@ -1708,6 +1828,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "gianghuongly01@gmail.com",
+    position: "Nhân viên Marketing Full-time",
   },
   {
     code: "D8013",
@@ -1736,6 +1858,8 @@ export const forms = [
     reviewerCode9: "",
     reviewerName10: "",
     reviewerCode10: "",
+    email: "trungghau0310@gmail.com",
+    position: "Nhân viên Chính sách nhân sự Full-time",
   },
 ];
 export const managers = _.map(
