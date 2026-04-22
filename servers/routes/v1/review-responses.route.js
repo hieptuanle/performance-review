@@ -7,7 +7,7 @@ const { getRevieweesForManager, isManager } = require("../../utils/forms");
 
 const router = express.Router();
 
-const START_DATE = new Date("2025-10-01T00:00:00+07:00");
+const START_DATE = new Date("2026-04-01T00:00:00+07:00");
 
 router
   .route("/")
@@ -154,13 +154,13 @@ router.route("/summary").get(async (req, res) => {
 
         return result;
       },
-      []
+      [],
     );
     res.json(
       summary.reduce((result, item) => {
         result[item._id] = item.count;
         return result;
-      }, {})
+      }, {}),
     );
   } catch (e) {
     res.status(400).json({ message: e.message });
