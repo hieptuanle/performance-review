@@ -64,7 +64,7 @@ const QuestionHeader = observer<{ question: Question; index: number }>(
         )}
       </IonListHeader>
     );
-  }
+  },
 );
 
 const ScaleQuestionCard = observer<{ question: Question; index: number }>(
@@ -75,23 +75,18 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
     const options = [
       {
         value: "1",
-        label: "1. Kém.",
+        label:
+          "Cần cải thiện:	Chưa đảm bảo kì vọng, còn một số điểm cần cải thiện để hoàn thành vai trò công việc của cá nhân",
       },
       {
         value: "2",
-        label: "2. Cần cải thiện.",
+        label:
+          "Đạt kì vọng:	Đảm bảo kì vọng, vừa đủ để hoàn thành công việc, nhiệm vụ của cá nhân",
       },
       {
         value: "3",
-        label: "3. Đạt kì vọng.",
-      },
-      {
-        value: "4",
-        label: "4. Vượt kì vọng.",
-      },
-      {
-        value: "5",
-        label: "5. Xuất sắc.",
+        label:
+          "Tấm gương	Vượt trên kì vọng, trở thành tấm gương đáng học hỏi ở phương diện này",
       },
     ];
     return (
@@ -133,7 +128,7 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
         </IonItem>
       </IonCard>
     );
-  }
+  },
 );
 
 const ObjectQuestionCard = observer<{
@@ -258,7 +253,7 @@ const TextQuestionCard = observer<{ question: Question; index: number }>(
         </IonItem>
       </IonCard>
     );
-  }
+  },
 );
 
 const FormQuestions = observer(() => {
@@ -378,7 +373,7 @@ const ViewForm = observer(() => {
     async function getReviewResponse() {
       const reviewResponse =
         await rootStore.viewRevieweeStore.getReviewResponseBySlug(
-          params.formId
+          params.formId,
         );
 
       return reviewResponse;
@@ -402,7 +397,7 @@ const ViewForm = observer(() => {
       matchReviewee.revieweePositions,
       form.reviewType,
       !!form.isTeamManager,
-      getReviewResponse()
+      getReviewResponse(),
     );
   }, [params.formId, rootStore]);
 
@@ -472,7 +467,7 @@ const ViewForm = observer(() => {
                 await rootStore.viewFormStore.submitReviewResponse(
                   form,
                   matchReviewee,
-                  checked
+                  checked,
                 );
                 setShowToastSuccess(true);
                 history.push("/forms");

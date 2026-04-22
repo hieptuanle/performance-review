@@ -94,64 +94,65 @@ export class ViewFormStore {
     positions: string[],
     reviewType: number,
     isTeamManager: Boolean,
-    reviewResponse: Object
+    reviewResponse: Object,
   ) {
     const data = await reviewResponse;
     const existsQuestions = get(data, "questions");
     let questions: Question[] = [];
     const defaultScaleQuestions = [
       {
-        content: "I. Review ba nhóm đánh giá năng lực cá nhân",
+        content: "I. Review năng lực làm việc cá nhân",
         isHeader: true,
       },
       {
-        content: `1. Tự đánh giá về thái độ, tác phong làm việc cá nhân
-    Giải thích:
+        content: `1. Thái độ, tác phong làm việc
+    Biểu hiện:
     - Tuân thủ quy định, nội quy của công ty
-    - Tác phong làm việc nghiêm túc đặc biệt liên quan tới thời gian: đi làm, nghỉ phép, giờ họp, deadline làm task...
-    - Thể hiện tinh thần quyết liệt hoàn thành công việc của cá nhân, của team và của cả công ty`,
+    - Tác phong làm việc nghiêm túc đặc biệt liên quan tới thời gian: giờ họp, deadline task...
+    - Thể hiện tinh thần quyết liệt, thích nghi với sự thay đổi`,
       },
       {
-        content: `2. Mức độ cải tiến về kiến thức, kỹ năng và tư duy trong cách làm việc
-    Giải thích:
-    - Chủ động tự học thêm kiến thức chuyên môn và sử dụng AI trong công việc
-    - Có ý tưởng cải thiện, nâng cấp, điều chỉnh quy trình làm việc, cải thiện cách làm việc 
-    - Triển khai các ý tưởng để nâng cao hiệu suất và kết quả công việc liên bộ phận`,
+        content: `2. Mức độ cải tiến về kiến thức, kỹ năng 
+    Biểu hiện:
+    - Chủ động nâng cao năng lực bản thân và sử dụng AI hỗ trợ công việc
+    - Có ý tưởng cải tiến, điều chỉnh, đổi mới quy trình làm việc
+    - Triển khai các ý tưởng để tăng hiệu suất của cá nhân hoặc tập thể`,
       },
       {
-        content: `3. Mức độ hoàn thành công việc được giao
-    Giải thích:
-    - Hoàn thành vượt mức kỳ vọng đối với các công việc được giao: về thời gian, về chất lượng 
+        content: `3. Mức độ done task, OKR
+    Biểu hiện:
     - Sắp xếp, ưu tiên, cân bằng hợp lý giữa các công việc gấp, nhanh với các công việc quan trọng, dài hạn 
+    - Hoàn thành vượt mức kỳ vọng đối với các công việc, mục tiêu: về thời gian, về chất lượng 
     - Mở rộng thêm các mảng công việc mới`,
       },
       {
-        content:
-          "II. Review khả năng hợp tác, làm việc với các bộ phận liên quan",
+        content: "II. Review năng lực làm việc với người khác",
         isHeader: true,
       },
       {
-        content: `4. Giao tiếp, làm việc nhóm với đồng nghiệp, bộ phận liên quan
-    Giải thích:
-    - Phản hồi thông tin nhanh, không bị miss tin 
-    - Giao tiếp, lắng nghe ý kiến, trao đổi thông tin với đồng nghiệp, giữa các bộ phận đạt hiệu suất công việc cao
-    - Thể hiện tinh thần tương trợ với các bộ phận khác vì mục tiêu chung của công ty`,
+        content: `4. Teamwork trong công việc liên quan tới KQCV của bộ phận mình
+    Biểu hiện:
+    -	Giao tiếp hiệu quả: xác nhận để hiểu đúng nhu cầu từ bộ phận liên quan, xác nhận lại deadline, output rõ ràng
+    - Follow hàng ngày, chủ động trao đổi khi có vấn đề
+    - Feedback và nhận feedback với tinh thần hợp tác, xây dựng`,
       },
       {
-        content: `5. Khả năng tạo độ tin cậy và chất lượng công việc trong làm việc nhóm với đồng nghiệp, bộ phận khác
-    Giải thích:
-    - Tạo dựng được cảm giác an tâm, đáng tin trong với mọi việc phụ trách 
-    - Đạt được sự ủng hộ cho những ý tưởng khi làm việc nhóm
-    - Nói được làm được, nói đi đôi với làm`,
+        content: `5. Tương trợ với các công việc chung, công việc của bộ phận khác 
+    Biểu hiện:
+    - Sẵn sàng đi hỗ trợ, tham gia các công việc chung 
+    - Tương trợ mà không phân biệt người mới, người cũ; người từng giúp mình hay không 
+    - Đặt lợi ích chung của tổ chức cao hơn lợi ích riêng của cá nhân, bộ phận`,
       },
     ];
     const managerScaleQuestions = [
       {
         content: `6. Năng lực quản lý
-      Giải thích: 
-      - Phân bổ, lên kế hoạch, giám sát đội ngũ nhằm hoàn thành các mục tiêu công việc đề ra
-      - Tạo động lực, hướng dẫn và định hướng công việc cho đội ngũ nhân viên 
-      - Làm gương và truyền giá trị cốt lõi công ty đến với mọi người xung quanh`,
+      Biểu hiện:
+      - Lên mục tiêu, kế hoạch, giám sát đội ngũ nhằm hoàn thành công việc
+      - Cải tiến quy trình làm việc của bộ phận
+      - Tạo động lực, thưởng phạt phân minh, KPI rõ ràng
+      - Đào tạo, gắn kết và nâng cao năng lực đội ngũ
+      - Làm gương về giá trị cốt lõi công ty đến với mọi người xung quanh`,
       },
     ];
     if ([3, 4].includes(reviewType)) {
@@ -211,7 +212,7 @@ export class ViewFormStore {
 
       const objectQuestions = [
         {
-          content: `III. Review kết quả OKR 6 tháng trước`,
+          content: `III. Review kết quả OKR 6 tháng trước								`,
           isObject: true,
         },
         {
@@ -234,10 +235,10 @@ export class ViewFormStore {
 
       const textQuestions = compact([
         `V. 4handy học tập
-        Giải thích:
-        - Ghi lại mong muốn hỗ trợ của công ty (50-100%) với các khoản chi đầu tư học tập như mua sách, khoá học, phần mềm…
-        - Càng cụ thể càng dễ được duyệt`,
-        `VI. Đề xuất của bạn về mức lương và đãi ngộ khác`,
+        Giải thích: 	
+        - Ghi lại mong muốn hỗ trợ của công ty (50-100%) với các khoản chi đầu tư học tập như mua sách, khoá học, AI, phần mềm, máy móc...
+        - Càng chi tiết, càng sớm, càng dễ được duyệt`,
+        `VI. Đề xuất của bạn về mức lương, đãi ngộ hoặc luân chuyển công việc (nếu có)`,
       ]).map<Question>((d) => {
         return {
           group: "Personal",
@@ -296,7 +297,7 @@ export class ViewFormStore {
   async submitReviewResponse(
     form: ReviewForm,
     reviewee: Reviewee,
-    anonymous: Boolean
+    anonymous: Boolean,
   ) {
     const notSelectScaleQuestions = filter(this.questions, (question) => {
       return question.layout === "Scale" && !question.mark;
@@ -304,7 +305,7 @@ export class ViewFormStore {
     if (notSelectScaleQuestions.length) {
       throw new Error(
         `Bạn chưa chấm điểm cho câu hỏi: ` +
-          _.map(notSelectScaleQuestions, "content").join(" ,")
+          _.map(notSelectScaleQuestions, "content").join(" ,"),
       );
     }
 
@@ -314,7 +315,7 @@ export class ViewFormStore {
     if (notDoneQuestions.length) {
       throw new Error(
         `Bạn chưa giải thích câu hỏi: ` +
-          _.map(notDoneQuestions, "content").join(" ,")
+          _.map(notDoneQuestions, "content").join(" ,"),
       );
     }
 
@@ -328,13 +329,13 @@ export class ViewFormStore {
         }
         console.log(question);
         return index < 7 && split(question.answer, " ").length < minLength;
-      }
+      },
     );
 
     if (notEnoughLengthQuestion.length) {
       throw new Error(
         `Các mục sau chưa đủ ${minLength} tối thiểu: ` +
-          _.map(notEnoughLengthQuestion, "content").join(" ,")
+          _.map(notEnoughLengthQuestion, "content").join(" ,"),
       );
     }
 
