@@ -336,24 +336,16 @@ const DefinitionModal = observer(() => {
 
         <div>
           <p>
-            5. Xuất sắc: Vượt xa kì vọng, tạo ra các kết quả tích cực ảnh hưởng
-            tốt đến kết quả công việc, tạo ra tiến bộ nổi bật trong công việc
+            3. Tấm gương: Vượt trên kì vọng, trở thành tấm gương đáng học hỏi ở
+            phương diện này
           </p>
           <p>
-            4. Vượt kì vọng: Vượt trên kì vọng, góp phần tạo ra kết quả tốt, đảm
-            bảo yêu cầu cầu công việc
-          </p>
-          <p>
-            3. Đạt kì vọng: Đảm bảo kì vọng, vừa đủ để hoàn thành công việc,
+            2. Đạt kì vọng: Đảm bảo kì vọng, vừa đủ để hoàn thành công việc,
             nhiệm vụ của cá nhân
           </p>
           <p>
-            2. Cần cải thiện: Chưa đảm bảo kì vọng, còn một số điểm cần cải
+            1. Cần cải thiện: Chưa đảm bảo kì vọng, còn một số điểm cần cải
             thiện để hoàn thành vai trò công việc của cá nhân
-          </p>
-          <p>
-            1. Kém: Kết quả kém, không đạt kì vọng, ảnh hưởng xấu đến kết quả
-            công việc của bản thân
           </p>
         </div>
       </IonContent>
