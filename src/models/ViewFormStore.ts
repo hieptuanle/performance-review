@@ -212,7 +212,7 @@ export class ViewFormStore {
 
       const objectQuestions = [
         {
-          content: `III. Review kết quả OKR 6 tháng trước								`,
+          content: `III. Review kết quả OKR 6 tháng trước`,
           isObject: true,
         },
         {
