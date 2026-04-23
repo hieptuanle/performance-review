@@ -10,7 +10,7 @@ import _, { compact, filter, split, get, find } from "lodash";
 export interface Question {
   group: string;
   content: string;
-  layout: "Scale" | "Text" | "Header" | "Object";
+  layout: "Scale" | "Text" | "Header" | "Object" | "OkrReadonly";
   mark: string | number;
   answer: string;
   timeContent: string;
@@ -175,6 +175,16 @@ export class ViewFormStore {
         };
       });
 
+      const okrQuestion: Question = {
+        group: "Colleague",
+        content: "OKR của nhân viên",
+        layout: "OkrReadonly",
+        mark: 0,
+        answer: "",
+        timeContent: "",
+        okrs: [],
+      };
+
       const textQuestions = compact([
         `II. Góp ý hoặc đề xuất khác dành cho đồng nghiệp`,
       ]).map<Question>((d) => {
@@ -188,7 +198,7 @@ export class ViewFormStore {
           okrs: [],
         };
       });
-      questions = [...questions, ...scaleQuestions, ...textQuestions];
+      questions = [...questions, okrQuestion, ...scaleQuestions, ...textQuestions];
     } else {
       let allScaleQuestions = defaultScaleQuestions;
       if (isTeamManager) {
@@ -324,7 +334,7 @@ export class ViewFormStore {
     const notEnoughLengthQuestion = filter(
       this.questions,
       (question, index) => {
-        if (_.includes(["Object", "Header"], question.layout)) {
+        if (_.includes(["Object", "Header", "OkrReadonly"], question.layout)) {
           return false;
         }
         console.log(question);

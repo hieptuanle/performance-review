@@ -232,6 +232,60 @@ const ObjectQuestionCard = observer<{
   );
 });
 
+const OkrReadonlyCard = observer<{ question: Question; index: number }>(
+  ({ question, index }) => {
+    const rootStore = useRootStore();
+    const revieweeCode = rootStore.viewFormStore.reviewee?.revieweeCode;
+    const revieweeOkrs = revieweeCode
+      ? okrs.filter((okr) => okr.code === revieweeCode)
+      : [];
+
+    return (
+      <IonCard key={question.content}>
+        <IonListHeader lines="full">
+          <IonLabel>
+            <h2
+              style={{
+                fontSize: "1.5em",
+                fontWeight: "bold",
+                whiteSpace: "pre-line",
+              }}
+            >
+              {question.content}
+            </h2>
+          </IonLabel>
+        </IonListHeader>
+        <IonItem>
+          {revieweeOkrs.length === 0 ? (
+            <IonLabel>Không có OKR cho nhân viên này.</IonLabel>
+          ) : (
+            <table className="full-width">
+              <thead>
+                <tr>
+                  <th>STT</th>
+                  <th>Mục tiêu</th>
+                  <th>Kết quả then chốt</th>
+                </tr>
+              </thead>
+              <tbody>
+                {revieweeOkrs.map((okr, i) => (
+                  <tr key={i}>
+                    <td style={{ textAlign: "center" }}>{i + 1}</td>
+                    <td style={{ whiteSpace: "pre-line" }}>{okr.description}</td>
+                    <td style={{ whiteSpace: "pre-line" }}>
+                      {okr.keyResults.join("\n")}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </IonItem>
+      </IonCard>
+    );
+  },
+);
+
 const TextQuestionCard = observer<{ question: Question; index: number }>(
   ({ question, index, ...rest }) => {
     const rootStore = useRootStore();
@@ -283,6 +337,15 @@ const FormQuestions = observer(() => {
               question={question}
               index={index}
             ></ScaleQuestionCard>
+          );
+        }
+        if (question.layout === "OkrReadonly") {
+          return (
+            <OkrReadonlyCard
+              key={question.content}
+              question={question}
+              index={index}
+            ></OkrReadonlyCard>
           );
         }
         if (question.layout === "Object") {
