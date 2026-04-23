@@ -87,7 +87,7 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
       {
         value: "3",
         label:
-          "Tấm gương	Vượt trên kì vọng, trở thành tấm gương đáng học hỏi ở phương diện này",
+          "Tấm gương:	Vượt trên kì vọng, trở thành tấm gương đáng học hỏi ở phương diện này",
       },
     ];
     return (
@@ -107,9 +107,9 @@ const ScaleQuestionCard = observer<{ question: Question; index: number }>(
                 {d.label}
               </IonSelectOption>
             ))}
-            {!isSelfAssessment ? (
+            {/* {!isSelfAssessment ? (
               <IonSelectOption value={"0"}>Không đánh giá</IonSelectOption>
-            ) : null}
+            ) : null} */}
           </IonSelect>
         </IonItem>
         <IonItem>
@@ -271,7 +271,9 @@ const OkrReadonlyCard = observer<{ question: Question; index: number }>(
                 {revieweeOkrs.map((okr, i) => (
                   <tr key={i}>
                     <td style={{ textAlign: "center" }}>{i + 1}</td>
-                    <td style={{ whiteSpace: "pre-line" }}>{okr.description}</td>
+                    <td style={{ whiteSpace: "pre-line" }}>
+                      {okr.description}
+                    </td>
                     <td style={{ whiteSpace: "pre-line" }}>
                       {okr.keyResults.join("\n")}
                     </td>
