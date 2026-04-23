@@ -28,6 +28,7 @@ import useRootStore from "../hooks/useRootStore";
 import FormType from "../components/FormType";
 import { Question } from "../models/ViewFormStore";
 import { TableStore } from "../models/TableStore";
+import { okrs } from "../data/okrs";
 import NotFound from "./NotFound";
 import RevieweeIntro from "../components/RevieweeIntro";
 import { informationCircleOutline } from "ionicons/icons";
@@ -285,12 +286,25 @@ const FormQuestions = observer(() => {
           );
         }
         if (question.layout === "Object") {
+          const isPastOkr = !question.content.includes("6 tháng tiếp theo");
+          const revieweeCode = rootStore.viewFormStore.reviewee?.revieweeCode;
+          const initialRows =
+            isPastOkr && revieweeCode
+              ? okrs
+                  .filter((okr) => okr.code === revieweeCode)
+                  .map((okr) => ({
+                    object: okr.description,
+                    keyResult: okr.keyResults.join("\n"),
+                    process: 0,
+                    detail: "",
+                  }))
+              : undefined;
           return (
             <ObjectQuestionCard
               key={question.content}
               question={question}
               index={index}
-              tableStore={new TableStore()}
+              tableStore={new TableStore(initialRows)}
             ></ObjectQuestionCard>
           );
         }
