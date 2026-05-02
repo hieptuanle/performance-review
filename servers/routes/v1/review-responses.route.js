@@ -132,7 +132,7 @@ router.route("/summary").get(async (req, res) => {
 
     _.forEach(reviewResponses, (reviewResponse) => {
       reviewResponse.isDone = _.every(reviewResponse.questions, (question) => {
-        if (question.layout === "Header") {
+        if (["OkrReadonly", "Header"].includes(question.layout)) {
           return true;
         }
 
