@@ -103,20 +103,21 @@ const ViewResponsePage = observer(() => {
                 {index + 1}.{" "}
                 {d.content.replaceAll(
                   `{{NAME}}`,
-                  viewResponseStore.response?.revieweeName || ""
+                  viewResponseStore.response?.revieweeName || "",
                 )}
               </h2>
             </IonItem>
-            {viewResponseStore.response?.reviewType === 1 && (
-              <IonItem>
-                <IonLabel>
-                  <IonText color="primary">
-                    <h3>Điểm</h3>
-                  </IonText>
-                  <p>{d.mark}</p>
-                </IonLabel>
-              </IonItem>
-            )}
+            {viewResponseStore.response?.reviewType !== undefined &&
+              [1, 3].includes(viewResponseStore.response.reviewType) && (
+                <IonItem>
+                  <IonLabel>
+                    <IonText color="primary">
+                      <h3>Điểm</h3>
+                    </IonText>
+                    <p>{d.mark}</p>
+                  </IonLabel>
+                </IonItem>
+              )}
 
             <IonItem>
               <IonLabel className="ion-text-wrap">
