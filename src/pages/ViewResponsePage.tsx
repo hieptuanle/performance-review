@@ -108,7 +108,8 @@ const ViewResponsePage = observer(() => {
               </h2>
             </IonItem>
             {viewResponseStore.response?.reviewType !== undefined &&
-              [1, 3].includes(viewResponseStore.response.reviewType) && (
+              [1, 3].includes(viewResponseStore.response.reviewType) &&
+              !!d.mark && (
                 <IonItem>
                   <IonLabel>
                     <IonText color="primary">

@@ -42,7 +42,7 @@ export class ReviewResponseStore {
   async insertOne(reviewResponse: ReviewResponse): Promise<ReviewResponse> {
     return this.rootStore.transportStore.post(
       "/review-responses",
-      reviewResponse
+      reviewResponse,
     );
   }
 }
