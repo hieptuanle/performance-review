@@ -99,7 +99,7 @@ const ViewResponsePage = observer(() => {
         {viewResponseStore.response.questions.map((d, index) => (
           <IonCard key={d.content}>
             <IonItem>
-              <h2>
+              <h2 style={{ whiteSpace: "pre-line" }}>
                 {index + 1}.{" "}
                 {d.content.replaceAll(
                   `{{NAME}}`,
