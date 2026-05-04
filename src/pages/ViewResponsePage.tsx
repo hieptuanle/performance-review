@@ -100,7 +100,6 @@ const ViewResponsePage = observer(() => {
           <IonCard key={d.content}>
             <IonItem>
               <h2 style={{ whiteSpace: "pre-line" }}>
-                {index + 1}.{" "}
                 {d.content.replaceAll(
                   `{{NAME}}`,
                   viewResponseStore.response?.revieweeName || "",
