@@ -32,6 +32,13 @@ const ViewResponsePage = observer(() => {
     viewResponseStore.findOne(responseId);
   }, [params.responseId, viewResponseStore]);
 
+  const response = viewResponseStore.response;
+  useEffect(() => {
+    if (response?.revieweeCode && response?.revieweeName) {
+      document.title = `${response.revieweeCode} - ${response.revieweeName}`;
+    }
+  }, [response?.revieweeCode, response?.revieweeName]);
+
   if (!viewResponseStore.response) {
     return <NotFound></NotFound>;
   }
@@ -87,6 +94,7 @@ const ViewResponsePage = observer(() => {
             <IonMenuButton></IonMenuButton>
           </IonButtons>
           <IonTitle>
+            {viewResponseStore.response.revieweeCode} -{" "}
             {viewResponseStore.response.revieweeName} |{" "}
             <FormType
               formType={viewResponseStore.response.reviewType}

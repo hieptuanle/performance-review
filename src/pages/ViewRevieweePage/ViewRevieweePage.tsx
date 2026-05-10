@@ -60,6 +60,12 @@ const ViewRevieweePage = observer(() => {
 
   const reviewee = viewRevieweeStore.reviewee;
 
+  useEffect(() => {
+    if (reviewee?.revieweeCode && reviewee?.revieweeName) {
+      document.title = `${reviewee.revieweeCode} - ${reviewee.revieweeName}`;
+    }
+  }, [reviewee?.revieweeCode, reviewee?.revieweeName]);
+
   if (!reviewee) return <NotFound></NotFound>;
 
   const ObjectQuestionCard = observer<{
@@ -128,7 +134,12 @@ const ViewRevieweePage = observer(() => {
   return (
     <IonPage>
       <NormalHeader
-        title={"Tổng hợp đánh giá " + reviewee.revieweeName}
+        title={
+          "Tổng hợp đánh giá " +
+          reviewee.revieweeCode +
+          " - " +
+          reviewee.revieweeName
+        }
       ></NormalHeader>
       <IonContent fullscreen className="view-reviewee-page">
         <RevieweeCard reviewee={reviewee}></RevieweeCard>

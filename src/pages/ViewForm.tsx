@@ -473,12 +473,17 @@ const ViewForm = observer(() => {
   }, [params.formId, rootStore]);
 
   const form = rootStore.viewFormStore.reviewForm;
+  const matchReviewee = rootStore.viewFormStore.reviewee;
+
+  useEffect(() => {
+    if (form?.revieweeCode && form?.revieweeName) {
+      document.title = `${form.revieweeCode} - ${form.revieweeName}`;
+    }
+  }, [form?.revieweeCode, form?.revieweeName]);
 
   if (!form) {
     return <NotFound></NotFound>;
   }
-
-  const matchReviewee = rootStore.viewFormStore.reviewee;
 
   if (!matchReviewee) {
     return <NotFound></NotFound>;
@@ -492,7 +497,7 @@ const ViewForm = observer(() => {
             <IonMenuButton></IonMenuButton>
           </IonButtons>
           <IonTitle>
-            {form.revieweeName} |{" "}
+            {form.revieweeCode} - {form.revieweeName} |{" "}
             <FormType formType={form.reviewType}></FormType>{" "}
           </IonTitle>
         </IonToolbar>
