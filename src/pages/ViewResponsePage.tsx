@@ -35,7 +35,7 @@ const ViewResponsePage = observer(() => {
   const response = viewResponseStore.response;
   useEffect(() => {
     if (response?.revieweeCode && response?.revieweeName) {
-      document.title = `${response.revieweeCode} - ${response.revieweeName}`;
+      document.title = `Phản hồi đánh giá - ${response.revieweeCode} - ${response.revieweeName}`;
     }
   }, [response?.revieweeCode, response?.revieweeName]);
 

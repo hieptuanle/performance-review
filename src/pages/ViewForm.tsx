@@ -477,7 +477,7 @@ const ViewForm = observer(() => {
 
   useEffect(() => {
     if (form?.revieweeCode && form?.revieweeName) {
-      document.title = `${form.revieweeCode} - ${form.revieweeName}`;
+      document.title = `Form đánh giá - ${form.revieweeCode} - ${form.revieweeName}`;
     }
   }, [form?.revieweeCode, form?.revieweeName]);
 

@@ -62,7 +62,7 @@ const ViewRevieweePage = observer(() => {
 
   useEffect(() => {
     if (reviewee?.revieweeCode && reviewee?.revieweeName) {
-      document.title = `${reviewee.revieweeCode} - ${reviewee.revieweeName}`;
+      document.title = `Tổng hợp đánh giá - ${reviewee.revieweeCode} - ${reviewee.revieweeName}`;
     }
   }, [reviewee?.revieweeCode, reviewee?.revieweeName]);
 
