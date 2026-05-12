@@ -1,0 +1,27 @@
+{
+  "name": "@performance-review/cli",
+  "version": "0.1.0",
+  "description": "CLI client for performance-review backend",
+  "type": "module",
+  "bin": {
+    "fhd-360": "./dist/index.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch",
+    "type-check": "tsc --noEmit"
+  },
+  "license": "ISC",
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "chalk": "5.4.1",
+    "commander": "14.0.2",
+    "yocto-spinner": "1.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.15.3",
+    "typescript": "5.8.3"
+  }
+}
